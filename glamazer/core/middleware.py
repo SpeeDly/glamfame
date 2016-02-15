@@ -41,7 +41,10 @@ class LangMiddleware:
             request.session['django_language'] = lang
             translation.activate(lang)
         except:
-            lang = request.META['HTTP_HOST'].split(":")[1].split("/")[0]
+            try:
+                lang = request.META['HTTP_HOST'].split(":")[1].split("/")[0]
+            except:
+                lang = "8000"
             if lang == "8000":
                 lang = "en"
                 request.session['django_language'] = lang
