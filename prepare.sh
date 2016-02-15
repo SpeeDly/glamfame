@@ -1,5 +1,5 @@
-$GHOME=/home/glamfame/glamfame
-$GENV=/home/ENV/glamfame/bin/activate
+GHOME=/home/glamfame/glamfame
+GENV=/home/ENV/glamfame/bin/activate
 
 #source $GENV && killall gunicorn;
 cd $GHOME && git reset --hard;
