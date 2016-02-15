@@ -150,7 +150,7 @@ PAYMENTS_METHOD = ['Bank Transfer', 'PayPal', 'Paymill']
 WITHDRAW_STATUS = ((0, 'Pending',), (1, 'Accepted',), (2, 'Rejected',), (3, 'Warning',))
 
 
-ALLOWED_HOSTS = ['glamfame.com', 'm.glamfame.com', 'www.glamfame.com', 'localhost', '127.0.0.1', '172.25.0.150']
+ALLOWED_HOSTS = ["37.139.3.176", 'glamfame.com', 'm.glamfame.com', 'www.glamfame.com', 'localhost', '127.0.0.1', '172.25.0.150']
 
 PROJECT_ROOT = abspath(dirname(dirname(__file__)))
 
