@@ -1,0 +1,28 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+    
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with receiver_name=receiver_name username=username when=when day_before=day_before %}
+                <p>We are so sorry {{ receiver_name }},</p>
+                <p>
+                    Your appointment for {{ when }} has been cancelled by {{ username }}. We are really sad when that happens. 
+                </p>
+                <p>The cancellation occurred {{ day_before }} days prior the appointment. According to our cancellation policy, the customer should pay charges only when the cancellation occurs less than 2 days prior the appointment. </p>
+                <p>Once again, we are sorry for the inconvenience.</p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </body>
+
+</html>

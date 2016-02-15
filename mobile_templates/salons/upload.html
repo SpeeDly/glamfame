@@ -1,0 +1,108 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Upload Listing" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/imgselectarea.css">
+{% endblock stylesheets %}
+
+    {% block title %}
+        {% trans "Upload" %}
+    {% endblock title %}
+
+    {% block content %}
+
+    <div class="column">
+        <form id="forms" class="login listing_upload" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <ul>
+                <li id="gallery_preview" class="multiple_listing">
+                    <ul>
+                    </ul>
+                </li>
+                <li class="photos_upload">
+                    {% if form.cover.errors %}
+                        <div class="wrong_picture">{{ form.cover.errors }}</div>
+                    {% endif %}
+                    <div class="upload_button">{% trans "Click here to upload picture" %}</div>
+                    <input type="file" name="pictures" id="id_picture" class="custom_button active_input" multiple/>
+                    {{ form.cover }}
+                </li>
+                <li><label for="" class="main_label">
+                    {% if form.artist.errors %}
+                        {{ form.artist.errors }}
+                    {% endif %}
+                    {% trans "Artist" %}</label></li>
+                <li class="artist_dropdown">
+                    {{ form.artist }}
+                </li>
+                <li><label for="" class="main_label">
+                    {% if form.title.errors %}
+                        {{ form.title.errors }}
+                    {% endif %}
+                    1. {% trans "Title" %}</label></li>
+                <li>
+                    {{ form.title }}
+                </li>
+                <li><label for="" class="main_label">
+                    {% if form.description.errors %}
+                        {{ form.description.errors }}
+                    {% endif %}
+                    2. {% trans "Description" %}</label></li>
+                <li>
+                    {{ form.description }}
+                </li>
+                <li></li>
+                <li class="price"><label for="" class="main_label">
+                    {% if form.price.errors %}
+                        {{ form.price.errors }}
+                    {% endif %}
+                    3. {% trans "Price" %}</label>
+                </li>
+                <li class="price">
+                    {{ form.price }}
+                </li>
+                <li class="style"><label for="" class="main_label">
+                    {% if form.duration.errors %}
+                        {{ form.duration.errors }}
+                    {% endif %}4. {% trans "Duration" %}</label>
+                    {{ form.duration }}</li>
+
+                <li class="gender"><label for="" class="main_label">
+                    {% if form.gender.errors %}
+                        {{ form.gender.errors }}
+                    {% endif %}4. {% trans "Type" %}</label>
+                    {{ form.gender }}
+                </li>
+                <li></li>
+
+                <li><label for="" class="main_label">
+                    {% if form.tags.errors %}
+                        {{ form.tags.errors }}
+                    {% endif %}
+                    5. {% trans "Tags" %}</label></li>
+                <li>
+                    {{ form.tags }}
+                </li>
+
+                <li>
+                    <input type="submit" class="gray submit" value="{% trans 'Save and continue' %}">
+                </li>
+            </ul>
+        </form>
+
+    </div>
+</div>
+
+    {% endblock content %}
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/upload_listing.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Artist Settings" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+    {% trans "Edit Artist" %}
+    {% endblock title %}
+
+    {% block content %}
+    <div class="column">
+        {% block artist_settings %}
+
+        {% endblock artist_settings %}
+    </div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

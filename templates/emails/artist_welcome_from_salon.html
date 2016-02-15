@@ -1,0 +1,28 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with salon_name=salon_name name=name password=password %}
+                <p>Dear {{ name }},</p>
+                <p>We are glad to inform you that {{ salon_name }} added you as a member of its team. The password for your account is {{ password }}.</p>
+                <p>Log in to review your profile settings. Manage your bookings, earnings and working schedule. See your followers and ratings and gain popularity!</p>
+                <p>You can use the password below to log in you account.</p>
+                <p><a href="https://glamfame.com//users/login/">GLAMFAME</a></p>
+
+                <p>Regards,</p>
+                <p>The team of Glamfame</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>

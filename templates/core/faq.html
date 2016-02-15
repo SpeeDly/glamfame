@@ -1,0 +1,783 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - FAQ" %}</title>
+{% endblock meta %}
+
+    {% block stylesheet %}
+    {% endblock stylesheet %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "FAQ" %}</span>
+    </div>
+    <ul class="faq navigator" data-type="{{request.user.related_with}}">
+        <li class="customer">{% trans "Customer" %}</li>
+        <li class="artist">{% trans "Beauty Artist" %}</li>
+        <li class="salon">{% trans "Beauty Salon" %}</li>
+    </ul>
+    <div id="tab_customer" class="faq text_box column">
+        <ul class="questions">
+            <li>
+                <h2 id="customer_Q1"><a href="#customer_Q1">
+                    {% blocktrans %}
+                    1. How do I register on the website?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You can either enter your name, email and password, or register directly with your Facebook account
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q2"><a href="#customer_Q2">
+                    {% blocktrans %}
+                    2. What is the difference between registered and unregistered users?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Unregistered users have no  access to notifications, they cannot make booking cancellations and wish lists.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q3"><a href="#customer_Q3">
+                    {% blocktrans %}
+                    3. How do I add a listing to my wish list?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Click on a particular listing and click on the purple button "Add to wish list"
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q4"><a href="#customer_Q4">
+                    {% blocktrans %}
+                    4. How do I make a booking?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Click on your desired listing and select time and date from the right panel, then click the blue button "Book now"
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q5"><a href="#customer_Q5">
+                    {% blocktrans %}
+                    5. How do I change the location where I want to find beauty services?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Select the type of beauty services and click "Change location" button in the upper left box
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q6"><a href="#customer_Q6">
+                    {% blocktrans %}
+                    6. What are the payment methods, provided by Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Glamfame supports two payment methods – with credit card and via Pay Pal
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q7"><a href="#customer_Q7">
+                    {% blocktrans %}
+                    7. Is my credit card information secure?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Glamfame does not store users’ bank account information and does not disclose such information to third parties. Credit card information is sent via SSL to our payment provider Paymill. See our Privacy Policy as well
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q8"><a href="#customer_Q8">
+                    {% blocktrans %}
+                    8. When do I get charged for a booking?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    The payment will be processed automatically when the beauty artist confirms your booking. In case the beauty artist  refuses to confirm the booking, no billing will occur
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q9"><a href="#customer_Q9">
+                    {% blocktrans %}
+                    9. What is the booking confirmation period?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    48 hours from the booking hour
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q10"><a href="#customer_Q10">
+                    {% blocktrans %}
+                    10. When am I able to write reviews for the salons?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    After the appointment with the beauty artist/salon.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q11"><a href="#customer_Q11">
+                    {% blocktrans %}
+                    11. How do I search for salons in a certain location?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Enter an address and Glamfame will display all the salons with their corresponding listings and artists in the area.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q12"><a href="#customer_Q12">
+                    {% blocktrans %}
+                    12. Is there an option to disable the access to my location?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes. When your browser loads glamfame.com for the first time, you will be asked if you want to share your location. Simply select “Not now”.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q13"><a href="#customer_Q13">
+                    {% blocktrans %}
+                    13. Am I going to pay additional charges for a booking?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No. Glamfame’s service fee is included in the final price of each listing with VAT.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q14"><a href="#customer_Q14">
+                    {% blocktrans %}
+                    14. How do I cancel my account on Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    By sending an email to <a href="mailto:admin@glamfame.com?Subject=Hi%20team" target="_top">admin@glamfame.com</a>
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="customer_Q15"><a href="#customer_Q15">
+                    {% blocktrans %}
+                    15. Can Glamfame deactivate my account ?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, if you violate our Terms and Conditions. Please, read them carefully.
+                    {% endblocktrans %}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="tab_artist" class="faq text_box column">
+        <ul class="questions">
+            <li>
+                <h2 id="artist_Q1"><a href="#artist_Q1">
+                    {% blocktrans %}
+                    1. How do I register on the website?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You can either enter your name, email and password, or register directly with your Facebook account
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q2"><a href="#artist_Q2">
+                    {% blocktrans %}
+                    2. Can unregistered beauty artists upload listings and create profiles on Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No. Only registered artists can do so.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q3"><a href="#artist_Q3">
+                    {% blocktrans %}
+                    3. What are the next steps after I register on the website?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You have to select your type of business (Hair, Nails, Makeup), enter your location (address) and follow the instructions within our tips.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q4"><a href="#artist_Q4">
+                    {% blocktrans %}
+                    4. How do I set up my profile and add description of my work?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Follow the instructions within our tips after log in. Then, click the circular "i" icon in the right upper corner, next to the search box. 
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q5"><a href="#artist_Q5">
+                    {% blocktrans %}
+                    5. How do I add a listing?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Once you enter description of your work and enter your work hours in the "Schedule" section, click on the green "Add listing" button in the left upper corner next to the search box. Add photos, price, title, description, select type and determine the duration.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q6"><a href="#artist_Q6">
+                    {% blocktrans %}
+                    6. Am I able to deactivate and edit listings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes. Move the cursor to your profile badge and select "Listings". Then, click on "Deactivate", or "Edit"
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q7"><a href="#artist_Q7">
+                    {% blocktrans %}
+                    7. Where can I see my bookings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Move the cursor to your profile badge and select "Bookings"
+                    {% endblocktrans %}
+                </div>
+            </li>
+
+            <li>
+                <h2 id="artist_Q8"><a href="#artist_Q8">
+                    {% blocktrans %}
+                    8. Can I refuse a booking request?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, you can.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q9"><a href="#artist_Q9">
+                    {% blocktrans %}
+                    9. What will be the consequences of booking cancellations?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Your cancellation rate will augment and this may result in negative image and decrease your sales.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q10"><a href="#artist_Q10">
+                    {% blocktrans %}
+                    10. Where can I find an organizer of my bookings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Move the cursor to your profile badge and select "Calendar"
+                    {% endblocktrans %}
+                </div>
+            </li>
+
+            <li>
+                <h2 id="artist_Q11"><a href="#artist_Q11">
+                    {% blocktrans %}
+                    11. Can I find statistics for my listings and revenue?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, in the "Statistics" section of your profile. You will find diagram showing the ratio between your bookings, revenue, listings’ view and inquiries.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q12"><a href="#artist_Q12">
+                    {% blocktrans %}
+                    12. Am I able to receive notifications for the bookings of my listings, cancellations and admin messages on Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+            <div class="answer">
+                    {% blocktrans %}
+                        Yes, in the "Notifications" section of your profile menu.
+                    {% endblocktrans %}
+            </div>
+            </li>
+            <li>
+                <h2 id="artist_Q13"><a href="#artist_Q13">
+                    {% blocktrans %}
+                    13. How do I withdraw money from Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Go to "My wallet" section of your profile and click on "Withdraw money".
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q14"><a href="#artist_Q14">
+                    {% blocktrans %}
+                    14. When do I receive a transfer to my virtual Wallet?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    2 hours after an appointment for beauty services is completed
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q15"><a href="#artist_Q15">
+                    {% blocktrans %}
+                    15. What are the steps for the transfer of my earnings from my virtual Wallet to my bank account?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You have to submit a withdrawal request via your virtual Wallet. Then it must be approved by our admin. Note: It may be cancelled only if the request for withdraw exceeds the available funds.  Once it gets an approval, the beauty artist receives his/her payout within 7-8 business days. For more information, read our Terms of service.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q16"><a href="#artist_Q16">
+                    {% blocktrans %}
+                    16. Do I have to pay fees to Glamfame for the publication of listings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q17"><a href="#artist_Q17">
+                    {% blocktrans %}
+                    17. Do I owe fees to Glamfame for each booking I receive through Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q18"><a href="#artist_Q18">
+                    {% blocktrans %}
+                    18. Is there a limit for the number of listings, submitted on the website?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No. You can list as many, as you wish.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q19"><a href="#artist_Q19">
+                    {% blocktrans %}
+                    19. Do I need to add VAT, or other applicable taxes to my listings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, you are. You are responsible for complying with the applicable local laws. Please, read section "Listings on Glamfame" in our Terms of Service.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q20"><a href="#artist_Q20">
+                    {% blocktrans %}
+                    20. Is my credit card information secure?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Glamfame does not store users’ bank account information and does not disclose such information to third parties. Credit card information is sent via SSL to our payment provider Paymill. See our Privacy Policy as well
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="artist_Q21"><a href="#artist_Q21">
+                    {% blocktrans %}
+                    21. What is the period in which I have to confirm/cancel a booking?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    48 hours from the booking hour
+                    {% endblocktrans %}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="tab_salon" class="faq text_box column">
+        <ul class="questions">
+            <li>
+                <h2 id="salon_Q1"><a href="#salon_Q1">
+                    {% blocktrans %}
+                    1. How do I register on the website?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You can either enter your name, email and password, or register directly with your Facebook account
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q2"><a href="#salon_Q2">
+                    {% blocktrans %}
+                    2. Can unregistered beauty salons, add beauty artists and upload listings on Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No. Only registered salons can do so.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q3"><a href="#salon_Q3">
+                    {% blocktrans %}
+                    3. What are the next steps after I register on the website?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You have to enter your location (address) and follow the instructions within our tips.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q4"><a href="#salon_Q4">
+                    {% blocktrans %}
+                    4. How do I set up my profile and add description of my work?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Follow the instructions within our tips after log in. Then, if you need to see them again, click the circular "i" icon in the right upper corner, next to the search box. 
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q5"><a href="#salon_Q5">
+                    {% blocktrans %}
+                    5. Why am I unable to create a listing?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You have to create the artist’s profile first.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q6"><a href="#salon_Q6">
+                    {% blocktrans %}
+                    6.  How do I add a listing?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Once you have entered description of your salon, beauty artists and you have set their work hours in the "Schedule" section, click on the green "Add listing" button in the left upper corner next to the search box. Add photos, price, title, description, select type and determine the duration.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q7"><a href="#salon_Q7">
+                    {% blocktrans %}
+                    7.  Am I able to deactivate and edit listings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes. Move the cursor to your profile badge and select "Listings". Then, click on "Deactivate", or "Edit"
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q8"><a href="#salon_Q8">
+                    {% blocktrans %}
+                    8. Where can I see my bookings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Move the cursor to your profile badge and select "Bookings"
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q9"><a href="#salon_Q9">
+                    {% blocktrans %}
+                    8. Can beauty artists refuse a booking request?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, they can.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q10"><a href="#salon_Q10">
+                    {% blocktrans %}
+                    10. What will be the consequences of booking cancellations?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Your artists’ cancellation rate will augment and this may result in negative image and decrease your sales.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q11"><a href="#salon_Q11">
+                    {% blocktrans %}
+                    11. Where can I find an organizer for the bookings of my beauty artists?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                 Move the cursor to your profile badge and select "Calendar"
+                 {% endblocktrans %}
+             </div>
+            </li>
+            <li>
+                <h2 id="salon_Q12"><a href="#salon_Q12">
+                    {% blocktrans %}
+                    12. Can I find statistics for the listings and revenue for each of my beauty artists?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, in the "Statistics" section of your profile. Select an artist. Then, you will find diagram showing the ratio between your bookings, revenue, listings’ view and inquiries.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q13"><a href="#salon_Q13">
+                    {% blocktrans %}
+                    13. Am I able to receive notifications for the bookings of my listings, cancellations and admin messages   on Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+            <div class="answer">
+                    {% blocktrans %}
+                    Yes, click on the flag icon in the upper right corner of the header, next to the search box.
+                    {% endblocktrans %}
+            </div>
+            </li>
+            <li>
+                <h2 id="salon_Q14"><a href="#salon_Q14">
+                    {% blocktrans %}
+                    14. How do I withdraw money from Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Go to "My wallet" section of your profile and click on "Withdraw money".
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q15"><a href="#salon_Q15">
+                    {% blocktrans %}
+                    15. When do I receive a transfer to my virtual Wallet?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    2 hours after an appointment for beauty services is completed
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q16"><a href="#salon_Q16">
+                    {% blocktrans %}
+                    16. What are the steps for the transfer of my earnings from my virtual Wallet to my bank account? <
+                    {% endblocktrans %}
+                    /a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    You have to submit a withdrawal request via your virtual Wallet. Then it must be approved by our admin. Note: It may be cancelled only if the request for withdraw exceeds the available funds.  Once it gets an approval, the beauty artist receives his/her payout within 7-8 business days. For more information, read our Terms of service.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q17"><a href="#salon_Q17">
+                    {% blocktrans %}
+                    17. Do I have to pay fees to Glamfame for the publication of listings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q18"><a href="#salon_Q18">
+                    {% blocktrans %}
+                    18. Do I owe fees to Glamfame for each booking I receive through Glamfame?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q19"><a href="#salon_Q19">
+                    {% blocktrans %}
+                    19. Is there a limit for the number of listings and beauty artists, submitted on the website?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    No. You can list as many, as you wish.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q20"><a href="#salon_Q20">
+                    {% blocktrans %}
+                    20. Do I need to add VAT, or other applicable taxes to my listings?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, you are. You are responsible for complying with the applicable local laws. Please, read section "Listings on Glamfame" in our Terms of Service.
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q21"><a href="#salon_Q21">
+                    {% blocktrans %}
+                    21. Is my credit card information secure?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    Yes, it is. Glamfame does not store users’ bank account information and does not disclose such information to third parties. Credit card information is sent via SSL to our payment provider Paymill. See our Privacy Policy as well
+                    {% endblocktrans %}
+                </div>
+            </li>
+            <li>
+                <h2 id="salon_Q22"><a href="#salon_Q22">
+                    {% blocktrans %}
+                    22. What is the period in which my beauty artists have to confirm/cancel a booking?
+                    {% endblocktrans %}
+                </a></h2>
+                <div class="answer">
+                    {% blocktrans %}
+                    48 hours from the booking hour
+                    {% endblocktrans %}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+    {% endblock content %}
+    {% block scripts %}
+    <script>
+        $(".faq.navigator").children().click(function(){
+            var $this = $(this);
+            $this.parent().children().removeClass("active");
+            $this.addClass("active");
+            var current_class = $this.attr('class').split(" ")[0];
+            $(".faq.text_box").hide();
+            $("#tab_" + current_class).show();
+        });
+        $(".questions h2").click(function(){
+            if($(this).hasClass("active")){
+                $(this).parent().find(".answer").hide();
+                $(this).removeClass("active");
+            }
+            else{
+                $(this).parent().find(".answer").show();
+                $(this).addClass("active");
+            }
+        });
+        function readhash(){
+            var current_url = window.location.hash;
+            var all_types = {
+                "customer": $(".customer"),
+                "artist": $(".artist"),
+                "salon": $(".salon"),
+                "profiles": $(".customer"),
+                "artists": $(".artist"),
+                "salons": $(".salon"),
+            }
+            if (current_url){
+                var type_user = current_url.split("_")[0].slice(1);
+                all_types[type_user].click();
+                $("a[href=" + current_url + "]").click();
+            }
+            else{
+                var type_user = getUrlVars()["show"] ? getUrlVars()["show"] : $(".faq.navigator").data("type");
+                if(type_user){
+                    all_types[type_user].click();
+                }
+                else{
+                    all_types["customer"].click();
+                }
+            }
+        }
+        readhash()
+    </script>
+    {% endblock scripts %}
+    </body>
+</html>

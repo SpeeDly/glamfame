@@ -1,0 +1,324 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Salon Profile" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+{% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <h1 class="header">
+        {{ salon.user.first_name }} {% trans "Profile" %}
+    </h1>
+    <div class="column">
+    {% block msg %}
+        {% if messages %}
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        {% endif %}
+    {% endblock msg %}
+    <div class="left_panel">
+        <div class="main_panel">
+            <ul>
+                <li class="title">
+                    {% thumbnail salon.get_avatar "90x90" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ listing.title }}" width="90" height="90">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}img/default.png" alt="{{ listing.title }}" width="90" height="90">
+                    {% endthumbnail %}
+                    <span>{{ salon.user.first_name }}</span><div class="rateit bigstars" data-rateit-value="{{ rating }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>{% if request.user.salon == salon %}
+                        <a href="{% url 'salons_edit' %}" class="new_button green nb_hover">{% trans "Edit" %}</a>
+                    {% elif 1 == 2 %}
+                    <!-- % elif request.user.artist.salon == salon % -->
+                        {% if request.user.artist.waiting_for_hired or request.user.artist.waiting_for_fired %}
+                            <a class="new_button green disabled">{% trans "Request submitted" %}</a>
+                        {% else %}
+                            <a href="{% url 'salon_suspend' salon.id %}" class="new_button red nb_hover">{% trans "Suspend" %}</a>
+                        {% endif %}
+                    {% elif 1 == 2 %}
+                    <!-- % elif request.user.artist % -->
+                        <a href="{% url 'salon_apply' salon.id %}" class="new_button green nb_hover">{% trans "I am working here" %}</a>
+                    {% endif %}
+                    </li>
+                <li class="description">{{ salon.description|linebreaks }}</li>
+                <li class="nav_bar">
+                    <ul>
+                        <li class="clickable active"><a href="javascript:;"><span></span>{% trans "LISTINGS" %}({{listings|length}})</a></li>
+                        <li class="clickable"><a href="javascript:;"><span></span>{% trans "REVIEWS" %}({{reviews|length}})</a></li>
+                        <li class="clickable"><a href="javascript:;"><span></span>{% trans "GALLERY" %}({{salon.get_all_images|length}})</a></li>
+                        <li class="clickable"><a href="javascript:;"><span></span>{% trans "LOCATION" %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="bottom_view">
+            <div id="location">{% if request.user.salon = salon %}<div class="white top overlay"><a href="{% url 'salons_edit' %}" class="new_button green nb_hover">{% trans "Change location" %}</a></div>{% endif %}</div>
+            <div class="gallery_tab">
+                <form id="inline_gallery" action="" method="GET" enctype="multipart/form-data">
+                    <input class="hidden" type="file" multiple value="photos">
+                </form>
+                {% if salon.get_all_images|length %}
+                {% if request.user.salon = salon %}<div class="white top overlay"><span class="new_photo underline new_button green nb_hover">{% trans "Add new photo" %}</span></div>{% endif %}
+                    <div id='slider' class='swipe'>
+                        <div class='swipe-wrap'>
+                            {% for name, picture in salon.get_all_images.items %}
+                                {% thumbnail picture "748" crop="center" as im %}
+                                    <div class="photo_wrapper">
+                                        <img src="{{ im.url }}">
+                                        {% if request.user.salon = salon %}<div class="new_button red nb_hover delete_photo" data-name="{{ name }}">{% trans "Delete" %}</div>{% endif %}
+                                        <div class="frame"></div>
+                                    </div>
+                                {% endthumbnail %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                        <a href="javascript: void(0)" class="arrow prev clickable"></a>
+                        <a href="javascript: void(0)" class="arrow next clickable"></a>
+                {% else %}
+                    <div class="nothing">{% trans "Currently the salon doesn't have any" %}
+                        {% if request.user.salon == salon %}
+                            <span class="new_photo underline">{% trans "photos" %}</span>
+                        {% else %}
+                            {% trans "photos" %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="listings">
+                {% if listings %}
+                <ul class="gallery col_3">
+                {% for listing in listings %}
+                    <li class="pic_view">
+                        <ul>
+                            <li class="picture">
+                            <a href="{% url 'listing' listing.id listing.title %}">
+                                {% thumbnail listing.get_picture "240x143" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{ listing.title }}" width="240" height="143">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{ listing.title }}" width="240" height="143">
+                                {% endthumbnail %}
+                                <div class="overlay"></div>
+                            </a>
+                            </li>
+                            <li class="text">
+                                <div class="title">{{ listing.title }}</div>
+                                <div class="info">
+                                    <div class="heart">{{ listing.likes }}</div>
+                                    <div class="price">{{ listing.get_currency_display }} {{ listing.price|floatformat:-3 }}</div>
+                                    <div class="comments">{{ listing.comments }}</div>
+                                </div>
+                            </li>
+                            <a href="{% url 'profile_artist' listing.artist_id listing.artist.user.first_name %}">
+                            <li class="artist">
+                                {% thumbnail listing.artist.get_avatar "60x60" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{ listing.artist.user.first_name }}" width="60" height="60">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" alt="{{ listing.artist.user.first_name }}" width="60" height="60">
+                                {% endthumbnail %}
+                            </li>
+                            </a>
+                        </ul>
+                    </li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                <div class="nothing">
+                    {% blocktrans %}
+                    Currently the salon doesn't have any
+                    {% endblocktrans %}
+                    {% if request.user.salon == salon and salon.have_artist %}<a href="{% url 'salons_upload' %}">{% trans "listings" %}</a>{% else %}{% trans "listings" %}{% endif %}</div>
+                    
+                {% endif %}
+            </div>
+            <div class="reviews">
+                <div class="reviews styled">
+                    {% if reviews|length %}
+                    {% for review in reviews %}
+                    <div class="review">
+                        <div class="left">
+                            <a href="{% url 'profile_user' review.client_id review.client.user.first_name %}">
+                            {% thumbnail review.client.get_avatar "60x60" crop="center" as im %}
+                                <img class="clickable" src="{{ im.url }}" alt="{{ review.client.user.first_name }}" width="60" height="60">
+                            {% empty %}
+                                <img src="{{ STATIC_URL }}img/default.png" alt="{{ review.client.user.first_name }}" width="60" height="60">
+                            {% endthumbnail %}
+                            </a>
+                        </div>
+                        <div class="right">
+                            <div class="text">{{ review.text }}</div>
+                            <div class="info">
+                                <span class="name">{{ review.client.user.first_name }}</span>
+                                <span class="ago">{{ review.created|naturaltime }}</span>
+                                <div class="rateit bigstars" data-rateit-value="{{ review.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <div class="nothing">{% trans "Currently the salon doesn't have any reviews" %}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+        <ul class="right_panel">
+            <li class="title">{% trans "Artists" %}</li>
+            {% for artist in artists %}
+            <li class="artist">
+                <div class="avatar">
+                    <a href="{% url 'profile_artist' artist.id artist.user.first_name %}">
+                        {% thumbnail artist.get_avatar "63x63" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="{{ artist.user.first_name }}" width="63" height="63">
+                        {% empty %}
+                            <img src="{{ STATIC_URL }}img/default.png" alt="{{ artist.user.first_name }}" width="63" height="63">
+                        {% endthumbnail %}
+                    </a>
+                </div>
+                <ul>
+                    <li class="artist_name">{{ artist.user.first_name }}</li>
+                    <li class="artist_type">{{ artist.get_style_display }} {% trans "stylist" %}</li>
+                    <li class="artist_rate"><div class="rateit bigstars" data-rateit-value="{{ artist.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div></li>
+                </ul>
+            </li>
+            {% empty %}
+                <li class="no_artists">{% trans "No artists yet" %}</li>
+            {% endfor %}
+                {% if request.user.salon == salon %}<li class="add_new"><a href="{% url 'salons_add_artist' %}" class="new_button green nb_hover">{% trans "Add new" %}</a>{% endif %}</li>
+        </ul>
+    </div>
+
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+        <script src="{{STATIC_URL}}js/swipe.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var map_canvas = document.createElement('div');
+            map_canvas.id = 'map_canvas';
+            map_canvas.style.height = '400px';
+            map_canvas.style.width = '748px';
+
+            document.getElementById('location').appendChild(map_canvas);
+
+            var coords = new google.maps.LatLng({{ salon.lat }}, {{ salon.lng }});
+
+            var options = {
+                zoom: 15,
+                center: coords,
+                mapTypeControl: false,
+                navigationControlOptions: {
+                    style: google.maps.NavigationControlStyle.SMALL
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map,
+                title:"You are here!",
+            });
+            $('.listings').show();
+            $('.reviews').hide();
+            $('.gallery_tab').hide();
+            $('#location').hide();
+            $ (".nav_bar li").click(function(){
+                $(this).parent().children().removeClass("active");
+                $(this).addClass("active")
+                if ($(this).index() == 0){
+                    $('.listings').show();
+                    $('.reviews').hide();
+                    $('.gallery_tab').hide();
+                    $('#location').hide();
+                }
+                else if($(this).index() == 1){
+                    $('.listings').hide();
+                    $('.reviews').show();
+                    $('.gallery_tab').hide();
+                    $('#location').hide();
+                }
+                else if ($(this).index() == 2){
+                    $('.listings').hide();
+                    $('.reviews').hide();
+                    $('.gallery_tab').show();
+                    $('#location').hide();
+                }
+                else{
+                    $('.listings').hide();
+                    $('.reviews').hide();
+                    $('.gallery_tab').hide();
+                    $('#location').show();
+                    google.maps.event.trigger(map, "resize");
+                    map.setCenter(coords);
+                }
+            });
+        });
+        // gallery slider
+        if($('#slider').length){
+            Slider = $('#slider').Swipe().data('Swipe');
+
+            $('.arrow.next').on('click', Slider.next);
+            $('.arrow.prev').on('click', Slider.prev);
+
+            $('li.controllers .head').click(function(){
+                $(this).toggleClass('active').next().fadeToggle(500)
+            })
+        }
+
+    $(".new_photo").click(function(){$("#inline_gallery input[type='file']").click();});
+
+    $("#inline_gallery input[type='file']").change(function(){
+        var files = $(this)[0].files;
+        var file_length = files.length;
+
+        var data, xhr;
+        data = new FormData();
+        data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val());
+        xhr = new XMLHttpRequest();
+        xhr.open( 'POST', '/salons/gallery/', true );
+
+        for (var i = 0; i < file_length; i++){
+            data.append('file', files[i]);
+        }
+
+        xhr.onreadystatechange = function ( response ) { window.location.reload() };
+        xhr.send( data );
+    });
+
+    $('.delete_photo').click(function(){
+        name = $(this).data("name");
+        $.ajax({
+            url: "/salons/settings/delete_image",
+            data: {
+                "name": name,
+                'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val()
+            },
+            type: "POST"
+        }).done(function() {
+            window.location.reload();
+        })
+        .fail(function() {
+            window.location.reload();
+        })
+    });
+    </script>
+    {% endblock scripts %}
+</body>
+</html>

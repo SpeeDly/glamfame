@@ -1,0 +1,34 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with receiver_name=receiver_name id=listing_id artistname=artistname when=when %}
+                <p>We are so sorry {{ receiver_name }},</p>
+                <p>
+                    Your appointment for {{ when }} has been cancelled by {{ artistname }}. We are really sad when that happens.
+                </p>
+                <p>Here’s what you can do:</p>
+                <p>
+                    <ul>
+                        <li>Click <a href="https://glamfame.com/listing/{{ id }}">here</a> to schedule another appointment for different date and time</li>
+                        <li>Search for similar listings in your area</li>
+                        <li>Search for similar beauty artists in your area</li>
+                    </ul>
+                </p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>

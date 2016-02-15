@@ -1,0 +1,35 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+    
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with first_name=user.first_name username=profile.first_name artist_name=artist.first_name listing_name=listing.title src=listing.get_picture %}
+                <p>Good news {{ first_name }},</p>
+                <p>
+                    {{ username }} wants to book an appointment with {{}}}!
+                </p>
+                <p>{{ listing_name }}</p>
+                <p>
+                {% endblocktrans %}
+                {% thumbnail src "240x143" crop="center" as im %}
+                    <img src="{{ im.url }}">
+                {% endthumbnail %}</p>
+                {% blocktrans with price=listing.price link=link %}
+                <p>{{ price }}</p>
+                <p>You can manage all booking requests from here:</p>
+                <p>{{ link }}</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </body>
+
+</html>

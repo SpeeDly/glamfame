@@ -1,0 +1,47 @@
+[
+    {
+        "model": "artists.cancellationpolicy",
+        "pk": 1,
+        "fields": {
+            "cancellation_type": "Free",
+            "days_before": 0,
+            "percent": 0
+        }
+    },
+    {
+        "model": "artists.cancellationpolicy",
+        "pk": 2,
+        "fields": {
+            "cancellation_type": "Flexible",
+            "days_before": 0,
+            "percent": 50
+        }
+    },
+    {
+        "model": "artists.cancellationpolicy",
+        "pk": 3,
+        "fields": {
+            "cancellation_type": "Moderate",
+            "days_before": 2,
+            "percent": 50
+        }
+    },
+    {
+        "model": "artists.cancellationpolicy",
+        "pk": 4,
+        "fields": {
+            "cancellation_type": "Strict",
+            "days_before": 4,
+            "percent": 50
+        }
+    },
+    {
+        "model": "payments.fee",
+        "pk": 1,
+        "fields": {
+            "fee": 10,
+            "comment": "Initial fee",
+            "created": "2014-05-10 15:04:17"
+        }
+    }
+]

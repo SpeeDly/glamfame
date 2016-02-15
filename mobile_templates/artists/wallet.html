@@ -1,0 +1,39 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+    {% block meta %}
+        <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Bookings" %}</title>
+    {% endblock meta %}
+
+    {% block title %}
+        {% trans "Wallet" %}
+    {% endblock title %}
+
+    {% block content %}
+
+<div id="wallet">
+    <ul class="head">
+        <li>{% trans "All EARNINGS" %}:<br/>{{ currency }} {{ all_earnings|floatformat:-3 }}</li>
+        <li>{% trans "All WITHDRAWS" %}:<br/>{{ currency }} {{ all_widthraws|floatformat:-3 }}</li>
+        <li>{% trans "AVAILABLE FUNDS" %}:<br/>{{ currency }} {{ avaible_funds|floatformat:-3 }}</li>
+    </ul>
+    <ul class="transactions">
+        {% for t in transactions %}
+            <li class="transaction">
+                <p><span>{% trans "Date and time" %}: </span>{{ t.created }}</p>
+                <p><span>{% trans "Price" %}: </span>{{ currency }} {{ t.money|floatformat:-3 }}</p>
+                <p><span>{% trans "Paid to" %}: </span>{{ t.get_method }}</p>
+                <p><span>{% trans "Status" %}: </span>{{ t.get_status }}</p>
+            </li>
+        {% empty %}
+        <li class="nothing">{% trans "There is no activity yet." %}</li>
+        {% endfor %}
+    </ul>
+</div>
+    {% endblock content %}
+
+    {% block scripts %}
+    {% endblock scripts %}
+</body>
+</html>

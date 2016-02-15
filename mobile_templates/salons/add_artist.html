@@ -1,0 +1,106 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Add Artist" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+        Create Artist
+    {% endblock title %}
+
+    {% block content %}
+    <div class="column">
+        <form id="forms" class="m_step2" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if not request.user.salon.have_artist %}
+                <div class="orange_box">{% trans "Please create your employees first. After that you will be able to assign listings to them." %}</div>
+            {% endif %}
+            <ul>
+                <li><label for="" class="main_label">
+                    {% if form.name.errors %}
+                        {{ form.name.errors }}
+                    {% endif %}
+                    1. {% trans "Name" %}</label></li>
+                <li>
+                    {{ form.name }}
+                </li>
+                <li><label for="" class="main_label">
+                    {% if form.style.errors %}
+                        {{ form.style.errors }}
+                    {% endif %}
+                    2. {% trans "Occupation" %}</label></li>
+                <li>
+                    {{ form.style }}
+                </li>
+                <li><label for="" class="main_label">
+                    {% if form.avatar.errors %}
+                        {{ form.avatar.errors }}
+                    {% endif %}
+                    {{form.cropped_image}}
+                    3. {% trans "Profile picture" %}</label></li>
+                <li class="avatar_upload">
+                    <div class="upload_button">{% trans "Click here to upload picture" %}</div>
+                    {{ form.avatar}}
+                </li>
+                <li><label for="" class="main_label">
+                    {% if form.description.errors %}
+                        {{ form.description.errors }}
+                    {% endif %}
+                    4. {% trans "Introduction" %}</label></li>
+                <li>
+                    {{ form.description }}
+                </li>
+                <li>
+                    <input type="submit" value="{% trans 'Save and continue' %}">
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    {% endblock content %}
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $("#id_avatar").change(function(){
+                read_url(this);
+            });
+
+
+            function read_url(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    $('.avatar_upload').prepend("<canvas id='preview' width='165px' height='165px' style='margin-left:0px'></canvas>");
+                    reader.onload=function(e){
+                        draw_image(e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#forms").submit(function(e){
+                if($('canvas')[0])
+                    $('#id_cropped_image')[0].value = $('canvas')[0].toDataURL();
+            });
+
+            function draw_image(src){
+                canvas = document.getElementById("preview");
+                var canvas_img=new Image();
+                var ctx=canvas.getContext("2d");
+                canvas_img.onload=function(){
+
+                    x1 = 0;
+                    y1 = 0;
+                    s_width = this.width;
+                    s_height = this.height;
+                    ctx.drawImage(canvas_img,x1,y1,s_width,s_height,0,0,165,165);
+                };
+                canvas_img.src = src;
+
+            }
+            })
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

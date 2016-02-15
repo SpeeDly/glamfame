@@ -1,0 +1,165 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Delete Artist" %}</title>
+{% endblock meta %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/delete_artist.css">
+    {% endblock stylesheets %}
+
+    {% block content %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/moment.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/qtip.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+
+<div id="content">
+    <div class="header">
+        <span>{% trans "BOOKINGS" %}</span>
+    </div>
+
+    <div class="column">
+        <table id="bookings" class="reassign">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{% trans "ORDER ID" %}</th>
+                    <th>{% trans "DATE" %}</th>
+                    <th>{% trans "LISTING" %}</th>
+                    <th>{% trans "ORDERED BY" %}</th>
+                    <th>{% trans "AMOUNT" %}</th>
+                    <th>{% trans "AVAILABLE ARTIST" %}</th>
+                    <th>{% trans "ACTION" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in bookings %}
+                <tr data-number="{{ b.data.id }}">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ b.data.id }}</td>
+                    <td class="start_time_{{ b.data.id }}">
+
+                    </td>
+                    <td class="listing_view listing_view_{{b.data.id}}">
+                        <a href="{% url 'listing' b.data.listing_id b.data.title %}">{{b.data.title}}</a>
+                    </td>
+                    <td>
+                        <a href="/users/profile/{{b.data.client_id}}">
+                                {% thumbnail b.data.client.get_avatar "45x45" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{ b.data.title }}" width="45" height="45" style="border: 2px solid white; border-radius: 999px">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" alt="{{ b.data.title }}" width="45" height="45" style="border: 2px solid white; border-radius: 999px;">
+                                {% endthumbnail %}
+                        </a>
+                    </td>
+                    <td>
+                        $ {{ b.data.price|floatformat:-3 }}
+                        <script type="text/javascript">
+                            start_time = {{ b.data.start_time }}; //get start time
+                            time_now = Math.floor(new Date().getTime() / 1000); //now in UTC seconds
+                            delta_time = start_time - time_now; // delta time
+                            x_days_in_seconds = 273600; // 3 days in seconds
+                            b_id = '{{ b.data.id }}'; // booking id
+                            if(delta_time < x_days_in_seconds){
+                                $('.start_time_' + b_id).closest('tr').addClass('dialog');
+                            }
+                            start_time = moment(start_time*1000).format('h:mm a   MM/DD/YYYY');
+                            $('.start_time_' + b_id).text(start_time);
+                            $('.listing_view_' + b_id + ' a').qtip({
+                              content: '{% thumbnail b.data.listing.get_picture "200x112" crop="center" as im %}<img src="{{ im.url }}" style="width: 222px;" alt="listing">{% endthumbnail %}',
+                              style: { width: { min: 222 } }
+                            });
+                        </script>
+                    </td>
+                    <td>
+                        {% if b.artists %}
+                        <select class="dropdown_image">
+                            {% for a in b.artists %}
+                                <option value="{{a.id}}" data-imagesrc="{% thumbnail a.get_avatar '45x45' crop='center' as im %}{{ im.url }}{% endthumbnail %}" data-description="{{a.user.first_name}}" data-name="me"></option>
+                            {% endfor %}
+                        </select>
+                        {% else %}
+                        No One
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="meta_form">
+                        <input type="hidden" class="booking_id" value="{{b.data.id}}" name="booking">
+                        <input type="hidden" class="artist_id" value="" name="artist">
+                        {% if b.artists %}
+                            <a href="javascript:;" class="new_button green nb_hover" data-action="1">{% trans "Assign to XXX" %}</a>
+                        {% else %}
+                            <a href="javascript:;" class="new_button brown nb_hover" data-action="0">{% trans "Accept anyway" %}</a>
+                            <a href="javascript:;" class="new_button red nb_hover" data-action="2">{% trans "Cancel" %}</a>
+                        {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="javascript:;" class="custom_button">{% trans "Delete this artist" %}</a>
+
+    </div>
+</div>
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/light_dropdown.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('.dropdown_image').each(function(){
+                $(this).ddslick({
+                    defaultSelectedIndex:2,
+                    onSelected: function(data){
+                        var name = data.selectedData.description;
+                        $(data.selectedItem).closest("tr").find('.new_button.green').text("Assign to " + name).removeClass("active");
+                        $(data.selectedItem).closest("tr").find('.artist_id').val(data.selectedData.value)
+                    }
+                })
+            })
+
+            $(".new_button").click(function(){
+                $(this).closest("td").find("a").removeClass("active");
+                $(this).addClass("active");
+            })
+
+            $("a.custom_button").click(function(){
+                var fail = false;
+                var data = [];
+                $("#bookings tbody tr").each(function(){
+                    var info = {};
+                    var $this = $(this);
+                    info["booking_id"] = $this.find(".booking_id").val();
+                    info["artist_id"] = $this.find(".artist_id").val();
+                    info["action"] = $this.find(".new_button.active").data("action");
+                    data.push(info);
+                    if (!info["action"] && info["action"]!=0){
+                        fail = true;
+                    }
+                });
+
+                if(fail){
+                    alert("Please choose an action.")
+                }
+                else{
+                    data = JSON.stringify(data)
+                    var globle_data = {"csrfmiddlewaretoken": $("input[name='csrfmiddlewaretoken']").val(), "data": data, "artist": window.location.pathname.split('/').pop()}
+                    $.ajax({
+                        type: "POST",
+                        url: "/salons/reassign/",
+                        data: globle_data,
+                    }).done(function(){
+                        window.location.href = '/salons/settings/artists'
+                    });
+                }
+            })
+        })
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

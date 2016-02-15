@@ -1,0 +1,62 @@
+{% extends "salons/management.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+    {% block settings %}
+
+    <div class="artists">
+        <ul>
+            {% for artist in artists %}
+            <li class="artist clickable">
+                <a href="{% url 'profile_artist' artist.id artist.user.first_name %}">
+                {% thumbnail artist.get_avatar "150x150" crop="center" as im %}
+                    <img src="{{ im.url }}" alt="{{artist.user.first_name}}" width="150" height="150" {% if not artist.is_activated %}class="deactivated"{% endif %}>
+                {% empty %}
+                    <img src="{{ STATIC_URL }}img/default.png" alt="{{artist.user.first_name}}" width="150" height="150">
+                {% endthumbnail %}
+                </a>
+                <div class="name">{{ artist.user.first_name }}</div>
+                <div class="type">{{ artist.get_style_display }} {% trans "stylist" %}</div>
+                {% if artist.waiting_for_hired %}
+                    <div class="text">{% trans "marked that is working for your salon. Is this correct?" %}</div>
+                    <a href="{% url 'salons_artists_accept' artist.id %}" class="new_button green nb_hover">{% trans "Accept" %}</a>
+                    <a href="{% url 'salons_artists_reject' artist.id %}" class="new_button red nb_hover">{% trans "Reject" %}</a>
+                {% elif artist.waiting_for_fired %}
+                    <div class="text">{% trans "marked that want to suspend your salon. What you think?" %}</div>
+                    <a href="{% url 'salons_artists_delete' artist.id %}" class="new_button green nb_hover">{% trans "Accept" %}</a>
+                    <a href="{% url 'salons_artists_reject_fire' artist.id %}" class="new_button red nb_hover">{% trans "Reject" %}</a>
+                {% else %}
+                    <a href="{% url 'salons_artists_schedule' artist.id %}" class="new_button blue nb_hover">{% trans "Schedule" %}</a>
+                    <a href="{% url 'salons_artists_edit' artist.id %}" class="new_button brown nb_hover">{% trans "Edit" %}</a>
+                    <a href="{% url 'salons_artists_delete' artist.id %}" class="new_button red nb_hover">{% trans "Suspend" %}</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+            <li class="new_artist clickable">
+            <a href="{% url 'salons_add_artist' %}">
+                <img src="{{ STATIC_URL }}img/default.png" alt="placeholder" title="placeholder">
+                <div>{% trans "Click here to add new artist" %}</div>
+            </a>
+            </li>
+        </ul>
+    </div>
+    {% endblock settings %}
+
+    {% block scripts %}
+
+    {% endblock scripts %}

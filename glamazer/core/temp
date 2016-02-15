@@ -1,0 +1,89 @@
+-    def save(self, force_insert=False, force_update=False, old_status=None, **kwargs):
+Add a comment to this line
+-        if self.id:
+-            cancelled_by = self.cancelled_by
+-            super(Booking, self).save()
+-            if cancelled_by == 1 and not old_status == self.status:
+-                '''The real tricky moment here is the notation for nb 1 - the booking is approved, 2 - rejected, 3 declined'''
+-                notificated_user = self.client.user
+-                artist_user = self.artist.user
+-                if self.status == 1:
+-                    nb = 1
+-                    cr = CancellationRate.objects.get(artist=self.artist)
+-                    cr.approved += 1
+-                    cr.save()
+-                elif self.status == 2:
+-                    if old_status == 0:
+-                        nb = 2
+-                    else:
+-                        nb = 3
+-                        cr = CancellationRate.objects.get(artist=self.artist)
+-                        cr.cancelled += 1
+-                        cr.save()
+-
+-                Notification.objects.create(
+-                    sender = artist_user,
+-                    receiver = notificated_user,
+-                    time = current_time(),
+-                    short_text = NOTIFICATIONS_SHORT[nb].format(artist=artist_user.first_name),
+-                    long_text = NOTIFICATIONS_LONG[nb].format(artist=artist_user.first_name, listing=self.listing.title, user_id=self.artist_id, metadata=self.listing_id),
+-                )
+-
+-                kwargs = {}
+-
+-                if nb == 1:
+-                    kwargs['listing'] = self.listing
+-                    kwargs['artistname'] = self.artist.user.first_name
+-                    kwargs['when'] = self.start_time
+-                    send_email(case=12, receiver=notificated_user, **kwargs)
+-                elif nb == 2:
+-                    kwargs['artistname'] = self.artist.user.first_name
+-                    send_email(case=13, receiver=notificated_user, **kwargs)
+-                elif nb == 3:
+-                    kwargs['artistname'] = self.artist.user.first_name
+-                    kwargs['when'] = self.start_time
+-                    kwargs['listing_id'] = self.listing_id
+-                    send_email(case=13, receiver=notificated_user, **kwargs)
+-
+-            elif cancelled_by == 2 and not old_status == self.status:
+-
+-                profile_user = self.client.user
+-                artist_user = self.artist.user
+-                Notification.objects.create(
+-                    sender = profile_user,
+-                    receiver = artist_user,
+-                    time = current_time(),
+-                    short_text = NOTIFICATIONS_SHORT[4].format(user=profile_user.first_name),
+-                    long_text = NOTIFICATIONS_LONG[4].format(user=profile_user.first_name, listing=self.listing.title, user_id=self.client_id, metadata=self.listing_id),
+-                )
+-
+-                kwargs = {}
+-                # when user cancel an apoinment
+-                if old_status == 2:
+-                    delta_time = self.start_time - current_time()
+-                    kwargs['username'] = profile_user.first_name
+-                    kwargs['when'] = self.start_time
+-                    kwargs['day_before'] = round(delta_time/86400)
+-                    if delta_time > 150000:
+-                        send_email(case=14, receiver=artist_user, **kwargs)
+-                    else:
+-                        send_email(case=15, receiver=artist_user, **kwargs)
+-        else:
+-            super(Booking, self).save(force_insert, force_update)
+-            user = self.client.user
+-            Notification.objects.create(
+-                        sender = user,
+-                        receiver = self.artist.user,
+-                        time = current_time(),
+-                        short_text = NOTIFICATIONS_SHORT[0].format(user=user.first_name),
+-                        long_text = NOTIFICATIONS_LONG[0].format(user=user.first_name, listing=self.title, user_id=self.client_id, metadata=self.listing_id),
+-                    )
+-            kwargs = {}
+-            salon = self.artist.salon
+-            kwargs['listing'] = self.listing
+-            kwargs['username'] = user.first_name
+-            if not salon:
+-                send_email(case=10, receiver=self.artist.user, **kwargs)
+-            else:
+-                kwargs['artistname'] = self.artist.user.first_name
+-                send_email(case=11, receiver=salon.user, **kwargs)

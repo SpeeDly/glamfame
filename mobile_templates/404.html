@@ -1,0 +1,29 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Success Payment" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+    {% trans "OH, NO !" %}
+    {% endblock title %}
+
+    {% block content %}
+    <div class="column">
+        <div class="paypal_land">
+            <div class="error">
+                <div class="error"></div>
+                {% trans "ERROR 404" %}
+            </div>
+            <div>
+                <img src="{{ STATIC_URL }}img/404.png" alt="scissor">
+            </div>
+            <div class="info">
+                {% trans "Something went wrong !" %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+</html>

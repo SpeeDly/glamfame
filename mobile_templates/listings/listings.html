@@ -1,0 +1,55 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Listings" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+        Wishlist
+    {% endblock title %}
+
+    {% block content %}
+    <ul class="gallery">
+        {% for listing in listings %}
+        <li class="pic_view">
+            <ul>
+                <a href="{% url 'listing' listing.id listing.title %}">
+                <li class="picture">
+                    {% thumbnail listing.get_picture "98x65" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{listing.title}}" width="98" height="65">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{listing.title}}" width="98" height="65">
+                    {% endthumbnail %}
+                </li>
+                </a>
+                <li class="text">
+                    <p class="title" data-title="{{ listing.title }}">{{ listing.title }}</p>
+                    <p>{{ listing.comments }} {% trans "comments" %}</p>
+                    <p>{{ listing.likes }} {% trans "likes" %}</p>
+                </li>
+                <li class="price">
+                    <div>{{ listing.currency }} {{ listing.price|floatformat:-3 }}</div>
+                </li>
+                <li class="artist">
+                    <a href="{% url 'profile_artist' listing.artist_id listing.artist.user.first_name %}">
+                    {% thumbnail listing.artist.get_avatar "60x60" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{listing.artist.user.first_name}}" width="60" height="60">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}img/default.png" alt="{{listing.artist.user.first_name}}" width="60" height="60">
+                    {% endthumbnail %}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% endblock content %}
+
+    {% block scripts %}
+
+    {% endblock scripts %}
+</body>
+</html>

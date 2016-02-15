@@ -1,0 +1,32 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+    
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with first_name=user.first_name listings=listings salons=salons artists=artists %}
+                <p>Hi {{ first_name }},</p>
+                <p>
+                    Here’s what is happening on Glamfame since your last login:
+                    <ul>
+                        <li>[number] new listings</li>
+                        <li>[number] new salons</li>
+                        <li>[number] new beauty artists</li>
+                    </ul>
+                </p>
+                <p>Why don’t you come over and check them?</p>
+                <p>We will be happy to see you again!</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </body>
+
+</html>

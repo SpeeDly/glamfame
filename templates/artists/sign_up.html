@@ -1,0 +1,128 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Sign Up" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/imgselectarea.css">
+{% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "SIGN UP" %}</span>
+    </div>
+
+    <div class="column">
+        <div class="forms" {% if request.GET.step != '1' %}style="display: none"{% endif %}>
+            <form class="login accept_terms" method="POST">
+                {% csrf_token %}
+
+                <ul>
+                    <li><label for="" class="main_label">
+                        {% if form.name.errors %}
+                            {{ form.name.errors }}
+                        {% endif %}
+                        {% trans "Name" %}</label></li>
+                    <li>
+                        {{ form.name }}
+                    </li>
+                    <li><label for="" class="main_label">
+                        {% if form.email.errors %}
+                            {{ form.email.errors }}
+                        {% endif %}
+                        {% trans "Email" %}</label></li>
+                    <li>
+                        {{ form.email }}
+                    </li>
+                    <li><label for="" class="main_label">
+                        {% if form.password.errors %}
+                            {{ form.password.errors }}
+                        {% endif %}
+                        {% trans "Password" %}</label></li>
+                    <li>
+                        {{ form.password }}
+                    </li>
+                    <li><label for="" class="main_label">
+                        {% if form.confirm_password.errors %}
+                            {{ form.confirm_password.errors }}
+                        {% endif %}
+                        {% trans "Confirm Password" %}</label></li>
+                    <li>
+                        {{ form.confirm_password }}
+                    </li>
+                    <li></li>
+                    <li class="terms"><input type="checkbox" id="accept_terms">{% trans "I accept" %} <a href="{% url 'terms' %}">{% trans "Terms and Conditions" %}</a> {% trans "and" %} <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>.</li>
+                    <li>
+                    <li></li>
+                    <li>
+                        <input type="submit" value="{% trans "Sign up" %}">
+                    </li>
+                    <li class="or">
+                        <div></div>
+                        <div class="or"> {% trans "OR" %} </div>
+                    </li>
+                    <li class="facebook">
+                        <div class="facebook_icon"></div>
+                        <input type="button" value="{% trans 'Sign up using Facebook' %}" onclick="register_me('artist')">
+                        <div class="fb-login-button" data-perms="email" data-scope="email" data-max-rows="1" data-show-faces="false"></div>
+                        <div id="fb-root"></div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+        <div class="forms" {% if request.GET.step != '2' %}style="display: none"{% endif %}>
+            <form class="login" method="POST">
+                {% csrf_token %}
+
+                <ul>
+                    <li><label for="" class="main_label">
+                        {% if form.style.errors %}
+                            {{ form.style.errors }}
+                        {% endif %}
+                        1. {% trans "What is your business?" %}</label></li>
+                    <li>
+                        {{ form.style }}
+                    </li>
+                    <li><label for="" class="main_label">
+                        {% if form.address.errors %}
+                            {{ form.address.errors }}
+                        {% endif %}
+                        2. {% trans "Submit your location" %}</label></li>
+                    <li><label for="" class="main_label">
+                        {{ form.address }}
+                        {{ form.lat }}
+                        {{ form.lng }}
+                    </label></li>
+                    <li id="maps">
+                    </li>
+                    <li></li>
+                    <li>
+                        <input type="submit" value="{% trans 'Save and continue' %}">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+
+    {% endblock content %}
+    {% block scripts %}
+        <script type="text/javascript" src="{{STATIC_URL}}js/error.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/preview.js"></script>
+        <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/facebook.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/upload_listing.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/google_maps_controller.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/select2.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/imgSelectArea.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/accept_terms.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

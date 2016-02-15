@@ -1,0 +1,105 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Settings" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+    {% trans "Settings" %}
+    {% endblock title %}
+
+    {% block content %}
+    <div class="column">
+        <form method="POST" action="{{ request.get_full_path }}" id="settings" enctype="multipart/form-data" class="user">
+            {% csrf_token %}
+            <ul class="settings">
+                <li class="profile_picture">
+                    <ul>
+                        <li class="avatar">
+                            {{ form.errors }}
+                            <div>
+                                {% thumbnail profile.get_avatar "165x165" crop="center" as im %}
+                                    <img src="{{ im.url }}">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png">
+                                {% endthumbnail %}
+                            </div>
+                        </li>
+                        <li>
+                            <div class="blue_button">{% trans 'Change' %}</div>
+                            {{ form.avatar }}
+                            {{ form.cropped_image }}
+                        </li>
+                    </ul>
+                </li>
+                <li class="profile_editable">
+                    <ul class="left profile">
+                        <li class="name">
+                            <label for="" class="main_label">
+                                {% if form.name.errors %}
+                                    {{ form.name.errors }}
+                                {% endif %}
+                                {% trans 'Name' %}
+                            </label>
+                            {{ form.name }}
+                        </li>                       
+                        <li class="setting_buttons">
+                            <input type="submit" value="{% trans 'Save' %}" class="custom_button">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </form>
+
+    </div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+            $("#id_avatar").change(function(){
+                read_url(this);
+            });
+
+
+            function read_url(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    $('.avatar div').children().remove().end().append("<canvas id='preview' width='165px' height='165px' style='margin-left:0px'></canvas>");
+                    reader.onload=function(e){
+                        draw_image(e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#settings").submit(function(e){
+                if($('canvas')[0])
+                    $('#id_cropped_image')[0].value = $('canvas')[0].toDataURL();
+            });
+
+            function draw_image(src){
+                canvas = document.getElementById("preview");
+                var canvas_img=new Image();
+                var ctx=canvas.getContext("2d");
+                canvas_img.onload=function(){
+
+                    x1 = 0;
+                    y1 = 0;
+                    s_width = this.width;
+                    s_height = this.height;
+                    ctx.drawImage(canvas_img,x1,y1,s_width,s_height,0,0,165,165);
+                };
+                canvas_img.src = src;
+
+            }
+        });
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

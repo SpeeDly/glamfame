@@ -1,0 +1,152 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - How it works for artists" %}</title>
+{% endblock meta %}
+
+    {% block stylesheet %}
+    {% endblock stylesheet %}
+
+    {% block content %}
+<div id="content" class="gray artists" style="margin-bottom: 0px;">
+    <div class="screen big">
+        <div class="column">
+            <ul>
+                <li class="bolded">{% trans "Hello, beauty professionals." %}</li>
+                <li class="bolded">{% trans "Are you ready to make money and become famous?" %}</li>
+                <li class="bolded">{% trans "Glamfame is the platform that will:" %}</li>
+                <li><div class="icon_check"></div>{% trans "Boost your sales" %}</li>
+                <li><div class="icon_check"></div>{% trans "Ease your work" %}</li>
+                <li><div class="icon_check"></div>{% trans "Help you manage your appointments %}</li>
+            </ul>
+            {% if not request.user.is_authenticated %}
+            <a href="{% url 'artists_sign_up' %}" class="new_button white nb_hover">{% trans "SIGN UP NOW" %}</a>
+            {% endif %}
+            <div class="trendy">
+                <span class="arrow_down"></span>
+                <span class="arrow_down"></span>
+                {% trans "NOT CONVINCED? CHECK SOME OF OUR BENEFITS BELOW" %}
+                <span class="arrow_down"></span>
+                <span class="arrow_down"></span>
+            </div>
+        </div>
+    </div>
+    <div class="screen header">
+        <div class="column">
+            <div class="hexagon_parent">
+                <div class="hexagon blue"></div>
+                <span>{% trans "MANAGE YOUR LISTINGS" %}</span>
+                <div class="hexagon-icon gear"></div>
+            </div>
+            <div class="hexagon_parent">
+                <div class="hexagon orange"></div>
+                <span>{% trans "MANAGE YOUR AVAILABILITY" %}</span>
+                <div class="hexagon-icon calendar"></div>
+            </div>
+            <div class="hexagon_parent">
+                <div class="hexagon green"></div>
+                <span>{% trans "ATTRACT FOLLOWERS" %}</span>
+                <div class="hexagon-icon heart"></div>
+            </div>
+            <div class="hexagon_parent">
+                <div class="hexagon purple"></div>
+                <span>{% trans "ACCEPT BOOKING REQUESTS" %}</span>
+                <div class="hexagon-icon money"></div>
+            </div>
+            <div class="hexagon_parent">
+                <div class="hexagon gray"></div>
+                <span>{% trans "ANALYZE BOOKING DATA" %}</span>
+                <div class="hexagon-icon analyze"></div>
+            </div>
+        </div>
+    </div>
+    <div class="screen odd">
+        <div class="column">
+            <div class="picture step_1"></div>
+            <div class="text">
+                <h3>{% trans "Sign up." %}</h3>
+                <p>{% trans "It takes less than a minute. And it's FREE." %}</p>
+            </div>
+        </div>
+    </div>
+    <div class="screen even">
+        <div class="column">
+            <div class="text">
+                <h3>{% trans "Set up your profile." %}</h3>
+                <p>{% trans "It's fast and easy. And beautiful." %}</p>
+            </div>
+            <div class="picture step_2"></div>
+        </div>
+    </div>
+    <div class="screen odd">
+        <div class="column">
+            <div class="picture step_3"></div>
+            <div class="text">
+                <h3>{% trans "Upload your listings" %}</h3>
+                <p>{% trans "Create as many listings as you want. You can always change the images, description and the price of each one of them." %}</p>
+            </div>
+        </div>
+    </div>
+    <div class="screen even">
+        <div class="column">
+            <div class="text">
+                <h3>{% trans "Manage your schedule." %}</h3>
+                <p>{% trans "Make your workday easy. Plan your appointments and improve your productivity." %}</p>
+            </div>
+            <div class="picture step_4"></div>
+        </div>
+    </div>
+    <div class="screen odd">
+        <div class="column">
+            <div class="picture step_5"></div>
+            <div class="text">
+                <h3>{% trans "Attract followers" %}</h3>
+                <p>{% trans "Share your work with the world. Show off your skills and get likes and followers." %}</p>
+            </div>
+        </div>
+    </div>
+    <div class="screen even">
+        <div class="column">
+            <div class="text">
+                <h3>{% trans "Accept booking requests." %}</h3>
+                <p>{% trans "Attract new customers. Increase your revenue." %}</p>
+            </div>
+            <div class="picture step_6"></div>
+        </div>
+    </div>
+    <div class="screen odd">
+        <div class="column">
+            <div class="picture step_7"></div>
+            <div class="text">
+                <h3>{% trans "Analyze booking data." %}</h3>
+                <p>{% trans "Understand what your customers want. Get valuable insights when and what they book." %}</p>
+            </div>
+        </div>
+    </div>
+    <div class="screen small">
+        <div class="trendy">{% trans "ONE PLATFORM TO RULE THEM ALL" %}</div>
+        <div class="hexagon_wrapper">
+            <div class="column">
+                <div class="hexagon_parent">
+                    <div class="hexagon white"></div>
+                    <div class="hexagon-icon laptop"></div>
+                </div>
+                <div class="hexagon_parent ruler">
+                    <div class="hexagon white"></div>
+                    <div class="hexagon-icon tablet"></div>
+                </div>
+                <div class="hexagon_parent">
+                    <div class="hexagon white"></div>
+                    <div class="hexagon-icon phone"></div>
+                </div>
+            </div>
+        </div>
+        {% if not request.user.is_authenticated %}
+        <a href="{% url 'artists_sign_up' %}" class="new_button white nb_hover">{% trans "SIGN UP NOW" %}</a>
+        {% endif %}
+    </div>
+</div>
+    {% endblock content %}
+    {% block scripts %}
+    {% endblock scripts %}

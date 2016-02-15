@@ -1,0 +1,83 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - About us" %}</title>
+{% endblock meta %}
+
+    {% block stylesheet %}
+    {% endblock stylesheet %}
+
+    {% block content %}
+<div id="content">
+
+    {% if messages %}
+    <div class="column">
+        {% for message in messages %}
+        <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                <li class="tag"></li>
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="about_us video">
+<iframe src="//player.vimeo.com/video/107852212" width="1000" height="563" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div class="column">
+        <ul class="team about_us">
+            <li class="team_box">
+                <img src="{{ STATIC_URL }}img/tony.png" alt="Antony Ivanov" title="Antony I" class="photo">
+                <p class="name">Antony I</p>
+                <p class="cool">{% trans "Pixel ninja" %}</p>
+                <p class="responsible">{% trans "Responsible for product and design." %}</p>
+            </li>
+            <li class="team_box">
+                <img src="{{ STATIC_URL }}img/ivo.png" alt="Ivo Tasev" title="Ivo T" class="photo">
+                <p class="name">Ivo T</p>
+                <p class="cool">{% trans "Plan executer" %}</p>
+                <p class="responsible">{% trans "Responsible for technical operations management." %}</p>
+            </li>
+            <li class="team_box">
+                <img src="{{ STATIC_URL }}img/az.png" alt="Georgi Zhuhov" title="Georgi Z" class="photo">
+                <p class="name">Georgi Z</p>
+                <p class="cool">{% trans "Code warrior" %}</p>
+                <p class="responsible">{% trans "Responsible for software development." %}</p>
+            </li>
+            <li class="team_box">
+                <img src="{{ STATIC_URL }}img/nikoleta.png" alt="Nicolette V" title="Nicolette" class="photo">
+                <p class="name">Nicolette V</p>
+                <p class="cool">{% trans "Sales master" %}</p>
+                <p class="responsible">{% trans "Responsible for business development and social media." %}</p>
+            </li>
+        </ul>
+        <form method="POST" action="{% url 'send_feedback' %}" class="box about_us">
+            {% csrf_token %}
+            <h2>{% trans 'WOULD YOU LIKE TO SAY "HI"?' %}</h2>
+            <ul>
+                <li>
+                    <label for="">{% trans "Name" %}</label>
+                    <input type="text" name="name">
+                </li>
+                <li>
+                    <label for="">{% trans "Email" %}</label>
+                    <input type="text" name="email">
+                </li>
+                <li>
+                    <label for="">{% trans "Reason" %}</label>
+                    <input type="text" name="reason">
+                </li>
+                <li>
+                    <label for="">{% trans "Message" %}</label>
+                    <textarea name="message"></textarea>
+                </li>
+            </ul>
+            <input type="submit" value="{% trans 'Send' %}" class="custom_button">
+        </form>
+    </div>
+</div>
+    {% endblock content %}
+    {% block scripts %}
+    {% endblock scripts %}
+    </body>
+</html>

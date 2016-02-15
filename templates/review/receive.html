@@ -1,0 +1,54 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block meta %}
+        <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Give your feedback" %}</title>
+    {% endblock meta %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+    {% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "WRITE A REVIEW" %}</span>
+    </div>
+
+    <div class="column">
+        <form action="{{ request.get_full_path }}" method="POST" id="review_form">
+            {% csrf_token %}
+            <div class="htitle">
+                <h2>How would you rate your appointment with {{ artist.user.first_name }}?</h2>
+                <a href="{% url 'profile_artist' artist.id artist.user.first_name %}">
+                    {% thumbnail artist.get_avatar "90x90" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ artist.user.first_name }}" width="90" height="90">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}img/default.png" alt="{{ artist.user.first_name }}" width="90" height="90">
+                    {% endthumbnail %}
+                </a>
+            </div>
+            <div class="rate_it">
+                <h2>1. {% trans "Please rate" %} {{ artist.user.first_name }}</h2>
+
+                <input type="range" value="0" step="0.5" id="backing4" name="rate">
+                <div class="rateit bigstars" data-rateit-backingfld="#backing4" data-rateit-resetable="false" data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5" data-rateit-starwidth="22" data-rateit-starheight="21"></div>
+
+                <h2>2. {% trans "Submit a review" %}</h2>
+
+                <textarea name="text" id="" cols="30" rows="10"></textarea>
+
+                <input type="submit" value="Submit" class="blue_button">
+            </div>
+        </form>
+    </div>
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

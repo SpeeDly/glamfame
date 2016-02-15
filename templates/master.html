@@ -1,0 +1,468 @@
+{% load url from future %}
+{% load thumbnail %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        {% block meta %}
+            <meta name="description" content="">
+            <meta name="keywords" content=" ">
+            <title>{% trans "Glamazer" %}</title>
+        {% endblock meta %}
+        <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex">
+        <!--CSS block-->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+        <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+        {% block stylesheets %}
+
+        {% endblock stylesheets %}
+
+        {% block tweeter %}
+
+        {% endblock tweeter %}
+
+    </head>
+    <body>
+
+        <!-- Navigation bar -->
+        <div id="header">
+            {% csrf_token %}
+            <div class="bottom_line">
+                <div class="column">
+                    <ul>
+                        {% url 'home' as index_url %}
+                        <li class="logo"><a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="logo" width="123" height="37"/></a></li>
+                        <li class="category{% if 'hairstyle' in request.path %} active{% endif %}"><a href="{% url 'hair' %}">{% trans "Hair" %}</a></li>
+                        <li class="category{% if 'nails-design' in request.path %} active{% endif %}"><a href="{% url 'nails' %}">{% trans "Nails" %}</a></li>
+                        <li class="category make_up{% if 'make-up' in request.path %} active{% endif %}"><a href="{% url 'make_up' %}">{% trans "Make Up" %}</a></li>
+
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.related_with = 'profiles' %}
+                            <li class="search_bar">
+                                <form method="get" action="{% url 'result' %}">
+                                    <input type="text" name="q">
+                                    <input type="submit" value="">
+                                </form>
+                            </li>
+                            <li class="hints">
+                                <a href="javascript:;"></a>
+                            </li>
+                            <li class="notification_bar">
+                                    <div class="circle" style="display: none;"></div>
+                                    <span style="display: none;">0</span>
+                                <div class="overlay hidden"></div>
+                                <div class="blue_arrow hidden"></div>
+                                <ul class="dropdown_menu panel hidden">
+                                    <li class="name"><a href="{% url 'user_notifications' %}">{% trans "NOTIFICATIONS" %}</a></li>
+                                    <li class="logout"><a href="{% url 'user_notifications' %}">{% trans "View all" %}</a></li>
+                                </ul>
+                            </li>
+                            <li class="favorite">
+                                <a href="{% url 'wishlist' %}" class="favorite_link"></a>
+                            </li>
+                            <li class="user_profile">
+                                <div class="easy_touch">
+                                </div>
+                                <a href="{% url 'user_profile' %}" class="user_avatar">
+                                    {% if request.user.profile.avatar %}
+                                        <img src="{{request.user.profile.avatar}}" alt="avatar" width="40" height="40">
+                                    {% else %}
+                                        <img src="{{ STATIC_URL }}img/default.png" alt="avatar" width="40" height="40">
+                                    {% endif %}
+                                </a>
+                                <div class="easy_touch"></div>
+                                <div class="blue_arrow"></div>
+                                <ul class="dropdown_menu">
+                                    <li class="name">{{ request.user.first_name }}</li>
+                                    <li><a href="{% url 'user_profile' %}"><span class="icon_dropdown icon_p"></span>{% trans "Profile" %}</a></li>
+                                    <li><a href="{% url 'profiles_bookings' %}"><span class="icon_dropdown icon_b"></span>{% trans "Bookings" %}</a></li>
+                                    <li><a href="{% url 'wishlist' %}"><span class="icon_dropdown icon_wi"></span>{% trans "Wishlist" %}</a></li>
+                                    <li><a href="{% url 'followed' %}"><span class="icon_dropdown icon_f"></span>{% trans "Followed Artists" %}</a></li>
+                                    <li><a href="{% url 'user_settings' %}"><span class="icon_dropdown icon_s"></span>{% trans "Settings" %}</a></li>
+                                    <li class="logout"><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+                                </ul>
+                            </li>
+                            {% elif request.user.related_with = 'artists' %}
+                            <li class="upload_style">
+                                <a href="{% if request.user.artist.step == 0 %}/artists/upload{% else %}/artists/sign_up?step={{request.user.artist.step}}{% endif %}">{% trans "ADD LISTING" %}</a>
+                            </li>
+
+                            <li class="search_bar artist">
+                                <form action='{% url 'result' %}' method="GET">
+                                <input type='text' name="q">
+                                <input type='submit' value="">
+                                </form>
+                            </li>
+                            <li class="hints">
+                                <a href="javascript:;"></a>
+                            </li>
+                            <li class="notification_bar">
+                                <div class="circle" style="display: none;"></div>
+                                <span style="display: none;">0</span>
+                                <div class="overlay hidden"></div>
+                                <div class="blue_arrow hidden"></div>
+                                <ul class="dropdown_menu panel hidden">
+                                    <li class="name"><a href="{% url 'artist_notifications' %}">{% trans "NOTIFICATIONS" %}</a></li>
+                                    <li class="logout"><a href="{% url 'artist_notifications' %}">{% trans "View all" %}</a></li>
+                                </ul>
+                            </li>
+                            <li class="money">
+                                <a href="{% url 'artists_wallet' %}"></a>
+                            </li>
+                            <li class="user_profile">
+                                <div>
+                                </div>
+                                <a href="{% url 'artists_profile' %}" class="user_avatar">
+                                    {% thumbnail request.user.artist.get_avatar "55x55" crop="center" as im %}
+                                        <img src="{{ im.url }}" alt="avatar" width="40" height="40">
+                                    {% empty %}
+                                        <img src="{{ STATIC_URL }}img/default.png" alt="avatar" width="40" height="40">
+                                    {% endthumbnail %}
+                                </a>
+                                <div class="easy_touch"></div>
+                                <div class="blue_arrow"></div>
+                                <ul class="dropdown_menu">
+                                    <li class="name">{{ request.user.first_name }}</li>
+                                    <li><a href="{% url 'artists_profile' %}"><span class="icon_dropdown icon_p"></span>{% trans "Profile" %}</a></li>
+                                    <li><a href="{% url 'all_listing' %}"><span class="icon_dropdown icon_m"></span>{% trans "Management" %}</a></li>
+                                    <li><a href="{% url 'artists_bookings' %}"><span class="icon_dropdown icon_b"></span>{% trans "Bookings" %}</a></li>
+                                    <li><a href="{% url 'artists_wallet' %}"><span class="icon_dropdown icon_w"></span>{% trans "Wallet" %}</a></li>
+                                    <li><a href="{% url 'edit_artist_profile' %}"><span class="icon_dropdown icon_s"></span>{% trans "Settings" %}</a></li>
+                                    <li class="logout"><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+                                </ul>
+                            </li>
+                            {% elif request.user.related_with = 'salons' %}
+                            <li class="upload_style">
+                                <a href="{% if request.user.salon.have_artist %}{% if request.user.salon.step == 0 %}{% url 'salons_upload' %}{% else %}/salons/sign_up?step={{request.user.salon.step}}{% endif %}{% else %}/salons/management/artists{% endif %}">{% trans "ADD LISTING" %}</a>
+                            </li>
+
+                            <li class="search_bar artist">
+                                <form action='{% url 'result' %}' method="GET">
+                                <input type='text' name="q">
+                                <input type='submit' value="">
+                                </form>
+                            </li>
+                            <li class="hints">
+                                <a href="javascript:;"></a>
+                            </li>
+                            <li class="notification_bar">
+                                <div class="circle" style="display: none;"></div>
+                                <span style="display: none;">0</span>
+                                <div class="overlay hidden"></div>
+                                <div class="blue_arrow hidden"></div>
+                                <ul class="dropdown_menu panel hidden">
+                                    <li class="name"><a href="{% url 'salon_notifications' %}">{% trans "NOTIFICATIONS" %}</a></li>
+                                    <li class="logout"><a href="{% url 'salon_notifications' %}">{% trans "View all" %}</a></li>
+                                </ul>
+                            </li>
+                            <li class="money">
+                                <a href="{% url 'salons_wallet' %}"></a>
+                            </li>
+                            <li class="user_profile">
+                                <div>
+                                </div>
+                                <a href="{% url 'salons_profile' %}" class="user_avatar">
+                                    {% thumbnail request.user.salon.get_avatar "55x55" crop="center" as im %}
+                                        <img src="{{ im.url }}" alt="avatar" width="40" height="40">
+                                    {% empty %}
+                                        <img src="{{ STATIC_URL }}img/default.png" alt="avatar" width="40" height="40">
+                                    {% endthumbnail %}
+                                </a>
+                                <div class="easy_touch"></div>
+                                <div class="blue_arrow"></div>
+                                <ul class="dropdown_menu">
+                                    <li class="name">{{ request.user.first_name }}</li>
+                                    <li><a href="{% url 'salons_profile' %}"><span class="icon_dropdown icon_p"></span>{% trans "Profile" %}</a></li>
+                                    <li><a href="{% url 'salons_artists' %}"><span class="icon_dropdown icon_m"></span>{% trans "Management" %}</a></li>
+                                    <li><a href="{% url 'salons_bookings' %}"><span class="icon_dropdown icon_b"></span>{% trans "Bookings" %}</a></li>
+                                    <li><a href="{% url 'salons_wallet' %}"><span class="icon_dropdown icon_w"></span>{% trans "Wallet" %}</a></li>
+                                    <li><a href="{% url 'salons_edit' %}"><span class="icon_dropdown icon_s"></span>{% trans "Settings" %}</a></li>
+                                    <li class="logout"><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                                <li><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+                            {% endif %}
+                        {% else %}
+                            <li class="search_bar">
+                                <form method="get" action="{% url 'result' %}">
+                                    <input type="text" name="q">
+                                    <input type="submit" value="">
+                                </form>
+                            </li>
+                        <!-- <li class="login_bar{% if 'login' in request.path %} active{% endif %}"></li> -->
+                        <li class="sign_up_bar{% if 'sign_up' in request.path %} active{% endif %}"><a href="{% url 'login' %}">{% trans "Log In" %}</a><a href="{% url 'signup' %}">{% trans "Sign Up" %}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--Content block-->
+        {% block content %}
+        {% endblock content %}
+
+        <!-- Footer -->
+        <div id="footer">
+            <div class="column">
+                <ul class="social_button">
+                    <li class="buttons facebook"><a href="http://facebook.com/glamfame.beauty.marketplace"></a></li>
+                    <li class="buttons twitter"><a href="https://twitter.com/Glamefame"></a></li>
+                    <li class="buttons pinterest"><a href="http://www.pinterest.com/glamfame/"></a></li>
+                    <li class="buttons google_plus"><a href="http://google.com/+Glamfame" rel="publisher"></a></li>
+                    <li class="buttons linked_in"><a href="https://www.linkedin.com/company/glamfame"></a></li>
+                    <li class="buttons youtube"><a href="http://www.youtube.com/user/glamffame"></a></li>
+                </ul>
+                <ul class="footer_menu">
+                    <li class="about_us">
+                        <ul>
+                            <li><a href="{% url 'about_us' %}">{% trans "About Us" %}</a></li>
+                            <li><a href="http://blog.glamfame.com/">{% trans "Blog" %}</a></li>
+                            <li><a href="{% url 'contacts' %}">{% trans "Contact Us" %}</a></li>
+                            <li><a href="{% url 'imprint' %}">{% trans "Imprint" %}</a></li>
+                        </ul>
+                    </li>
+                    <li class="faq"><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
+                    <li class="hiw">
+                        <ul>
+                            <li><a href="{% url 'profiles_HIW' %}">{% trans "How It Works - Beauty Seekers" %}</a></li>
+                            <li><a href="{% url 'artists_HIW' %}">{% trans "How It Works - Beauty Artists" %}</a></li>
+                            <li><a href="{% url 'salons_HIW' %}">{% trans "How It Works - Beauty Salons" %}</a></li>
+                        </ul>
+                    </li>
+                    <li class="terms"><a href="{% url 'terms' %}">{% trans "Terms and Conditions" %}</a></li>
+                    <li class="privacy"><a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a></li>
+                    <li class="sitemap"><a href="/">{% trans "Sitemap" %}</a></li>
+                </ul>
+            </div>
+            <div id="load-sound" class="hidden"></div>
+        </div>
+    <!-- Script block -->
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <!--Start of Zopim Live Chat Script-->
+    <script type="text/javascript">
+    window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+    _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+    $.src='//v2.zopim.com/?2XoYwVPGBjHzUBNcxuOkzqUyEN4ilKve';z.t=+new Date;$.
+    type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+    </script>
+    <!--End of Zopim Live Chat Script-->
+    <script type="text/javascript" src="{{STATIC_URL}}js/moment.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-53775966-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+    String.format = function() {
+        var s = arguments[0];
+        for (var i = 0; i < arguments.length - 1; i++) {
+            var reg = new RegExp("\\{" + i + "\\}", "gm");
+            s = s.replace(reg, arguments[i + 1]);
+        }
+        return s;
+    }
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+        function(m,key,value) {
+          vars[key] = value;
+        });
+        return vars;
+    }
+    $(".message .close a").click(function(){
+        $(this).closest(".message").remove();
+    })
+
+    {% if request.user.is_authenticated %}
+    $(document).ready(function(){
+        try{
+            var socket = io.connect('127.0.0.1:1332', { query: "user_id={{ request.user.id }}" });
+
+            socket.on('connect', function(){
+                console.log("connected");
+            });
+
+            socket.on('message', function(message) {
+                var count = parseInt($(".notification_bar>span").text());
+                $('.notification_bar div.circle+span').text(count+1);
+                $('.notification_bar div.circle, .notification_bar div.circle+span').show();
+                LoadSound("notification");
+                window.scrollBy(0, 0);
+            });
+        }
+        catch(err){
+            console.log(err);
+            console.log("There is some issue with this website. Please contact administrator.");
+        }
+
+        $('.overlay').click(function(e){
+            if($(e.target).hasClass('overlay')){
+                $('.notification_bar .dropdown_menu').addClass('hidden');
+                $('.notification_bar .overlay').addClass('hidden');
+                $('.notification_bar .blue_arrow').addClass('hidden');
+            }
+                e.stopPropagation();
+        });
+
+        $('.notification_bar').click(function(){
+            $('.notification_bar .dropdown_menu').removeClass('hidden');
+            $('.notification_bar .overlay').removeClass('hidden');
+            $('.notification_bar .blue_arrow').removeClass('hidden');
+            $.ajax({
+                url: "{% url 'short_notifications' %}",
+                data: {
+                    'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val()
+                    },
+                type: "POST",
+                success: function(data)
+                {
+                    data_length = data.length
+                    $('.notification_bar div.circle, .notification_bar div.circle+span').hide()
+                    if (data_length == 0) {
+                        $('.dropdown_menu.panel').children('div').remove()
+                        $('.dropdown_menu.panel').children(".no_notification").remove()
+                        $('.dropdown_menu.panel .name').after('<li class="no_notification">Currently you don\'t have any notifications</li>')
+                    }
+                    else{
+                        $('.dropdown_menu.panel').children('.notification').remove()
+                        for(var i = data_length-1; i>=0; --i){
+                            text = '<li class="notification '
+                            text += !data[i].is_readed ? "not_readed" : ""
+                            text += '"><a href="{% if request.user.artist %}{% url "artists_bookings" %}{% elif request.user.profile %}{% url "profiles_bookings" %}{% else %}{% url "salons_bookings" %}{% endif %}"><img src="'
+                            text += data[i].avatar ? data[i].avatar : '{{ STATIC_URL }}img/default.png'
+                            text += '" class="not_avatar"/><div class="not_text">'
+                            text += data[i].text + moment(data[i].time*1000).fromNow()
+                            text += '</div></a></li>'
+                            $('.dropdown_menu.panel .name').after(text)
+                        }
+                    }
+                }
+            })
+        });
+
+        var LoadSound = function(filename) {
+
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    $("#load-sound").html('<audio id="new_not" src="{{ STATIC_URL }}sound/' + filename + '.mp3" autoplay></audio>');
+                    document.getElementById("new_not").volume = 0.1;
+                }
+            }
+            xmlhttp.open("GET", '{{ STATIC_URL }}sound/' + filename + '.mp3', true);
+            xmlhttp.send();
+        };
+
+        control_hints()
+
+        function control_hints(){
+            var hint_template = '<div id="hints" class="artist tip_1"><div class="wrapper"><div class="header"><div class="icon tip"></div><span>Tips</span><a href="javascript:;" class="close">X</a></div><div class="body"><div class="media"><img src="" alt=""></div><div class="info"><div class="text"></div><div class="controller"><div class="new_button brown nb_hover">&lt; Prev</div><div class="new_button green nb_hover">Next ></div></div></div></div></div></div>';
+
+            $(".hints").click(function(){
+                $("body").append(hint_template);
+                var $next = $("#hints .new_button.green");
+                var $prev = $("#hints .new_button.brown");
+                var all_hints = {
+                    all_array: [],
+                    current_index: 0,
+                    next: function(){
+                        this.current_index += 1;
+                        this.check_hint_buttons();
+                        return this.all_array[this.current_index];
+                        },
+                    prev: function(){
+                        this.current_index -= 1;
+                        this.check_hint_buttons()
+                        return this.all_array[this.current_index]
+                    },
+                    check_hint_buttons: function(){
+                        if (this.all_array.length - this.current_index <= 1){
+                            $next.addClass("hidden");
+                        }
+                        else{
+                            $next.removeClass("hidden");
+                        }
+                        if (this.current_index == 0){
+                            $prev.addClass("hidden");
+                        }
+                        else{
+                            $prev.removeClass("hidden");
+                        }
+                    },
+                }
+
+                $("#hints a.close").click(function(){$(this).closest("#hints").remove();})
+                function render_hint(data){
+                    var $hint = $("#hints")
+                    $hint.find(".header span").html(data["title"]);
+                    $hint.find(".body img").attr("src", data["img"]);
+                    $hint.find(".body .info .text").html(data["text"]);
+                }
+                $.ajax({
+                    url: "{% url 'get_hint' %}",
+                    type: "GET",
+                    success: function(data)
+                    {
+                        render_hint(data);
+                        all_hints.all_array = data["all"];
+                        all_hints.check_hint_buttons();
+                    }
+                });
+                $next.click(function(){
+                    $.ajax({
+                        url: "{% url 'get_hint' %}",
+                        data: {"next_id": all_hints.next()},
+                        type: "GET",
+                        success: function(data){ render_hint(data); }
+                    });
+                });
+                $prev.click(function(){
+                    $.ajax({
+                        url: "{% url 'get_hint' %}",
+                        data: {"next_id": all_hints.prev()},
+                        type: "GET",
+                        success: function(data){ render_hint(data);}
+                    });
+                });
+                $(document).keyup(function(e){
+                    if(e.keyCode == 37 && !$prev.hasClass("hidden")){
+                        $prev.click();
+                    }
+                    if(e.keyCode == 39 && !$next.hasClass("hidden")){
+                        $next.click();
+                    }
+                });
+            });
+            if(getUrlVars()["show_hint"]){
+                $(".hints").click();
+            }
+        }
+    });
+    {% endif %}
+    </script>
+    {% block scripts %}
+    {% endblock scripts %}
+
+    </body>
+</html>

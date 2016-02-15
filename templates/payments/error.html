@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Cancelled Payment" %}</title>
+{% endblock meta %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "OH NO!" %}</span>
+    </div>
+
+    <div class="column">
+        <div class="paypal_land">
+            <div class="error">
+                <div class="icon not_ok"></div>
+                {% blocktrans %}
+                Your payment was unsuccessful. Reason: Unknown.
+                {% endblocktrans %}
+            </div>   
+            <div class="info">
+                {% blocktrans %}
+                Please try again later with different credit/debit card or PayPal account.
+                {% endblocktrans %}
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock content %}
+</body>
+</html>

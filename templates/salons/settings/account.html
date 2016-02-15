@@ -1,0 +1,55 @@
+{% extends "salons/settings.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+    {% block settings %}
+    <!-- {% csrf_token %} -->
+    <ul id="settings" class="settings account">
+            <li class="left">
+                <label for="">{% trans "Email" %}</label><br/>
+                <form action="{% url 'change_email' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" value="{{user.email}}" readonly disabled name="email">
+                    <div class="small_button gray edit">{% trans "Edit" %}</div>
+                    <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                    <input type="submit" class="small_button green save hidden" value="{% trans 'Save' %}">
+                </form>
+            </li>
+            <li class="right">
+                <label for="" class="old_pass">{% trans "Password" %}</label>
+                <input type="password" value="{{user.email}}" readonly disabled class="old_pass">
+                <div class="small_button gray edit">{% trans "Edit" %}</div>
+                <form action="{% url 'change_password_user' %}" method="POST" class="hidden">
+                    {% csrf_token %}
+                    <label for="">{% trans "Current" %} password</label>
+                    <input type="password" name="old_pass" class="new_pass" readonly disabled>
+                    <label for="">{% trans "New" %} password</label>
+                    <input type="password" name="new_pass_1" class="new_pass" readonly disabled>
+                    <label for="">{% trans "Repeat" %} new password</label><br/>
+                    <input type="password" name="new_pass_2" class="new_pass" readonly disabled>
+
+                    <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                    <input type="submit" class="small_button green save hidden" value="{% trans 'Save' %}">
+                </form>
+            </li>
+        </li>
+    </ul>
+    {% endblock settings %}
+
+    {% block scripts %}
+    <script src="{{STATIC_URL}}js/account.js"></script>
+    {% endblock scripts %}

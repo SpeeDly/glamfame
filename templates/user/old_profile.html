@@ -1,0 +1,134 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+    {% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>ARTIST PROFILE</span>
+    </div>
+
+    <div class="column">
+        <div id="artist_profile">
+            <ul class="user_char">
+                <li class="avatar">
+                    {% thumbnail profile.get_avatar "150x150" crop="center" as im %}
+                        <img src="{{ im.url }}">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}img/150x150.gif">
+                    {% endthumbnail %}
+                </li>
+                <li class="name">{{ profile.user.username }}</li>
+            </ul>
+            <ul class="bottom_line">
+                <li class="active">wishlist({{ listings|length }})</li>
+                <li>REVIEWS(0)</li>
+                <li>FOLLOWING({{ artists|length }})</li>
+            </ul>
+            <div class="clear"></div>
+
+            <div class="listings">
+            <ul class="gallery">
+                {% for listing in listings %}
+                <li class="pic_view">
+                    <ul>
+                        <li class="price">{{ listing.price|floatformat:-3 }}$</li>
+                        <li class="picture">
+                            <a href="/listings/{{listing.metadata}}">
+                            {% thumbnail listing.get_picture "240x143" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% empty %}
+                                tc
+                            {% endthumbnail %}
+                            </a>
+                        </li>
+                        <li class="text">
+                            <div class="title">{{ listing.title }}</div>
+                            <p>
+                                <div class="heart">{{ listing.likes }}</div>
+                                <div class="comments">{{ listing.comments }}</div>
+                            </p>
+                        </li>
+                        <li class="artist">
+                        <a href="/artists/profile/{{ listing.artist.id }}">
+                        {% thumbnail listing.artist.get_avatar "60x60" crop="center" as im %}
+                            <img src="{{ im.url }}">
+                        {% empty %}
+                            tc
+                        {% endthumbnail %}
+                        </a>
+                    </li>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+
+            <div class="reviews">
+
+            </div>
+
+
+            <div class="followers">
+            <ul>
+            {% for artist in artists %}
+                <li class="followed">
+                    <a href="/artists/profile/{{ artist.id }}">
+                    <ul>
+                        <li class="avatar">
+                            {% thumbnail artist.get_avatar "90x90" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% empty %}
+                                tc
+                            {% endthumbnail %}
+                        </li>
+                        <li class="name">{{ artist.user.username }}</li>
+                    </ul>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('.listings').show();
+            $('.reviews').hide();
+            $('.followers').hide();
+
+            $ ("#artist_profile .bottom_line li").click(function(){
+                $(this).parent().children().removeClass("active");
+                $(this).addClass("active")
+                if ($(this).index() == 0){
+                    $('.listings').show();
+                    $('.reviews').hide();
+                    $('.followers').hide();
+                }
+                else if($(this).index() == 1){
+                    $('.listings').hide();
+                    $('.reviews').show();
+                    $('.followers').hide();
+                }
+                else{
+                    $('.reviews').hide();
+                    $('.listings').hide();
+                    $('.followers').show(); 
+                }
+            });
+        });
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends "salons/management.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+    {% block settings %}
+    <ul class="gallery col_4 management">
+        {% for listing in listings %}
+        <li class="pic_view">
+            <ul>
+                <li class="picture">
+                <a href="{% url 'listing' listing.id listing.title %}">
+                    {% thumbnail listing.get_picture "240x143" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ listing.title }}" width="240" height="143" {% if not listing.status == 1 %}class="deactivated"{% endif %}>
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{ listing.title }}" width="240" height="143">
+                    {% endthumbnail %}
+                        <div class="overlay"></div>
+                </a>
+                </li>
+                <li class="text">
+                    <div class="title">{{ listing.title }}</div>
+                    <div class="info">
+                        <div class="heart">{{ listing.likes }}</div>
+                        <div class="price">{{ listing.get_currency_display }} {{ listing.price|floatformat:-3 }}</div>
+                        <div class="comments">{{ listing.comments }}</div>
+                    </div>
+                </li>
+                {% if listing.status == 1 %}
+                <li class="edit"><a href="{% url 'edit_listing' listing.id %}" class="new_button brown nb_hover">{% trans "Edit" %}</a></li>
+                <li class="delete"><a href="{% url 'delete_listing' listing.id %}" class="new_button red nb_hover">{% trans "Deactivate" %}</a></li>
+                {% elif listing.status == 2 %}
+                <li class="delete"><a href="{% url 'activate_listing' listing.id %}" class="new_button green nb_hover">{% trans "Activate" %}</a></li>
+                {% elif listing.status == 0 %}
+                <li class="pending">{% trans "Pending<br/>(Currently we are reviewing your listing)" %}</li>
+                {% else %}
+                <li class="forbidden">{% trans "Forbidden<br/>(The content is not appropriate for this website)" %}</li>
+                {% endif %}
+            </ul>
+        </li>
+        {% empty %}
+        <li class="pic_view">
+            <ul>
+                <li class="picture">
+                    <a href="{% url 'salons_upload' %}">
+                        <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{ listing.title }}" width="240" height="143">
+                    </a>
+                </li>
+                <li class="text">
+                    <div class="title">{% trans "Upload new listing" %}</div>
+                    <div class="info">
+                        <div class="heart"></div>
+                        <div class="price"></div>
+                        <div class="comments"></div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% endblock settings %}
+
+    {% block scripts %}
+
+    {% endblock scripts %}
+</body>
+</html>

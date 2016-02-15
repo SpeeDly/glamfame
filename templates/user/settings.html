@@ -1,0 +1,122 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Settings" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/imgselectarea.css">
+{% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "SETTINGS" %}</span>
+    </div>
+
+    <div class="column">
+        <div class="head">
+            <ul>
+                <li><a class="active">{% trans "PROFILE" %}</a></li>
+            </ul>
+        </div>
+
+        <form method="POST" action="{{ request.get_full_path }}" id="settings" enctype="multipart/form-data" class="user">
+            {% csrf_token %}
+            <ul class="settings">
+                <li class="profile_picture">
+                    <ul>
+                        <li class="avatar">
+                            <div>
+                                {% thumbnail profile.get_avatar "150x150" crop="center" as im %}
+                                    <img src="{{ im.url }}" width="150" height="150">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" width="150" height="150">
+                                {% endthumbnail %}
+                            </div>
+                        </li>
+                        <li>
+                            <div class="small_button gray change hidden">{% trans "Change" %}</div>
+                            {{ form.avatar }}
+                            {{ form.cropped_image }}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="left profile">
+                        <li class="name">
+                            <label for="" class="main_label">
+                                {% if form.name.errors %}
+                                    {{ form.name.errors }}
+                                {% endif %}
+                                {% trans "Name" %}
+                            </label>
+                            {{ form.name }}
+                        </li>
+                        <li class="number">
+                            <label for="" class="main_label">
+                            {% if form.mobile_number.errors %}
+                                {{ form.mobile_number.errors }}
+                            {% endif %}
+                            {% if form.enable_sms.errors %}
+                                {{ form.enable_sms.errors }}
+                            {% endif %}
+                            {% trans "Phone" %}
+                            </label>
+                            {{ form.mobile_number }}
+                        </li>
+                        <li class="notifications">
+                            <label for="" class="main_label">{% trans "Notifications" %}</label>
+                            <ul>
+                                <li>
+                                    {{ form.enable_emails }}
+                                    <label for="id_enable_emails" class="main_label">{% trans "Receive notifications for booking request and other activities via email" %}</label>
+                                </li>
+                                <li>
+                                    {{ form.enable_sms }}
+                                    <label for="id_enable_sms" class="main_label">{% trans "Receive notifications for booking request and other activities via text messages" %}</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="setting_buttons">
+                            <div class="small_button gray edit">{% trans "Edit" %}</div>
+                            <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                            <input type="submit" value="{% trans 'Save' %}" class="small_button green save hidden">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </form>
+
+    </div>
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script src="{{STATIC_URL}}js/preview.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/imgSelectArea.js"></script>
+        <script type="text/javascript">
+            $("#settings input").attr("disabled", "disabled");
+
+            $(".edit").click(function(){
+                $(".small_button.change, .small_button.save, .small_button.cancel").removeClass("hidden");
+                $(".edit").addClass("hidden");
+                $("#settings input, #settings textarea").removeAttr("disabled", "disabled");
+            });
+            $(".small_button.cancel").click(function(){location.reload();});
+
+            $(".message .close a").click(function(){
+                $("ul.message").remove();
+            });
+            if($(".number .errorlist").length){
+                $("#id_enable_sms").attr('checked', false);
+            }
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

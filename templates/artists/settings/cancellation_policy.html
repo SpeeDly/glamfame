@@ -1,0 +1,70 @@
+{% extends "artists/settings.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+    {% block settings %}
+        <form method="POST" action="{{ request.get_full_path }}" id="settings" enctype="multipart/form-data" class="cancellation_policy">
+            {% csrf_token %}
+            <ul class="settings">
+                <li><input type="radio" value="1" name="cancel_id" {% if current_id == 1 %}checked{% endif %}/>
+                    {% blocktrans %}
+                        No Cancellation Policy: The client won't be charged if the appointment is cancelled.
+                    {% endblocktrans %}
+                    </li>
+                <li><input type="radio" value="2" name="cancel_id" {% if current_id == 2 %}checked{% endif %}/>
+                    {% blocktrans %}
+                        Flexible Cancellation Policy: 50% refund up until 12 hours prior the apoointment, except Glamfame fees
+                    {% endblocktrans %}
+                    </li>
+                <li><input type="radio" value="3" name="cancel_id" {% if current_id == 3 %}checked{% endif %}/>
+                    {% blocktrans %}
+                        Moderate Cancellation Policy: 50% refund up until 2 days prior to appointment, except Glamfame fees
+                    {% endblocktrans %}
+                    </li>
+                <li><input type="radio" value="4" name="cancel_id" {% if current_id == 4 %}checked{% endif %}/>
+                    {% blocktrans %}
+                        Strict: 50% refund up until 4 days prior to appointment, except Glamfame fees
+                    {% endblocktrans %}
+                    </li>
+                {% for x in cp %}
+                <li><input type="radio" value="{{ x.id }}" name="cancel_id" {% if current_id == x.id %}checked{% endif %}/>
+                    {% blocktrans %}
+                        Custom: {{ x.percent }}% refund up until {{ x.days_before }} days prior to appointment, except fees
+                    {% endblocktrans %}
+                    </li>
+                {% endfor %}
+                <li><input type="radio" value="-1" name="cancel_id"/>
+                    {% blocktrans %}
+                        Custom Cancellation Policy: Not happy with ours? Create one on your own! Simply submit the % refund and the numbers of days:
+                    {% endblocktrans %}
+                </li>
+                <li>
+                    <div class="custom hidden"><input type="text" name="percent">
+                    {% blocktrans %}
+                        % and <input type="text" name="days"> days
+                    {% endblocktrans %}
+                    <div class="small_button gray cancel">{% trans "Cancel" %}</div>
+                    </div>
+                    <input type="submit" class="small_button green save" value="{% trans 'Save' %}">
+                </li>
+            </ul>
+        </form>
+    {% endblock settings %}
+
+    {% block scripts %}
+    <script src="{{STATIC_URL}}js/cancellation_settings.js"></script>
+    {% endblock scripts %}

@@ -1,0 +1,26 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+    
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with receiver_name=receiver_name username=username count=count link=link%}
+                <p>Greetings {{ receiver_name }},</p>
+                <p>
+                    You have one new follower – {{ username }}! The total number of your followers is {{ count }}! You can view them all here:
+                </p>
+                <p>{{ link }}</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </body>
+
+</html>

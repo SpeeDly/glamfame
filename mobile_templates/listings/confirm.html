@@ -1,0 +1,235 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Confirm Listing" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+    {% trans "Confirm booking" %}
+    {% endblock title %}
+
+    {% block content %}
+            <div class="booking_preview" data-latlng="{{booking.artist.lat}},{{booking.artist.lng}}">
+                <ul class="info">
+                    <li class="picture">
+                        {% thumbnail booking.listing.get_picture "800x450" crop="center" as im %}
+                            <img src="{{ im.url }}" style="width: 100%; height: 100%;">
+                        {% empty %}
+                            tc
+                        {% endthumbnail %}
+                    </li>
+                    <li>
+                        <ul class="padded_20">
+                            <li>
+                                {% trans "Beauty artist:" %}
+                                <span>
+                                    {{ booking.artist.user.first_name }}
+                                </span>
+                            </li>
+                            <li class="start_time">
+                                {% trans "Start time:" %}
+                                <span>
+                                </span>
+                            </li>
+                            <li class="end_time">
+                                {% trans "End time:" %}
+                                <span>
+                                </span>
+                            </li>
+                            <li>
+                                {% trans "Cost:" %}
+                                <span>
+                                    {{ booking.get_currency_display }} {{booking.price|floatformat:-3}}
+                                </span>
+                            </li>
+                            <li>
+                                {% trans "Address:" %}
+                                <span class="address">
+                                </span>
+                            </li>
+                            <li>
+                                {% trans "Cancellation policy:" %}
+                                <span>
+                                    {% if booking.cancellation_policy_id == 1 %}
+                                        {% trans "Free: Full refund, except fees" %}
+                                    {% elif booking.cancellation_policy_id == 2 %}
+                                        {% trans "Flexible: 50% refund 12 hours prior the apoointment, except fees" %}
+                                    {% elif booking.cancellation_policy_id == 3 %}
+                                        {% trans "Moderate: 50% refund up until 2 days prior to appointment, except fees" %}
+                                    {% elif booking.cancellation_policy_id == 4 %}
+                                        {% trans "Strict: 50% refund up until 4 days prior to appointment, except fees" %}
+                                    {% else %}
+                                        {% trans "{{ booking.cancellation_policy.cancellation_type }}: {{ booking.cancellation_policy.percent }}% refund up until {{ days_before }} days prior to appointment, except fees" %}
+                                    {% endif %}
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="payment_forms">
+                    <li class="controller">
+                        <ul class="payment_method">
+                            <li class="credit_card active"><div class="card_img"></div>{% trans "Pay with Credit Card" %}</li>
+                            <li class="paypal"><div class="p_img"></div>{% trans "Pay with PayPal" %}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="padded_20">
+                            <li id="credit_card">
+                                <div id="paymill_form">
+                                    <div class="payment-errors"></div>
+                                    <form id="payment-form" action="{% url 'success' %}" method="POST">
+                                        {% csrf_token %}
+
+                                        <input class="card-amount-int" type="hidden" value="{{booking.price|floatformat:-3}}00" />
+                                        <input class="card-currency" type="hidden" value="{{ booking.currency }}" />
+
+                                        <div class="form-row"><label>{% trans "Name" %}</label>
+                                        <input class="card-owner" type="text" size="20" /></div>
+
+                                        <div class="form-row"><label>{% trans "Card number" %}</label>
+                                        <input class="card-number" type="text" size="20" /></div>
+                                        <div class="card_type"></div>
+
+                                        <div class="form-row date"><label>{% trans "Expiration date (MM/YYYY)" %}</label><br>
+                                        <input class="card-expiry-month" type="text" size="2" placeholder="MM"/> /
+                                        <input class="card-expiry-year" type="text" size="4"  placeholder="YYYY"/></div>
+
+                                        <div class="form-row cvc"><label>{% trans "CVC" %}</label><br/>
+                                        <input class="card-cvc" type="text" size="4" /></div>
+                                        <div class="clear"></div>
+                                        <input type="hidden" name="type" value="creditcard">
+
+                                        <div class="form-row">
+                                            <label for="id_text">{% trans "Send a message to the beauty artist (optional)" %}</label>
+                                            <textarea name="comment" id="id_text" cols="50" rows="5"></textarea>
+                                        </div>
+                                        <p class="terms_and_cond"><input type="checkbox" class="agree">{% trans "I agree with" %} <a href="{% url 'terms' %}">{% trans "Terms and Conditions" %}</a>, <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>.</p>
+                                      <input class="submit-button custom_button" type="submit" value="Book now">
+                                    </form>
+                                </div>
+                            </li>
+                            <li id="paypal">
+                                <form method="POST" action="{% url 'paypal_payment' %}">
+                                    {% csrf_token %}
+                                    <p class="text_box">
+{% trans "Please, click in the box below to acknowledge agreement to our" %} <a href="{% url 'terms' %}">{% trans "Terms and Conditions" %}</a>, <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a> {% trans "and" %} <a href="{% url 'privacy' %}">{% trans "Cancellation Policy" %}</a>. {% blocktrans %}Click on "Book now" to proceed to the payment page. We accept Pay Pal and Credit Card payments. After you click "Book now" you will turn to the payment page. Choose the payment method and fill in the data. Once you complete this step, you will see a text message, confirming the payment has been made.Within the next 48 hours you should receive a notification for booking confirmation from the beauty artist provider. If the payer fails to receive confirmation, he/she receives a full refund (100%) of the amount paid. If a beauty seeker has paid for a beauty service, which has been confirmed, and he/she misses the appointment with the beauty service provider, the refund will be determined by the cancellation policy set by the beauty service provider.{% endblocktrans %}
+                                    </p>
+                                    <div class="form-row">
+                                        <label for="id_text">{% trans "Send a message to the beauty artist (optional)" %}</label>
+                                        <textarea name="comment" id="id_text" cols="50" rows="5"></textarea>
+                                    </div>
+                                    <p class="terms_and_cond"><input type="checkbox" class="agree">{% trans "I agree with" %} <a href="{% url 'terms' %}">{% trans "Terms and Conditions" %}</a>, <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>.</p>
+
+                                    <input type="hidden" name="type" value="paypal">
+                                    <input type="hidden" id="snumber" name="sn">
+                                    <input type="submit" class="custom_button" value='Book now'>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    {% endblock content %}
+
+    {% block scripts %}
+    <script type="text/javascript" src="https://bridge.paymill.com/"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/brand_detector.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/iban_detector.js"></script>
+    <script type="text/javascript">
+
+    start_time = moment({{booking.start_time}}*1000).format('MM/DD/YYYY, h:mm a');
+    end_time = moment({{booking.end_time}}*1000).format('MM/DD/YYYY, h:mm a');
+    $('.start_time span').text(start_time);
+    $('.end_time span').text(end_time);
+    $('#snumber').val(document.URL.split('sn=')[1])
+
+    var position = $(".booking_preview").data("latlng");
+
+    $.getJSON(
+        'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position + '&sensor=false',
+
+        function(data){
+            $(".address").text(data["results"]["0"]["formatted_address"]);
+    });
+
+
+    $(".payment_method li").click(function(){
+        $(this).parent().children().removeClass("active");
+        $(this).addClass("active");
+
+        if ($(this).hasClass("credit_card")){
+            $("#credit_card").show();
+            $("#paypal").hide();
+        }
+        else{
+            $("#credit_card").hide();
+            $("#paypal").show();
+        }
+    });
+    $(".payment_method li:eq(0)").trigger("click");
+
+    // PAYMILL !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    PAYMILL_PUBLIC_KEY = "194148900473074936e072eb0a0f8de0"
+
+    var is_valid = new Object()
+    function validate_input(){
+        if (!paymill.validateCardNumber($('.card-number').val())) {
+            return "Wrong card number";
+        }
+        if (!paymill.validateExpiry($('.card-expiry-month').val())) {
+            return "Expiried card number";
+        }
+        if (!paymill.validateCvc($('.card-cvc').val())) {
+            return "The CVC number is not valid";
+        }
+        return false;
+    }
+
+    $("#payment-form").submit(function(event) {
+        var a = paymill.createToken({
+            number: $('.card-number').val(),  // required, ohne Leerzeichen und Bindestriche
+            exp_month: $('.card-expiry-month').val(),   // required
+            exp_year: $('.card-expiry-year').val(),     // required, vierstellig z.B. "2016"
+            cvc: $('.card-cvc').val(),                  // required
+            amount_int: 1000,    // required, integer, z.B. "15" für 0,15 Euro
+            currency: "USD",    // required, ISO 4217 z.B. "EUR" od. "GBP"
+            cardholder: $('.card-owner').val()
+        }, PaymillResponseHandler);                   // Info dazu weiter unten
+
+        return false;
+    });
+
+    $('.card-number').keyup(function(){
+        if($('.card-number').val().length == 16){
+            $(".card_type").text(paymill.cardType($('.card-number').val()));
+        }
+    });
+
+    function PaymillResponseHandler(error, result){
+        if (error) {
+            var validator = validate_input();
+            if (validator) {
+                $(".payment-errors").text(validator);
+                // $(".payment-errors").text(error.apierror);
+            }
+            else{
+                $(".payment-errors").text("Unexpected error, please contact administrator.");
+            }
+            $(".submit-button").removeAttr("disabled");
+        } else {
+            var form = $("#payment-form");
+            var token = result.token;
+            form.append("<input type='hidden' name='token' value='" + token + "'>");
+            form.get(0).submit();
+        }
+    }
+
+    </script>
+
+    {% endblock scripts %}
+    </body>
+</html>

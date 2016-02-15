@@ -1,0 +1,361 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+{% load humanize %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Listing Details" %}</title>
+{% endblock meta %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery.ad-gallery.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/default.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/default.date.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/default.time.css">
+    {% endblock stylesheets %}
+
+    {% block tweeter %}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:title" content="dawdawdaw{{ listing.title }}">
+        <meta name="twitter:description" content="12312312312{{ listing.description }}">
+        <meta name="twitter:creator" content="">
+        <meta name="twitter:image:src" content="https://{{ request.get_host }}{{listing.picture}}">
+        <meta name="twitter:domain" content="glamfame.com">
+        <meta name="twitter:app:name:iphone" content="Vine">
+        <meta name="twitter:app:name:ipad" content="Vine">
+        <meta name="twitter:app:name:googleplay" content="Vine">
+        <meta name="twitter:app:url:iphone" content="vine://v/93582sxlkjf">
+        <meta name="twitter:app:url:ipad" content="vine://v/93582sxlkjf">
+        <meta name="twitter:app:url:googleplay" content="https://vine.co/v/93582sxlkjf">
+        <meta name="twitter:app:id:iphone" content="id81239204382">
+        <meta name="twitter:app:id:ipad" content="id432984038404">
+        <meta name="twitter:app:id:googleplay" content="com.foursquare.android">
+    {% endblock tweeter %}
+
+    {% block title %}
+        {% trans "Listing" %}
+    {% endblock title %}
+
+    {% block content %}
+    <div id="listing_view">
+        <div class="title">
+            <span>{{ listing.title }}</span>
+            <div class="info">
+                <span><span class="icon price"></span>{{ listing.get_currency_display }} {{ listing.price|floatformat:-3 }}</span>
+                <span><span class="icon heart"></span>{{ listing.likes }}</span>
+                <span><span class="icon comments"></span>{{ reviews|length }}</span>
+                 </div></div>
+        <div class="wishlist">
+            {% if request.user.profile %}
+            <a class="pink_button" href="{% url 'add_favorite' listing.id %}">
+                {% if not favorite %}Add to wishlist{% else %} Remove from wishlist{% endif %}
+            </a>
+            {% endif %}
+        </div>
+        <div class="image">
+        {% if listing.get_all_pictures|length == 0 %}
+            {% if listing.get_picture|is_portrait %}
+                {% thumbnail listing.get_picture "320" as im %}
+                    <img src="{{ im.url }}" alt="{{listing.title}}">
+                {% endthumbnail %}
+            {% else %}
+                {% thumbnail listing.get_picture "320" as im %}
+                    <img src="{{ im.url }}" alt="{{listing.title}}">
+                {% endthumbnail %}
+            {% endif %}
+        </div>
+        {% else %}
+        <div id='slider' class='swipe'>
+            <div class='swipe-wrap'>
+                {% thumbnail listing.get_picture "320" crop="center" as im %}
+                    <div><img src="{{ im.url }}" alt="{{listing.title}}">
+                        <div class="frame"></div>
+                    </div>
+                {% endthumbnail %}
+
+            {% for picture in listing.get_all_pictures %}
+                {% thumbnail picture "320" crop="center" as im %}
+                    <div><img src="{{ im.url }}" alt="{{listing.title}}">
+                        <div class="frame"></div>
+                    </div>
+                {% endthumbnail %}
+            {% endfor %}
+            </div>
+        </div>
+        <a href="javascript: void(0)" class="arrow prev clickable"></a>
+        <a href="javascript: void(0)" class="arrow next clickable"></a>
+        {% endif %}
+        <div class="description">
+            <p><b>{% trans "Description" %}:</b> {{ listing.description }}</p>
+            <p><b>{% trans "Duration" %}:</b> {% widthratio listing.duration 60 1 %} {% trans "min"%}</p>
+            <p><b>{% trans "Tags" %}:</b> {% for t in tags %}{{t}}{%if not forloop.last%}, {%endif%}{% endfor %}</p>
+        </div>
+        <div class="social">
+            <ul class="likes">
+            {% csrf_token %}
+                <li class="like"></li>
+                <li class="tweet"></li>
+                <li class="pin">
+                    <a href="https://www.pinterest.com/pin/create%2Fbutton/
+                    ?url=https://www.glamfame.com{{ request.get_full_path }}
+                    &media=https://www.glamfame.com{{listing.get_picture|cut:"/var/www/glamazer"}}
+                    &description={{ listing.description }}"
+                    data-pin-do="buttonPin"
+                    data-pin-config="beside"
+                    data-pin-color="white"><img class="hidden" src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_white_20.png" /></a>
+                </li>
+                <li class="google_plus"></li>
+            </ul>
+        </div>
+        <div class="price"><b>{% trans "Price" %}:</b>{{ listing.get_currency_display }} {{ listing.price|floatformat:-3  }}</div>
+        <div class="book_it">
+            <input type="date" id="id_date" placeholder="{% trans 'Date' %}">
+            <input type="date" id="id_time" placeholder="{% trans 'Time' %}">
+            {% if listing.status == 1 and not booked and request.user.related_with == "profiles" or not request.user.is_authenticated %}
+                <form id="book_now" action="{{ request.get_full_path }}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" id="date_hours" name="time">
+                    {% if not request.user.is_authenticated %}
+                        <label for="id_email">{% trans "Email" %}:</label>
+                        <input id="id_email" type="email" name="email">
+                    {% endif %}
+                    <input type="submit" class="book_button blue_button" value="{% trans 'Book now' %}">
+                </form>
+            {% endif %}
+        </div>
+        <div class="cancellation_policy">
+            {% trans "Cancellation policy:" %}:
+            {% if policy.cancellation_policy_id == 1 %}
+                {% trans "Full refund, except fees
+            {% elif policy.cancellation_policy_id == 2 %}
+                {% trans "Flexible: 50% refund 12 hours prior the apoointment, except fees" %}
+            {% elif policy.cancellation_policy_id == 3 %}
+                {% trans "Moderate: 50% refund up until 2 days prior to appointment, except fees" %}
+            {% elif policy.cancellation_policy_id == 4 %}
+                {% trans "Strict: 50% refund up until 4 days prior to appointment, except fees" %}
+            {% else %}
+                {{ policy.cancellation_policy.cancellation_type }}: {{ policy.cancellation_policy.percent }}% {% trans "refund up until" %} {{ policy.cancellation_policy.days_before }} {% trans "days prior to appointment, except fees" %}
+            {% endif %}
+        </div>
+        <div class="artist">
+            <div class="artist_box">
+                <a href="{% url 'profile_artist' artist.id artist.user.first_name %}">
+                {% thumbnail artist.get_avatar "90x90" crop="center" as im %}
+                    <img class="clickable" src="{{ im.url }}" alt="{{artist.user.first_name}}" width="90" height="90">
+                {% empty %}
+                    <img src="{{ STATIC_URL }}img/default.png" alt="{{artist.user.first_name}}" width="90" height="90">
+                {% endthumbnail %}
+                </a>
+                <div class="name">{{ artist.user.first_name }}</div>
+                <div>{{ artist.get_style_display }} {% trans "artist" %}</div>
+                <div class="rateit bigstars" data-rateit-value="{{ artist_rate }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>
+            </div>
+        </div>
+        <div id="reviews">
+            {% if reviews|length %}
+            {% for review in reviews %}
+            <div class="review {% cycle 'odd' 'even' %}">
+                <div class="left">
+                    <a href="{% url 'profile_user' review.client_id review.client.user.first_name %}">
+                    {% thumbnail review.client.get_avatar "60x60" crop="center" as im %}
+                        <img class="clickable" src="{{ im.url }}" alt="{{review.client.user.first_name}}" width="60" height="60">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}img/default.png" alt="{{review.client.user.first_name}}" width="60" height="60">
+                    {% endthumbnail %}
+                    </a>
+                </div>
+                <div class="right">
+                    <div class="text">{{ review.text }}</div>
+                    <div class="info">
+                        <div class="rateit bigstars" data-rateit-value="{{ review.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div><br/>
+                        <span class="name">{{ review.client.user.first_name }}</span>
+                        <span class="ago">{{ review.created|naturaltime }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <div class="nothing">{% trans "Currently the listing doesn't have any reviews" %}</div>
+            {% endif %}
+        </div>
+    </div>
+        <div id="fb-root"></div>
+    </div>
+    {% endblock content %}
+
+    {% block scripts %}
+    <div class="dialog_box" id="wtime" style="display:none;">
+        <div class="wrapper">
+            <div class="head">{% trans "WARNING!" %}<a href="javascript:;">X</a></div>
+            <div class="body">
+                <div class="text">{% trans "Please select booking date before procees foward." %}</div>
+                <ul>
+                    <li class="OK"><a class="new_button green nb_hover" href="javascript:;">{% trans "OK" %}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="dialog_box" id="wemail" style="display:none;">
+        <div class="wrapper">
+            <div class="head">{% trans "WARNING!" %}<a href="javascript:;">X</a></div>
+            <div class="body">
+                <div class="text">{% trans "Please enter your real email. In that way you will be able to manage your bookings via your mailbox. Also we will be able to let you when your booking is accepted from the artist." %}</div>
+                <ul>
+                    <li class="OK"><a class="new_button green nb_hover" href="javascript:;">{% trans "OK" %}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <!-- social imports -->
+        <script src="{{STATIC_URL}}js/swipe.js"></script>
+        <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+        <script src="{{STATIC_URL}}js/ui.js"></script>
+        <script src="{{STATIC_URL}}js/picker.js"></script>
+        <script src="{{STATIC_URL}}js/picker.date.js"></script>
+        <script src="{{STATIC_URL}}js/picker.time.js"></script>
+        <script src="https://connect.facebook.net/en_US/all.js"></script>
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <script async src="//assets.pinterest.com/js/pinit.js"></script>
+        <!-- /social imports -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script type="text/javascript">
+      $(function() {
+            var Slider = $('#slider').Swipe().data('Swipe');
+            $(document).keydown(function(e){
+                if (e.keyCode == 37) {
+                    Slider.prev();
+                }
+                if (e.keyCode == 39) {
+                    Slider.next();
+                }
+            });
+        });
+
+        // var screen_width = $(window).width();
+        // $("#listing_view .image").width(screen_width);
+
+        // start facebook share
+        $('.like').click(function(){openWin()})
+        function openWin() {
+            url = 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://{{ request.get_host }}{{ request.get_full_path }}&p[images][0]=https://{{ request.get_host }}{{listing.picture}}&p[title]={{ listing.title }}&p[summary]={{ listing.description }}'
+            myWindow = window.open(url, '', 'width=800,height=500');
+            myWindow.focus();
+        }
+
+        // start tweeter
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+        $('.tweet').click(function(){
+            url = 'https://twitter.com/share?text=nafsfawf'
+            myWindow = window.open(url, '', 'width=800,height=400');
+            myWindow.focus();
+        });
+
+        // start google +
+        $('.google_plus').click(function(){
+            url = 'https://plus.google.com/share?url={{ request.get_host }}{{ request.get_full_path }}'
+            myWindow = window.open(url, '', 'width=500,height=400');
+            myWindow.focus();
+        })
+        // end favorite section
+
+        hours = ['8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM']
+
+        function get_ampm_time(date){
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hour >= 12 ? 'PM' : 'AM';
+            hour = hour % 12;
+            hour = hour ? hour : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hour + ':' + minutes + ' ' + ampm;
+            return strTime;
+        }
+        var $timepicker = $("#id_time").pickatime({
+            disable: [true],
+            min: [7,0],
+            max: [20,0],
+        })
+
+        var $datapicker = $("#id_date").pickadate({
+            format: 'mm/dd/yyyy',
+            min: "0",
+            max: 14,
+            onSet: function(context){
+                if($datapicker.val()){
+                    var data = {};
+                    var date_array = $datapicker.val().split("/")
+                    var month = date_array[0];
+                    var year = date_array[2];
+                    var day = date_array[1];
+                    data["date"] = day;
+                    data["month"] = month;
+                    data["year"] = year;
+
+                    var date = new Date(year, month, day)
+                    data["week_day"] = date.getDay();
+                    data["artist_id"] = {{ artist.id }};
+                    dur = {{ listing.duration }}/(1800);
+                    data["duration"] = dur;
+                    data['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
+
+                    $.ajax({
+                        url: "/listings/check_availability/",
+                        data: data,
+                        type: "POST"
+                    }).done(function(data){
+                        $timepicker.pickatime('picker').set("disable", "flip");
+                    });
+                }
+            }
+        })
+
+
+        $('#book_now').submit(function(e){
+            if($datapicker.val() && $timepicker.val()){
+                var _date_ = new Date($datapicker.val() + ',' + $timepicker.val()).getTime()/1000;
+
+            }
+            else{
+                var _date_ = "NaN";
+            }
+            $('#date_hours').val(_date_);
+            if (!$('#date_hours').val() || $('#date_hours').val() == "NaN"){
+                $('#wtime').show();
+                e.preventDefault();
+                return false;
+            }
+            $email = $("input[type='email']");
+            if($email.length){
+                if($email.val() == '' || !validateEmail($email.val())){
+                    $('#wemail').show();
+                    e.preventDefault();
+                    return false;
+                }
+            }
+
+        });
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+        $('.dialog_box .head a, .dialog_box .body .OK a').click(function(){
+                $('.dialog_box').hide();
+        });
+
+        $('.dialog_box').click(function(e){
+            if($(e.target).hasClass('dialog_box'))
+                $(this).hide();
+        });
+
+        if("{{booked}}" != "False")
+            $('#booked_time').text(moment({{booked}}*1000).format('h:mm a   MM/DD/YYYY'));
+
+
+        </script>
+    {% endblock scripts %}
+    </body>
+</html>

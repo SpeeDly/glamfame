@@ -1,0 +1,53 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Artist Settings" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/imgselectarea.css">
+{% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>SETTINGS</span>
+    </div>
+
+    <div class="column">
+        <div class="head">
+            <ul>
+                <li><a class="{% if not 'schedule' in request.get_full_path %}active{% endif %}" href="{% url 'salons_artists_edit' artist.id %}">{% trans "PROFILE" %}</a></li>
+                <li><a class="{% if 'schedule' in request.get_full_path %}active{% endif %}" href="{% url 'salons_artists_schedule' artist.id %}">{% trans "SCHEDULE" %}</a></li>
+            </ul>
+        </div>    
+        {% block artist_settings %}
+
+        {% endblock artist_settings %}
+    </div>
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script src="{{STATIC_URL}}js/preview.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/imgSelectArea.js"></script>
+        <script src="{{STATIC_URL}}js/select2.js"></script>
+
+        <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('#id_style').select2({
+                minimumResultsForSearch: "3",
+                containerCssClass: "gray",
+                dropdownCssClass: 'gray'
+            });
+        });
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+    
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with first_name=user.first_name%}
+                <p>Hi {{ first_name }},</p>
+                <p>We want to see you again! Our beauty artists want to see you again! So come over and find your next haircut, nails or make up style!</p>
+                <p>Hope to see you soon!</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </body>
+
+</html>

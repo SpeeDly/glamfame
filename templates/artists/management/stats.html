@@ -1,0 +1,255 @@
+{% extends "artists/management.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+    {% block meta %}
+        <title>Glamfame – Booking platform for top salons and beauty artists - Bookings</title>
+    {% endblock meta %}
+
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+    {% endblock stylesheets %}
+
+    {% block settings %}
+    <div id="stats">
+        <div class="shead">
+            <ul class="left">
+                <li><input type="text" id="start_date" value="Date"></li>
+                <li><input type="text" id="end_date" value="Date"></li>
+            </ul>
+            <a class="small_button green" href="javascript:;">{% trans "Go" %}</a>
+<!--                 <ul class="right">
+                <li class="left">Day</li>
+                <li class="middle">Week</li>
+                <li class="right">Month</li>
+            </ul> -->
+        </div>
+        <div id="chart">
+            <canvas id="all_chart" width="1000" height="250"></canvas>
+        </div>
+<!--             <div id="chart" class="chart"></div>
+        <div id="chart" class="chart"></div> -->
+        <div class="legend">
+            <ul>
+                <li><div class="point color_1"></div>{% trans "Listing views" %}<input type="checkbox" class="chart_type listing_view" checked></li>
+                <li><div class="point color_2"></div>{% trans "Inquiries" %}<input type="checkbox" class="chart_type all_bookings" checked></li>
+                <li><div class="point color_3"></div>{% trans "Bookings" %}<input type="checkbox" class="chart_type passed_bookings" checked></li>
+            </ul>
+        </div>
+        <table id="history">
+            <thead>
+                <th>#</th>
+                <th>{% trans "DATE" %}</th>
+                <th>{% trans "LISTING VIEW" %}</th>
+                <th>{% trans "INQUIRIES" %}</th>
+                <th>{% trans "BOOKINGS" %}</th>
+                <th>{% trans "REVENUE" %}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="7">{% trans "This is not avaible yet." %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endblock settings %}
+
+    {% block scripts %}
+    <script src="{{ STATIC_URL }}js/ui.js"></script>
+    <script src="{{STATIC_URL}}js/Chart.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            var info = []
+            var $start_picker = $( "#start_date" );
+            var $end_picker = $( "#end_date" );
+
+            $start_picker.datepicker(
+                {
+                    defaultDate: -7,
+                    dayNamesMin: [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+                    dateFormat: "mm/dd/yy",
+                    onSelect: function(dateText, inst){
+                        $("#start_date").text($start_picker.val());
+                    },
+                    onClose: function( selectedDate ) {
+                        $( "#end_date" ).datepicker( "option", "minDate", selectedDate );
+                    }
+                });
+            $start_picker.datepicker( "setDate", -7 );
+
+
+            $end_picker.datepicker(
+                {
+                    defaultDate: 0,
+                    dayNamesMin: [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+                    dateFormat: "mm/dd/yy",
+                    onSelect: function(dateText, inst){
+                        $("#end_date").val($end_picker.val());
+                    },
+                    onClose: function( selectedDate ) {
+                        $( "#start_date" ).datepicker( "option", "maxDate", selectedDate );
+                    }
+                });
+
+            $end_picker.datepicker( "setDate", +1 );
+
+
+            var interval = [];
+            var lvs = {
+                        fillColor : "rgba(248,215,199,1)",
+                        strokeColor : "rgba(237,191,168,1)",
+                        pointColor : "rgba(248,215,199,1)",
+                        pointStrokeColor : "rgba(237,191,168,1)",
+                        data : []
+                    }
+
+            // alb == all listed bookings, no matter what
+            var alb = {
+                        fillColor : "rgba(102,104,170,1)",
+                        strokeColor : "rgba(59,61,127,1)",
+                        pointColor : "rgba(102,104,170,1)",
+                        pointStrokeColor : "rgba(59,61,127,1)",
+                        data : []
+                    }
+
+            // sb == successfully bookings only
+            var sb = {
+                        fillColor : "rgba(164,212,251,1)",
+                        strokeColor : "rgba(117,181,233,1)",
+                        pointColor : "rgba(164,212,251,1)",
+                        pointStrokeColor : "rgba(117,181,233,1)",
+                        data :  []
+                    }
+
+
+            $(".chart_type").change(function(){
+                draw_chart(interval);
+            })
+
+            $(".shead .small_button").click();
+            clicked_go()
+
+            $('.shead .small_button').click(function(){clicked_go();});
+
+            function clicked_go(){
+                interval = []
+                var s = new Date($start_picker.val());
+                var e = new Date($end_picker.val());
+
+                while(s < e) {
+                    var month = parseInt(s.getMonth()) + 1
+                    if(month<10){
+                        month = '0' + month
+                    }
+                    var date = s.getFullYear() + '-' + month + '-' + s.getDate();
+                    interval.push(date);
+                    s = new Date(s.setDate(
+                        s.getDate() + 1
+                    ))
+                }
+
+                $.ajax({
+                    url: "{% url 'get_chart_info' %}",
+                    data: {
+                        'interval': interval,
+                    },
+                    type: "GET",
+                    success: function(data) {
+                        lvs["data"] = data['lvc']
+                        alb["data"] = data['abc']
+                        sb["data"] = data['sbc']
+                        info = data['info']
+                        console.log(info)
+                        fill_table(info)
+                        draw_chart(interval)
+                    },
+                });
+
+                return interval;
+            }
+
+            function draw_chart(interval){
+
+                params = []
+                if($("input.chart_type").eq(0).is(":checked")){
+                    params.push(lvs);
+                }
+
+                if($("input.chart_type").eq(1).is(":checked")){
+                    params.push(alb);
+                }
+
+                if($("input.chart_type").eq(2).is(":checked")){
+                    params.push(sb);
+                }
+
+                var canvas = $("#all_chart")[0];
+                canvas.width = canvas.width;
+                var ctx = canvas.getContext("2d");
+                var options = {scaleOverlay : false,};
+                var data = {
+                    labels : interval,
+                    datasets : params
+                }
+
+                var all_chart = new Chart(ctx).Line(data);
+            }
+
+            function fill_table(info){
+                var $boss = $('#history tbody');
+                var views_count = 0;
+                var inqueries_count = 0;
+                var bookings_count = 0;
+                var revenues_count = 0;
+
+                $boss.children().remove();
+                text = ''
+                for (var i = 0; i < info.length; i++) {
+                    current = info[i];
+                    if(i%2 == 0){
+                        text += '<tr><td>';
+                    }
+                    else{
+                        text += '<tr class="dark"><td>';
+                    }
+                    text += current["number"];
+                    text += '</td><td>';
+                    text += current["date"];
+                    text += '</td><td>';
+                    text += current["listings_view"];
+                    text += '</td><td>';
+                    text += current["inqueries"];
+                    text += '</td><td>';
+                    text += current["bookings"];
+                    text += '</td><td>';
+                    text += current["revenues"];
+                    text += '</td></tr>';
+
+                    views_count += current["listings_view"]
+                    inqueries_count += current["inqueries"]
+                    bookings_count += current["bookings"]
+                    revenues_count += current["revenues"]
+                };
+                    text += '<tr><td colspan="2">TOTAL</td><td>';
+                    text += views_count;
+                    text += '</td><td>'
+                    text += inqueries_count;
+                    text += '</td><td>'
+                    text += bookings_count;
+                    text += '</td><td>'
+                    text += revenues_count;
+                    text += '</td></tr>'
+                $boss.html($boss.html() + text);
+            }
+
+
+            $(".shead ul.right li").click(function(){
+                $(this).closest("ul").children().removeClass("active").end().end().addClass("active");
+            });
+        })
+    </script>
+    {% endblock scripts %}
+</body>
+</html>

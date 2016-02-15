@@ -1,0 +1,390 @@
+{% load url from future %}
+{% load thumbnail %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        {% block meta %}
+            <title>{% trans "Glamazer" %}</title>
+        {% endblock meta %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex">
+        <!--CSS block-->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/istyle.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.timepicker.css">
+        <script src="https://glamfame.com:1332/socket.io/socket.io.js"></script>
+
+        {% block stylesheets %}
+
+        {% endblock stylesheets %}
+
+        {% block tweeter %}
+
+        {% endblock tweeter %}
+
+    </head>
+    <body>
+        {% csrf_token %}
+        <table class="main {{ widget.related_with }}">
+            <thead>
+                <tr>
+                    <th class="avatar">
+                        {% if widget.have_image %}
+                            {% thumbnail widget.avatar "65x65" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="{{ widget.name }}" width="50" height="50">
+                            {% empty %}
+                                <img src="{{ STATIC_URL }}img/default.png" alt="{{ widget.name }}" width="50" height="50">
+                            {% endthumbnail %}
+                        {% endif %}
+                        {{ widget.name }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="title">
+                    <td>{% trans "Date" %}:</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="picker"><div class="icon time"></div><span><input type="text" placeholder="{% trans 'Select date' %}" name="date" id="date" class="picker_input" data-select="datepicker"></span></div>
+                    </td>
+                </tr>
+                <tr class="title">
+                    <td>{% trans "Hour" %}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="picker"><div class="icon time"></div><span><input type="text" placeholder="{% trans 'Select time' %}" name="time" id="time" class="picker_input"></span></div>
+                    </td>
+                </tr>
+                {% if artists %}
+                    <tr class="title">
+                        <td>{% trans "Artist" %}</td>
+                    </tr>
+                    <tr class="artists">
+                        <td>
+                            <table id="artists">
+                                <tr>
+                                    <td class="nav left"><div class="arrow left"></div></td>
+                                    {% for artist in artists %}
+                                        <td class="artist" data-artist="{{ artist.id }}">
+                                            <table>
+                                                <tr>
+                                                    <td class="avatar">
+                                                        <a href="{% url 'profile_artist' artist.id artist.name %}" target="_parent">
+                                                            {% thumbnail artist.avatar "90x90" crop="center" as im %}
+                                                                <img src="{{ im.url }}" alt="{{artist.name}}" width="90" height="90">
+                                                            {% empty %}
+                                                                <img src="{{ STATIC_URL }}img/default.png" width="90" height="90" alt="{{artist.name}}">
+                                                            {% endthumbnail %}
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    {% endfor %}
+                                    <td class="nav right"><div class="arrow right"></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr class="title">
+                    <td>{% trans "Listing" %}</td>
+                </tr>
+                <tr class="listings">
+                    <td>
+                        <table id="listings">
+                            <tr>
+                                <td class="nav left"><div class="arrow left"></div></td>
+                                {% for listing in widget.listings %}
+                                    <td class="listing" data-artist="{{ listing.artist_id }}" data-duration="{{ listing.duration }}" data-listing="{{ listing.id }}">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <a href="{% url 'listing' listing.id listing.title %}" target="_parent">
+                                                        {% thumbnail listing.picture "200x112" crop="center" as im %}
+                                                            <img src="{{ im.url }}" alt="{{listing.title}}" width="200" height="112">
+                                                        {% empty %}
+                                                            <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{ listing.title }}" width="200" height="112">
+                                                        {% endthumbnail %}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table class="listing_description">
+                                                        <tr><td>{{ listing.title }}</td></tr>
+                                                        <tr><td>{{ listing.currency }} {{ listing.price|floatformat:-3 }}</td></tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                {% endfor %}
+                                <td class="nav right"><div class="arrow right"></div></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form id="book_now" action="" method="POST" target='_parent'>
+                        {% csrf_token %}
+                        <input type="hidden" id="date_hours" name="time">
+                        <label for="id_email">{% trans "Enter your email" %}:</label>
+                        <input id="id_email" type="email" name="email">
+                        <input id="id_url" type="hidden" name="back_url">
+                        <input type="submit" class="blue_button" value="{% trans 'Book now' %}">
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="error"></div>
+        <script src="{{STATIC_URL}}js/jquery.js"></script>
+        <script src="{{STATIC_URL}}js/jquery-ui.min.js"></script>
+        <script src="{{STATIC_URL}}js/jquery.timepicker.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $("#id_url").val(getParentUrl());
+            function getParentUrl() {
+                var isInIframe = (parent !== window),
+                    parentUrl = null;
+
+                if (isInIframe) {
+                    parentUrl = document.referrer;
+                }
+                return parentUrl;
+            }
+            if($("table.main").hasClass("artists")){
+                artist_controller()
+            }
+            else if ($("table.main").hasClass("salons")){
+                salon_controller()
+            }
+            function artist_controller(){
+                var $listings = $(".listing");
+                $listings.first().addClass("active");
+
+                $(".arrow.left").click(function(){
+                    var $active = $listings.filter(".active");
+                    $active.removeClass("active");
+
+                    if($active.next().hasClass("listing")){
+                        $active.next().addClass("active");
+                    }
+                    else{
+                        $listings.first().addClass("active");
+                    }
+                });
+                $(".arrow.right").click(function(){
+                    var $active = $listings.filter(".active");
+                    $active.removeClass("active");
+
+                    if($active.prev().hasClass("listing")){
+                        $active.prev().addClass("active");
+                    }
+                    else{
+                        $listings.last().addClass("active");
+                    }
+                });
+            }
+            function salon_controller(){
+                var $artists = $(".artist");
+                var $listings = $(".listing");
+                $artists.first().addClass("active");
+                on_change_artist($artists.filter(".active").data("artist"));
+
+                // click events
+                $("#artists .arrow.left").click(function(){artist_click_handler($(this))});
+                $("#artists .arrow.right").click(function(){artist_click_handler($(this))});
+                $("#listings .arrow.left").click(function(){listing_click_handler($(this))});
+                $("#listings .arrow.right").click(function(){listing_click_handler($(this))});
+
+                function on_change_artist(artist_id){
+                    $listings.removeClass("active").removeClass("available");
+                    $listings.filter('[data-artist="' + artist_id + '"]').addClass("available").eq(0).addClass("active");
+                }
+
+                // click handlers
+                function artist_click_handler($this){
+                    var $active = $artists.filter(".active");
+                    var $prev = $active.prev(".artist");
+                    var $next = $active.next(".artist");
+                    var is_left = $this.hasClass("left");
+                    var is_right = $this.hasClass("right");
+                    $active.removeClass("active");
+
+                    if(is_left && $prev.length){
+                        $active = $prev.addClass("active");
+                    }
+                    else if(is_left){
+                        $active = $artists.last().addClass("active");
+                    }
+                    else if(is_right && $next.length){
+                        $active = $next.addClass("active");
+                    }
+                    else if(is_right){
+                        $active = $artists.first().addClass("active");
+                    }
+                    on_change_artist($active.data("artist"));
+                }
+                function listing_click_handler($this){
+                    var $active = $listings.filter(".active");
+                    var $prev = $active.prev(".available");
+                    var $next = $active.next(".available");
+                    var is_left = $this.hasClass("left");
+                    var is_right = $this.hasClass("right");
+                    $active.removeClass("active");
+
+                    if(is_left && $prev.length){
+                        $prev.addClass("active");
+                    }
+                    else if(is_left){
+                        $listings.filter(".available").last().addClass("active");
+                    }
+                    else if(is_right && $next.length){
+                        $next.addClass("active");
+                    }
+                    else if(is_right){
+                        $listings.filter(".available").first().addClass("active");
+                    }
+                }
+            }
+
+            hours = ['8:00am', '8:30am', '9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm']
+            hours2 = ['8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM']
+            function get_ampm_time(date){
+                var hour = date.getHours();
+                var minutes = date.getMinutes();
+                var ampm = hour >= 12 ? 'PM' : 'AM';
+                hour = hour % 12;
+                hour = hour ? hour : 12; // the hour '0' should be '12'
+                minutes = minutes < 10 ? '0'+minutes : minutes;
+                var strTime = hour + ':' + minutes + ' ' + ampm;
+                return strTime;
+            }
+
+            var $datapicker = $("#date")
+            draw_picker()
+            function draw_picker(){
+                $datapicker.datepicker({
+                    minDate: 0,
+                    maxDate: "+1M +10D",
+                    dayNamesMin: [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+                    dateFormat: "mm/dd/yy",
+
+                    onSelect: function (dateText, inst) {
+                        date = new Date(inst.selectedDay, inst.selectedMonth, inst.selectedDay)
+                        var data = {
+                            date: inst.selectedDay,
+                            month: inst.selectedMonth,
+                            year: inst.selectedYear,
+                            week_day: date.getDay(),
+                            artist_id: $(".listing.active").data("artist"),
+                            duration: $(".listing.active").data("duration")/(60*30),
+                            csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(),
+                        }
+                        dur = $(".listing.active").data("duration")/(60*30),
+                        $.ajax({
+                            url: "/listings/check_availability/",
+                            data: data,
+                            type: "POST"
+                        }).done(function(data){
+                            console.log(data)
+                            var busy_time = []
+                            for(var i = 0; i<data.booked.length; i++)
+                            {
+                                duration = data.booked[i].duration /(1800)
+                                for(var y = 0; y<duration; y++){
+                                    date = new Date((data.booked[i].start_time + (y*1800))*1000)
+                                    str_time = get_ampm_time(date)
+                                    busy_time.push(hours.indexOf(str_time))
+                                }
+                            }
+                            all_busy_time = busy_time.concat(data.busy_time)
+                            console.log(all_busy_time)
+                            active_hours = []
+                            for(var i=0; i<23; i++){
+                                if (all_busy_time.indexOf(i) == -1){
+                                    active_hours.push(i);
+                                }
+                            }
+                            console.log(active_hours)
+                            for (var i = 0; i < active_hours.length; i++) {
+                                for(var y = active_hours[i]; y < (active_hours[i]+dur); y++){
+                                    if (active_hours.indexOf(y) == -1){
+                                        all_busy_time.push(active_hours[i]);
+                                    }
+                                }
+                            }
+                            $('#time').timepicker({
+                                'minTime': '8:00am',
+                                'maxTime': '8:00pm',
+                            });
+                            $(".ui-timepicker-list li").each(function(){
+                                if(all_busy_time.indexOf($(this).index())){
+                                    $(this).addClass("ui-timepicker-disabled");
+                                }
+                                else{
+                                    $(this).removeClass("ui-timepicker-disabled");
+                                }
+                            });
+                        })
+                    }
+                });
+            }
+
+            $("#time").on("selectTime", function(){
+                var _hour = ',' + hours2[$(".ui-timepicker-list li.ui-timepicker-selected").index()];
+                var temp = new Date(_hour == " " ? "NaN" : $datapicker.val() + _hour);
+                $('#date_hours').val(temp.getTime()/1000);
+            });
+
+            function validateEmail(email) {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+            var $error = $("div.error");
+            $error.click(function(){$(this).hide(500)});
+            function trowError(text){
+                $error.text(text).show(500);
+                setTimeout(function(){$error.hide(500)}, 3000);
+            }
+
+            $('#book_now').submit(function(e){
+                var $email = $("input[type='email']");
+                var text = '';
+                if(!$("#date").val()){
+                    text = "Please select date!"
+                }
+                else if(!$("#time").val()){
+                    text = "Please select time!"
+                }
+                else if($email.val() == ''){
+                    text = "Please enter your email!"
+                }
+                else if(!validateEmail($email.val())){
+                    text = "Invalid email!"
+                }
+                if(text != ''){
+                    trowError(text)
+                    e.preventDefault();
+                    return false;
+                }
+                $(this).attr("action", "/listings/"+$(".listing.active").data("listing") + '/');
+            });
+        });
+        </script>
+    </body>
+</html>

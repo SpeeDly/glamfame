@@ -1,0 +1,43 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Home" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+    {% block title %}
+        <a href="/" style="display: inline-block;"><img src="{{STATIC_URL}}img/logo.png" alt="{{listing.title}}" width="123" height="37" style="margin-top: 10px;"></a>
+    {% endblock title %}
+
+    {% block content %}
+
+    <div class="column">
+        <a href="{% url 'hair' %}" class="home hair"><div class="overlay"></div><div class="new_button white">{% trans "Hair" %}</div></a>
+        <a href="{% url 'make_up' %}" class="home makeup"><div class="overlay"></div><div class="new_button white">{% trans "Make Up" %}</div></a>
+        <a href="{% url 'nails' %}" class="home nails"><div class="overlay"></div><div class="new_button white">{% trans "Nails" %}</div></a>
+    </div>
+
+    {% endblock content %}
+    {% block scripts %}
+    <script>
+    $(document).ready(function(){
+        function fixImages(){
+            var w = $(document).width();
+            var h = $(document).height();
+            h = h - 50;
+            var $home = $(".column .home");
+            $home.height(h/3).find(".overlay").height(h/3).width(w).end().find("div.new_button").css({"top": h/6-20, "left": w/2-70});
+        }
+        fixImages();
+        $( window ).resize(function() {
+            fixImages();
+        });
+    })
+    </script>
+    {% endblock scripts %}
+</body>
+</html>

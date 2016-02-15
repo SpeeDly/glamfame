@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Salon Settings" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+        {% trans "Settings" %}
+    {% endblock title %}
+
+    {% block content %}
+        {% block msg %}
+
+        {% endblock msg %}
+    <div class="column">
+        <ul class="settings head">
+            <li{% if 'profile' in request.path %} class="active"{% endif %}><a href="{% url 'salons_edit' %}">{% trans "PROFILE" %}</a></li>
+<!--             <li><a href="{% url 'edit_salons_account' %}"{% if 'account' in request.path %} class="active"{% endif %}>ACCOUNT</a></li>
+            <li><a href="{% url 'salons_payments' %}"{% if 'payments' in request.path %} class="active"{% endif %}>PAYMENTS</a></li> -->
+            <li{% if 'artists' in request.path %} class="active"{% endif %}><a href="{% url 'salons_artists' %}">{% trans "ARTISTS" %}</a></li>
+<!--             <li><a href="{% url 'salons_cancellation_policy' %}"{% if 'policy' in request.path %} class="active"{% endif %}>POLICY</a></li>
+            <li><a href="{% url 'salons_photos' %}"{% if 'gallery' in request.path %} class="active"{% endif %}>PHOTOS</a></li> -->
+        </ul>
+        {% block settings %}
+        {% endblock settings %}
+    </div>
+
+    {% endblock content %}
+</body>
+</html>

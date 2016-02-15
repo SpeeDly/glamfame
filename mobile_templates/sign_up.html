@@ -1,0 +1,55 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Sign Up" %}</title>
+{% endblock meta %}
+    
+    {% block title %}
+        {% trans "Select profile" %}
+    {% endblock title %}
+
+    {% block content %}
+
+    <div class="column">
+        <div id="who_you_are">
+            <a href="/users/sign_up">
+                <div><div class="profile"></div></div>
+                <ul>
+                    <li class="title">{% trans "Beauty Seeker" %}</li>
+                    <li class="content">
+                        {% blocktrans %}
+                        You will be able to find top beauty artists and directly book the styles they offer. You may also follow the artists you like and get the latest feed with their work.
+                        {% endblocktrans %}
+                    </li>
+                </ul>
+            </a>
+            <a href="/artists/sign_up?step=1">
+                <div><div class="artist"></div></div>
+                <ul>
+                    <li class="title">{% trans "Beauty Artist" %}</li>
+                    <li class="content">
+                        {% blocktrans %}
+                        You may upload your work and attract new custommers. In addition, you will get a website, booking management tool appointment calendar and statistics. And yes, it`s FREE.
+                        {% endblocktrans %}
+                    </li>
+                </ul>
+            </a>
+            <a href="/salons/sign_up?step=1">
+                <div><div class="salon"></div></div>
+                <ul>
+                    <li class="title">{% trans "Beauty Salon" %}</li>
+                    <li class="content">
+                        {% blocktrans %}
+                        You may add multiple artists, manage their schedules, upload their listings and review statistics of their purformance. Of course. you will get a website for your salon. FREE Forever.
+                        {% endblocktrans %}
+                    </li>
+                </ul>
+            </a>
+        </div>
+    </div>
+
+    {% endblock content %}
+    {% block scripts %}
+
+    {% endblock scripts %}

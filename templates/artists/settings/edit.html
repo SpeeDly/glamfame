@@ -1,0 +1,128 @@
+{% extends "artists/settings.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+
+    {% block settings %}
+        <form method="POST" action="{{ request.get_full_path }}" id="settings" enctype="multipart/form-data">
+            {% csrf_token %}
+            <ul class="settings">
+                <li class="profile_picture">
+                    <ul>
+                        <li class="avatar">
+                            <div>
+                                {% thumbnail artist.get_avatar "150x150" crop="center" as im %}
+                                    <img src="{{ im.url }}" width="150" height="150">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" width="150" height="150">
+                                {% endthumbnail %}
+                            </div>
+                        </li>
+                        <li>
+                            <div class="small_button gray change hidden">{% trans "Change" %}</div>
+                            {{ form.avatar }}
+                            {{ form.cropped_image }}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="left">
+                        <li class="name">
+                            <label for="" class="main_label">
+                                {% if form.name.errors %}
+                                    {{ form.name.errors }}
+                                {% endif %}
+                                {% trans "Name" %}
+                            </label>
+                            {{ form.name }}
+                        </li>
+                        <li class="number">
+                            <label for="" class="main_label">
+                            {% if form.mobile_number.errors %}
+                                {{ form.mobile_number.errors }}
+                            {% endif %}
+                            {% if form.enable_sms.errors %}
+                                {{ form.enable_sms.errors }}
+                            {% endif %}
+                            {% trans "Phone" %}
+                            </label>
+                            {{ form.mobile_number }}
+                        </li>
+                        <li class="style">
+                            <label for="" class="main_label">
+                            {% trans "Style" %}
+                        </label>
+                            {% if form.style.errors %}
+                                {{ form.style.errors }}
+                            {% endif %}
+                            {{ form.style }}
+                        </li>
+                        <li class="address">
+                            <label for="" class="main_label">
+                            {% if form.address.errors %}
+                                {{ form.address.errors }}
+                            {% endif %}
+                            {% trans "Address" %}
+                            </label>{{ form.lat }}{{ form.lng }}
+                            {{ form.address }}
+                        </li>
+                        <li class="description"><label for="" class="main_label">{% trans "Description" %}</label>
+                            {% if form.description.errors %}
+                                {{ form.description.errors }}
+                            {% endif %}
+                            {{ form.description }}
+                        </li>
+                        <li class="notifications">
+                            <label for="" class="main_label">{% trans "Notifications" %}</label>
+                            <ul>
+                                <li>
+                                    {{ form.enable_emails }}
+                                    <label for="id_enable_emails" class="main_label">
+                                    {% blocktrans %}
+                                        Receive notifications for booking request and other activities via email</label>
+                                    {% endblocktrans %}
+                                </li>
+                                <li>
+                                    {{ form.enable_sms }}
+                                    <label for="id_enable_sms" class="main_label">
+                                    {% blocktrans %}
+                                        Receive notifications for booking request and other activities via text messages</label>
+                                    {% endblocktrans %}
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="setting_buttons">
+                            <div class="small_button gray edit">{% trans "Edit" %}</div>
+                            <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                            <input type="submit" value="Save" class="small_button green save hidden">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </form>
+    {% endblock settings %}
+
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script src="{{STATIC_URL}}js/preview.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/imgSelectArea.js"></script>
+        <script src="{{STATIC_URL}}js/select2.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script src="{{STATIC_URL}}js/settings.js"></script>
+    {% endblock scripts %}

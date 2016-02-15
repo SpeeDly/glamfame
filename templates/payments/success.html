@@ -1,0 +1,34 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Success Payment" %}</title>
+{% endblock meta %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "GREAT" %}</span>
+    </div>
+
+    <div class="column">
+        <div class="paypal_land">
+            <div class="success">
+                <div class="icon ok"></div>
+                {% blocktrans %}
+                Your payment has been succesfully proccessed.
+                {% endblocktrans %}
+            </div>
+            <div class="info">
+                {% blocktrans %}
+                You can view all your appointments
+                {% endblocktrans %}
+                {% if request.user.related_with == 'profiles' %}<a href="{% url 'profiles_bookings' %}">{% trans "here" %}</a>{% endif %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock content %}
+</body>
+</html>

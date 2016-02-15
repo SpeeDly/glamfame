@@ -1,0 +1,156 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Upload Listing" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+    <link href="https://www.cropzoom.com.ar/demo/" rel="canonical">
+{% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "ADD NEW STYLE" %}</span>
+    </div>
+    <div class="column">
+        <form  class="login listing_upload" method="POST" enctype="multipart/form-data" data-fee="{{ fee }}">
+            {% csrf_token %}
+            <div class="left_wrapper">
+                <div class="vertical_box photos">
+                    <div class="box_title">{% trans "1. Photos" %}</div>
+                    <div class="body">
+                        <div id="gallery_preview" class="multiple_listing">
+                            <ul>
+
+                            </ul>
+                        </div>
+                        <div class="photos_upload">
+                            {% if form.cover.errors %}
+                                <div class="wrong_picture">{{ form.cover.errors }}</div>
+                            {% endif %}
+                            <div class="upload_button">{% trans "Click here to upload picture" %}</div>
+                            <input type="file" name="pictures" id="id_picture" class="custom_button active_input" multiple/>
+                            {{ form.cover }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vertical_box price">
+                    <div class="box_title">{% trans "2. Price" %}</div>
+                    <div class="body">
+                        <div class="price"><label for="" class="main_label">
+                            {% if form.price.errors %}
+                                {{ form.price.errors }}
+                            {% endif %}
+                            {% trans "Price" %}</label><br>
+                            <span class="currency">{{ request.user.salon.get_currency_display }}</span>
+                            {{ form.price }}
+                        </div>
+                        <div class="recalculate">
+                            {% blocktrans %}
+                            Price after fees: {{ request.user.salon.get_currency_display }}<span class="real_price">0</span><br><br>
+                            All fees will be paid by the customer.
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vertical_box description">
+                <div class="box_title">{% trans "3. Description" %}</div>
+                <div class="body">
+                    <ul>
+                        <li class="label_container"><label for="" class="main_label">
+                            {% if form.artist.errors %}
+                                {{ form.artist.errors }}
+                            {% endif %}
+                            {% trans "Artist" %}</label></li>
+                        <li class="artist_dropdown">
+                            {{ form.artist }}
+                        </li>
+                        <li class="label_container"><label for="" class="main_label">
+                            {% if form.title.errors %}
+                                {{ form.title.errors }}
+                            {% endif %}
+                            {% trans "Title" %}</label></li>
+                        <li>
+                            {{ form.title }}
+                        </li>
+                        <li class="label_container"><label for="" class="main_label">
+                            {% if form.description.errors %}
+                                {{ form.description.errors }}
+                            {% endif %}
+                            {% trans "Description" %}</label></li>
+                        <li>
+                            {{ form.description }}
+                        </li>
+                        <li class="label_container duration_gender">
+                            <div class="duration">
+                                <label for="" class="main_label">
+                                {% if form.duration.errors %}
+                                    {{ form.duration.errors }}
+                                {% endif %}
+                                {% trans "Duration" %}</label>{{ form.duration }}
+                            </div>
+                            <div class="gender">
+                                <label for="" class="main_label">
+                                {% if form.gender.errors %}
+                                    {{ form.gender.errors }}
+                                {% endif %}{% trans "Type" %}</label>
+                                {{ form.gender }}
+                            </div>
+                        </li>
+                        <li class="clear"></li>
+                        <li class="label_container"><label for="" class="main_label">
+                            {% if form.tags.errors %}
+                                {{ form.tags.errors }}
+                            {% endif %}
+                            {% trans "Tags" %}</label></li>
+                        <li class="tags">
+                            {{ form.tags }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <input type="submit" class="custom_button" value="{% trans 'Save' %}">
+        </form>
+    </div>
+</div>
+
+    {% endblock content %}
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/select2.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/upload_listing.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#id_style').select2({
+            minimumResultsForSearch: "3",
+            containerCssClass: "location_select2"
+        });
+
+            $('#id_artist').select2({
+                minimumResultsForSearch: "3",
+            });
+
+            $('#id_duration').select2({
+                minimumResultsForSearch: "3",
+                dropdownCssClass: "small",
+            });
+
+
+            // $('#id_tags').select2({
+            //     tags:[],
+            //     tokenSeparators: [",", " "],
+            //     containerCssClass: 'tags',
+            // });
+        })
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

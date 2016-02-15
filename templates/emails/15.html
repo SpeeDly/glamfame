@@ -1,0 +1,28 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+    
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with receiver_name=receiver_name artistname=artistname link=link %}
+                <p>Greetings {{ receiver_name }},</p>
+                <p>
+                    Did you enjoy your appointment with {{ artistname }}?
+                </p>
+                <p>Please click on the button below and share your experience with us. Your feedback is important!</p>
+                <p><a href="{{ link }}">Feedback Link</a></p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </body>
+
+</html>

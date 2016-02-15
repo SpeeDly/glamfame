@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>Glamfame – Booking platform for top salons and beauty artists - Success Payment</title>
+{% endblock meta %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>OH, NO !</span>
+    </div>
+
+    <div class="column">
+        <div class="paypal_land">
+            <div class="error">
+                <div class="error"></div>
+                ERROR 404
+            </div>
+            <div>
+                <img src="{{ STATIC_URL }}img/big_scissor.png" alt="scissor">
+            </div>
+            <div class="info">
+                Something went wrong !
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock content %}
+</body>
+</html>

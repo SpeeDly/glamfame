@@ -1,0 +1,52 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Sign Up" %}</title>
+{% endblock meta %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "SIGN UP" %}</span>
+    </div>
+
+    <div class="column">
+        <div id="who_you_are" class="forms">
+            <span>{% trans "SELECT YOUR PROFILE" %}</span>
+            <a href="/users/sign_up">
+                <div><div class="profile"></div></div>
+                <ul>
+                    <li class="title">{% trans "Beauty Seeker" %}</li>
+                    <li class="content">
+                        {% blocktrans %}You will be able to find top beauty artists and salons and book directly their listings. You can also follow your favorite artists and receive their latest work feeds.{% endblocktrans %}
+                    </li>
+                </ul>
+            </a>
+            <a href="/artists/sign_up?step=1">
+                <div><div class="artist"></div></div>
+                <ul>
+                    <li class="title">{% trans "Beauty Artist" %}</li>
+                    <li class="content">
+                        {% blocktrans %}You can upload your latest works and attract new customers. In addition, you receive: virtual portfolio, acting as your own website, booking management tools, on-line calendar and statistics diagram. No fees, it's for FREE.{% endblocktrans %}
+                    </li>
+                </ul>
+            </a>
+            <a href="/salons/sign_up?step=1">
+                <div><div class="salon"></div></div>
+                <ul>
+                    <li class="title">{% trans "Beauty Salon" %}</li>
+                    <li class="content">
+                        {% blocktrans %}Add description of your salon, add beauty artists, manage their schedules, bookings and listings in one booking management platform, that acts as your own website. Boost your sales, create new image! It's FREE of charge.{% endblocktrans %}
+                    </li>
+                </ul>
+            </a>
+        </div>
+    </div>
+</div>
+    {% endblock content %}
+    {% block scripts %}
+
+    {% endblock scripts %}
+</body>
+</html>

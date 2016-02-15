@@ -1,0 +1,569 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>
+        {% trans "Glamfame – Booking platform for top salons and beauty artists - " %}{% if request.path|cut:"/"|upper == "MAKE_UP" %} MAKE UP {% else %} {{request.path|cut:"/"|upper}} {% endif %}
+    </title>
+{% endblock meta %}
+
+    {% block stylesheets %}
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/slider.css"/>
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/default.css">
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/default.date.css">
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/default.time.css">
+    {% endblock stylesheets %}
+
+    {% block title %}
+        {% trans "Search" %}
+    {% endblock title %}
+
+    {% block content %}
+    <div id="service">
+        <div class="head">
+            <div class="filters">{% trans "Filters" %}</div>
+            <div class="c_show">
+                <div class="l_show active"><span class="icon list"></span></div>
+                <div class="m_show"><span class="icon map"></span></div>
+                <input type="hidden" id="id_lat">
+                <input type="hidden" id="id_lng">
+            </div>
+        </div>
+        <div id="map_view" class="hidden"></div>
+        <ul class="gallery">
+            {% for listing in listings %}
+            <li class="pic_view" data-lat="{{ listing.lat }}" data-lng="{{ listing.lng }}" data-listingid="{{ listing.id }}">
+            <a href="{% url 'listing' listing.id listing.title %}">
+                <ul>
+                    <li class="picture">
+                        {% thumbnail listing.picture "98x65" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="{{listing.title}}" width="98" height="65">
+                        {% empty %}
+                            <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="image not found" width="98" height="65">
+                        {% endthumbnail %}
+                    </li>
+                    <li class="text">
+                        <p class="title" data-title="{{ listing.title }}">{{ listing.title }}</p>
+                        <p>{{ listing.comments }} {% trans "comments" %}</p>
+                        <p>{{ listing.likes }} {% trans "likes" %}</p>
+                    </li>
+                    <li class="price">
+                        <div>{{ listing.currency }} {{ listing.price|floatformat:-3 }}</div>
+                    </li>
+                </ul>
+            </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock content %}
+
+    {% block scripts %}
+    <div id="top_slider" class="hidden">
+        <div class="filters_box">
+            <div class="title">{% trans "Filters" %}</div>
+            <ul>
+                <li class="filter date_range">
+                    <div class="title">{% trans "Date and Time" %}</div>
+                    <div class="content">
+                        <div id="datepicker" class="datapicker_1" data-indexnumber="1">
+                            <a id="id_date" href="#">
+                            <ul>
+                                <li class="datepicker"></li>
+                                <li class="date_preview"><span>{% trans 'Please select date' %}</span></li>
+                            </ul>
+                            </a>
+                        </div>
+                        <div id="datepicker" class="datapicker_2" data-indexnumber="2">
+                            <input type="hidden" id="end_datepicker">
+                            <a id="id_time" href="javascript:;">
+                            <ul>
+                                <li class="timepicker"></li>
+                                <li class="date_preview"><span>{% trans "Please select time" %}</span></li>
+                            </ul>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="filter price">
+                    <div class="title">{% trans "Price Range" %}</div>
+                    <div class="content">
+                        <p>
+                            <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+                        </p>
+                        <div id="slider-range"></div>
+                        <ul>
+                            <li class="price start_price"></li>
+                            <li class="separator"></li>
+                            <li class="price end_price"></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="filter rating">
+                    <div class="title">{% trans "Rating" %}</div>
+                    <div class="content">
+                    <ul>
+                        <li>
+                            <label for="radio_5"></label><input type="radio" id="radio_5" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="5" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div></li>
+                        <li>
+                            <label for="radio_4"></label><input type="radio" id="radio_4" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="4" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>& {% trans "Up" %}</li>
+                        <li>
+                            <label for="radio_3"></label><input type="radio" id="radio_3" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>& {% trans "Up" %}</li>
+                        <li>
+                            <label for="radio_2"></label><input type="radio" id="radio_2" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="2" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>& {% trans "Up" %}</li>
+                        <li>
+                            <label for="radio_1"></label><input type="radio" id="radio_1" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="1" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>& {% trans "Up" %}</li>
+                    </ul>
+                    </div>
+                </li>
+                <li class="filter tags">
+                    <div class="title">{% trans "Tags" %}</div>
+                    <div class="content">
+                        <input type="text" id="tag" placeholder="{% trans 'Enter tag' %}">
+                        <div class="blue_button">{% trans "Add" %}</div>
+                        <div class="inserted_tags">
+                        </div>
+                    </div>
+                </li>
+                <li class="controllers">
+                    <div class="new_button green nb_hover apply">{% trans "Apply" %}</div>
+                    <div class="new_button red nb_hover cancel">{% trans "Cancel" %}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://j.maxmind.com/app/geoip.js"></script>
+    <script src="{{ STATIC_URL }}js/ui.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script src="{{STATIC_URL}}js/picker.js"></script>
+    <script src="{{STATIC_URL}}js/picker.date.js"></script>
+    <script src="{{STATIC_URL}}js/picker.time.js"></script>
+    <script>
+
+    var $timepicker = $("#id_time").pickatime({
+        min: [7,0],
+        max: [20,0],
+        onSet: function(context){
+            if($timepicker.val()){
+                $timepicker.find(".date_preview").text($timepicker.val())
+            }
+        }
+    })
+
+    var $datapicker = $("#id_date").pickadate({
+        format: 'mm/dd/yy',
+        min: "0",
+        max: 14,
+        onSet: function(context){
+            if($datapicker.val()){
+                $datapicker.find(".date_preview").text($datapicker.val())
+            }
+        }
+    })
+
+    $('#service .filters').click(function(){
+        $("#content").hide(1000);
+        var $slide = $('#top_slider');
+        $slide.removeClass("hidden");
+        $slide.stop().animate({
+                height: '100%',
+            }, 1000)
+    });
+
+    $('#top_slider .new_button.cancel').click(function(){
+        $("#content").show(1000);
+        var $slide = $('#top_slider');
+        $slide.stop().animate({
+                height: '0%',
+            }, 1000, function(){$slide.addClass("hidden");})
+    });
+    // First we will design how the page will looks like, and then everything else.
+    $(".c_show>div").click(function(){
+        $(this).parent().children().removeClass("active");
+        $(this).addClass("active");
+
+        if($(this).hasClass("m_show")){
+            $("#map_view").removeClass("hidden");
+            $(".gallery").addClass("hidden");
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(coords);
+        }
+        else{
+            $("#map_view").addClass("hidden");
+            $(".gallery").removeClass("hidden");
+        }
+    });
+
+    var map;
+    var coords;
+    function draw_map_with_listings(lat,lng){
+        $("#id_lat").val(lat);
+        $("#id_lng").val(lng);
+        var map_canvas = document.createElement('div');
+        map_canvas.id = 'map';
+        map_canvas.style.height = '1120px';
+        map_canvas.style.width = '100%';
+
+        document.getElementById('map_view').appendChild(map_canvas);
+
+        coords = new google.maps.LatLng(lat, lng);
+
+        var options = {
+            zoom: 17,
+            center: coords,
+            mapTypeControl: false,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), options);
+
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title:"You are here!",
+            animation: google.maps.Animation.DROP,
+        });
+
+        $(".pic_view").each(function(){
+            var coords_2 = new google.maps.LatLng(parseInt($(this).data("lat")), parseInt($(this).data("lng")));
+            // eval("var marker_" + $(this).data("listingid")) = new google.maps.Marker({
+            //     position: coords_2,
+            //     map: map,
+            //     title:"You are here!",
+            // });
+
+            var marker_2 = new google.maps.Marker({
+                position: coords_2,
+                map: map,
+                title:"You are here!",
+            });
+        });
+    }
+
+    //ratings
+    $(".rating input[type=radio]").change(function(){
+        $(this).closest(".rating").find("label").removeClass("active");
+        $(this).parent().find("label").addClass("active");
+    });
+
+    // start change address
+    var geo_lat, geo_lng;
+    var _lat = getUrlVars()["lat"];
+    var _lng = getUrlVars()["lng"];
+    if(!_lat){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, fail,{timeout:2000});
+        } else {
+            fail();
+        }
+        $('.filter a.blue_button').click(function(){
+
+        $('.check_map').show();
+        draw_map(geo_lat, geo_lng);
+    });
+    }
+    else{
+        get_address(_lat, _lng);
+        draw_map_with_listings(_lat, _lng);
+        $('.filter a.blue_button').click(function(){
+            $('.check_map').show();
+            draw_map(_lat, _lng);
+        });
+    }
+
+    function success(position) {
+
+        geo_lat = position.coords.latitude;
+        geo_lng = position.coords.longitude;
+        get_address(geo_lat,geo_lng);
+        draw_map_with_listings(geo_lat, geo_lng);
+    }
+
+    function fail(){
+
+        geo_lat = geoip_latitude();
+        geo_lng = geoip_longitude();
+        get_address(geo_lat,geo_lng);
+        draw_map_with_listings(geo_lat, geo_lng);
+    }
+
+    function close_map(){
+        $('.check_map').hide();
+    }
+
+    $('.check_map').click(function(e){
+        if($(e.target).hasClass('check_map'))
+            $(this).hide()
+    })
+
+    function draw_map(lat, lng){
+        var map_canvas = document.createElement('div');
+        map_canvas.id = 'map_canvas';
+        map_canvas.style.height = '100%';
+        map_canvas.style.width = '100%';
+
+        document.getElementById('change_location').appendChild(map_canvas);
+
+        var coords_1 = new google.maps.LatLng(lat, lng);
+
+        var options = {
+            zoom: 17,
+            center: coords,
+            mapTypeControl: false,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map_1 = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+        var marker = new google.maps.Marker({
+            position: coords_1,
+            map: map_1,
+            draggable:true,
+            title:"You are here!",
+            animation: google.maps.Animation.DROP,
+        });
+
+        google.maps.event.addListener(map_1, 'click', function(event) {
+            marker.setPosition(event.latLng);
+        });
+
+        $('.save_location').click(function(){
+            geo_lat = marker.getPosition().lat();
+            geo_lng = marker.getPosition().lng();
+            get_address(geo_lat, geo_lng);
+            close_map();
+            $("#id_lat").val(geo_lat);
+            $("#id_lng").val(geo_lng);
+            apply_changes()
+        });
+    }
+
+    function get_address(lat,lng){
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat +
+         ',' + lng + '&sensor=false',
+        function(data){
+            $('.filter .address').text(data.results['0']['formatted_address']);
+        });
+    }
+
+//data picker
+    hours = ['8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM']
+
+
+    //tag system
+    $('.tags .blue_button').click(function(e){
+        $this = $('#tag')
+        console.log($this);
+        if($this.val() != ""){
+            current_text = $this.val()
+            $this.parent().find('.inserted_tags')
+            .append('<li class="tag_me"><div>' + current_text + '</div><a class="tag-close" href="javascript:;"></a></li>');
+            $this.val("");
+        }
+    });
+
+    $(".inserted_tags").on("click", ".tag-close" ,function(){
+        $(this).parent().remove();
+    });
+
+    // autofill the forms with the parameters in the url
+
+    //date
+    if (window.location.search.indexOf('date') != -1 && getUrlVars()["date"] && getUrlVars()["date"] != "0" &&  getUrlVars()["date"] != "NaN"){
+        var d = parseInt(getUrlVars()["date"]);
+        var formated_date = moment(d*1000).format('DD/MM/YY')
+        $(".datapicker_1 .date_preview").text(formated_date);
+        $datapicker.pickadate('picker').set("select", d);
+    }
+
+    //hour
+    if (window.location.search.indexOf('hour') != -1 && getUrlVars()["hour"] && getUrlVars()["hour"] != "-1"){
+        var h_index = parseInt(getUrlVars()["hour"]);
+        $("#id_time").pickatime('picker').set('select', [h_index])
+        var h = hours[h_index]
+        $(".datapicker_2 .date_preview").text(h);
+    }
+
+    // tags
+    if (window.location.search.indexOf('tags') != -1 && getUrlVars()["tags"]){
+        tags = getUrlVars()["tags"].split(',')
+        for (var i = 0; i < tags.length; i++) {
+            $('.inserted_tags').append('<li class="tag_me"><div>' + tags[i] + '</div><a class="tag-close" href="javascript:;"></a></li>');
+        };
+    }
+    else{
+        values = [0,500]
+    }
+
+    //budget
+    $(function() {
+        if (window.location.search.indexOf('budget') != -1 && getUrlVars()["budget"]){
+            values = getUrlVars()["budget"].split('-')
+        }
+        else{
+            values = {{ price_list }}
+        }
+
+        $( "#slider-range" ).slider({
+            range: true,
+            min: {% if price_list.0 %} {{ price_list.0 }} > parseInt(values[0]) ? parseInt(values[0]) : {{ price_list.0 }} {% else %} parseInt(values[0]) {% endif %},
+            max: {% if price_list.1 %} {{ price_list.1 }} < parseInt(values[1]) ? parseInt(values[1]) : {{ price_list.1 }} {% else %} parseInt(values[1]) {% endif %},
+            values: [ parseInt(values[0]), parseInt(values[1]) ],
+            slide: function( event, ui ) {
+                $( "#amount" ).val( ui.values[ 0 ] + "-" + ui.values[ 1 ] );
+                $( "ul .start_price" ).text("$" + ui.values[ 0 ]);
+                $( "ul .end_price" ).text("$" + ui.values[ 1 ]);
+            },
+            change: function( event, ui ) {
+                $( "#amount" ).val( ui.values[ 0 ] + "-" + ui.values[ 1 ] );
+                $( "ul .start_price" ).text("$" + ui.values[ 0 ]);
+                $( "ul .end_price" ).text("$" + ui.values[ 1 ]);
+            },
+            stop: function( event, ui ) {
+                // apply_changes()
+            }
+        });
+
+        $( "ul .start_price" ).text("$" + $( "#slider-range" ).slider( "values", 0 ));
+        $( "ul .end_price" ).text("$" + $( "#slider-range" ).slider( "values", 1 ));
+        $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + "-" + $( "#slider-range" ).slider( "values", 1 ) );
+    });
+
+    //rating
+    if (window.location.search.indexOf('rating') != -1 && getUrlVars()["rating"]){
+        var r = getUrlVars()["rating"];
+        $("#radio_"+r).closest(".rating").find("label").removeClass("active");
+        $("#radio_"+r).parent().find("label").addClass("active");
+    }
+
+    getUrlVars()["q"]
+
+    function apply_changes(){
+        data = {}
+        data["lat"] = $("#id_lat").val();
+        data["lng"] = $("#id_lng").val();
+        data["budget"] = $("#amount").val();
+        var temp_date = $datapicker.val().split('/');
+        data["date"] = new Date("20" + temp_date[2], temp_date[1],  temp_date[0]).getTime()/1000;
+        data["hour"] = $timepicker.val() ? hours.indexOf($timepicker.val()) : "-1";
+        data["gender"] = 1;
+        data["rating"] = $("input[type=radio]:checked")[0] == undefined ? "" :$("input[type=radio]:checked").attr("id").split("_")[1];
+
+        all_tags = $('.inserted_tags .tag_me div');
+        tags = [];
+        for (var i = 0; i<all_tags.length; i++) {
+            tags.push(all_tags.eq(i).text());
+        };
+
+        data["tags"] = tags;
+        // data["sorted_by"] = $("li.sort").find("li.active").data("order");
+
+        pathname = window.location.pathname;
+
+        if(pathname != '/result/'){
+            data["q"] = pathname.split("/")[1].replace("_", " ");
+        }
+        else{
+            data["q"] = getUrlVars()["q"];
+        }
+
+        new_location = '/result/?q=' + data['q'];
+        new_location += '&lat=' + data['lat'];
+        new_location += '&lng=' + data['lng'];
+        new_location += '&budget=' + data['budget'];
+        new_location += '&gender=' + data['gender'];
+        new_location += '&date=' + data['date'];
+        new_location += '&hour=' + data['hour'];
+        new_location += '&rating=' + data['rating'];
+        new_location += '&tags=' + data['tags'].join();
+        // new_location += '&sorted_by=' + data['sorted_by']
+        window.location.href = new_location;
+    }
+
+// reset options
+
+    //date
+    $(".date_range .reset").click(function(){
+        $('.date_range .datapicker_1, .date_range .datapicker_2').find(".date_preview").html("<span>{% trans 'Please select date' %}</span>");
+    });
+
+    //range
+    $(".budget .reset").click(function(){
+        var $s = $('#slider-range')
+        $s.slider({values: [$s.slider("option", "min"), $s.slider("option", "max")]});
+    });
+
+    //ratings
+    $(".ratings .reset").click(function(){
+        $(".ratings input[type='radio']").removeAttr('checked');
+        $(".ratings label").removeClass("active");
+    });
+
+    $("#top_slider .new_button.apply").click(function(){apply_changes();});
+
+    function truncate_title(){
+        var $title = $(".pic_view .title");
+        if($title.width()<210){
+            $title.text(function(){
+                var text = $(this).data("title");
+                if(text.length > 16){
+                    text = text.substring(0, 16) + '...';
+                }
+                return text;
+            });
+        }
+        else if($title.width()<250){
+            $title.text(function(){
+                var text = $(this).data("title");
+                if(text.length > 27){
+                    text = text.substring(0, 24) + '...';
+                }
+                return text;
+            });
+        }
+        else if($title.width()<400){
+            $title.text(function(){
+                var text = $(this).data("title");
+                if(text.length > 35){
+                    text = text.substring(0, 32) + '...';
+                }
+                return text;
+            });
+        }
+        else if($title.width()<520){
+            $title.text(function(){
+                var text = $(this).data("title");
+                if(text.length > 58){
+                    text = text.substring(0, 55) + '...';
+                }
+                return text;
+            });
+        }
+        else{
+            $title.text(function(){
+                var text = $(this).data("title");
+                return text;
+            });
+        }
+    }
+    $(window).resize(function () { truncate_title()});
+
+    </script>
+    {% endblock scripts %}
+    </body>
+</html>

@@ -1,0 +1,1032 @@
+"location","source","target"
+"glamazer/settings.py:18","English",""
+"glamazer/settings.py:19","Bulgarian",""
+"glamazer/settings.py:20","Russian",""
+"glamazer/settings.py:37","{name} sent you a booking request ","{name} Ви изпрати заявка за резервация"
+"glamazer/settings.py:38","{name} accepted your booking request. ","{name} прие Вашата резервация."
+"glamazer/settings.py:39","{name} declined your booking request. ","{name} отказа заявката Ви за резервация."
+"glamazer/settings.py:40","{name} cancelled your appointment. ","{name} отмени уговорения Ви час."
+"glamazer/settings.py:41","{name} cancelled an appointment. ","{name} отмени уговорен час."
+"glamazer/settings.py:42 glamazer/settings.py:85","We just transferred $ {amount} to your bank account. ","Току що прехвърлихме $ {amount} в банковата Ви сметка."
+"glamazer/settings.py:43","{name} started following you. ","{name} стана Ваш последовател."
+"glamazer/settings.py:44","{name} added a listing of yours in wishlist. ","{name} добави офертата Ви към списъка си с желания"
+"glamazer/settings.py:45","{name} reviewed your listing. ","{name} прегледа Вашата оферта."
+"glamazer/settings.py:46","{name} uploaded new listing.","{name} качи нова оферта."
+"glamazer/settings.py:47","Congrats! Your listing was approved.","Поздравления! Офертата Ви е одобрена."
+"glamazer/settings.py:48","Your listing was rejected. Try again.","Офертата Ви не бе одобрена.Опитайте отново."
+"glamazer/settings.py:49 glamazer/settings.py:70","{name} wants to join your team.","{name} иска да се присъедини към екипа Ви."
+"glamazer/settings.py:50 glamazer/settings.py:71","{name} wants to suspend his membership.","{name} желае да прекрати членството си."
+"glamazer/settings.py:51 glamazer/settings.py:72","{name} approved your membership.","{name} одобри молбата Ви за членство."
+"glamazer/settings.py:52 glamazer/settings.py:73","{name} declined your membership.","{name} отказа молбата Ви за членство."
+"glamazer/settings.py:53 glamazer/settings.py:74","Your suspension request has been approved.","Молбата Ви за прекратяване на членство е одобрена."
+"glamazer/settings.py:54 glamazer/settings.py:75","Your suspension request has been declined.","Молбата Ви за прекратяване на членство е отказана."
+"glamazer/settings.py:58","<a href=""/users/profile/{id}"">{name}</a> sent you a booking request for <a href=""/listings/{listing_id}"">{title}</a>. Manage your booking requests from <a href=""/artists/bookings"">here</a> ","<a href=”/users/profile/{id}”>{name}</a> Ви изпрати заявка за резервация <a href=”/listings/{listing_id}”>{title}</a>. Управлявайте заявките за резервации от <a href=”/artists/bookings”>тук</a>"
+"glamazer/settings.py:59","<a href=""/artists/profile/{id}"">{name}</a> accepted your booking request for <a href=""/listings/{listing_id}"">{title}</a>. View all your appointments <a href=""/users/bookings"">here</a>. ","<a href=”/artists/profile/{id}”>{name}</a> прие заявката Ви за резервация за <a href=”/listings/{listing_id}”>{title}</a>. Вижте всичките си уговорени часове<a href=""/users/bookings"""">тук</a>."""
+"glamazer/settings.py:60","<a href=""/artists/profile/{id}"">{name}</a> declined your booking request for <a href=""/listings/{listing_id}"">{title}</a>. Click <a href=""/listings/{listing_id}"">here</a> to schedule appointment for a different hour. ","<a href=”/artists/profile/{id}”>{name}</a> отхвърли заявката Ви за резервация за <a href=”/listings/{listing_id}”>{title}</a>. Кликнете тук <a href=”/listings/{listing_id}”>here</a> за да заявите различен час."
+"glamazer/settings.py:61","Bad news! <a href=""/artists/profile/{id}"">{name}</a> cancelled your appointment for <a href=""/listings/{listing_id}"">{title}</a>. Your money will be refunded in 24 hours. As a little compensation from our side, your next booking will be with 5 discount from the regular price.","Лоши новини! <a href=""/artists/profile/{id}"">{name}</a> отмени уговорения Ви час за <a href=""/listings/{listing_id}"">{title}</a>. Ще получите обратно платената от Вас сума в рамките на следващите 24 часа."
+"glamazer/settings.py:62","We are sorry to inform you that <a href=""/users/profile/{id}"">{name}</a> cancelled the appointment for <a href=""/listings/{listing_id}"">{title}</a>. Please search again for alternative listings.","За съжаление трябва да Ви уведомим,че <a href=”/users/profile/{id}”>{name}</a> отмени уговорения Ви час за<a href=”/listings/{listing_id}”>{title}</a>. Моля, потърсете алтернативни оферти на сайта."
+"glamazer/settings.py:63","Hey, <a href=""/artists/profile/{id}"">{name}</a>! Good news! We just transferred $ {amount} to your bank account. View your wallet here. ","Привет, <a href=""/artists/profile/{id}"""">{name}</a>! Добри новини! Току-що прехвърлихме $ {amount} в банковата Ви сметка. Проверете състоянието на портфейла си тук."""
+"glamazer/settings.py:64","<a href=""/{type}/profile/{id}"">{name}</a> started following you. View all your followers <a href=""/artists/profile"">here</a>. ","<a href=”/{type}/profile/{id}”>{name}</a> стана Ваш последовател. Прегледайте всичките си последователи  <a href=""/artists/profile"""">тук</a>."""
+"glamazer/settings.py:65","<a href=""/{type}/profile/{id}"">{name}</a> added a listing of yours in wishlist â <a href=""/listings/{listing_id}"">{title}</a>. ",""
+"glamazer/settings.py:66","<a href=""/users/profile/{id}"">{name}</a> reviewed your listing â <a href=""/listings/{listing_id}"">{title}</a>. ",""
+"glamazer/settings.py:67","<a href=""/artists/profile/{id}"">{name}</a> uploaded new listing â <a href=""/listings/{listing_id}"">{title}</a>. Click <a href=""/listings/{listing_id}"">here</a> to check the listing. ",""
+"glamazer/settings.py:68","Congrats! Your <a href=""/listings/{listing_id}"">listing</a> was approved. You can edit it from the <a href=""/{type}/listings"">""Listings""</a> section of your profile. Observe the bookings for each listing, accept, or cancel them from the <a href=""/{type}/bookings"">""Bookings""</a> section of your profile.","Поздравления! Вашата <a href=”/listings/{listing_id}”>оферта</a> беше одобрена.Можете да я променяте от <a href=”/{type}/listings”>”Оферти”</a> секцията в профила Ви. Следете резервациите за всяка оферта,приемайте ги, или ги отхвърляйте от<a href=""/{type}/bookings"""">""""Резервации""""</a> секцията в профила ви."""
+"glamazer/settings.py:69","We are sorry. Your <a href=""/listings/{listing_id}"">listing</a> has been rejected. The reason for that may be: duplicate content, irrelevant description of the listing; or wrong price, title and tag. Review the listing, correct your data and try again.","Съжаляваме. Вашата <a href=”/listings/{listing_id}”>оферта</a> е отхвърлена. Причината може да бъде: дублирано съдържание, неподходящо описание на офертата; или грешна цена, заглавие и етикет. Прегледайте офертата, коригирайте данните и опитайте отново."
+"glamazer/settings.py:80","{name} sent you a booking request, check your bookings page. Confirm or reject it.","{name} Ви изпрати заявка за резервация. Приемете я, или я отхвърлете."
+"glamazer/settings.py:81","{name} accepted your booking request. Review your bookings: http://www.glamfame.com/users/bookings","{name} прие заявката Ви за резервация. Прегледайте заявките си тук: http://www.Glamfame.com/users/bookings"
+"glamazer/settings.py:82","{name} declined your booking request. Look up for alternative listings: http://www.glamfame.com/","{name} отказа заявката Ви за резервация. Потърсете алтернативни оферти: http://www.Glamfame.com/"
+"glamazer/settings.py:83","{name} cancelled your appointment. You will receive 100 refund.","{name} отмени уговорения Ви час. Ще получите обратно 100 от внесената сума."
+"glamazer/settings.py:84","{name} cancelled an appointment.You will receive compensation according to your cancellation policy ","{name} отмени уговорен час.Ще бъдете компенсирани според политиката Ви за отменяне на час."
+"glamazer/settings.py:86","We just transferred $ {amount} as refund to your bank account","Току-що Ви преведохме дължимата възстановителна сума от  $ {amount} на банковата Ви сметка."
+"glamazer/settings.py:91","Welcome to Glamfame!","Добре дошли в Glamfame!"
+"glamazer/settings.py:92","Forgotten Password!","Забравена парола!"
+"glamazer/settings.py:93","Hey. {username}, we miss you!","Хей. {username}, липсвате ни!"
+"glamazer/settings.py:94","Hey. {username}, we miss you even more!","Хей. {username}, много ни липсвате!"
+"glamazer/settings.py:95","Donât forget us!","Не ни забравяйте!"
+"glamazer/settings.py:96 glamazer/settings.py:99","{username} started following you!","{username} стана ваш последовател!"
+"glamazer/settings.py:97","{username} started following {artistname}!","{username} стана последовател на{artistname}!"
+"glamazer/settings.py:98","Booking request for {title}","Заявка за резервация за {title}"
+"glamazer/settings.py:100","Your booking request has been approved!","Заявката Ви за резервация е потвърдена!"
+"glamazer/settings.py:101","Your booking request has been declined!","Заявката Ви за резервация е отхвърлена!"
+"glamazer/settings.py:102","Appointment for {when} has been cancelled!","Уговорен час за {when} е отмене!"
+"glamazer/settings.py:103","We hope your appointment went well ","Надяваме се часа Ви да бил приятен и успешен"
+"glamazer/settings.py:104","{username} posted a review of {title}","{username} публикува отзив за {title}"
+"glamazer/settings.py:105","{amaunt} was transferred to your bank account ","{amaunt} беше прехвърлена на банковата Ви сметка"
+"glamazer/settings.py:106","Welcome to Glamfame! {salon_name} added you as a member of its team.","Добре дошли в Glamfame! {salon_name} Ви добави като член на екипа си."
+"glamazer/settings.py:347 glamazer/settings.py:364 glamazer/settings.py:365","User welcome message",""
+"glamazer/settings.py:348","Artist welcome message",""
+"glamazer/settings.py:349","Salon welcome message",""
+"glamazer/settings.py:350","Facebook welcome message",""
+"glamazer/settings.py:351","Forgotten password message",""
+"glamazer/settings.py:352","If not logged in after 3 days",""
+"glamazer/settings.py:353","If not logged in after 7 days",""
+"glamazer/settings.py:354","If not logged in after 14 days",""
+"glamazer/settings.py:355","Email to artist, in case of new follower",""
+"glamazer/settings.py:356","Email to artist, in case of new follower, in case he is assigned to salon",""
+"glamazer/settings.py:357","Email artist when he have new booking request",""
+"glamazer/settings.py:358","10, if he is assigned to salon",""
+"glamazer/settings.py:359","Email to the user, if the booking is approved",""
+"glamazer/settings.py:360","If booking request is rejected by artist",""
+"glamazer/settings.py:361","If booking request is declined by user, no charge",""
+"glamazer/settings.py:362","If booking request is declined by user, with charge",""
+"glamazer/settings.py:363","If booking request is cancelled by the artist, after was approved",""
+"glamazer/artists/forms.py:40 glamazer/salons/forms.py:42 glamazer/users/forms.py:41","A user associated with this email address already exists","Потребител, регистриран с този e-мейл вече съществува."
+"glamazer/artists/forms.py:50 glamazer/salons/forms.py:52 glamazer/users/forms.py:51 glamazer/users/forms.py:120","Password mismatch","Несъответствие в паролите."
+"glamazer/artists/forms.py:53 glamazer/salons/forms.py:55 glamazer/users/forms.py:54","Password is too short (6 symbols)","Паролата е твърде кратка (6 символа минимум)"
+"glamazer/artists/forms.py:56 glamazer/salons/forms.py:58 glamazer/users/forms.py:57","Password should contain at least one alphabetic and one non-alphabetic character","Паролата трябва да съдържа поне една буква и един не-буквен символ"
+"glamazer/artists/forms.py:78 glamazer/salons/forms.py:77","Enter street address","Въведете улица и номер"
+"glamazer/artists/forms.py:104 glamazer/salons/forms.py:321 glamazer/users/forms.py:146","Please enter your phone in order to receive sms.","Моля, въведете телефонен номер за sms известяване"
+"glamazer/artists/forms.py:160 glamazer/salons/forms.py:203","Enter description here.","Въведете описание тук."
+"glamazer/artists/forms.py:164 templates/service/service.html:98","Male","Мъж"
+"glamazer/artists/forms.py:164 templates/service/service.html:99","Female","Жена"
+"glamazer/artists/forms.py:178 glamazer/listings/forms.py:36 glamazer/salons/forms.py:236","Please enter a valid price.","Моля, въведете валидна цена."
+"glamazer/artists/forms.py:187","Please upload a valid image.","Моля, качете валидно изображение."
+"glamazer/artists/views.py:188","Your profile is updated.","Профилът Ви е ъпдейтнат."
+"glamazer/artists/views.py:215","Your listing %s has been successfully created and submitted for review. Your listing will go live within the next couple of hours.","Офертата Ви %s беше успешно създадена. След като бъде прегледана, ще бъде публикувана в рамките на следващите няколко часа."
+"glamazer/artists/views.py:349 glamazer/artists/views.py:359 glamazer/salons/views.py:601","Your cancellation policy have been changed.","Политиката Ви за отмяна на часове е променена"
+"glamazer/artists/views.py:354","Your request have been submited. We'll review your new policy and will get back to you in the next 2 hours.","Заявлението ви е записано и пуснато за одобрение. До 2 часа ще получите отговор от наша страна."
+"glamazer/artists/views.py:384 glamazer/salons/views.py:626","Your paypal email account have been changed successfully.","E-мейл адреса, удостоверяващ Pay Pal акаунта Ви е променен успешно."
+"glamazer/artists/views.py:387 glamazer/salons/views.py:629","Please enter a valid email address !","Моля, въведете валиден e-мейл адрес!"
+"glamazer/artists/views.py:406 glamazer/salons/views.py:648","The bank account settings are changed.","Настройките на банковата Ви сметка бяха променени успешно."
+"glamazer/artists/views.py:412 glamazer/salons/views.py:654","Please feel the boxes !","Моля, попълнете полетата!"
+"glamazer/artists/views.py:450 glamazer/salons/views.py:767","Please enter a valid amount.","Моля, въведете валидна сума."
+"glamazer/artists/views.py:468 glamazer/salons/views.py:783","You need to earn at least $30 to proceed with the withdrawal request.","Трябва да направите поне 30 долара за да продължите тегленето."
+"glamazer/artists/views.py:546","Your membership request has been sent to the salon.","Заявлението Ви за членство е изпратено към салона."
+"glamazer/artists/views.py:556","Your request for suspend from the salon was sent.","Зявлението Ви за прекратяване на членство беше изпратено към салона."
+"glamazer/core/helpers.py:313","Not a valid IBAN account No.","Невалиден IBAN."
+"glamazer/core/helpers.py:317","Wrong IBAN code length!","Невалиден IBAN."
+"glamazer/core/helpers.py:319","Wrong IBAN country code!","Невалиден IBAN."
+"glamazer/listings/views.py:60","This email is already used by a beauty artist or salon. Please submit different email address in order to continue.","Този e-мейл адрес се ползва от друг стилист или салон. За да продължите, въведете различен e-мейл адрес."
+"glamazer/salons/forms.py:228","Please upload a valid images.","Моля, качете валидно изображение."
+"glamazer/salons/forms.py:245","Please select artist.","Моля, изберете артист."
+"glamazer/salons/views.py:115","Not registered","Не сте регистриран."
+"glamazer/salons/views.py:234","Your listing %s has been successfully created and submitted for review. Your listing will go live within the nextÂ couple of hours.",""
+"glamazer/salons/views.py:464","{0} is removed successfully from your salon.","{0} e премахнат от вашият салон."
+"glamazer/salons/views.py:524","You cannot view the calendar, without have any artists.","Нямате достъп до календара си, защото нямате създадени профили на стилисти."
+"glamazer/salons/views.py:574","Please create an artist first and then you will be able to change your cancellation policy","Моля, първо въведете профил на стилист и тогава ще можете да променяте политиката си за отмяна на часове."
+"glamazer/salons/views.py:595","Your request have been submited. We'll review your custom policy and will approve or disapprove it in the next 2 hours.","Вашата заявка е пусната.Ще прегледаме създадената от Вас политика за отмяна на часове и щя я одобрим, или отхвърлим в рамките на 2 часа."
+"glamazer/salons/views.py:666","Currently you don't have any stats recorded. Please create an artist first.","За момента няма  статистика. Моля, първо създайте профил на стилист. "
+"glamazer/salons/views.py:796","You accepted {0} membership request","Приехте заявката за членство на {0}"
+"glamazer/salons/views.py:809","You declined {0} membership request.","Отхвърлихте заявката за членство на {0}"
+"glamazer/salons/views.py:819","You declined {0}'s suspension request","Отхвърлихте молбата за прекратяване на членство на {0}"
+"glamazer/users/views.py:339 glamazer/users/views.py:348","Your email has been changed.","Е-мейла Ви е променен."
+"glamazer/users/views.py:344","This email is already taken.","Този е-мейл е зает."
+"glamazer/users/views.py:350","Opss... Something went wrong.","Ухх... Нещо се обърка."
+"glamazer/users/views.py:369","Please enter valid password","Моля, вкарайте валидна парола."
+"glamazer/users/views.py:373","Your password has been changed.","Вашата парола беше променена."
+"glamazer/users/views.py:375","The password should be the same.","Паролата трябва да е същата."
+"glamazer/users/views.py:377","Please enter correct password.","Моля, въведете правилната парола."
+"glamazer/users/views.py:425","Thank you for your feedback. Your opinion is important for us !","Благодарим за обратната връзка. Мнението Ви е важно за нас!"
+"mobile_templates/404.html:5 mobile_templates/payments/error.html:5 mobile_templates/payments/success.html:5 templates/payments/success.html:5","Glamfame â Booking platform for top salons and beauty artists - Success Payment",""
+"mobile_templates/404.html:9","OH, NO !","О,НЕ !"
+"mobile_templates/404.html:17","ERROR 404","ГРЕШКА 404"
+"mobile_templates/404.html:23","Something went wrong !","Нещо се обърка."
+"mobile_templates/master.html:14 templates/master.html:16 templates/widget/widget.html:14","Glamazer","Glamazer"
+"mobile_templates/master.html:100 mobile_templates/master.html.py:110 mobile_templates/master.html:121 mobile_templates/master.html.py:133","Home","Начало"
+"mobile_templates/master.html:101 mobile_templates/master.html.py:111 mobile_templates/master.html:122 mobile_templates/master.html.py:134 mobile_templates/core/home.html:19 templates/master.html:43 templates/core/home.html:138","Hair","Коса"
+"mobile_templates/master.html:102 mobile_templates/master.html.py:112 mobile_templates/master.html:123 mobile_templates/master.html.py:135 mobile_templates/core/home.html:21 templates/master.html:44 templates/core/home.html:139","Nails","Нокти"
+"mobile_templates/master.html:103 mobile_templates/master.html.py:113 mobile_templates/master.html:124 mobile_templates/master.html.py:136 mobile_templates/core/home.html:20 templates/master.html:45 templates/core/home.html:140","Make Up","Грим"
+"mobile_templates/master.html:104 templates/master.html:86 templates/master.html.py:136 templates/master.html:185 templates/artists/management/stats.html:37 templates/salons/management/stats.html:39","Bookings","Резервации"
+"mobile_templates/master.html:105 mobile_templates/user/whishlist.html:10 templates/master.html:87 templates/listings/details.html:230 templates/user/profile.html:43","Wishlist","Списък с желания"
+"mobile_templates/master.html:106 mobile_templates/master.html.py:117 mobile_templates/master.html:129 templates/artists/settings/edit.html:91 templates/salons/artist_settings/edit_artist.html:85 templates/user/settings.html:72","Notifications","Известия"
+"mobile_templates/master.html:107 mobile_templates/master.html.py:118 mobile_templates/master.html:130 mobile_templates/user/profile.html:15 templates/master.html:85 templates/master.html.py:134 templates/master.html:183 templates/artists/profile.html:17 templates/salons/profile.html:18 templates/user/profile.html:17","Profile","Профил"
+"mobile_templates/master.html:108 mobile_templates/master.html.py:119 mobile_templates/master.html:131 templates/master.html:90 templates/master.html.py:139 templates/master.html:188 templates/master.html.py:192","Log out","Изход"
+"mobile_templates/master.html:114 mobile_templates/master.html.py:125","Add Listing","Добавяне на оферта"
+"mobile_templates/master.html:115 mobile_templates/master.html.py:127","Calendar","Календар"
+"mobile_templates/master.html:116 mobile_templates/master.html.py:128 mobile_templates/artists/wallet.html:10 templates/master.html:137 templates/master.html.py:186 templates/salons/withdraw.html:17","Wallet","Портфейл"
+"mobile_templates/master.html:126","Add Artist","Добави стилист"
+"mobile_templates/master.html:137 templates/master.html:202","Sign Up","Регистрация"
+"mobile_templates/master.html:138 mobile_templates/user/login.html:9","Login","Вход"
+"mobile_templates/sign_up.html:5 mobile_templates/artists/sign_up.html:6 mobile_templates/salons/sign_up.html:6 mobile_templates/user/sign_up.html:5 templates/sign_up.html:5 templates/artists/sign_up.html:6 templates/salons/sign_up.html:6 templates/user/sign_up.html:5","Glamfame â Booking platform for top salons and beauty artists - Sign Up",""
+"mobile_templates/sign_up.html:9","Select profile","Избери профил"
+"mobile_templates/sign_up.html:19 mobile_templates/user/profile.html:30 templates/sign_up.html:20 templates/user/profile.html:36","Beauty Seeker","Търсещ оферти"
+"mobile_templates/sign_up.html:21","                        You will be able to find top beauty artists and directly book the styles they offer. You may also follow the artists you like and get the latest feed with their work.
+                        ","Ще можете да намерите оферти на топ стилисти и да резервирате мигновено. Последвайте любимите си стилисти, за да получавате известия за най-новите им оферти."
+"mobile_templates/sign_up.html:30 templates/sign_up.html:29 templates/core/faq.html:19","Beauty Artist","Стилист"
+"mobile_templates/sign_up.html:32","                        You may upload your work and attract new custommers. In addition, you will get a website, booking management tool appointment calendar and statistics. And yes, it`s FREE.
+                        ","Можете да качите Вашите актуални оферти и да привлечете нови клиенти. Освен това получавате: виртуално портфолио и личен акаунт, играещ роля на Ваш уебсайт, инструменти за салонен мениджмънт, онлайн календар и диаграма на продажбите Ви. БЕЗПЛАТНО е."
+"mobile_templates/sign_up.html:41 templates/sign_up.html:38 templates/core/faq.html:20","Beauty Salon","Салон за красота"
+"mobile_templates/sign_up.html:43","You may add multiple artists, manage their schedules, upload their listings and review statistics of their purformance. Of course. you will get a website for your salon. FREE Forever.","Качете описание на салона си, добавете Вашите стилисти и управлявайте техните графици, резервации и оферти в единна система за мениджмънт и резервации, играеща роля на Ваш собствен уебсайт. Набирайте нови клиенти и си създайте нов имидж!Без ТАКСИ."
+"mobile_templates/artists/bookings.html:6 mobile_templates/artists/wallet.html:6 mobile_templates/salons/bookings.html:6 mobile_templates/salons/wallet.html:6 mobile_templates/user/bookings.html:6 templates/artists/bookings.html:6 templates/artists/wallet.html:6 templates/artists/withdraw.html:6 templates/salons/bookings.html:6 templates/salons/wallet.html:6 templates/salons/withdraw.html:6 templates/user/bookings.html:6","Glamfame â Booking platform for top salons and beauty artists - Bookings",""
+"mobile_templates/artists/bookings.html:27 mobile_templates/salons/bookings.html:27 mobile_templates/user/bookings.html:27","Appointment with","Уговорен час с"
+"mobile_templates/artists/bookings.html:34 mobile_templates/salons/bookings.html:35 templates/salons/management/artists.html:37 templates/salons/management/artists.html:41","Accept","Приеми"
+"mobile_templates/artists/bookings.html:40 mobile_templates/salons/bookings.html:41","Decline","Откажи"
+"mobile_templates/artists/bookings.html:43 mobile_templates/salons/bookings.html:44","Declined","Отказан"
+"mobile_templates/artists/bookings.html:51 mobile_templates/user/bookings.html:44 templates/salons/bookings.html:117 templates/user/bookings.html:95","Currently you don't have any bookings.","За момента нямате никакви резервации."
+"mobile_templates/artists/listings.html:6 mobile_templates/salons/listings.html:6","Glamfame â Booking platform for top salons and beauty artists - All Listings",""
+"mobile_templates/artists/listings.html:30 mobile_templates/artists/profile.html:89 mobile_templates/listings/listings.html:29 mobile_templates/salons/listings.html:30 mobile_templates/salons/profile.html:62 mobile_templates/service/service.html:50 mobile_templates/user/profile.html:63","comments","коментари"
+"mobile_templates/artists/listings.html:31 mobile_templates/artists/profile.html:90 mobile_templates/listings/listings.html:30 mobile_templates/salons/listings.html:31 mobile_templates/salons/profile.html:63 mobile_templates/service/service.html:51 mobile_templates/user/profile.html:64","likes","харесвания"
+"mobile_templates/artists/listings.html:37 mobile_templates/salons/listings.html:37 templates/artists/management/listings.html:44 templates/salons/management/listings.html:44","Deactivate","Деактивирай"
+"mobile_templates/artists/listings.html:39 mobile_templates/salons/listings.html:39 mobile_templates/salons/settings/artists.html:36 templates/artists/management/listings.html:46 templates/salons/management/listings.html:46","Activate","Aктивирай"
+"mobile_templates/artists/listings.html:41 mobile_templates/salons/listings.html:41 templates/salons/management/listings.html:48","Pending<br/>(Currently we are reviewing your listing)","Чакащ<br/>(В момента преглеждаме офертата Ви)"
+"mobile_templates/artists/listings.html:43 mobile_templates/salons/listings.html:43 templates/salons/management/listings.html:50","Forbidden<br/>(The content is not appropriate for this website)","Забранено<br/>(Съдържанието е неподходящо)"
+"mobile_templates/artists/profile.html:8 templates/artists/profile.html:7","Glamfame â Booking platform for top salons and beauty artists - Artist Profile",""
+"mobile_templates/artists/profile.html:16","Artist Profile","Профил на стилист"
+"mobile_templates/artists/profile.html:31 mobile_templates/listings/details.html:153 templates/artists/profile.html:35","artist","Стилист"
+"mobile_templates/artists/profile.html:40 mobile_templates/artists/profile.html:42 mobile_templates/artists/settings.html:6 mobile_templates/salons/settings.html:10 mobile_templates/user/profile.html:33 mobile_templates/user/settings.html:10 templates/master.html:89 templates/master.html.py:138 templates/master.html:187 templates/artists/profile.html:40 templates/artists/profile.html.py:42","Settings","Настройки"
+"mobile_templates/artists/profile.html:45 templates/artists/profile.html:45","Unfollow","Спри да следваш"
+"mobile_templates/artists/profile.html:47 templates/artists/profile.html:47 templates/artists/profile.html.py:51","Follow","Следвай"
+"mobile_templates/artists/profile.html:53","WORKTIME","РАБОТНО ВРЕМЕ"
+"mobile_templates/artists/profile.html:54 mobile_templates/salons/profile.html:37 mobile_templates/user/profile.html:38 templates/artists/management.html:28 templates/salons/management.html:29 templates/salons/profile.html:56","LISTINGS","Oферти"
+"mobile_templates/artists/profile.html:55 mobile_templates/salons/profile.html:39 mobile_templates/user/profile.html:39 templates/listings/details.html:131 templates/salons/profile.html:57","REVIEWS","ОТЗИВИ"
+"mobile_templates/artists/profile.html:63 templates/artists/profile.html:73 templates/artists/management/schedule.html:99 templates/salons/artist_settings/schedule.html:105 templates/salons/management/schedule.html:115","Sunday","Неделя"
+"mobile_templates/artists/profile.html:64 templates/artists/profile.html:74","Monday","Понеделник"
+"mobile_templates/artists/profile.html:65 templates/artists/profile.html:75 templates/artists/management/schedule.html:24 templates/salons/artist_settings/schedule.html:30 templates/salons/management/schedule.html:40","Tuesday","Вторник"
+"mobile_templates/artists/profile.html:66 templates/artists/profile.html:76 templates/artists/management/schedule.html:39 templates/salons/artist_settings/schedule.html:45 templates/salons/management/schedule.html:55","Wednesday","Сряда"
+"mobile_templates/artists/profile.html:67 templates/artists/profile.html:77 templates/artists/management/schedule.html:54 templates/salons/artist_settings/schedule.html:60 templates/salons/management/schedule.html:70","Thursday","Четвъртък"
+"mobile_templates/artists/profile.html:68 templates/artists/profile.html:78 templates/artists/management/schedule.html:69 templates/salons/artist_settings/schedule.html:75 templates/salons/management/schedule.html:85","Friday","Петък"
+"mobile_templates/artists/profile.html:69 templates/artists/profile.html:79 templates/artists/management/schedule.html:84 templates/salons/artist_settings/schedule.html:90 templates/salons/management/schedule.html:100","Saturday","Събота"
+"mobile_templates/artists/profile.html:100 mobile_templates/salons/profile.html:73 mobile_templates/user/profile.html:74","Currently the artist doesn't have any listings","За момента стилистът няма качени оферти"
+"mobile_templates/artists/profile.html:127 mobile_templates/salons/profile.html:122 mobile_templates/user/profile.html:101 templates/artists/profile.html:118 templates/user/profile.html:73","Currently the artist doesn't have any reviews","За момента за стилиста няма никакви отзиви."
+"mobile_templates/artists/sign_up.html:15 mobile_templates/salons/sign_up.html:15 mobile_templates/user/sign_up.html:9 templates/salons/sign_up.html:63","Sign up","Регистрация"
+"mobile_templates/artists/sign_up.html:28 mobile_templates/artists/settings/edit.html:42 mobile_templates/listings/confirm.html:89 mobile_templates/salons/add_artist.html:24 mobile_templates/salons/sign_up.html:29 mobile_templates/salons/artist_settings/edit_artist.html:49 mobile_templates/salons/settings/edit.html:50 mobile_templates/user/settings.html:44 mobile_templates/user/sign_up.html:21 templates/artists/sign_up.html:30 templates/artists/settings/edit.html:50 templates/core/about_us.html:59 templates/core/contact_us.html:23 templates/listings/confirm.html:99 templates/salons/add_artist.html:37 templates/salons/sign_up.html:30 templates/salons/artist_settings/edit_artist.html:53 templates/salons/settings/edit.html:50 templates/user/settings.html:55 templates/user/sign_up.html:34","Name","Име"
+"mobile_templates/artists/sign_up.html:36 mobile_templates/listings/details.html:122 mobile_templates/salons/sign_up.html:37 mobile_templates/user/login.html:28 mobile_templates/user/sign_up.html:29 templates/artists/sign_up.html:38 templates/artists/settings/account.html:23 templates/core/about_us.html:63 templates/core/contact_us.html:27 templates/salons/add_artist.html:29 templates/salons/sign_up.html:38 templates/salons/settings/account.html:23 templates/user/login.html:26 templates/user/sign_up.html:42","Email","E-мейл"
+"mobile_templates/artists/sign_up.html:44 mobile_templates/salons/sign_up.html:45 mobile_templates/user/login.html:36 mobile_templates/user/sign_up.html:37 templates/artists/sign_up.html:46 templates/artists/settings/account.html:33 templates/salons/sign_up.html:46 templates/salons/settings/account.html:33 templates/user/login.html:34 templates/user/sign_up.html:50","Password","Парола"
+"mobile_templates/artists/sign_up.html:52 mobile_templates/salons/sign_up.html:53 templates/artists/sign_up.html:54 templates/salons/sign_up.html:54 templates/user/sign_up.html:58","Confirm Password","Потвърди паролата"
+"mobile_templates/artists/sign_up.html:61 mobile_templates/user/login.html:45 mobile_templates/user/sign_up.html:54 templates/artists/sign_up.html:67 templates/service/service.html:275 templates/user/login.html:49","OR","ИЛИ"
+"mobile_templates/artists/sign_up.html:65 mobile_templates/salons/sign_up.html:66 mobile_templates/user/sign_up.html:58","Register using Facebook","Регистрирай се с Facebook"
+"mobile_templates/artists/sign_up.html:78 templates/artists/sign_up.html:88","What is your business?","Какъв е бизнесът Ви?"
+"mobile_templates/artists/sign_up.html:86 mobile_templates/salons/sign_up.html:80 templates/artists/sign_up.html:96","Submit your location","Въведете локация"
+"mobile_templates/artists/sign_up.html:95 mobile_templates/artists/upload.html:86 mobile_templates/salons/add_artist.html:55 mobile_templates/salons/sign_up.html:58 mobile_templates/salons/sign_up.html:91 mobile_templates/salons/upload.html:94 templates/artists/sign_up.html:106 templates/listings/details.html:318 templates/listings/edit.html:138 templates/salons/add_artist.html:68 templates/salons/sign_up.html:99","Save and continue","Запази и продължи"
+"mobile_templates/artists/upload.html:6 mobile_templates/salons/upload.html:6 templates/artists/upload.html:5 templates/salons/upload.html:5","Glamfame â Booking platform for top salons and beauty artists - Upload Listing",""
+"mobile_templates/artists/upload.html:15 mobile_templates/salons/upload.html:15","Upload","Качи"
+"mobile_templates/artists/upload.html:32 mobile_templates/salons/add_artist.html:43 mobile_templates/salons/upload.html:32 templates/artists/upload.html:36 templates/listings/edit.html:62 templates/salons/add_artist.html:56 templates/salons/upload.html:35","Click here to upload picture","Кликнете тук, за да качите снимка."
+"mobile_templates/artists/upload.html:40 mobile_templates/salons/upload.html:48 templates/artists/upload.html:71 templates/listings/edit.html:97 templates/salons/upload.html:78","Title","Заглавие"
+"mobile_templates/artists/upload.html:48 mobile_templates/artists/settings/edit.html:65 mobile_templates/listings/details.html:92 mobile_templates/salons/upload.html:56 mobile_templates/salons/artist_settings/edit_artist.html:62 mobile_templates/salons/settings/edit.html:72 templates/artists/upload.html:79 templates/artists/settings/edit.html:84 templates/listings/edit.html:105 templates/salons/upload.html:86 templates/salons/artist_settings/edit_artist.html:78 templates/salons/settings/edit.html:72","Description","Описание"
+"mobile_templates/artists/upload.html:57 mobile_templates/artists/wallet.html:25 mobile_templates/listings/details.html:113 mobile_templates/salons/upload.html:65 mobile_templates/salons/wallet.html:25 templates/artists/upload.html:50 templates/listings/details.html:196 templates/salons/upload.html:49 templates/service/service.html:112","Price","Цена"
+"mobile_templates/artists/upload.html:65 mobile_templates/listings/details.html:93 mobile_templates/salons/upload.html:73 templates/artists/upload.html:89 templates/listings/edit.html:115 templates/salons/upload.html:96","Duration","Продължителност"
+"mobile_templates/artists/upload.html:71 mobile_templates/salons/upload.html:79 templates/artists/upload.html:95 templates/listings/edit.html:121 templates/salons/upload.html:102 templates/service/service.html:91","Type","Тип"
+"mobile_templates/artists/upload.html:80 mobile_templates/listings/details.html:94 mobile_templates/salons/upload.html:88 mobile_templates/service/service.html:128 templates/artists/upload.html:104 templates/listings/details.html:139 templates/listings/edit.html:130 templates/salons/upload.html:111 templates/service/service.html:154","Tags","Етикети"
+"mobile_templates/artists/wallet.html:17 mobile_templates/salons/wallet.html:17 templates/artists/wallet.html:34 templates/salons/wallet.html:34","All EARNINGS","ВСИЧКИ ПЕЧАЛБИ"
+"mobile_templates/artists/wallet.html:18 mobile_templates/salons/wallet.html:18 templates/artists/wallet.html:35","All WITHDRAWS","ВСИЧКИ ТЕГЛЕНИЯ"
+"mobile_templates/artists/wallet.html:19 mobile_templates/salons/wallet.html:19 templates/artists/wallet.html:36 templates/artists/withdraw.html:34 templates/salons/withdraw.html:34","AVAILABLE FUNDS","НАЛИЧНИ СРЕДСТВА"
+"mobile_templates/artists/wallet.html:24 mobile_templates/salons/wallet.html:24","Date and time","Дата и час"
+"mobile_templates/artists/wallet.html:26 mobile_templates/salons/wallet.html:26","Paid to","Платено чрез"
+"mobile_templates/artists/wallet.html:27 mobile_templates/salons/wallet.html:27","Status","Статус"
+"mobile_templates/artists/wallet.html:30 mobile_templates/salons/wallet.html:30","There is no activity yet.","Все още няма активност."
+"mobile_templates/artists/settings/edit.html:51 mobile_templates/salons/settings/edit.html:59 templates/artists/settings/edit.html:62 templates/salons/artist_settings/edit_artist.html:65 templates/salons/settings/edit.html:59 templates/user/settings.html:67","Phone","Телефон"
+"mobile_templates/artists/settings/edit.html:61 mobile_templates/salons/settings/edit.html:68 templates/artists/settings/edit.html:80 templates/salons/settings/edit.html:68","Address","Адрес"
+"mobile_templates/artists/settings/edit.html:72 mobile_templates/salons/artist_settings/edit_artist.html:69 mobile_templates/salons/settings/edit.html:79 mobile_templates/user/settings.html:49 templates/artists/upload.html:112 templates/artists/settings/account.html:29 templates/artists/settings/account.html:46 templates/artists/settings/cancellation_policy.html:62 templates/artists/settings/payments.html:65 templates/salons/upload.html:119 templates/salons/artist_settings/edit_artist.html:100 templates/salons/artist_settings/schedule.html:24 templates/salons/artist_settings/schedule.html:39 templates/salons/artist_settings/schedule.html:54 templates/salons/artist_settings/schedule.html:69 templates/salons/artist_settings/schedule.html:84 templates/salons/artist_settings/schedule.html:99 templates/salons/artist_settings/schedule.html:114 templates/salons/management/schedule.html:34 templates/salons/management/schedule.html:49 templates/salons/management/schedule.html:64 templates/salons/management/schedule.html:79 templates/salons/management/schedule.html:94 templates/salons/management/schedule.html:109 templates/salons/management/schedule.html:124 templates/salons/settings/account.html:29 templates/salons/settings/account.html:46 templates/salons/settings/cancellation_policy.html:59 templates/salons/settings/edit.html:81 templates/salons/settings/payments.html:61 templates/user/settings.html:87","Save","Запази"
+"mobile_templates/core/home.html:6","Glamfame â Booking platform for top salons and beauty artists - Home",""
+"mobile_templates/listings/confirm.html:6 templates/listings/confirm.html:6","Glamfame â Booking platform for top salons and beauty artists - Confirm Listing",""
+"mobile_templates/listings/confirm.html:10","Confirm booking","Потвърди резервацията"
+"mobile_templates/listings/confirm.html:26 templates/listings/confirm.html:33","Beauty artist:","Стилист:"
+"mobile_templates/listings/confirm.html:32 templates/listings/confirm.html:39 templates/salons/management/calendar.html:36 templates/salons/management/calendar.html:56 templates/salons/management/calendar.html:72","Start time:","Начален час:"
+"mobile_templates/listings/confirm.html:37 templates/listings/confirm.html:44 templates/salons/management/calendar.html:39 templates/salons/management/calendar.html:59 templates/salons/management/calendar.html:75","End time:","Краен час:"
+"mobile_templates/listings/confirm.html:42 templates/listings/confirm.html:49","Cost:","Цена:"
+"mobile_templates/listings/confirm.html:48 templates/listings/confirm.html:55","Address:","Aдрес:"
+"mobile_templates/listings/confirm.html:53 mobile_templates/listings/details.html:130 templates/listings/confirm.html:60 templates/listings/details.html:202","Cancellation policy:","Политика за отмяна на часове:"
+"mobile_templates/listings/confirm.html:56 templates/listings/confirm.html:63","Free: Full refund, except fees","Свободна: пълно възстановяване на сумата, без таксата на Glamfame"
+"mobile_templates/listings/confirm.html:58 mobile_templates/listings/details.html:134 templates/listings/confirm.html:65 templates/listings/details.html:206","Flexible: 50%% refund 12 hours prior the apoointment, except fees","Гъвкава: 50%% възстановяване на сумата до 12 ч. преди уговорен час, без таксата на Glamfame"
+"mobile_templates/listings/confirm.html:60 mobile_templates/listings/details.html:136 templates/listings/confirm.html:67 templates/listings/details.html:208","Moderate: 50%% refund up until 2 days prior to appointment, except fees","Умерена: 50%% възстановяване на сумата до 2 дни преди уговорения час, без таксата на Glamfame"
+"mobile_templates/listings/confirm.html:62 mobile_templates/listings/details.html:138 templates/listings/confirm.html:69 templates/listings/details.html:210","Strict: 50%% refund up until 4 days prior to appointment, except fees","Строга: 50%% възстановяване на сумата до 4 дни преди уговорения час, без таксата на Glamfame"
+"mobile_templates/listings/confirm.html:64 templates/listings/confirm.html:71","{{ booking.cancellation_policy.cancellation_type }}: {{ booking.cancellation_policy.percent }}%% refund up until {{ days_before }} days prior to appointment, except fees",""
+"mobile_templates/listings/confirm.html:74 templates/listings/confirm.html:81","Pay with Credit Card","Плати с кредитна карта"
+"mobile_templates/listings/confirm.html:75 templates/listings/confirm.html:82","Pay with PayPal","Плати си PayPal"
+"mobile_templates/listings/confirm.html:92 templates/listings/confirm.html:102","Card number","Номер на карта"
+"mobile_templates/listings/confirm.html:96","Expiration date (MM/YYYY)","Валидна до (месец/год.)"
+"mobile_templates/listings/confirm.html:100","CVC","CVC"
+"mobile_templates/listings/confirm.html:106 mobile_templates/listings/confirm.html:121 templates/listings/confirm.html:133 templates/listings/confirm.html:150","Send a message to the beauty artist (optional)","Изпрати съобщение до стилиста (опционално)"
+"mobile_templates/listings/confirm.html:109 mobile_templates/listings/confirm.html:124 templates/listings/confirm.html:136 templates/listings/confirm.html:153","I agree with","Съгласен съм с"
+"mobile_templates/listings/confirm.html:109 mobile_templates/listings/confirm.html:118 mobile_templates/listings/confirm.html:124 templates/master.html:241 templates/artists/sign_up.html:59 templates/listings/confirm.html:136 templates/listings/confirm.html:153 templates/salons/sign_up.html:59 templates/user/sign_up.html:63","Terms and Conditions","Условия за ползване"
+"mobile_templates/listings/confirm.html:109 mobile_templates/listings/confirm.html:118 mobile_templates/listings/confirm.html:124 templates/master.html:242 templates/artists/sign_up.html:59 templates/listings/confirm.html:136 templates/listings/confirm.html:153 templates/salons/sign_up.html:59 templates/user/sign_up.html:63","Privacy Policy","Декларация за поверителност"
+"mobile_templates/listings/confirm.html:118","Please, click in the box below to acknowledge agreement to our","Моля, кликнете в квадратчето отдолу, за да се съгласите със нашата"
+"mobile_templates/listings/confirm.html:118 templates/artists/sign_up.html:59 templates/salons/sign_up.html:59 templates/salons/settings/cancellation_policy.html:56 templates/user/sign_up.html:63","and","и"
+"mobile_templates/listings/confirm.html:118","Cancellation Policy","Политика за отмяна на часове"
+"mobile_templates/listings/confirm.html:118","Click on ""Book now"" to proceed to the payment page. We accept Pay Pal and Credit Card payments. After you click ""Book now"" you will turn to the payment page. Choose the payment method and fill in the data. Once you complete this step, you will see a text message, confirming the payment has been made.Within the next 48 hours you should receive a notification for booking confirmation from the beauty artist provider. If the payer fails to receive confirmation, he/she receives a full refund (100%%) of the amount paid. If a beauty seeker has paid for a beauty service, which has been confirmed, and he/she misses the appointment with the beauty service provider, the refund will be determined by the cancellation policy set by the beauty service provider.","След като въведете данните си за плащане, ще бъде извършена преавторизация на кредитната Ви карта/PayPal акаунта Ви.В рамките на 48 ч. Трябва да  получите уведомление в акаунта Ви за потвърждение на резервацията. Ако ли не, блокираната сума ще бъде освободена. Ако пропуснете или отмените час, ще получите плащане според политиката за отмяна на часове, определена от стилиста. Плащането ще бъде извършено в деня на уговорения час."
+"mobile_templates/listings/details.html:7 templates/listings/details.html:7","Glamfame â Booking platform for top salons and beauty artists - Listing Details",""
+"mobile_templates/listings/details.html:39 templates/widget/widget.html:102","Listing","Оферта"
+"mobile_templates/listings/details.html:93","min","min"
+"mobile_templates/listings/details.html:115 templates/core/home.html:27 templates/widget/widget.html:54","Date","Дата"
+"mobile_templates/listings/details.html:116 templates/core/home.html:28","Time","Час"
+"mobile_templates/listings/details.html:125 templates/listings/confirm.html:137 templates/listings/confirm.html:157 templates/listings/details.html:223 templates/widget/widget.html:147","Book now","Резервирай сега"
+"mobile_templates/listings/details.html:140 templates/listings/details.html:212","refund up until","връщане до"
+"mobile_templates/listings/details.html:140 templates/listings/details.html:212","days prior to appointment, except fees",""
+"mobile_templates/listings/details.html:181 templates/listings/details.html:165","Currently the listing doesn't have any reviews","Към момента за офертата няма отзиви"
+"mobile_templates/listings/details.html:192 mobile_templates/listings/details.html:203 templates/listings/details.html:324 templates/listings/details.html:335 templates/salons/bookings.html:148 templates/user/bookings.html:126","WARNING!","ПРЕДУПРЕЖДЕНИЕ!"
+"mobile_templates/listings/details.html:194","Please select booking date before procees foward.","Моля, изберете дата за резервацията преди да продължите"
+"mobile_templates/listings/details.html:196 mobile_templates/listings/details.html:207 templates/listings/details.html:328 templates/listings/details.html:343","OK","OK"
+"mobile_templates/listings/details.html:205","Please enter your real email. In that way you will be able to manage your bookings via your mailbox. Also we will be able to let you when your booking is accepted from the artist.","Моля, въведете е-мейл адреса си. Така ще можете да управлявате резервациите си през пощата си и ще получавате уведомления когато стилиста ги потвърди"
+"mobile_templates/listings/listings.html:6","Glamfame â Booking platform for top salons and beauty artists - Listings",""
+"mobile_templates/notifications/notifications.html:6 templates/notifications/notifications.html:6","Glamfame â Booking platform for top salons and beauty artists - All Notifications",""
+"mobile_templates/payments/error.html:9 templates/payments/error.html:11","OH NO!","О, НЕ!"
+"mobile_templates/payments/error.html:18","Your payment was unsuccessfully. Reason: Unknow.","Плащането Ви беше неуспешно. Неизвестна причина."
+"mobile_templates/payments/error.html:21","Please try again later with different credit/debit card or PayPal account.","Моля, опитайте отново с различна кредитна/дебита карта, или PayPal aкаунт"
+"mobile_templates/payments/success.html:9","Great","Чудесно"
+"mobile_templates/payments/success.html:17","Your payment has been succesfully proccessed.","Плащането Ви беше успешно."
+"mobile_templates/payments/success.html:20","You can view all your appointments","Можете да видите всичките си часове"
+"mobile_templates/payments/success.html:20 templates/payments/success.html:26","here","тук"
+"mobile_templates/salons/add_artist.html:5 templates/salons/add_artist.html:5","Glamfame â Booking platform for top salons and beauty artists - Add Artist",""
+"mobile_templates/salons/add_artist.html:17","Please create your employees first. After that you will be able to assign listings to them.","Моля, първо създайте профил на артист. След това ще можете да качвате оферти."
+"mobile_templates/salons/add_artist.html:32 templates/salons/add_artist.html:45","Occupation","Професия"
+"mobile_templates/salons/add_artist.html:41","Profile picture","Профилна снимка"
+"mobile_templates/salons/add_artist.html:50 templates/salons/add_artist.html:63","Introduction","Представяне"
+"mobile_templates/salons/artist_settings.html:6 templates/artists/settings.html:6 templates/salons/artist_settings.html:6","Glamfame â Booking platform for top salons and beauty artists - Artist Settings",""
+"mobile_templates/salons/artist_settings.html:10","Edit Artist","Редактирай стилист"
+"mobile_templates/salons/bookings.html:10 mobile_templates/user/bookings.html:10","Appointments","Уговорени часове"
+"mobile_templates/salons/bookings.html:27 mobile_templates/user/bookings.html:27","for","за"
+"mobile_templates/salons/bookings.html:27 mobile_templates/salons/upload.html:40 templates/listings/details.html:258 templates/salons/upload.html:70 templates/widget/widget.html:71","Artist","Стилист"
+"mobile_templates/salons/listings.html:11 templates/artists/profile.html:87","Listings","Oферти"
+"mobile_templates/salons/profile.html:8 templates/salons/profile.html:8","Glamfame â Booking platform for top salons and beauty artists - Salon Profile",""
+"mobile_templates/salons/profile.html:38 mobile_templates/salons/settings.html:22 templates/salons/management.html:28","ARTISTS","СТИЛИСТИ"
+"mobile_templates/salons/settings.html:6 templates/salons/settings.html:6","Glamfame â Booking platform for top salons and beauty artists - Salon Settings",""
+"mobile_templates/salons/settings.html:19 templates/artists/settings.html:27 templates/salons/artist_settings.html:23 templates/salons/settings.html:28 templates/user/settings.html:23","PROFILE","Профил"
+"mobile_templates/salons/artist_settings/edit_artist.html:36 mobile_templates/salons/settings/edit.html:37 mobile_templates/user/settings.html:31 templates/artists/settings/edit.html:37 templates/salons/artist_settings/edit_artist.html:40 templates/salons/settings/edit.html:37 templates/user/settings.html:42","Change","Промени"
+"mobile_templates/salons/artist_settings/edit_artist.html:55 templates/artists/management/calendar.html:35 templates/artists/settings/edit.html:68 templates/salons/artist_settings/edit_artist.html:71","Style","Стил"
+"mobile_templates/salons/settings/artists.html:43 templates/salons/management/artists.html:53","Click here to add new artist","Кликнете тук за да добавите нов стилист"
+"mobile_templates/service/service.html:7","Glamfame â Booking platform for top salons and beauty artists - ",""
+"mobile_templates/service/service.html:21","Search","Търси"
+"mobile_templates/service/service.html:27 mobile_templates/service/service.html:67","Filters","Филтри"
+"mobile_templates/service/service.html:70 templates/service/service.html:64","Date and Time","Дата и час"
+"mobile_templates/service/service.html:76 mobile_templates/service/service.html:502 templates/listings/details.html:186 templates/service/service.html:73","Please select date","Моля, изберете дата"
+"mobile_templates/service/service.html:85 templates/service/service.html:83","Please select time","Моля, изберете час"
+"mobile_templates/service/service.html:92","Price Range","Ценови диапазон"
+"mobile_templates/service/service.html:106 templates/service/service.html:129","Rating","Оценка"
+"mobile_templates/service/service.html:114 mobile_templates/service/service.html:117 mobile_templates/service/service.html:120 mobile_templates/service/service.html:123","Up","Нагоре"
+"mobile_templates/service/service.html:130 templates/service/service.html:157","Enter tag","Въведете тагове"
+"mobile_templates/service/service.html:131 templates/service/service.html:158","Add","Добави"
+"mobile_templates/service/service.html:137","Apply","Приложи"
+"mobile_templates/service/service.html:138 mobile_templates/user/bookings.html:34 templates/artists/bookings.html:89 templates/artists/management/schedule.html:17 templates/artists/management/schedule.html:32 templates/artists/management/schedule.html:47 templates/artists/management/schedule.html:62 templates/artists/management/schedule.html:77 templates/artists/management/schedule.html:92 templates/artists/management/schedule.html:107 templates/artists/settings/account.html:28 templates/artists/settings/account.html:45 templates/artists/settings/cancellation_policy.html:60 templates/artists/settings/edit.html:111 templates/artists/settings/payments.html:32 templates/artists/settings/payments.html:64 templates/salons/bookings.html:98 templates/salons/delete_artist.html:96 templates/salons/artist_settings/edit_artist.html:99 templates/salons/artist_settings/schedule.html:23 templates/salons/artist_settings/schedule.html:38 templates/salons/artist_settings/schedule.html:53 templates/salons/artist_settings/schedule.html:68 templates/salons/artist_settings/schedule.html:83 templates/salons/artist_settings/schedule.html:98 templates/salons/management/schedule.html:33 templates/salons/management/schedule.html:48 templates/salons/management/schedule.html:63 templates/salons/management/schedule.html:78 templates/salons/management/schedule.html:93 templates/salons/management/schedule.html:108 templates/salons/management/schedule.html:123 templates/salons/settings/account.html:28 templates/salons/settings/account.html:45 templates/salons/settings/cancellation_policy.html:57 templates/salons/settings/edit.html:80 templates/salons/settings/payments.html:60 templates/user/bookings.html:76 templates/user/settings.html:86","Cancel","Отмени"
+"mobile_templates/user/bookings.html:37","Cancelled","Отменен"
+"mobile_templates/user/change_password.html:5 templates/user/change_password.html:5","Glamfame â Booking platform for top salons and beauty artists - Change Password",""
+"mobile_templates/user/change_password.html:11 templates/user/change_password.html:11","CHANGE PASSWORD","СМЕНИ ПАРОЛА"
+"mobile_templates/user/change_password.html:24 templates/user/change_password.html:24","New Password","Нова парола"
+"mobile_templates/user/change_password.html:32 templates/user/change_password.html:32","Confrim New Password","Потвърди нова парола"
+"mobile_templates/user/change_password.html:38 templates/user/change_password.html:38","Change Password","СМЕНИ ПАРОЛА"
+"mobile_templates/user/followed.html:6 templates/user/followed.html:6","Glamfame â Booking platform for top salons and beauty artists - Followed",""
+"mobile_templates/user/followed.html:12 templates/user/followed.html:12","FOLLOWED ARTISTS","ПОСЛЕДВАНИ СТИЛИСТИ"
+"mobile_templates/user/forgotten_password.html:5 templates/user/forgotten_password.html:5","Glamfame â Booking platform for top salons and beauty artists - Forgotten Password",""
+"mobile_templates/user/forgotten_password.html:11 templates/user/forgotten_password.html:11","FORGOTTEN PASSWORD","ЗАБРАВЕНА ПАРОЛА"
+"mobile_templates/user/forgotten_password.html:17","Please enter your email. You will receive a email with furder instruction","Моля, въведете е-мейл адреса си. Ще получите е-мейл с инструкции."
+"mobile_templates/user/login.html:5 templates/user/login.html:5","Glamfame â Booking platform for top salons and beauty artists - Login",""
+"mobile_templates/user/login.html:17","Please enter your login details.","Моля, въведете данните си за вход"
+"mobile_templates/user/login.html:21 templates/user/login.html:19","Invalid login details","Невалидни логин данни"
+"mobile_templates/user/login.html:41 templates/master.html:202 templates/user/login.html:45","Log In","Вход"
+"mobile_templates/user/login.html:49 templates/user/login.html:53","Log in with Facebook","Вход чрез Facebook"
+"mobile_templates/user/profile.html:7 templates/user/profile.html:7","Glamfame â Booking platform for top salons and beauty artists - Profile",""
+"mobile_templates/user/profile.html:40","FOLLOWERS","ПОСЛЕДОВАТЕЛИ"
+"mobile_templates/user/profile.html:125 templates/user/profile.html:132","Currently the user doesn't followed any artist","За момента този потребител не следва нито един стилист"
+"mobile_templates/user/settings.html:6 templates/user/settings.html:6","Glamfame â Booking platform for top salons and beauty artists - Settings",""
+"mobile_templates/user/sign_up.html:50","Register","Регистрирай се"
+"mobile_templates/user/whishlist.html:6","Glamfame â Booking platform for top salons and beauty artists - wishlist",""
+"templates/master.html:64 templates/master.html.py:113 templates/master.html:162 templates/notifications/notifications.html:17","NOTIFICATIONS","Известия"
+"templates/master.html:65 templates/master.html.py:114 templates/master.html:163","View all","Виж всички"
+"templates/master.html:88","Followed Artists","ПОСЛЕДВАНИ СТИЛИСТИ"
+"templates/master.html:95 templates/master.html.py:144","ADD LISTING","Добавяне на оферта"
+"templates/master.html:135 templates/master.html.py:184","Management","Управление"
+"templates/master.html:227","About Us","За нас"
+"templates/master.html:228","Blog","Блог"
+"templates/master.html:229","Contact Us","Свържете се с нас"
+"templates/master.html:230","Imprint","Imprint"
+"templates/master.html:233 templates/core/faq.html:15","FAQ","FAQ"
+"templates/master.html:236","How It Works - Beauty Seekers","Как работи сайта – Търсещи оферти"
+"templates/master.html:237","How It Works - Beauty Artists","Как работи сайта - Стилисти"
+"templates/master.html:238","How It Works - Beauty Salons","Как работи сайта - Салони"
+"templates/master.html:243","Sitemap","Карта на сайта"
+"templates/sign_up.html:11 templates/artists/sign_up.html:17 templates/salons/sign_up.html:17 templates/user/sign_up.html:11","SIGN UP","Регистрация"
+"templates/sign_up.html:16","SELECT YOUR PROFILE","ИЗБЕРЕТЕ ТИП ПРОФИЛ"
+"templates/sign_up.html:22","You will be able to find top beauty artists and salons and book directly their listings. You can also follow your favorite artists and receive their latest work feeds.","Ще можете да намерите оферти на топ стилисти и да резервирате мигновено. Последвайте любимите си стилисти, за да получавате известия за най-новите им оферти."
+"templates/sign_up.html:31","You can upload your latest works and attract new customers. In addition, you receive: virtual portfolio, acting as your own website, booking management tools, on-line calendar and statistics diagram. No fees, it's for FREE.","Можете да качите Вашите актуални оферти и да привлечете нови клиенти. Освен това получавате: виртуално портфолио и личен акаунт, играещ роля на Ваш уебсайт, инструменти за салонен мениджмънт, онлайн календар и диаграма на продажбите Ви. БЕЗПЛАТНО е."
+"templates/sign_up.html:40","Add description of your salon, add beauty artists, manage their schedules, bookings and listings in one booking management platform, that acts as your own website. Boost your sales, create new image! It's FREE of charge.","Качете описание на салона си, добавете Вашите стилисти и управлявайте техните графици, резервации и оферти в единна система за мениджмънт и резервации, играеща роля на Ваш собствен уебсайт. Набирайте нови клиенти и си създайте нов имидж!Без ТАКСИ."
+"templates/artists/bookings.html:17 templates/artists/management/stats.html:46 templates/salons/bookings.html:17 templates/salons/delete_artist.html:21 templates/salons/management/stats.html:48 templates/user/bookings.html:17","BOOKINGS","Резервации"
+"templates/artists/bookings.html:25 templates/salons/bookings.html:25 templates/salons/delete_artist.html:29 templates/user/bookings.html:25","ORDER ID","НОМЕР ПОРЪЧКА"
+"templates/artists/bookings.html:26 templates/artists/wallet.html:45 templates/artists/management/stats.html:43 templates/salons/bookings.html:26 templates/salons/delete_artist.html:30 templates/salons/wallet.html:45 templates/salons/management/stats.html:45 templates/user/bookings.html:26","DATE","Дата"
+"templates/artists/bookings.html:27 templates/salons/bookings.html:27 templates/salons/delete_artist.html:31 templates/salons/wallet.html:46 templates/user/bookings.html:27","LISTING","Оферта"
+"templates/artists/bookings.html:28 templates/salons/bookings.html:29 templates/salons/delete_artist.html:32 templates/user/bookings.html:28","ORDERED BY","ПОДЕРЕДЕН ПО"
+"templates/artists/bookings.html:29 templates/artists/wallet.html:46 templates/salons/bookings.html:30 templates/salons/delete_artist.html:33 templates/salons/wallet.html:47 templates/user/bookings.html:29","AMOUNT","СУМА"
+"templates/artists/bookings.html:30 templates/artists/wallet.html:48 templates/salons/bookings.html:31 templates/salons/wallet.html:49 templates/user/bookings.html:30","STATUS","Статус"
+"templates/artists/bookings.html:31 templates/salons/bookings.html:32 templates/salons/delete_artist.html:35 templates/user/bookings.html:31","ACTION","ДЕЙСТВИЕ"
+"templates/artists/bookings.html:83 templates/salons/bookings.html:92","Approve","Одобри"
+"templates/artists/bookings.html:96 templates/salons/bookings.html:105 templates/user/bookings.html:83","Report","Докладвай"
+"templates/artists/bookings.html:108","Currently you don't have any bookings.","За момента нямате никакви резервации."
+"templates/artists/bookings.html:141","WARNING","ПРЕДУПРЕЖДЕНИЕ"
+"templates/artists/bookings.html:144 templates/salons/bookings.html:151","Cancelling an appointmnt will increase your cancellation rate and we will remove 10 points from your monthly score.<br/><br/>Are you sure you want to cancel this appointment?","Отмяната на оговорен час ще увеличи  оценката Ви за отмяна на часове .<br/><br/>Сигурни ли сте, че искате да отмените този час?"
+"templates/artists/bookings.html:149 templates/salons/bookings.html:156 templates/user/bookings.html:130","Yes","Да"
+"templates/artists/bookings.html:150 templates/salons/bookings.html:157 templates/user/bookings.html:131","No","Не"
+"templates/artists/bookings.html:158 templates/salons/bookings.html:165 templates/user/bookings.html:138","REPORT A PROBLEM!","ДОКЛАДВАЙТЕ ПРОБЛЕМ!"
+"templates/artists/bookings.html:160 templates/salons/bookings.html:167 templates/user/bookings.html:140","Oh, no! What went wrong?","О,не! Какво се обърка?"
+"templates/artists/bookings.html:161 templates/salons/bookings.html:168 templates/user/bookings.html:141","Please describe your problem","Моля, опишете проблема си"
+"templates/artists/bookings.html:163 templates/core/about_us.html:75 templates/core/contact_us.html:39 templates/salons/bookings.html:170 templates/user/bookings.html:143","Send","Изпрати"
+"templates/artists/management.html:6 templates/salons/management.html:6","Glamfame â Booking platform for top salons and beauty artists - Salon Management",""
+"templates/artists/management.html:18","MANAGEMENT","Управление"
+"templates/artists/management.html:29 templates/salons/artist_settings.html:24 templates/salons/management.html:30","SCHEDULE","ГРАФИК"
+"templates/artists/management.html:30 templates/salons/management.html:31","CALENDAR","Календар"
+"templates/artists/management.html:31 templates/salons/management.html:32","STATISTICS","СТАТИСТИКА"
+"templates/artists/management.html:32 templates/salons/management.html:33","WIDGETS","УИДЖЕТ"
+"templates/artists/profile.html:47","You must be registred, to use this feature.","Трябва да сте регистрирани, за да ползвате тази функционалност."
+"templates/artists/profile.html:57","Works for:","Работи за:"
+"templates/artists/profile.html:59","Independent artist","Независим стилист"
+"templates/artists/profile.html:68 templates/artists/profile.html.py:69 templates/artists/profile.html:70","Work time","Работно време"
+"templates/artists/profile.html:88 templates/user/profile.html:44","Reviews","ОТЗИВИ"
+"templates/artists/profile.html:89","Followers","ПОСЛЕДОВАТЕЛИ"
+"templates/artists/profile.html:90 templates/service/service.html:47","Location","Локация"
+"templates/artists/profile.html:152","Currently the artist doesn't have any","В момента артиста няма никакви"
+"templates/artists/profile.html:153 templates/artists/profile.html.py:154","listings.","оферти."
+"templates/artists/profile.html:181","Currently the artist doesn't have any followers","В момента стилиста няма последователи"
+"templates/artists/profile.html:187 templates/artists/profile.html.py:189 templates/salons/profile.html:66 templates/service/service.html:59","Change location","Смени локацията"
+"templates/artists/settings.html:28 templates/salons/settings.html:29","ACCOUNT","АКАУНТ"
+"templates/artists/settings.html:29 templates/salons/settings.html:30","POLICY","ПОЛИТИКА "
+"templates/artists/settings.html:30 templates/salons/settings.html:31","PAYMENTS","ПЛАЩАНИЯ"
+"templates/artists/sign_up.html:59 templates/salons/sign_up.html:59 templates/user/sign_up.html:63","I accept","Приемам"
+"templates/artists/sign_up.html:71 templates/salons/sign_up.html:71 templates/user/sign_up.html:72","Sign up using Facebook","Регистрирация с Facebook"
+"templates/artists/upload.html:17","ADD NEW LISTING","ДОБАВИ НОВА ОФЕРТА"
+"templates/artists/upload.html:25 templates/listings/edit.html:26 templates/salons/upload.html:24","1. Photos","1. Снимки"
+"templates/artists/upload.html:44 templates/listings/edit.html:70 templates/salons/upload.html:43","2. Price","2. Цена"
+"templates/artists/upload.html:55","Price after fees","Цена с такса"
+"templates/artists/upload.html:56","All fees will be paid by the customer.
+","Всички такси ще бъдат платени от потребителят.
+"
+"templates/artists/upload.html:64 templates/listings/edit.html:90 templates/salons/upload.html:63","3. Description","3. Описание"
+"templates/artists/wallet.html:17 templates/salons/wallet.html:17","WALLET","Портфейл"
+"templates/artists/wallet.html:37 templates/salons/wallet.html:37","WITHDRAW MONEY","Теглене на пари"
+"templates/artists/wallet.html:44 templates/salons/wallet.html:44","ID","ID"
+"templates/artists/wallet.html:47 templates/salons/wallet.html:48","PAID TO","Платено чрез"
+"templates/artists/wallet.html:69 templates/salons/wallet.html:73","We haven't registrited any activities!","Няма регистрирани активности!"
+"templates/artists/withdraw.html:35 templates/salons/withdraw.html:35","WITHDRAW","ТЕГЛЕНЕ"
+"templates/artists/withdraw.html:36 templates/salons/withdraw.html:36","AMOUNT LEFT","ОСТАВАЩА СУМА"
+"templates/artists/withdraw.html:37 templates/salons/withdraw.html:37","WITHDRAW THE MONEY","ИЗТЕГЛИ ПАРИТЕ"
+"templates/artists/management/calendar.html:6 templates/salons/management/calendar.html:6","Glamfame â Booking platform for top salons and beauty artists - Calendars",""
+"templates/artists/management/calendar.html:23 templates/core/faq.html:18","Customer","Клиент"
+"templates/artists/management/calendar.html:26 templates/artists/management/calendar.html:46 templates/artists/management/calendar.html:62","Start time","Начален час"
+"templates/artists/management/calendar.html:29 templates/artists/management/calendar.html:49 templates/artists/management/calendar.html:65","End time","Краен час"
+"templates/artists/management/calendar.html:32","Revenue","ПРИХОД"
+"templates/artists/management/calendar.html:39 templates/salons/management/calendar.html:49","Cancel this appointment","Отмени този час"
+"templates/artists/management/calendar.html:52 templates/artists/management/calendar.html:68","Comment","Коментар"
+"templates/artists/management/calendar.html:70 templates/salons/management/calendar.html:80","Make avaible","Освободи"
+"templates/artists/management/calendar.html:126 templates/artists/management/calendar.html:140 templates/salons/management/calendar.html:150","Busy","Зает"
+"templates/artists/management/calendar.html:137 templates/salons/management/calendar.html:147","Booked","Запазен"
+"templates/artists/management/calendar.html:181 templates/artists/management/calendar.html:206 templates/artists/management/calendar.html:231 templates/salons/management/calendar.html:191 templates/salons/management/calendar.html:216 templates/salons/management/calendar.html:241","Time management","Мениджър"
+"templates/artists/management/listings.html:43 templates/artists/management/schedule.html:16 templates/artists/management/schedule.html:31 templates/artists/management/schedule.html:46 templates/artists/management/schedule.html:61 templates/artists/management/schedule.html:76 templates/artists/management/schedule.html:91 templates/artists/management/schedule.html:106 templates/artists/settings/account.html:27 templates/artists/settings/account.html:35 templates/artists/settings/edit.html:110 templates/artists/settings/payments.html:31 templates/artists/settings/payments.html:63 templates/salons/profile.html:42 templates/salons/artist_settings/edit_artist.html:98 templates/salons/artist_settings/schedule.html:22 templates/salons/artist_settings/schedule.html:37 templates/salons/artist_settings/schedule.html:52 templates/salons/artist_settings/schedule.html:67 templates/salons/artist_settings/schedule.html:82 templates/salons/artist_settings/schedule.html:97 templates/salons/management/artists.html:45 templates/salons/management/listings.html:43 templates/salons/management/schedule.html:32 templates/salons/management/schedule.html:47 templates/salons/management/schedule.html:62 templates/salons/management/schedule.html:77 templates/salons/management/schedule.html:92 templates/salons/management/schedule.html:107 templates/salons/management/schedule.html:122 templates/salons/settings/account.html:27 templates/salons/settings/account.html:35 templates/salons/settings/edit.html:79 templates/salons/settings/payments.html:59 templates/user/settings.html:85","Edit","Редактирай"
+"templates/artists/management/listings.html:49","                        Pending<br/>(Currently we are reviewing your listing)
+                    ","Чакащ<br/>(В момента преглеждаме офертата Ви)"
+"templates/artists/management/listings.html:55","                        Forbidden<br/>(The content is not appropriate for this website)
+                    ","Забранено<br/>(Съдържанието е неподходящо)"
+"templates/artists/management/listings.html:71 templates/salons/management/listings.html:63","Upload new listing","Качи нова оферта"
+"templates/artists/management/schedule.html:9 templates/salons/artist_settings/schedule.html:15 templates/salons/management/schedule.html:25","Ðonday","Понеделник"
+"templates/artists/management/schedule.html:10 templates/artists/management/schedule.html:25 templates/artists/management/schedule.html:40 templates/artists/management/schedule.html:55 templates/artists/management/schedule.html:70 templates/artists/management/schedule.html:85 templates/artists/management/schedule.html:100 templates/salons/artist_settings/schedule.html:16 templates/salons/artist_settings/schedule.html:31 templates/salons/artist_settings/schedule.html:46 templates/salons/artist_settings/schedule.html:61 templates/salons/artist_settings/schedule.html:91 templates/salons/artist_settings/schedule.html:106 templates/salons/management/schedule.html:26 templates/salons/management/schedule.html:41 templates/salons/management/schedule.html:56 templates/salons/management/schedule.html:71 templates/salons/management/schedule.html:86 templates/salons/management/schedule.html:101 templates/salons/management/schedule.html:116","Workdays starts at:","Работните дни започват в:"
+"templates/artists/management/schedule.html:12 templates/artists/management/schedule.html:27 templates/artists/management/schedule.html:42 templates/artists/management/schedule.html:57 templates/artists/management/schedule.html:72 templates/artists/management/schedule.html:87 templates/artists/management/schedule.html:102 templates/salons/artist_settings/schedule.html:18 templates/salons/artist_settings/schedule.html:33 templates/salons/artist_settings/schedule.html:48 templates/salons/artist_settings/schedule.html:63 templates/salons/artist_settings/schedule.html:78 templates/salons/artist_settings/schedule.html:93 templates/salons/artist_settings/schedule.html:108 templates/salons/management/schedule.html:28 templates/salons/management/schedule.html:43 templates/salons/management/schedule.html:58 templates/salons/management/schedule.html:73 templates/salons/management/schedule.html:88 templates/salons/management/schedule.html:103 templates/salons/management/schedule.html:118","Workdays ends at:","Работните дни приключват в:"
+"templates/artists/management/schedule.html:14 templates/artists/management/schedule.html:29 templates/artists/management/schedule.html:44 templates/artists/management/schedule.html:59 templates/artists/management/schedule.html:74 templates/artists/management/schedule.html:89 templates/artists/management/schedule.html:104 templates/salons/artist_settings/schedule.html:20 templates/salons/artist_settings/schedule.html:35 templates/salons/artist_settings/schedule.html:50 templates/salons/artist_settings/schedule.html:65 templates/salons/artist_settings/schedule.html:80 templates/salons/artist_settings/schedule.html:95 templates/salons/artist_settings/schedule.html:110 templates/salons/management/schedule.html:30 templates/salons/management/schedule.html:45 templates/salons/management/schedule.html:60 templates/salons/management/schedule.html:75 templates/salons/management/schedule.html:90 templates/salons/management/schedule.html:105 templates/salons/management/schedule.html:120","Mark this day as not working day","Отбележи деня като неработен"
+"templates/artists/management/schedule.html:120 templates/core/home.html:95 templates/salons/artist_settings/schedule.html:126 templates/salons/management/schedule.html:136 templates/service/service.html:224","SELECT HOUR","ИЗБЕРЕТЕ ЧАС"
+"templates/artists/management/stats.html:21","Go","Покажи"
+"templates/artists/management/stats.html:35 templates/salons/management/stats.html:37","Listing views","Преглеждания на офертата"
+"templates/artists/management/stats.html:36 templates/salons/management/stats.html:38","Inquiries","Запитвания"
+"templates/artists/management/stats.html:44 templates/salons/management/stats.html:46","LISTING VIEW","ПРЕГЛЕЖДАНИЯ НА ОФЕРТАТА"
+"templates/artists/management/stats.html:45 templates/salons/management/stats.html:47","INQUIRIES","Запитвания"
+"templates/artists/management/stats.html:47 templates/salons/management/stats.html:49","REVENUE","ПРИХОД"
+"templates/artists/management/stats.html:51 templates/salons/management/stats.html:53","This is not avaible yet.","Не е на разположение за момента."
+"templates/artists/management/widgets.html:23","You can add a widget to your website and start acceptiong bookings requests immediately. Your listings, schedule and calendar from Glamfame.com will be directly available on your website.<br> Just copy the code below and paste it on your website.
+","Можете да добавите уиджета ни на сайта си и да приемате резервации мигновено.Вашите оферти, график и календар от Glamfame.com ще бъдат достъпни на сайта Ви.<br> Копирайте кода на удижета и го добавете в HTML кода на сайта.
+"
+"templates/artists/management/widgets.html:29 templates/salons/management/widgets.html:29","Widget:","Уиджет:"
+"templates/artists/management/widgets.html:35 templates/salons/management/widgets.html:35","Code:","Код:"
+"templates/artists/management/widgets.html:37 templates/salons/management/widgets.html:37","Add Logo","Добави Лого"
+"templates/artists/management/widgets.html:38 templates/salons/management/widgets.html:38","Remove Logo","Премахни Лого"
+"templates/artists/settings/account.html:38","Current password","Настояща парола"
+"templates/artists/settings/account.html:40","New password","Нова парола"
+"templates/artists/settings/account.html:42","Repeat new password","Потвърдете новата парола"
+"templates/artists/settings/cancellation_policy.html:24 templates/salons/settings/cancellation_policy.html:24","                        No Cancellation Policy: The client won't be charged if the appointment is cancelled.
+                    ","Без политика за отмяна на часове: Клиентът не плаща неустойки, ако отмени час."
+"templates/artists/settings/cancellation_policy.html:29 templates/salons/settings/cancellation_policy.html:29","                        Flexible Cancellation Policy: 50%% refund up until 12 hours prior the apoointment, except Glamfame fees
+                    ","Гъвкава политика за отмяна на час: 50%% възстановяване на сумата до 12 ч. преди уговорен час, без таксата на Glamfame."
+"templates/artists/settings/cancellation_policy.html:34 templates/salons/settings/cancellation_policy.html:34","                        Moderate Cancellation Policy: 50%% refund up until 2 days prior to appointment, except Glamfame fees
+                    ","Умерена политика за отмяна на час: 50%% възстановяване на сумата до 2 дни преди уговорения час, без таксата на Glamfame"
+"templates/artists/settings/cancellation_policy.html:39 templates/salons/settings/cancellation_policy.html:39","                        Strict: 50%% refund up until 4 days prior to appointment, except Glamfame fees
+                    ","Строга политика за отмяна на час: 50%% възстановяване на сумата до 4 дни преди уговорения час, без таксата на Glamfame"
+"templates/artists/settings/cancellation_policy.html:45 templates/salons/settings/cancellation_policy.html:45","                        Custom: %(x.percent)s%% refund up until %(x.days_before)s days prior to appointment, except fees
+                    ","Индивидуална: %(x.percent)s%% възстановяване на сумата до %(x.days_before)s дни преди уговорения час, без таксата на Glamfame"
+"templates/artists/settings/cancellation_policy.html:51 templates/salons/settings/cancellation_policy.html:51","                        Custom Cancellation Policy: Not happy with ours? Create one on your own! Simply submit the %% refund and the numbers of days:
+                    ","Индивидуална политика за отмяна: Имате други предпочитания? Тогава създайте своя политика! Задайте %% възстановяване и брой дни."
+"templates/artists/settings/cancellation_policy.html:57","                        %% and <input type=""text"" name=""days""> days
+                    ","                        %% и <input type=""text"" name=""days""> дни
+                    "
+"templates/artists/settings/edit.html:96","                                        Receive notifications for booking request and other activities via email</label>
+                                    ","           Получи известие за запазване на час или друга активност чрез емайл</label>
+                                    "
+"templates/artists/settings/edit.html:103","                                        Receive notifications for booking request and other activities via text messages</label>
+                                    ","                                        Получи известие за запазване на час или друга активност чрез текстово съобщение</label>
+                                    "
+"templates/artists/settings/payments.html:24","PayPal","PayPal"
+"templates/artists/settings/payments.html:26","                        All payments should be transfered to the following PayPal account:
+                    ","Всички плащания да се прехвърлят на следния PayPal акаунт:"
+"templates/artists/settings/payments.html:35 templates/salons/settings/payments.html:31","Bank Transfer","Банков превод"
+"templates/artists/settings/payments.html:36 templates/salons/settings/payments.html:32","                    All payments should be transfered to the following bank account:
+                    ","Всички плащания  да бъдат превеждани на тази банкова сметка:"
+"templates/artists/settings/payments.html:43 templates/salons/settings/payments.html:39","Bank name*","Име на банката*"
+"templates/artists/settings/payments.html:47 templates/salons/settings/payments.html:43","Branch location","Адрес на клона"
+"templates/artists/settings/payments.html:51 templates/salons/settings/payments.html:47","Payee*","Получател*"
+"templates/artists/settings/payments.html:55 templates/salons/settings/payments.html:51","IBAN*","IBAN*"
+"templates/artists/settings/payments.html:59 templates/salons/settings/payments.html:55","SWIFT BIC*","SWIFT BIC*"
+"templates/core/about_us.html:5 templates/core/contact_us.html:5","Glamfame â Booking platform for top salons and beauty artists - About us",""
+"templates/core/about_us.html:32","Pixel ninja","Pixel ninja"
+"templates/core/about_us.html:33","Responsible for product and design.","Project Manager and UI/UX Designer"
+"templates/core/about_us.html:38","Plan executer","Plan executer"
+"templates/core/about_us.html:39","Responsible for technical operations management.","Responsible for technical operations management and server administration."
+"templates/core/about_us.html:44","Code warrior","Code warrior"
+"templates/core/about_us.html:45","Responsible for software development.","Responsible for software development."
+"templates/core/about_us.html:50","Sales master","Sales master"
+"templates/core/about_us.html:51","Responsible for business development and social media.","Responsible for marketing and business development ."
+"templates/core/about_us.html:56 templates/core/contact_us.html:20","WOULD YOU LIKE TO SAY ""HI""?","Искате да се свържете с нас?"
+"templates/core/about_us.html:67 templates/core/contact_us.html:31","Reason","Причина"
+"templates/core/about_us.html:71 templates/core/contact_us.html:35","Message","Съобщение"
+"templates/core/faq.html:6","Glamfame â Booking platform for top salons and beauty artists - FAQ",""
+"templates/core/faq.html:26 templates/core/faq.html.py:210 templates/core/faq.html:468","                    1. How do I register on the website?
+                    ","1. Как да се регистрирам?"
+"templates/core/faq.html:31 templates/core/faq.html.py:215 templates/core/faq.html:473","                    You can either enter your name, email and password, or register directly with your Facebook account
+                    ","Можете или да въведете име, е-мейл и парола, или да се регистрирате с Facebook профила Ви."
+"templates/core/faq.html:38","                    2. What is the difference between registered and unregistered users?
+                    ","2. Каква е разликата между регистриран и нерегистриран потребител?"
+"templates/core/faq.html:43","                    Unregistered users have no  access to notifications, they cannot make booking cancellations and wish lists.
+                    ",""
+"templates/core/faq.html:50","                    3. How do I add a listing to my wish list?
+                    ","3. Как се добавя оферта към списък с желания?"
+"templates/core/faq.html:55","Click on a particular listing and click on the purple button ""Add to wish list""","Кликнете на определена оферта и кликнете на лилавия бутон """"""""""
+templates/core/faq.html:62,                    4. How do I make a booking?"
+"templates/core/faq.html:62","4. How do I make a booking?",""
+"templates/core/faq.html:67","Click on your desired listing and select time and date from the right panel, then click the blue button ""Book now""","Кликнете на избраната оферта,изберете час и дата от панела в дясно и кликнете синия бутон ""Резервирай сега"""""""
+"templates/core/faq.html:74","                    5. How do I change the location where I want to find beauty services?                    ","5. Как да сменя локацията, където искам да намеря услуги за красота?"
+"templates/core/faq.html:79","                    Select the type of beauty services and click ""Change location"" button in the upper left box
+                    ","Изберете типа услуга за красота и кликнете бутон""Смени локацията"""" горе в ляво"""
+"templates/core/faq.html:86","                    6. What are the payment methods, provided by Glamfame?
+                    ","6. Какви са начините за плащане през Glamfame?"
+"templates/core/faq.html:91","                    Glamfame supports two payment methods â with credit card and via Pay Pal
+                    ",""
+"templates/core/faq.html:98","                    7. Is my credit card information secure?
+                    ","7. Информацията за дебитната/кредитната ми карта защитена ли е ?"
+"templates/core/faq.html:103 templates/core/faq.html.py:445","                    Glamfame does not store usersâ bank account information and does not disclose such information to third parties. Credit card information is sent viaSSLto our payment providerPaymill. See our Privacy Policy as well
+                    ",""
+"templates/core/faq.html:110","                    8. When do I get charged for a booking?
+                    ","8. Кога ще бъда таксуван за резервация?"
+"templates/core/faq.html:115","                    The payment will be processed automatically when the beauty artist confirms your booking. In case the beauty artist refuses to confirm the booking, no billing will occur
+                    ",""
+"templates/core/faq.html:122","                    9. What is the booking confirmation period?
+                    ","9. Какъв е периода на потвърждение за резервация?"
+"templates/core/faq.html:127 templates/core/faq.html.py:457 templates/core/faq.html:725","                    48 hours from the booking hour
+                    ","48 часа от часа на резервация"
+"templates/core/faq.html:134","                    10. When am I able to write reviews for the salons?
+                    ","10. Кога мога да напиша ревю за салон/стилист?"
+"templates/core/faq.html:139","                    After the appointment with the beauty artist/salon.
+                    ","След като мине часа Ви в салона/при стилиста."
+"templates/core/faq.html:146","                    11. How do I search for salons in a certain location?
+                    ","11. Как да намеря салони в определена локация?"
+"templates/core/faq.html:151","                    Enter an address and Glamfame will display all the salons with their corresponding listings and artists in the area.
+                    ","Въведете адрес и Glamfame ще Ви покаже всички салони с прилежащите им оферти и стилисти в тази област."
+"templates/core/faq.html:158","                    12. Is there an option to disable the access to my location?
+                    ","12. Има ли начин да забраня достъпа до местонахождението ми?"
+"templates/core/faq.html:163","                    Yes. When your browser loads glamfame.com for the first time, you will be asked if you want to share your location. Simply select âNot nowâ.
+                    ",""
+"templates/core/faq.html:170","                    13. Am I going to pay additional charges for a booking?
+                    ","13. Ще плащам ли допълнителни такси за резервация през сайта?"
+"templates/core/faq.html:175","                    No. Glamfameâs service fee is included in the final price of each listing with VAT.
+                    ",""
+"templates/core/faq.html:182","                    14. How do I cancel my account on Glamfame?
+                    ","14. Как да закрия профила си  Glamfame?"
+"templates/core/faq.html:187","                    By sending an email to <a href=""mailto:admin@glamfame.com?Subject=Hi%%20team"" target=""_top"">admin@glamfame.com</a>
+                    ","Като изпратите е-мейл на <a href=”mailto:admin@Glamfame.com?Subject=Hi%%20team” target=”_top”>admin@Glamfame.com</a>"
+"templates/core/faq.html:194","                    15. Can Glamfame deactivate my account ?
+                    ","15. Може ли Glamfame  да деактивира профила ми?"
+"templates/core/faq.html:199","                    Yes, if you violate our Terms and Conditions. Please, read them carefully.
+                    ","Да, ако нарушите нашите Условия за ползване на сайта.Прочетете ги внимателно."
+"templates/core/faq.html:222","                    2. Can unregistered beauty artists upload listings and create profiles on Glamfame?
+                    ","2. Могат ли нерегистрирани стилисти да качват оферти и да си създадат профили на Glamfame?"
+"templates/core/faq.html:227","                    No. Only registered artists can do so.
+                    ","Не. Само регистрирани стилисти могат."
+"templates/core/faq.html:234 templates/core/faq.html.py:492","                    3. What are the next steps after I register on the website?
+                    ","3. Кои са следващите стъпки след регистрацията на сайта?"
+"templates/core/faq.html:239","                    You have to select your type of business (Hair, Nails, Makeup), enter your location (address) and follow the instructions within our tips.
+                    ","Трябва да изберете тип услуга (Коса, Нокти, Грим), да въведете локация и да следвате инструкцийте на сайта."
+"templates/core/faq.html:246 templates/core/faq.html.py:504","                    4. How do I set up my profile and add description of my work?
+                    ","4. Как да конфигурирам профила си и да добавя описание на работата си?"
+"templates/core/faq.html:251","                    Follow the instructions within our tips after log in. Then, click the circular ""i"" icon in the right upper corner, next to the search box. 
+                    "," За да видите инструкциите, влезете в профила си и кликнете на кръглата ""i"""" иконка горе в дясно"
+"templates/core/faq.html:258","                    5. How do I add a listing?
+                    ","5. Как да добавя оферта?"
+"templates/core/faq.html:263","                    Once you enter description of your work and enter your work hours in the ""Schedule"" section, click on the green ""Add listing"" button in the left upper corner next to the search box. Add photos, price, title, description, select type and determine the duration.
+                    ","След като въведете описание на работата си и определите работното си време в секция ""График"""""
+"templates/core/faq.html:270","                    6. Am I able to deactivate and edit listings?
+                    ","6. Мога ли да декативирам и да променям оферти?"
+"templates/core/faq.html:275 templates/core/faq.html.py:545","Yes. Move the cursor to your profile badge and select ""Listings"". Then, click on ""Deactivate"", or ""Edit""","Да.Поместете курсора над профилната си значка, изберете ""Мениджмънт"""" от падащото меню. После изберете листинг и кликнете """"Деактивирай"""""
+"templates/core/faq.html:282","                    7. Where can I see my bookings?                    ","7. Къде мога да видя резервациите си?"
+"templates/core/faq.html:287 templates/core/faq.html.py:557","Move the cursor to your profile badge and select ""Bookings""","Поместете курсора над профилната си значка и изберете ""Резервации"""""""
+"templates/core/faq.html:295","                    8. Can I refuse a booking request?
+                    ","8. Мога ли да откажа заявка за резервация?"
+"templates/core/faq.html:300","                    Yes, you can.
+                    ","Да, можете."
+"templates/core/faq.html:307","                    9. What will be the consequences of booking cancellations?
+                    ","9. Какви биха били последствията от отмяна на вече потвърден час?"
+"templates/core/faq.html:312","                    Your cancellation rate will augment and this may result in negative image and decrease your sales.
+                    ","Оценката Ви „Отмяна на часове” ще се повиши, а това води до негативен имидж и по-ниски продажби."
+"templates/core/faq.html:319","                    10. Where can I find an organizer of my bookings?
+                    ","10. Къде мога да намеря органайзер за резервации ?"
+"templates/core/faq.html:324","Move the cursor to your profile badge and select ""Calendar""","Поместете курсора над профилната си значка, изберете ""Мениджмънт"""" от падащото меню. После изберете """"Календар"""""""
+"templates/core/faq.html:332","                    11. Can I find statistics for my listings and revenue?
+                    ","11. Мога ли да видя статистика за офертите и приходите си?"
+"templates/core/faq.html:337","                    Yes, in the ""Statistics"" section of your profile. You will find diagram showing the ratio between your bookings, revenue, listingsâ view and inquiries.
+                    ",""
+"templates/core/faq.html:344","                    12. Am I able to receive notifications for the bookings of my listings, cancellations and admin messages on Glamfame?
+                    ","12. Възможно ли е да получавам известия за резервациите ми, за отменени часове и за съобщения от администратор?"
+"templates/core/faq.html:349","                        Yes, in the ""Notifications"" section of your profile menu.
+                    ",""
+"templates/core/faq.html:356","                    13. How do I withdraw money from Glamfame?
+                    ","13. Как мога да изтегля пари от Glamfame?"
+"templates/core/faq.html:361 templates/core/faq.html.py:629","                    Go to ""My wallet"" section of your profile and click on ""Withdraw money"".
+                    ","Отидете в ""Портфейл"""" секцията ба профила си и кликнете на """"Изтегли пари""""."""
+"templates/core/faq.html:368","                    14. When do I receive a transfer to my virtual Wallet?
+                    ","14. Кога получавам трансфери във виртуалния си портфейл?"
+"templates/core/faq.html:373 templates/core/faq.html.py:641","                    2 hours after an appointment for beauty services is completed
+                    ","2 часа след като е минал уговорен час с клиент, резервиран през сайта"
+"templates/core/faq.html:380","                    15. What are the steps for the transfer of my earnings from my virtual Wallet to my bank account?
+                    ","15.Какви са стъпките за прехвърляне на спечеленото от моят виртуален портфейл в банковата ми сметка?"
+"templates/core/faq.html:385 templates/core/faq.html.py:653","                    You have to submit a withdrawal request via your virtual Wallet. Then it must be approved by our admin. Note: It may be cancelled only if the request for withdraw exceeds the available funds.  Once it gets an approval, the beauty artist receives his/her payout within 7-8 business days. For more information, read our Terms of service.
+                    ",""
+"templates/core/faq.html:392","                    16. Do I have to pay fees to Glamfame for the publication of listings?
+                    ","16. Дължа ли такса на Glamfame за качването на оферти?"
+"templates/core/faq.html:397 templates/core/faq.html.py:409 templates/core/faq.html:665 templates/core/faq.html.py:677","                    No.
+                    ","Не."
+"templates/core/faq.html:404","                    17. Do I owe fees to Glamfame for each booking I receive through Glamfame?
+                    ","17. Дължа ли такса на Glamfame за всяка резервация, която получавам?"
+"templates/core/faq.html:416","                    18. Is there a limit for the number of listings, submitted on the website?
+                    ","18.Има ли лимит за броя на офертите, които мога да кача?"
+"templates/core/faq.html:421 templates/core/faq.html.py:689","                    No. You can list as many, as you wish.
+                    ","Не. Качете колкото искате"
+"templates/core/faq.html:428","                    19. Do I need to add VAT, or other applicable taxes to my listings?
+                    ","19. Нужно ли е в цената на офертите да включа ДДС, или други приложими такси?"
+"templates/core/faq.html:433 templates/core/faq.html.py:701","                    Yes, you are. You are responsible for complying with the applicable local laws. Please, read section ""Listings on Glamfame"" in our Terms of Service.
+                    ","Да. Отговорни сте за това да спазвате законите на страната, в която е регистриран бизнеса Ви.Прочетете и ""Оферти в Glamfame"""" в Условията ни за ползване."""
+"templates/core/faq.html:440","                    20. Is my credit card information secure?
+                    ","20. Защитена ли е информацията за кредитната/дебитната ми карта?"
+"templates/core/faq.html:452","                    21. What is the period in which I have to confirm/cancel a booking?
+                    ","21. В какъв срок мога да потвърдя/откажа резервация?"
+"templates/core/faq.html:480","                    2. Can unregistered beauty salons, add beauty artists and upload listings on Glamfame?
+                    ","2. Могат ли нерегистрирани салони и стилисти да качват оферти на Glamfame?"
+"templates/core/faq.html:485","                    No. Only registered salons can do so.
+                    ","Не, само регистрираните могат."
+"templates/core/faq.html:497","                    You have to enter your location (address) and follow the instructions within our tips.
+                    ","Трябва да въведете местонахождението си(адреса си) и да следвате инструкциите на сайта"
+"templates/core/faq.html:509","                    Follow the instructions within our tips after log in. Then, if you need to see them again, click the circular ""i"" icon in the right upper corner, next to the search box. 
+                    ","За да видите инструкциите, влезете в профила си и кликнете на кръглата ""i"""" иконка горе в дясно"
+"templates/core/faq.html:516","                    5. Why am I unable to create a listing?
+                    ","5. Защо не мога да създам оферта?"
+"templates/core/faq.html:521","                    You have to create the artistâs profile first.
+                    ",""
+"templates/core/faq.html:528","                    6.  How do I add a listing?
+                    ",""
+"templates/core/faq.html:533","                    Once you have entered description of your salon, beauty artists and you have set their work hours in the ""Schedule"" section, click on the green ""Add listing"" button in the left upper corner next to the search box. Add photos, price, title, description, select type and determine the duration.
+                    ","След като въведете описание на салона си и определите работно време в секция ""График"""" "
+"templates/core/faq.html:540","                    7.  Am I able to deactivate and edit listings?
+                    ",""
+"templates/core/faq.html:552","                    8. Where can I see my bookings?
+                    ","8. Къде мога да видя резервациите си?"
+"templates/core/faq.html:564","                    8. Can beauty artists refuse a booking request?
+                    ","8. Могат ли стилистите да отказват заявки за резервация?"
+"templates/core/faq.html:569","                    Yes, they can.
+                    ","Да, могат."
+"templates/core/faq.html:576","                    10. What will be the consequences of booking cancellations?
+                    ","10. Какви биха били последствията от отмяна на вече потвърден час?"
+"templates/core/faq.html:581","                    Your artistsâ cancellation rate will augment and this may result in negative image and decrease your sales.
+                    ",""
+"templates/core/faq.html:588","                    11. Where can I find an organizer for the bookings of my beauty artists?
+                    ","11. Къде мога да намеря органайзер за резервациите на стилистите ми?"
+"templates/core/faq.html:593","Move the cursor to your profile badge and select ""Calendar""","Поместете курсора над профилната си значка, изберете ""Мениджмънт"""" от падащото меню. После изберете """"Календар"""""""
+"templates/core/faq.html:600","                    12. Can I find statistics for the listings and revenue for each of my beauty artists?
+                    ","12. Мога ли да видя статистика за офертите и приходите за всеки от стилистите ми?"
+"templates/core/faq.html:605","                    Yes, in the ""Statistics"" section of your profile. Select an artist. Then, you will find diagram showing the ratio between your bookings, revenue, listingsâ view and inquiries.
+                    ",""
+"templates/core/faq.html:612","                    13. Am I able to receive notifications for the bookings of my listings, cancellations and admin messages   on Glamfame?
+                    ",""
+"templates/core/faq.html:617","                    Yes, click on the flag icon in the upper right corner of the header, next to the search box.
+                    ",""
+"templates/core/faq.html:624","                    14. How do I withdraw money from Glamfame?
+                    ","14. Как мога да изтегля пари от Glamfame?"
+"templates/core/faq.html:636","                    15. When do I receive a transfer to my virtual Wallet?
+                    ","15. Кога получавам трансфери във виртуалния си портфейл?"
+"templates/core/faq.html:648","                    16. What are the steps for the transfer of my earnings from my virtual Wallet to my bank account? <
+                    ",""
+"templates/core/faq.html:660","                    17. Do I have to pay fees to Glamfame for the publication of listings?
+                    ","17. Дължа ли такса на Glamfame за качването на оферти?"
+"templates/core/faq.html:672","                    18. Do I owe fees to Glamfame for each booking I receive through Glamfame?
+                    ","18. Дължа ли такса на Glamfame за всяка резервация, която получавам?"
+"templates/core/faq.html:684","                    19. Is there a limit for the number of listings and beauty artists, submitted on the website?
+                    ","19. Има ли лимит за броя на офертите, които мога да кача?"
+"templates/core/faq.html:696","                    20. Do I need to add VAT, or other applicable taxes to my listings?
+                    ","20. Нужно ли е в цената на офертите да включа ДДС, или други приложими такси?"
+"templates/core/faq.html:708","                    21. Is my credit card information secure?
+                    ","21. Защитена ли е информацията за кредитната/дебитната ми карта?"
+"templates/core/faq.html:713","                    Yes, it is. Glamfame does not store usersâ bank account information and does not disclose such information to third parties. Credit card information is sent viaSSLto our payment providerPaymill. See our Privacy Policy as well
+                    ",""
+"templates/core/faq.html:720","                    22. What is the period in which my beauty artists have to confirm/cancel a booking?
+                    ","22. В какъв срок стилистите ми могат да потвърдят/откажат резервация?"
+"templates/core/home.html:12","Booking platform for top beauty salons and artists|Glamfame","Платформа за резервации на оферти на топ стилисти и салони|Glamfame"
+"templates/core/home.html:23","DO YOU WANT TO GLAM YOURSELF?","ИСКАТЕ ЛИ ДА ЗАСИЯЕТЕ?"
+"templates/core/home.html:24","BROWSE MULTIPLE LISTINGS, OFFERED BY TOP HAIR, NAILS AND MAKEUP ARTISTS","РАЗГЛЕДАЙ МНОЖЕСТВО ОФЕРТИ, ПРЕДОСТАВЕНИ ОТ ТОП СТИЛИСТИ"
+"templates/core/home.html:29","Service","Услуга"
+"templates/core/home.html:39","OR CHECK WHAT IS TRENDY RIGHT NOW","ИЛИ ВИЖТЕ КОЕ Е МОДЕРНО В МОМЕНТА"
+"templates/core/home.html:136","SELECT SERVICE","ИЗБЕРЕТЕ УСЛУГА"
+"templates/core/how_it_works_artists.html:5 templates/core/how_it_works_salons.html:5","Glamfame â Booking platform for top salons and beauty artists - How it works for artists",""
+"templates/core/how_it_works_artists.html:16","Hello, beauty professionals.","Здравейте, професионалисти от сферата на красотата."
+"templates/core/how_it_works_artists.html:17","Are you ready to make money and become famous?","Готови ли сте да печелите пари и популярност?"
+"templates/core/how_it_works_artists.html:18 templates/core/how_it_works_salons.html:18","Glamfame is the platform that will:","Glamfame е платформата, която:"
+"templates/core/how_it_works_artists.html:19 templates/core/how_it_works_salons.html:19","Boost your sales","Увеличава продажбите Ви"
+"templates/core/how_it_works_artists.html:20","Ease your work","Улеснява работата Ви"
+"templates/core/how_it_works_artists.html:24 templates/core/how_it_works_artists.html:146 templates/core/how_it_works_salons.html:24 templates/core/how_it_works_salons.html:146 templates/core/how_it_works_users.html:24 templates/core/how_it_works_users.html:137","SIGN UP NOW","РЕГИСТРИРАЙ СЕ СЕГА"
+"templates/core/how_it_works_artists.html:29 templates/core/how_it_works_salons.html:29 templates/core/how_it_works_users.html:29","NOT CONVINCED? CHECK SOME OF OUR BENEFITS BELOW","НЕ СТЕ СИГУРНИ? ВИЖТЕ ЧАСТ ОТ ПРЕДИМСТВАТА, КОИТО ПОЛУЧАВАТЕ"
+"templates/core/how_it_works_artists.html:39 templates/core/how_it_works_salons.html:44","MANAGE YOUR LISTINGS","УПРАВЛЯВАТЕ ОФЕРТИТЕ СИ"
+"templates/core/how_it_works_artists.html:44","MANAGE YOUR AVAILABILITY","УПРАВЛЯВАТЕ АНГАЖИМЕНТИТЕ СИ"
+"templates/core/how_it_works_artists.html:49","ATTRACT FOLLOWERS","ПРИВЛИЧАТЕ ПОСЛЕДОВАТЕЛИ"
+"templates/core/how_it_works_artists.html:54 templates/core/how_it_works_salons.html:54","ACCEPT BOOKING REQUESTS","ПРИЕМАТЕ ОНЛАЙН РЕЗЕРВАЦИИ"
+"templates/core/how_it_works_artists.html:59 templates/core/how_it_works_salons.html:59","ANALYZE BOOKING DATA","АНАЛИЗ НА РЕЗЕРВАЦИИТЕ"
+"templates/core/how_it_works_artists.html:68 templates/core/how_it_works_salons.html:68 templates/core/how_it_works_users.html:68","Sign up.","Регистрирайте се."
+"templates/core/how_it_works_artists.html:69 templates/core/how_it_works_salons.html:69 templates/core/how_it_works_users.html:69","It takes less than a minute. And it's FREE.","Отнема по-малко от минута и е БЕЗПЛАТНО."
+"templates/core/how_it_works_artists.html:76 templates/core/how_it_works_salons.html:76","Set up your profile.","Попълнете профила си."
+"templates/core/how_it_works_artists.html:77 templates/core/how_it_works_salons.html:77","It's fast and easy. And beautiful.","Лесно, бързо, красиво!"
+"templates/core/how_it_works_artists.html:86","Upload your listings","Качете офертите си"
+"templates/core/how_it_works_artists.html:87 templates/core/how_it_works_salons.html:105","Create as many listings as you want. You can always change the images, description and the price of each one of them.","Създавайте неограничен брой оферти. Винаги можете да променяте снимката, описанието и цената на всяка оферта."
+"templates/core/how_it_works_artists.html:94 templates/core/how_it_works_salons.html:94","Manage your schedule.","Управлявайте графика си."
+"templates/core/how_it_works_artists.html:95","Make your workday easy. Plan your appointments and improve your productivity.","Улесенете работния си процес. Планирайте ангажиментите си и подобрете продуктивността си."
+"templates/core/how_it_works_artists.html:104","Attract followers","ПРИВЛИЧАТЕ ПОСЛЕДОВАТЕЛИ"
+"templates/core/how_it_works_artists.html:105","Share your work with the world. Show off your skills and get likes and followers.","Покажете портфолиото и уменията си пред клиенти от цял свят! Набирайте  харесвания и последователи."
+"templates/core/how_it_works_artists.html:112 templates/core/how_it_works_salons.html:112","Accept booking requests.","Приемайте заявки за резервации."
+"templates/core/how_it_works_artists.html:113 templates/core/how_it_works_salons.html:113","Attract new customers. Increase your revenue.","Привличайте нови клиенти."
+"templates/core/how_it_works_artists.html:122 templates/core/how_it_works_salons.html:122","Analyze booking data.","Следете анализа на продажбите Ви."
+"templates/core/how_it_works_artists.html:123","Understand what your customers want. Get valuable insights when and what they book.","Разберете нуждите на клиентите. Намерете ценни данни за това кога и как резервират."
+"templates/core/how_it_works_artists.html:128 templates/core/how_it_works_salons.html:128 templates/core/how_it_works_users.html:119","ONE PLATFORM TO RULE THEM ALL","ЕДНА ПЛАТФОРМА ФУНКЦИОНИРАЩА НА ВСЯКО УСТРОЙСТВО"
+"templates/core/how_it_works_salons.html:16","Hello, beauty salons.","Здравейте, салони за красота."
+"templates/core/how_it_works_salons.html:17","It's time to grow your business?","Време е да разширите бизнеса си?"
+"templates/core/how_it_works_salons.html:20","Allow you to manage your revenue",""
+"templates/core/how_it_works_salons.html:21","Allow you to easily manage your employees",""
+"templates/core/how_it_works_salons.html:39","MANAGE YOUR EMPLOYEES","УПРАВЛЯВАЙТЕ СЛУЖИТЕЛИТЕ СИ"
+"templates/core/how_it_works_salons.html:49","ATTRACT YOUR AVAILABILITY","УПРАВЛЯВАТЕ АНГАЖИМЕНТИТЕ СИ"
+"templates/core/how_it_works_salons.html:86","Manage your employees.","Управлявайте служителите си."
+"templates/core/how_it_works_salons.html:87","Create as many employees as you want. Manage their appointments and accept booking requests from their behalf.","Създавайте акаунти на неограничен брой служители.Управлявайте ангажиментите им и приемайте заявки за резервации вместо тях."
+"templates/core/how_it_works_salons.html:95","See how busy your employees are and when.","Следете ангажираността на служителите си по ден и час."
+"templates/core/how_it_works_salons.html:104","Manage your listings.","Управлявайте офертите си."
+"templates/core/how_it_works_salons.html:123","Review the performance of your salon. Get valuable insights what your customers want and who are your best performing employees.","Следете продуктивността на салона . Намерете ценни данни за това от какво се нуждаят клиентите Ви и кои са най-успешните Ви служители."
+"templates/core/how_it_works_users.html:5","Glamfame â Booking platform for top salons and beauty artists - How it works for users",""
+"templates/core/how_it_works_users.html:16","Want to be glamorous? Get the Appearance of Your Dreams! Glam yourself today!","Искате да бъдете обаятелни? Подарете си външния вид, за който отдавна мечтаете! Засияйте с наша помощ!"
+"templates/core/how_it_works_users.html:17","Glamfame is the beauty platform, where you can find particular hairstyles, nail-art styles, or celebrity lookalike makeup. You will be able to see the ratings of beauty salons and beauty artists and their reviews. In addition, you can:","Glamfame е платформа за красота, където можете да намерите оферти за специфични прически, дизайн за маникюр и грим, както и преобразяване в стила на известни личности. Можете да намерите рейтинг за салоните и стилистите и мнения за тях от предишни посетители. Освен това можете да:"
+"templates/core/how_it_works_users.html:18","List your reviews and feedback","Оставите свои коментари и оценки"
+"templates/core/how_it_works_users.html:19","Get exactly what you are paying for","Получите точно това, за което плащате"
+"templates/core/how_it_works_users.html:20","Save time and money","Спестите време и пари"
+"templates/core/how_it_works_users.html:21","Forget about trial hairstyles and makeup before special events","Забравите за пробни прически и пробен грим при подготовка за специални събития"
+"templates/core/how_it_works_users.html:39","FIND THE BEST LOOK FOR YOU","НАМЕРЕТЕ НАЙ-ПОДХОДЯЩАТА ВИЗИЯ ЗА СЕБЕ СИ"
+"templates/core/how_it_works_users.html:44","MAKE APPOINTMENTS","ЗАПАЗЕТЕ ЧАСОВЕ ОНЛАЙН"
+"templates/core/how_it_works_users.html:49","FOLLOW YOUR FAVORITE ARTISTS","СЛЕДВАЙТЕ ЛЮБИМИТЕ СИ СТИЛИСТИ"
+"templates/core/how_it_works_users.html:54","CREATE YOUR wishlist","СЪЗДАВАЙТЕ СВОИ собствени списъци с желания"
+"templates/core/how_it_works_users.html:59","MANAGE YOUR APPOINTMENTS","УПРАВЛЯВАЙТЕ УГОВОРЕНИТЕ ЧАСОВЕ"
+"templates/core/how_it_works_users.html:76","Find the best look for you.","Намерете най-подходящата визия за себе си."
+"templates/core/how_it_works_users.html:77","Enter your address, browse through thousands of listings and select the style you want.","Въведете локация и разгледайте хилядите оферти. Изберете стила, който пожелаете."
+"templates/core/how_it_works_users.html:86","Make appointments.","Запазвайте часове за разкрасителни процедури."
+"templates/core/how_it_works_users.html:87","When you are ready with your choice, simply click on Book now button and submit your payment details.<br>The moeny will be withdraw from your account after the end of your appointment.","Щом изберете оферта, кликнете на „Резервирай сега” и въведете данни за плащане.<br> Дължимата сума за услугата ще бъде изтеглена от банковата Ви сметка, след като мине часа при стилиста."
+"templates/core/how_it_works_users.html:94","Follow your favorite beauty artists","Следвайте любимите си стилисти"
+"templates/core/how_it_works_users.html:95","It you really like the portfolio of a beauty professional, just click on the Follow button. That way you will never miss an offer from that artist!","Ако се захласнете по уменията на стилист, можете да кликнете бутона „Следвай” и да получавате известия за най-новите му/й оферти!"
+"templates/core/how_it_works_users.html:104","Create your wishlist","СЪЗДАВАЙТЕ СВОИ собствени списъци с желания"
+"templates/core/how_it_works_users.html:105","You can add offers to your wishlist and book them later.","Добавяйте оферти към списъка с желанията си и резервирайте по-късно."
+"templates/core/how_it_works_users.html:112","Manage your appointments.","Управлявайте ангажиментите си."
+"templates/core/how_it_works_users.html:113","Be on top of all your appointments. Receive email and web reminders when the appoitment dates are near.","Получавайте е-мейли и известия преди датата на уговорения час."
+"templates/emails/1.html:11","                <p>Hi %(receiver_name)s,</p>
+                <p>We are happy to have on you on board! There are so many salons and beauty artists waiting for you to book them! </p>
+<!--                 <p>Please complete one small step only â click on the link below to verify your account.</p>
+                <p>%(link)s</p> -->
+                <p>Thank you!</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/10.html:12","                <p>Good news %(receiver_name)s,</p>
+                <p>
+                    Your appointment with %(artistname)s has been approved! Hereâs an overview:
+                </p>
+                <p>%(title)s</p>
+                <p>%(when)s</p>
+                <p>
+",""
+"templates/emails/10.html:25","                <p>%(price)s</p>
+                <p>We wish you a glamorous experience!</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/11.html:11","                <p>We are so sorry %(receiver_name)s,</p>
+                <p>
+                    Your appointment with %(artistname)s has been declined. Probably the artist is busy right now with other customers. Hereâs what you can do:
+                    <ul>
+                        <li>Click <a href=""https://glamfame.com/hair/"">here</a> to schedule another appointment for different date and time</li>
+                        <li>Search for similar listings in your area</li>
+                        <li>Search for similar beauty artists in your area</li>
+                    </ul>
+                </p>
+                <p>We are sure your next appointment is just one click away!</p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/12.html:11","                <p>We are so sorry %(receiver_name)s,</p>
+                <p>
+                    Your appointment for %(when)s has been cancelled by %(username)s. We are really sad when that happens. 
+                </p>
+                <p>The cancellation occurred %(day_before)s days prior the appointment. According to our cancellation policy, the customer should pay charges only when the cancellation occurs less than 2 days prior the appointment. </p>
+                <p>Once again, we are sorry for the inconvenience.</p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/13.html:11","                <p>We are so sorry %(receiver_name)s,</p>
+                <p>
+                    Your appointment for %(when)s has been cancelled by %(username)s. We are really sad when that happens. 
+                </p>
+                <p>
+                    The cancellation occurred %(day_before)s days prior the appointment. According to our cancellation policy, the customer should pay charges to you. In this case, the amount of [AMOUNT] will be transferred to your account.
+                </p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/14.html:11","                <p>We are so sorry %(receiver_name)s,</p>
+                <p>
+                    Your appointment for %(when)s has been cancelled by %(artistname)s. We are really sad when that happens.
+                </p>
+                <p>Hereâs what you can do:</p>
+                <p>
+                    <ul>
+                        <li>Click <a href=""https://glamfame.com/listing/%(id)s"">here</a> to schedule another appointment for different date and time</li>
+                        <li>Search for similar listings in your area</li>
+                        <li>Search for similar beauty artists in your area</li>
+                    </ul>
+                </p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/15.html:11","                <p>Greetings %(receiver_name)s,</p>
+                <p>
+                    Did you enjoy your appointment with %(artistname)s?
+                </p>
+                <p>Please click on the button below and share your experience with us. Your feedback is important!</p>
+                <p><a href=""%(link)s"">Feedback Link</a></p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/19.html:11","                <p>Hi %(receiver_name)s,</p>
+                <p>Thank you for using Glamfame services!</p>
+                <p>We hope that you will like our platform! There are so many salons and beauty artists waiting for you to discover them! Donât keep them waiting, browse their listings now and book your next you!</p>
+                <p>If you want, you can use your email and the password below and log in from our login form:</p>             
+                <p> %(password)s </p>
+                <p>Thank you!</p> 
+                <p>Glamfame Team</p>
+",""
+"templates/emails/2.html:11","                <p>Hi %(first_name)s,</p>
+                <p>We want to see you again! Our beauty artists want to see you again! So come over and find your next haircut, nails or make up style!</p>
+                <p>Hope to see you soon!</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/3.html:11","                <p>Hi %(first_name)s,</p>
+                <p>Long time no see! Let us remind you that hundreds of salons and beauty artists waiting for you to book them!</p>
+                <p>We are waiting for you too!</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/4.html:11","                <p>Hi %(first_name)s,</p>
+                <p>
+                    Hereâs what is happening on Glamfame since your last login:
+                    <ul>
+                        <li>[number] new listings</li>
+                        <li>[number] new salons</li>
+                        <li>[number] new beauty artists</li>
+                    </ul>
+                </p>
+                <p>Why donât you come over and check them?</p>
+                <p>We will be happy to see you again!</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/5.html:11","                <p>Greetings %(receiver_name)s,</p>
+                <p>
+                    You have one new follower â %(username)s! The total number of your followers is %(count)s! You can view them all here:
+                </p>
+                <p>%(link)s</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/6.html:11","                <p>Greetings %(receiver_name)s,</p>
+                <p>
+                    %(artistname)s has one new follower â %(username)s! The total number of his followers is %(count)s! You can view them all here:
+                </p>
+                <p>%(link)s</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/7.html:12","                <p>Good news %(receiver_name)s,</p>
+                <p>
+                    %(username)s wants to book an appointment!
+                </p>
+                <p><a href=""https://glamfame.com/listings/%(id)s"">%(title)s</a></p>
+                <p>
+",""
+"templates/emails/7.html:24 templates/emails/8.html:23 templates/emails/9.html:22","                <p>%(price)s</p>
+                <p>You can manage all booking requests from here:</p>
+                <p>%(link)s</p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/8.html:12","                <p>Good news %(receiver_name)s,</p>
+                <p>
+                    %(username)s wants to book an appointment with %(artistname)s!
+                </p>
+                <p>%(title)s</p>
+                <p>
+",""
+"templates/emails/9.html:11","                <p>Good news %(first_name)s,</p>
+                <p>
+                    %(username)s wants to book an appointment with %()s}!
+                </p>
+                <p>%(listing_name)s</p>
+                <p>
+",""
+"templates/emails/artist_welcome.html:11","                <p>Hello %(receiver_name)s,</p>
+                <p>Thank you for signing up!</p>
+                <p>You have made the right decision. Glamfame is the platform that will boost your appointments and help you manage your workflow easily.</p>
+                <p>Whatâs next? Only 3 easy steps:</p>
+                <p>1. Set up your cancellation policy â you can do it from here</p>
+                <p>2. Set up preferred payment method â you can do it from here</p>
+                <p>3. Upload your listings â you can do it from <a href=""https://glamfame.com/artists/upload"">here</a></p>
+                <p>That's it! Once you complete these steps, you will start receiving booking requests from our customers. </p>
+                <p>Thank you! </p>
+                <p>Glamfame Team</p>
+",""
+"templates/emails/artist_welcome_from_salon.html:11","                <p>Dear %(name)s,</p>
+                <p>We are glad to inform you that %(salon_name)s added you as a member of its team. The password for your account is %(password)s.</p>
+                <p>Log in to review your profile settings. Manage your bookings, earnings and working schedule. See your followers and ratings and gain popularity!</p>
+                <p>You can use the password below to log in you account.</p>
+                <p><a href=""https://glamfame.com//users/login/"">GLAMFAME</a></p>
+                <p>Regards,</p>
+                <p>The team of Glamfame</p>
+",""
+"templates/emails/facebook_welcome.html:11","                <p>Hi %(receiver_name)s,</p>
+                <p>Thank you for signing up!</p>
+                <p>We are happy to have on you on board! There are so many salons and beauty artists waiting for you to discover them! Donât keep them waiting, browse their listings now and book your next you!</p>
+                <p>Now you can log in your account with your facebook profile, or you can use your email and the password below and log in from our login form:</p>
+                
+                <p> %(password)s </p>
+                <p>Thank you!</p> 
+                <p>Glamfame Team</p>
+",""
+"templates/emails/salon_welcome.html:11","                <p>Hello %(receiver_name)s,</p>
+                <p>Thank you for signing up!</p>
+                <p>You have made the right decision. Glamfame is the platform that will boost your appointments and help you manage your workflow easily.</p>
+                <p>Whatâs next? Only 4 easy steps:</p>
+                <p>1. Add your beauty artists â you can do it from <a href=""https://glamfame.com/salons/settings/artists"">here</a></p>
+                <p>2. Set up your cancellation policy â you can do it from <a href=""https://glamfame.com/salons/settings/policy"">here</a></p>
+                <p>3. Set up preferred payment method â you can do it from <a href=""https://glamfame.com/salons/settings/payments"">here</a></p>
+                <p>4. Upload your listings â you can do it from <a href=""https://glamfame.com/salons/upload"">here</a></p>
+                <p>That's it! Once you complete these steps, you will start receiving booking requests from our customers. </p>
+                <p>Thank you! </p>
+                <p>Glamfame Team</p>
+",""
+"templates/listings/confirm.html:17","CHECKOUT","КОШНИЦА"
+"templates/listings/confirm.html:93 templates/listings/confirm.html:146","Your card will be charged at the appointment date.","Сума от картата ще Ви бъде начислена в деня на уговорения час."
+"templates/listings/confirm.html:94 templates/listings/confirm.html:147","Once you submit your payment information, your credit card/PayPal account will be pre-authorized. Within the next 48 hours you should receive a notification for booking confirmation from the beauty service provider within your account. If not, the money for pre-approval will be released. In case you miss or cancel an appointment, you will be refunded in accordance with the cancellation policy set by the beauty service provider. The payment will be processed on the appointment date.","След като въведете данните си за плащане, ще бъде извършена преавторизация на кредитната Ви карта/PayPal акаунта Ви.В рамките на 48 ч. трябвада  получите уведомление в акаунта Ви за потвърждение на резервацията. Ако ли не, блокираната сума ще бъде освободена. Ако пропуснете или отмените час, ще получите плащане според политиката за отмяна на часове, определена от стилиста. Плащането ще бъде извършено в деня на уговорения час."
+"templates/listings/confirm.html:120","Expiration date","Валидна до"
+"templates/listings/confirm.html:226","Please accept the terms and conditions.",""
+"templates/listings/confirm.html:265","Unexpected error, please contact administrator.",""
+"templates/listings/details.html:130","DESCRIPTION","Описание"
+"templates/listings/details.html:132 templates/salons/profile.html:59","LOCATION","Локация"
+"templates/listings/details.html:180","You have already booked this listing for","Вече сте резервирали тази оферта за"
+"templates/listings/details.html:220 templates/widget/widget.html:144","Enter your email","Въведете е-мейл адреса си"
+"templates/listings/details.html:233","Added to {{ listing.likes }} wishlists",""
+"templates/listings/details.html:236","Remove from wishlist","Премахни от списък желания"
+"templates/listings/details.html:280","STEP 1 - SELECT DATE","СТЪПКА 1- ИЗБЕРЕТЕ ДАТА"
+"templates/listings/details.html:284","STEP 2 - SELECT HOUR","СТЪПКА 2- ИЗБЕРЕТЕ ЧАС"
+"templates/listings/details.html:326","Please, select date and time to process forward.","Моля, изберете дата и час, за да продължите."
+"templates/listings/details.html:338","Please, enter your email address. That's how you will be able to manage your bookings via your mailbox and you will receive notifications when the artist confirms them.
+","Моля, въведете мейл адреса си. Така ще можете да управлявате резервациите си през пощата си и ще получавате уведомления когато стилиста ги потвърди.
+"
+"templates/listings/edit.html:6","Glamfame â Booking platform for top salons and beauty artists - Edit Listing",""
+"templates/listings/edit.html:18","EDIT LISTING","РЕДАКТИРАЙ ОФЕРТА"
+"templates/listings/edit.html:37 templates/listings/edit.html.py:50","DELETE","ИЗТРИИ"
+"templates/listings/edit.html:38 templates/listings/edit.html.py:51","COVER PHOTO","СНИМКА ЗА КОРИЦА  "
+"templates/listings/edit.html:81","                            Price after fees: %(request.user.artist.get_currency_display)s<span class=""real_price"">0</span><br><br>
+                            All fees will be paid by the customer.
+                            ",""
+"templates/listings/listings.html:6 templates/user/wishlist.html:6","Glamfame â Booking platform for top salons and beauty artists - Wishlist",""
+"templates/notifications/notifications.html:45","Currently you don't have any notifications.","В момента нямате известия."
+"templates/payments/error.html:5","Glamfame â Booking platform for top salons and beauty artists - Cancelled Payment",""
+"templates/payments/error.html:18","Your payment was unsuccessful. Reason: Unknown.
+","Вашето плащане беше неуспешно. Причина: неясна.
+"
+"templates/payments/error.html:23","Please try again later with different credit/debit card or PayPal account.
+","Моля, опитайте отново с различна кредитна/дебита карта, или PayPal aкаунт
+"
+"templates/payments/success.html:11","GREAT","Чудесно"
+"templates/payments/success.html:18","Your payment has been succesfully proccessed.
+","Плащането Ви беше успешно.
+"
+"templates/payments/success.html:23","                You can view all your appointments
+","Можете да видите всичките си часове
+"
+"templates/review/receive.html:6","Glamfame â Booking platform for top salons and beauty artists - Give your feedback",""
+"templates/review/receive.html:16","WRITE A REVIEW","НАПИШИ РЕВЮ"
+"templates/review/receive.html:33","Please rate",""
+"templates/review/receive.html:38","Submit a review","Пусни ревю"
+"templates/salons/add_artist.html:16","ADD ARTIST","Добави стилист"
+"templates/salons/add_artist.html:54","Upload profile picture","Качи профилна снимка"
+"templates/salons/bookings.html:28","ASSIGNED TO","ИЗПЪЛНЕНА ОТ"
+"templates/salons/delete_artist.html:6","Glamfame â Booking platform for top salons and beauty artists - Delete Artist",""
+"templates/salons/delete_artist.html:34","AVAILABLE ARTIST","НАЛИЧНИ СТИЛИСТИ"
+"templates/salons/delete_artist.html:93","Assign to XXX","Прехвърли на XXX  "
+"templates/salons/delete_artist.html:95","Accept anyway","Приеми въпреки това "
+"templates/salons/delete_artist.html:105","Delete this artist","Изтрии този стилист"
+"templates/salons/profile.html:45","Request submitted","Заявката е пусната"
+"templates/salons/profile.html:47 templates/salons/management/artists.html:46","Suspend","Прекрати членство"
+"templates/salons/profile.html:50","I am working here","Аз работя тук"
+"templates/salons/profile.html:58","GALLERY","ГАЛЕРИЯ"
+"templates/salons/profile.html:72","Add new photo","Добави нова снимка"
+"templates/salons/profile.html:79","Delete","ИЗТРИИ"
+"templates/salons/profile.html:89","Currently the salon doesn't have any","В момента няма снимки на салона."
+"templates/salons/profile.html:91 templates/salons/profile.html.py:93","photos","Снимки"
+"templates/salons/profile.html:137","                    Currently the salon doesn't have any
+","В момента няма снимки на салона.
+"
+"templates/salons/profile.html:140","listings","Oферти"
+"templates/salons/profile.html:169","Currently the salon doesn't have any reviews","В момента за салона няма ревюта"
+"templates/salons/profile.html:176","Artists","СТИЛИСТИ"
+"templates/salons/profile.html:190 templates/salons/management/artists.html:34","stylist","стилист"
+"templates/salons/profile.html:195","No artists yet","Все още няма стилисти"
+"templates/salons/profile.html:197","Add new","Добави нов"
+"templates/salons/settings.html:18 templates/user/settings.html:17","SETTINGS","Настройки"
+"templates/salons/upload.html:17","ADD NEW STYLE","Добави нов стил "
+"templates/salons/upload.html:54","                            Price after fees: %(request.user.salon.get_currency_display)s<span class=""real_price"">0</span><br><br>
+                            All fees will be paid by the customer.
+                            ",""
+"templates/salons/wallet.html:35","All WIDTHRAWS","ВСИЧКИ ТЕГЛЕНИЯ"
+"templates/salons/wallet.html:36","AVAIBLE FUNDS","НАЛИЧНИ СРЕДСТВА"
+"templates/salons/artist_settings/edit_artist.html:89 templates/user/settings.html:76","Receive notifications for booking request and other activities via email","Получавайте известия за резервации и други активности по е-мейл."
+"templates/salons/artist_settings/edit_artist.html:93 templates/user/settings.html:80","Receive notifications for booking request and other activities via text messages","Получавайте известия за резервации и други активности чрез sms"
+"templates/salons/artist_settings/schedule.html:76"," class=",""
+"templates/salons/artist_settings/schedule.html:112","small_button",""
+"templates/salons/artist_settings/schedule.html:113","cancel","Отмени"
+"templates/salons/management/artists.html:36","marked that is working for your salon. Is this correct?","заяви, че работи за Вашия салон. Вярно ли е?"
+"templates/salons/management/artists.html:38 templates/salons/management/artists.html:42","Reject","Отхвърли"
+"templates/salons/management/artists.html:40","marked that want to suspend your salon. What you think?","заяви прекратяване на членството си към Вашия екип."
+"templates/salons/management/artists.html:44","Schedule","ГРАФИК"
+"templates/salons/management/calendar.html:33","Customer:","Клиент:"
+"templates/salons/management/calendar.html:42","Revenue:","Приходи:"
+"templates/salons/management/calendar.html:45","Style:","Стил:"
+"templates/salons/management/calendar.html:62 templates/salons/management/calendar.html:78","Comment:","Коментар:"
+"templates/salons/management/calendar.html:196","Mark as busy","Покажи ме зает"
+"templates/salons/management/widgets.html:23","                    You can add a widget to your website and start acceptiong bookings requests immediately. Your listings, schedule and calendar from Glamfame.com will be directly available on your website.<br> Just copy the code below and paste it on your website.
+","Можете да добавите уиджета ни на сайта си и да приемате резервации мигновено.Вашите оферти, график и календар от Glamfame.com ще бъдат достъпни на сайта Ви.<br> Копирайте кода на удижета и го добавете в HTML кода на сайта.
+"
+"templates/salons/settings/account.html:38","Current","Текущ"
+"templates/salons/settings/account.html:40","New","Нов"
+"templates/salons/settings/account.html:42","Repeat","Повтори"
+"templates/salons/settings/cancellation_policy.html:56","days","дни"
+"templates/salons/settings/gallery.html:17","Upload new photo","Качи нова снимка"
+"templates/service/service.html:12","Hairstyle &amp; Salon reviews. Bridal makeup and hair.","Прически &amp; Ревюта на салони. Сватбен грим, сватбени прически"
+"templates/service/service.html:16","Nails designs &amp; Nail salon and artist reviews","Дизайн на маникюр &amp; Ревюта на салони за ноктоплатика и маникюристи"
+"templates/service/service.html:20","Make up listings by top artists and salons. Tips and tricks","Оферти за грим от топ салони и стилисти. Съвети и трикове за красота."
+"templates/service/service.html:22","Beauty Listings {{request.GET.q}} Results|Glamfame",""
+"templates/service/service.html:57","Not your location?","Не е Вашата локация?"
+"templates/service/service.html:65 templates/service/service.html.py:92 templates/service/service.html:113 templates/service/service.html.py:130","Reset","Изчисти"
+"templates/service/service.html:139 templates/service/service.html.py:142 templates/service/service.html:145 templates/service/service.html.py:148","& Up","& нагоре"
+"templates/service/service.html:165","results","резултати"
+"templates/service/service.html:269","Enter your location","Въведете локацията си"
+"templates/service/service.html:277","Drag and drop the pin around the map","Хванете карфицата и я местете по картата"
+"templates/service/service.html:279","Save location","Запази локацията"
+"templates/user/bookings.html:86","None","Никой"
+"templates/user/forgotten_password.html:17","Please submit your email address. You will receive an email with further instructions how to create new password for your account.","Моля, въведете е-мейл адреса си. Ще получите инструкции по е-мейл за това как да създадете нова парола за акаунта си."
+"templates/user/login.html:11","LOGIN","Вход"
+"templates/user/login.html:41","Remember Me","Запомни"
+"templates/user/login.html:42","Forgot your password?","Забравена парола?"
+"templates/user/profile.html:45","Following","Следващ"
+"templates/user/profile.html:63","Review of","Отзиви за"
+"templates/user/profile.html:106","Currently the user doesn't have any listings in wishlist","В момента потребителят няма оферти в списъка си с желания."
+"templates/user/wishlist.html:12","WISHLIST","Списък с желания"
+"templates/widget/widget.html:58","Select date","избери дата"
+"templates/widget/widget.html:62","Hour","Час"
+"templates/widget/widget.html:66","Select time","избери време"

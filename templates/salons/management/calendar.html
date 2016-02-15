@@ -1,0 +1,287 @@
+{% extends "salons/management.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+    {% block meta %}
+        <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Calendars" %}</title>
+    {% endblock meta %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery.weekcalendar.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/calendar.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+
+    {% endblock stylesheets %}
+
+    {% block settings %}
+    <div class="cal_header">
+        <a class="arrow prev clickable" href="{% url 'salons_calendar' prev %}"></a>
+        <div>
+            {% thumbnail artist.get_avatar "60x60" crop="center" as im %}
+                <img src="{{ im.url }}" alt="avatar" style="width: 45px; height: 45px; border-radius: 99px;">
+            {% endthumbnail %}
+            <span>{{ artist.user.first_name }}</span>
+        </div>
+        <a class="arrow next clickable" href="{% url 'salons_calendar' next %}"></a>
+    </div>
+    <div id="calendar"></div>
+    <div id="event_edit_container" style="display: none;">
+        <ul>
+            <li class="customer">
+                <span>{% trans "Customer:" %} </span><span class="text"></span>
+            </li>
+            <li class="start_time">
+                <span>{% trans "Start time:" %} </span><span class="text"></span>
+            </li>
+            <li class="end_time">
+                <span>{% trans "End time:" %} </span><span class="text"></span>
+            </li>
+            <li class="price">
+                <span>{% trans "Revenue:" %} </span><span class="text"></span>
+            </li>
+            <li class="style">
+                <span>{% trans "Style:" %} </span>
+                <img src="" alt="">
+            </li>
+
+            <li class="cancel"><a href="">{% trans "Cancel this appointment" %}</a></li>
+        </ul>
+    </div>
+    <div id="add_event" style="display: none;">
+        <form action="{{ request.get_full_path }}" method="POST">
+            <ul>
+                <li class="start_time">
+                    <span>{% trans "Start time:" %} </span><span class="text"></span><input type="hidden" name="start_time"/>
+                </li>
+                <li class="end_time">
+                    <span>{% trans "End time:" %} </span><span class="text"></span><input type="hidden" name="end_time"/>
+                </li>
+                <li class="comment">
+                    <span>{% trans "Comment:" %} </span><textarea id="comment" rows="4" cols="50" name="comment"></textarea>
+                </li>
+                {% csrf_token %}
+                <li class="cancel"><input type="submit" class="custom_button"/></li>
+            </ul>
+        </form>
+    </div>
+    <div id="busy_event" style="display: none;">
+        <ul>
+            <li class="start_time">
+                <span>{% trans "Start time:" %} </span><span class="text"></span>
+            </li>
+            <li class="end_time">
+                <span>{% trans "End time:" %} </span><span class="text"></span>
+            </li>
+            <li class="comment">
+                <span>{% trans "Comment:" %} </span><div class="comment_text"></div>
+            </li>
+            <li class="cancel"><a href="">{% trans "Make avaible" %}</a></li>
+        </ul>
+    </div>
+    {% endblock settings %}
+
+    {% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/ui.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/date.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.weekcalendar.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var hours = ['8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM']
+
+    var event_data = {
+         events : [
+          {% for booking in bookings %}
+            {
+               "id": {{ booking.id }},
+               "type": "booked",
+               "customer": "{{ booking.client.user.first_name }}",
+               "start": new Date({{ booking.start_time }}*1000),
+               "end": new Date({{ booking.end_time }}*1000),
+               "price": "{{ booking.listing.price|floatformat:-3 }}",
+               "style": '{% thumbnail booking.listing.get_picture "330x220" crop="center" as im %}{{ im.url }}{% endthumbnail %}'
+            },
+          {% endfor %}
+          {% for b in busy %}
+            {
+               "id": {{ b.id }},
+               "type": "busy",
+               "comment": "{{ b.comment }}",
+               "start": new Date({{ b.start_time }}*1000),
+               "end": new Date({{ b.end_time }}*1000),
+            },
+          {% endfor %}
+         ]
+      };
+
+var $calendar = $('#calendar');
+var id = 10;
+
+$calendar.weekCalendar({
+    displayOddEven:true,
+    timeslotsPerHour : 2,
+    alwaysDisplayTimeMinutes: true,
+    allowCalEventOverlap : true,
+    overlapEventsSeparate: true,
+    defaultEventLength: 1,
+    firstDayOfWeek : 1,
+    businessHours :{start: 8, end: 21, limitDisplay: true },
+    daysToShow : 7,
+    timeslotHeight: 33,
+    hourLine: false,
+    useShortDayNames: true,
+    preventDragOnEventCreation: false,
+    newEventText: 'Busy',
+
+    title: function(daysToShow) {
+        return '%start% - %end%';
+    },
+    height : function($calendar) {
+        return 1200;
+    },
+    eventRender : function(calEvent, $event) {
+    // this code is for the current event reendering
+        if (calEvent.type == "booked") {
+            $event.addClass("booked").html("<div>{% trans 'Booked' %}</div>");
+        }
+        else {
+            $event.addClass("busy").html("<div>{% trans 'Busy' %}</div>");
+        }
+
+        // if (calEvent.end.getTime() < new Date().getTime()) {
+        // }
+
+    },
+    draggable : function(calEvent, $event) {
+        return false;
+    },
+    resizable : function(calEvent, $event) {
+        return false;
+    },
+    eventNew : function(calEvent, $event) {
+        calEvent.id = id;
+        calEvent.add_class = 'new';
+        id++;
+        var $dialogContent = $("#add_event");
+        var security = $dialogContent.find("input[name='csrfmiddlewaretoken']").val();
+        resetForm($dialogContent);
+        $dialogContent.find("input[name='csrfmiddlewaretoken']").val(security);
+        $dialogContent
+            .find(".start_time")
+                .find("span.text")
+                    .text(calEvent.start.toString("hh:mm tt"))
+                .end()
+                .find("input")
+                    .val(calEvent.start/1000)
+                .end()
+            .end()
+            .find(".end_time")
+                .find("span.text")
+                    .text(calEvent.end.toString("hh:mm tt"))
+                .end()
+                .find("input")
+                    .val(calEvent.end/1000)
+                .end()
+            .find(".cancel input")
+                .val("Mark as busy")
+        $dialogContent.dialog({
+            modal: true,
+            title: "{% trans 'Time management' %}",
+            width: '330px',
+            resizable: false,
+            draggable: true,
+
+            open: function(event, ui) { $('.ui-widget-overlay').bind('click', function () { $(this).siblings('.ui-dialog').find('.ui-dialog-content').dialog('close'); }); $dialogContent.find(".cancel input").val("{% trans 'Mark as busy' %}")},
+            close: function(){
+                $calendar.weekCalendar("removeUnsavedEvents");
+                $calendar.weekCalendar("updateEvent", calEvent);
+                $("#calendar").weekCalendar("removeEvent", calEvent.id);
+            }
+        }).show();
+    },
+
+    eventClick : function(calEvent, $event) {
+        if ( calEvent.type == "busy" ){
+            var $dialogContent = $("#busy_event");
+            resetForm($dialogContent);
+            $dialogContent.find(".start_time .text").text(calEvent.start.toString("hh:mm tt"));
+            $dialogContent.find(".end_time .text").text(calEvent.end.toString("hh:mm tt"));
+            $dialogContent.find(".comment div").text(calEvent.comment);
+            $dialogContent.find(".cancel a").prop("href", '/salons/calendar?id=' + calEvent.id);
+
+            $dialogContent.dialog({
+                modal: true,
+                title: "{% trans 'Time management' %}",
+                width: '330px',
+                resizable: false,
+                draggable: false,
+
+                open: function(event, ui) { $('.ui-widget-overlay').bind('click', function () { $(this).siblings('.ui-dialog').find('.ui-dialog-content').dialog('close'); });},
+            }).show();
+
+            var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
+            var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
+            $dialogContent.find(".date_holder").text($calendar.weekCalendar("formatDate", calEvent.start));
+            $(window).resize().resize(); //fixes a bug in modal overlay size ??
+        }
+        else{
+            var $dialogContent = $("#event_edit_container");
+            resetForm($dialogContent);
+            var customer = $dialogContent.find(".customer .text").text(calEvent.customer);
+            var startField = $dialogContent.find(".start_time .text").text(calEvent.start.toString("hh:mm tt"));
+            var endField = $dialogContent.find(".end_time .text").text(calEvent.end.toString("hh:mm tt"));
+            var price = $dialogContent.find(".price .text").text(calEvent.price);
+            var style = $dialogContent.find(".style img").attr('src', calEvent.style);
+            var link = $dialogContent.find(".cancel a").prop("href", '/salons/bookings?show=' + calEvent.id);
+
+            $dialogContent.dialog({
+                modal: true,
+                title: "{% trans 'Time management' %}",
+                width: '330px',
+                resizable: false,
+                draggable: false,
+
+                open: function(event, ui) { $('.ui-widget-overlay').bind('click', function () { $(this).siblings('.ui-dialog').find('.ui-dialog-content').dialog('close'); });},
+            }).show();
+
+            var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
+            var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
+            $dialogContent.find(".date_holder").text($calendar.weekCalendar("formatDate", calEvent.start));
+            $(window).resize().resize(); //fixes a bug in modal overlay size ??
+        }
+        return false;
+    },
+
+    data : function(start, end, callback) {
+     callback(getEventData());
+    }
+
+    });
+
+    function resetForm($dialogContent) {
+        $dialogContent.find("input").val("");
+        $dialogContent.find("textarea").val("");
+    }
+
+    function getEventData() {
+        var year = new Date().getFullYear();
+        var month = new Date().getMonth();
+        var day = new Date().getDate();
+        return event_data;
+    }
+
+});
+
+// fix for jquery 1.9 ! Thank you ochensati
+jQuery.browser = {};
+jQuery.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase()) &&
+                        !/webkit/.test(navigator.userAgent.toLowerCase());
+jQuery.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+jQuery.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+jQuery.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+</script>
+    {% endblock scripts %}
+    </body>
+</html>

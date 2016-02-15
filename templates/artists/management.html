@@ -1,0 +1,47 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Salon Management" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/imgselectarea.css">
+{% endblock stylesheets %}
+
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "MANAGEMENT" %}</span>
+    </div>
+
+    {% block msg %}
+
+    {% endblock msg %}
+
+    <div class="column">
+            <div class="head">
+                <ul>
+                    <li><a href="{% url 'all_listing' %}"{% if 'listings' in request.path %} class="active"{% endif %}>{% trans "LISTINGS" %}</a></li>
+                    <li><a href="{% url 'artist_schedule' %}"{% if 'schedule' in request.path %} class="active"{% endif %}>{% trans "SCHEDULE" %}</a></li>
+                    <li><a href="{% url 'artists_calendar' %}"{% if 'calendar' in request.path %} class="active"{% endif %}>{% trans "CALENDAR" %}</a></li>
+                    <li><a href="{% url 'artists_statistic' %}"{% if 'statistic' in request.path %} class="active"{% endif %}>{% trans "STATISTICS" %}</a></li>
+                    <li><a href="{% url 'artist_widgets' %}"{% if 'widgets' in request.path %} class="active"{% endif %}>{% trans "WIDGETS" %}</a></li>
+                </ul>
+            </div>
+        {% block settings %}
+
+        {% endblock settings %}
+    </div>
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+
+    {% endblock scripts %}
+</body>
+</html>

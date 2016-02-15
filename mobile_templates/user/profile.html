@@ -1,0 +1,173 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Profile" %}</title>
+{% endblock meta %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+    {% endblock stylesheets %}
+
+    {% block title %}
+        {% trans "Profile" %}
+    {% endblock title %}
+
+    {% block content %}
+    <div id="profile" class="seeker">
+        <div class="wrapper">
+            <ul class="profile_content">
+                <li class="profile_pic">
+                    {% thumbnail profile.get_avatar "90x90" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{profile.user.first_name}}" width="90" height="90">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}img/default.png" alt="{{profile.user.first_name}}" width="90" height="90">
+                    {% endthumbnail %}
+                </li>
+                <li>{{profile.user.first_name}}</li>
+                <li class="type_style">{% trans "Beauty Seeker" %}</li>
+                <li>
+                    {% if request.user.profile == profile %}
+                        <a href="{% url 'user_settings' %}" class="new_button green nb_hover">{% trans "Settings" %}</a>
+                    {% endif %}
+                </li>
+                <li class="controllers">
+                    <ul class="nav_bar">
+                        <li class="clickable active"><a href="javascript:;">{% trans "LISTINGS" %}</a></li>
+                        <li class="clickable"><a href="javascript:;">{% trans "REVIEWS" %}</a></li>
+                        <li class="clickable"><a href="javascript:;">{% trans "FOLLOWERS" %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="tab_wrapper">
+            <div id="listings">
+                {% if listings %}
+                <ul class="gallery">
+                    {% for listing in listings %}
+                    <li class="pic_view">
+                        <ul>
+                            <li class="picture">
+                            <a href="{% url 'listing' listing.id listing.title %}">
+                                {% thumbnail listing.get_picture "98x65" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{listing.title}}" width="240" height="143">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{listing.title}}" width="240" height="143">
+                                {% endthumbnail %}
+                            </a>
+                            </li>
+                            <li class="text">
+                                <p class="title" data-title="{{ listing.title }}">{{ listing.title }}</p>
+                                <p>{{ listing.comments }} {% trans "comments" %}</p>
+                                <p>{{ listing.likes }} {% trans "likes" %}</p>
+                            </li>
+                            <li class="price">
+                                <div>{{ listing.get_currency_display }} {{ listing.price|floatformat:-3 }}</div>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="nothing">{% trans "Currently the artist doesn't have any listings" %}</div>
+                {% endif %}
+            </div>
+            <div id="reviews">
+                {% if reviews|length %}
+                {% for review in reviews %}
+                <div class="review">
+                    <div class="left">
+                        <a href="{% url 'profile_user' review.client_id review.client.user.first_name %}">
+                        {% thumbnail review.client.get_avatar "60x60" crop="center" as im %}
+                            <img class="clickable" src="{{ im.url }}" alt="{{review.client.user.first_name}}" width="60" height="60">
+                        {% empty %}
+                            <img src="{{ STATIC_URL }}img/default.png" alt="{{review.client.user.first_name}}" width="60" height="60">
+                        {% endthumbnail %}
+                        </a>
+                    </div>
+                    <div class="right">
+                        <div class="text">{{ review.text }}</div>
+                        <div class="info">
+                            <span class="name">{{ review.client.user.first_name }}</span>
+                            <span class="ago">{{ review.created|naturaltime }}</span>
+                            <div class="rateit bigstars" data-rateit-value="{{ review.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                    <div class="nothing">{% trans "Currently the artist doesn't have any reviews" %}</div>
+                {% endif %}
+            </div>
+            <div id="followers">
+            {% if artists %}
+            <ul>
+            {% for artist in artists %}
+                <li class="followed">
+                    <a href="{% url 'profile_artist' artist.id artist.user.first_name %}">
+                    <ul>
+                        <li class="avatar">
+                            {% thumbnail artist.get_avatar "90x90" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="{{artist.user.first_name}}" width="90" height="90">
+                            {% empty %}
+                                <img src="{{ STATIC_URL }}img/default.png" alt="{{artist.user.first_name}}" width="90" height="90">
+                            {% endthumbnail %}
+                        </li>
+                        <li class="name">{{ artist.user.first_name }}</li>
+                    </ul>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <div class="nothing">{% trans "Currently the user doesn't followed any artist" %}</div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#listings').show();
+            $('#reviews').hide();
+            $('#followers').hide();
+
+            $ (".nav_bar li").click(function(){
+                $(this).parent().children().removeClass("active");
+                $(this).addClass("active")
+
+                if ($(this).index() == 0){
+                    $('#listings').show();
+                    $('#reviews').hide();
+                    $('#followers').hide();
+                }
+                else if($(this).index() == 1){
+                    $('#listings').hide();
+                    $('#reviews').show();
+                    $('#followers').hide();
+                }
+                else if ($(this).index() == 2){
+                    $('#listings').hide();
+                    $('#reviews').hide();
+                    $('#followers').show();
+                }
+                else{
+                    $('#listings').hide();
+                    $('#reviews').hide();
+                    $('#followers').show();
+                    google.maps.event.trigger(map, "resize");
+                    map.setCenter(coords);
+                }
+            });
+        });
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

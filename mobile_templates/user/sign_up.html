@@ -1,0 +1,73 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Sign Up" %}</title>
+{% endblock meta %}
+
+    {% block title %}
+        {% trans "Sign up" %}
+    {% endblock title %}
+
+    {% block content %}
+    <div class="column">
+        <form id="forms" method="POST" action=".">
+            {% csrf_token %}
+            <ul>
+                <li class="odd"><label for="" class="main_label">
+                    {% if user_form.name.errors %}
+                        {{ user_form.name.errors }}
+                    {% endif %}
+                    {% trans "Name" %}</label></li>
+                <li class="even{% if user_form.name.errors %} error{% endif %}">
+                    {{ user_form.name }}
+                </li>
+                <li class="odd"><label for="" class="main_label">
+                    {% if user_form.email.errors %}
+                        {{ user_form.email.errors }}
+                    {% endif %}
+                    {% trans "Email" %}</label></li>
+                <li class="even{% if user_form.name.errors %} error{% endif %}">
+                    {{ user_form.email }}
+                </li>
+                <li class="odd"><label for="" class="main_label">
+                    {% if user_form.password.errors %}
+                        {{ user_form.password.errors }}
+                    {% endif %}
+                    {% trans "Password" %}</label></li>
+                <li class="even{% if user_form.name.errors %} error{% endif %}">
+                    {{ user_form.password }}
+                </li>
+                <li class="odd"><label for="" class="main_label">
+                    {% if user_form.confirm_password.errors %}
+                        {{ user_form.confirm_password.errors }}
+                    {% endif %}
+                    Confirm Password</label></li>
+                <li class="even{% if user_form.name.errors %} error{% endif %}">
+                    {{ user_form.confirm_password }}
+                </li>
+                <li>
+                    <input type="submit" class="submit gray" value="{% trans 'Register' %}" name="reg_user">
+                </li>
+                <li class="or">
+                    <div></div>
+                    <div class="or"> {% trans "OR" %} </div>
+                </li>
+                <li class="facebook">
+                    <div class="facebook_icon"></div>
+                    <input type="button" class="facebook_button" value="{% trans 'Register using Facebook' %}" onclick="register_me('user')">
+                    <div class="fb-login-button" data-perms="email" data-scope="email" data-max-rows="1" data-show-faces="false"></div>
+                    <div id="fb-root"></div>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    {% endblock content %}
+    {% block scripts %}
+        <script src="https://connect.facebook.net/en_US/all.js"></script>
+        <script src="{{STATIC_URL}}js/facebook.js"></script>
+        <script src="{{STATIC_URL}}js/error.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

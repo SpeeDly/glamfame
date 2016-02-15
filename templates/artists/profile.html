@@ -1,0 +1,268 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+
+    {% block meta %}
+        <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Artist Profile" %}</title>
+    {% endblock meta %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+    {% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <h1 class="header">
+        {{ artist.user.first_name }} {% trans "Profile" %}
+    </h1>
+    <div class="column">
+        <ul id="aritst_profile">
+            <li class="left_column">
+                <ul class="main_info">
+                    <li>
+                        <ul>
+                            <li class="profile_pic">
+                                {% thumbnail artist.get_avatar "150x150" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{artist.user.first_name}}" width="150" height="150">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" alt="{{artist.user.first_name}}" width="150" height="150">
+                                {% endthumbnail %}
+                            </li>
+                            <li>
+                                {{artist.user.first_name}}
+                            </li>
+                            <li class="type_style {{artist.get_style_display|lower}}">{{artist.get_style_display}} {% trans "artist" %}</li>
+                            <li class="rating"><div class="rateit bigstars" data-rateit-value="{{ rate }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div></li>
+                            <li class="follower">
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.artist == artist %}
+                                    <a href="{% url 'edit_artist_profile' %}" class="new_button red nb_hover">{% trans "Settings" %}</a>
+                                {% elif is_sub %}
+                                    <a href="{% url 'salons_artists_edit' artist.id %}" class="new_button red nb_hover">{% trans "Settings" %}</a>
+                                {% else %}
+                                    {% if is_follower %}
+                                        <a href="?followed=0" class="new_button red nb_hover">{% trans "Unfollow" %}</a>
+                                    {% else %}
+                                        <a href="?followed=1&current_time={% now 'U' %}" class="new_button green nb_hover" title="{% trans 'You must be registred, to use this feature.' %}">{% trans "Follow" %}</a>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                <a class="new_button green disabled">{% trans "Follow" %}</a>
+                            {% endif %}
+                            </li>
+                            <li>Cancellation Rate: {{ artist.get_cancellation_rate|floatformat:2 }}%</li>
+                            <li class="work_as">
+                                {% if artist.salon %}
+                                {% trans "Works for:" %} <a href="{% url 'profile_salon' artist.salon_id artist.salon.user.first_name %}">{{ artist.salon.user.first_name }}</a>
+                                {% else %}
+                                {% trans "Independent artist" %}
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="add_info">
+                    <li>
+                        <div class="work_head">
+                            {% if request.user.artist == artist %}<a href="{% url 'artist_schedule' %}">{% trans "Work time" %}</a>
+                            {% elif is_sub %}<a href="{% url 'salons_artists_schedule' artist.id %}">{% trans "Work time" %}</a>
+                            {% else %}{% trans "Work time" %}{% endif %}
+                        </div>
+                        <ul>
+                            <li>{% trans "Sunday" %}: {{ work_time.sunday }}</li>
+                            <li>{% trans "Monday" %}: {{ work_time.monday }}</li>
+                            <li>{% trans "Tuesday" %}: {{ work_time.tuesday }}</li>
+                            <li>{% trans "Wednesday" %}: {{ work_time.wednesday }}</li>
+                            <li>{% trans "Thursday" %}: {{ work_time.thursday }}</li>
+                            <li>{% trans "Friday" %}: {{ work_time.friday }}</li>
+                            <li>{% trans "Saturday" %}: {{ work_time.saturday }}</li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="right_column">
+                <ul class="nav_bar">
+                    <li class="clickable active"><a href="javascript:;"><span></span>{% trans "Listings" %} ({{listings|length}})</a></li>
+                    <li class="clickable"><a href="javascript:;"><span></span>{% trans "Reviews" %} ({{reviews|length}})</a></li>
+                    <li class="clickable"><a href="javascript:;"><span></span>{% trans "Followers" %} ({{profiles|length}})</a></li>
+                    <li class="clickable"><a href="javascript:;"><span></span>{% trans "Location" %}</a></li>
+                </ul>
+                <div class="clear"></div>
+
+                <div class="reviews styled">
+                    {% if reviews|length %}
+                    {% for review in reviews %}
+                    <div class="review">
+                        <div class="left">
+                            <a href="{% url 'profile_user' review.client_id review.client.user.first_name %}">
+                            {% thumbnail review.client.get_avatar "60x60" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="{{review.client.user.first_name}}" width="60" height="60" class="clickable">
+                            {% empty %}
+                                <img src="{{ STATIC_URL }}img/default.png" alt="{{review.client.user.first_name}}" width="60" height="60">
+                            {% endthumbnail %}
+                            </a>
+                        </div>
+                        <div class="right">
+                            <div class="text">{{ review.text }}</div>
+                            <div class="info">
+                                <span class="name">{{ review.client.user.first_name }}</span>
+                                <span class="ago">{{ review.created|naturaltime }}</span>
+                                <div class="rateit bigstars" data-rateit-value="{{ review.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <div class="nothing">{% trans "Currently the artist doesn't have any reviews" %}</div>
+                    {% endif %}
+                </div>
+
+                <div class="listings">
+                {% if listings %}
+                <ul class="gallery col_3">
+                    {% for listing in listings %}
+                    <li class="pic_view">
+                        <ul>
+                            <li class="picture">
+                            <a href="{% url 'listing' listing.id listing.title %}">
+                                {% thumbnail listing.get_picture "240x143" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{listing.title}}" width="240" height="143">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{ listing.title }}" width="240" height="143">
+                                {% endthumbnail %}
+                                <div class="overlay"></div>
+                            </a>
+                            </li>
+                            <li class="text">
+                                <div class="title">{{ listing.title }}</div>
+                                <div class="info">
+                                    <div class="heart">{{ listing.likes }}</div>
+                                    <div class="price">{{ listing.get_currency_display }} {{ listing.price|floatformat:-3 }}</div>
+                                    <div class="comments">{{ listing.comments }}</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="nothing">
+                    {% trans "Currently the artist doesn't have any" %}
+                    {% if request.user.artist == artist %} <a href="{% url 'upload' %}">{% trans "listings." %}</a>
+                    {% elif is_sub %} <a href="{% url 'salons_upload' %}">{% trans "listings." %}</a>
+                    {% else %} listing.{% endif %}
+                </div>
+                {% endif %}
+                </div>
+
+                <div class="followers">
+                {% if profiles %}
+                <ul>
+                {% for profile in profiles %}
+                    <li class="followed">
+                        <a href="{% url 'profile_user' profile.id profile.user.first_name %}">
+                        <ul>
+                            <li class="avatar">
+                                {% thumbnail profile.get_avatar "90x90" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{profile.user.first_name}}" width="90" height="90">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" alt="avatar" width="90" height="90">
+                                {% endthumbnail %}
+                            </li>
+                            <li class="name" title="{{ profile.user.first_name }}"> {% if profile.user.first_name|length > 13 and not " " in profile.user.first_name %}{{ profile.user.first_name|truncatechars:13 }}{% else %}{{profile.user.first_name}}{% endif %}</li>
+                        </ul>
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                <div class="nothing">{% trans "Currently the artist doesn't have any followers" %}</div>
+                {% endif %}
+                </div>
+
+                <div id="location">
+                    {% if request.user.artist == artist %}
+                        <div class="white top overlay"><a href="{% url 'edit_artist_profile' %}" class="new_button green nb_hover">{% trans "Change location" %}</a></div>
+                    {% elif is_sub %}
+                        <div class="white top overlay"><a href="{% url 'salons_edit' %}" class="new_button green nb_hover">{% trans "Change location" %}</a></div>
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var map_canvas = document.createElement('div');
+            map_canvas.id = 'map_canvas';
+            map_canvas.style.height = '400px';
+            map_canvas.style.width = '750px';
+
+            document.getElementById('location').appendChild(map_canvas);
+
+            var coords = new google.maps.LatLng({{ artist.lat }}, {{ artist.lng }});
+
+            var options = {
+                zoom: 17,
+                center: coords,
+                mapTypeControl: false,
+                navigationControlOptions: {
+                    style: google.maps.NavigationControlStyle.SMALL
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map,
+                title:"You are here!",
+            });
+            $('.listings').show();
+            $('.reviews').hide();
+            $('.followers').hide();
+            $('#location').hide();
+            $ (".nav_bar li").click(function(){
+                $(this).parent().children().removeClass("active");
+                $(this).addClass("active")
+                if ($(this).index() == 0){
+                    $('.listings').show();
+                    $('.reviews').hide();
+                    $('.followers').hide();
+                    $('#location').hide();
+                }
+                else if($(this).index() == 1){
+                    $('.listings').hide();
+                    $('.reviews').show();
+                    $('.followers').hide();
+                    $('#location').hide();
+                }
+                else if ($(this).index() == 2){
+                    $('.listings').hide();
+                    $('.reviews').hide();
+                    $('.followers').show();
+                    $('#location').hide();
+                }
+                else{
+                    $('.listings').hide();
+                    $('.reviews').hide();
+                    $('.followers').hide();
+                    $('#location').show();
+                    google.maps.event.trigger(map, "resize");
+                    map.setCenter(coords);
+                }
+            });
+        });
+        </script>
+    {% endblock scripts %}
+</body>
+</html>

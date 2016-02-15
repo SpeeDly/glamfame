@@ -1,0 +1,287 @@
+{% extends "artists/management.html" %}
+{% load i18n %}
+
+    {% block settings %}
+    {% csrf_token %}
+        <ul id="settings" class="settings schedule">
+            <li>
+                <ul class="work_time">
+                    <li class="week_day">{% trans "Мonday" %}</li>
+                    <li class="text">{% trans "Workdays starts at:" %}</li>
+                    <li><div class="picker{% if work_time.mon_start == " " %} disabled{% endif %}" data-time_index="1"><div class="icon time"></div><span>{{ work_time.mon_start }}</span></div></li>
+                    <li class="text">{% trans "Workdays ends at:" %}</li>
+                    <li><div class="picker{% if work_time.mon_end == " " %} disabled{% endif %}" data-time_index="2"><div class="icon time"></div><span>{{ work_time.mon_end }}</span></div></li>
+                    <li><input type="checkbox" {% if work_time.mon_end == " " %}checked{% endif %}/>{% trans "Mark this day as not working day" %}</li>
+                    <li>
+                        <div class="small_button gray edit">{% trans "Edit" %}</div>
+                        <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                        <input type="submit" class="small_button green save hidden" value="Save">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="work_time">
+                    <li class="week_day">{% trans "Tuesday" %}</li>
+                    <li class="text">{% trans "Workdays starts at:" %}</li>
+                    <li><div class="picker{% if work_time.tues_start == " " %} disabled{% endif %}" data-time_index="3"><div class="icon time"></div><span>{{ work_time.tues_start }}</span></div></li>
+                    <li class="text">{% trans "Workdays ends at:" %}</li>
+                    <li><div class="picker{% if work_time.tues_end == " " %} disabled{% endif %}" data-time_index="4"><div class="icon time"></div><span>{{ work_time.tues_end }}</span></div></li>
+                    <li><input type="checkbox" {% if work_time.tues_end == " " %}checked{% endif %}/>{% trans "Mark this day as not working day" %}</li>
+                    <li>
+                        <div class="small_button gray edit">{% trans "Edit" %}</div>
+                        <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                        <input type="submit" class="small_button green save hidden" value="Save">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="work_time">
+                    <li class="week_day">{% trans "Wednesday" %}</li>
+                    <li class="text">{% trans "Workdays starts at:" %}</li>
+                    <li><div class="picker{% if work_time.wed_start == " " %} disabled{% endif %}" data-time_index="5"><div class="icon time"></div><span>{{ work_time.wed_start }}</span></div></li>
+                    <li class="text">{% trans "Workdays ends at:" %}</li>
+                    <li><div class="picker{% if work_time.wed_end == " " %} disabled{% endif %}" data-time_index="6"><div class="icon time"></div><span>{{ work_time.wed_end }}</span></div></li>
+                    <li><input type="checkbox" {% if work_time.wed_end == " " %}checked{% endif %}/>{% trans "Mark this day as not working day" %}</li>
+                    <li>
+                        <div class="small_button gray edit">{% trans "Edit" %}</div>
+                        <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                        <input type="submit" class="small_button green save hidden" value="Save">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="work_time">
+                    <li class="week_day">{% trans "Thursday" %}</li>
+                    <li class="text">{% trans "Workdays starts at:" %}</li>
+                    <li><div class="picker{% if work_time.thurs_start == " " %} disabled{% endif %}" data-time_index="7"><div class="icon time"></div><span>{{ work_time.thurs_start }}</span></div></li>
+                    <li class="text">{% trans "Workdays ends at:" %}</li>
+                    <li><div class="picker{% if work_time.thurs_end == " " %} disabled{% endif %}" data-time_index="8"><div class="icon time"></div><span>{{ work_time.thurs_end }}</span></div></li>
+                    <li><input type="checkbox" {% if work_time.thurs_end == " " %}checked{% endif %}/>{% trans "Mark this day as not working day" %}</li>
+                    <li>
+                        <div class="small_button gray edit">{% trans "Edit" %}</div>
+                        <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                        <input type="submit" class="small_button green save hidden" value="Save">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="work_time">
+                    <li class="week_day">{% trans "Friday" %}</li>
+                    <li class="text">{% trans "Workdays starts at:" %}</li>
+                    <li><div class="picker{% if work_time.fri_start == " " %} disabled{% endif %}" data-time_index="9"><div class="icon time"></div><span>{{ work_time.fri_start }}</span></div></li>
+                    <li class="text">{% trans "Workdays ends at:" %}</li>
+                    <li><div class="picker{% if work_time.fri_end == " " %} disabled{% endif %}" data-time_index="10"><div class="icon time"></div><span>{{ work_time.fri_end }}</span></div></li>
+                    <li><input type="checkbox" {% if work_time.fri_end == " "%}checked{% endif %}/>{% trans "Mark this day as not working day" %}</li>
+                    <li>
+                        <div class="small_button gray edit">{% trans "Edit" %}</div>
+                        <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                        <input type="submit" class="small_button green save hidden" value="Save">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="work_time">
+                    <li class="week_day">{% trans "Saturday" %}</li>
+                    <li class="text">{% trans "Workdays starts at:" %}</li>
+                    <li><div class="picker{% if work_time.sat_start == " " %} disabled{% endif %}" data-time_index="11"><div class="icon time"></div><span>{{ work_time.sat_start }}</span></div></li>
+                    <li class="text">{% trans "Workdays ends at:" %}</li>
+                    <li><div class="picker{% if work_time.sat_end == " " %} disabled{% endif %}" data-time_index="12"><div class="icon time"></div><span>{{ work_time.sat_end }}</span></div></li>
+                    <li><input type="checkbox" {% if work_time.sat_end == " "%}checked{% endif %}/>{% trans "Mark this day as not working day" %}</li>
+                    <li>
+                        <div class="small_button gray edit">{% trans "Edit" %}</div>
+                        <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                        <input type="submit" class="small_button green save hidden" value="Save">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="work_time">
+                    <li class="week_day">{% trans "Sunday" %}</li>
+                    <li class="text">{% trans "Workdays starts at:" %}</li>
+                    <li><div class="picker{% if work_time.sun_start == " " %} disabled{% endif %}" data-time_index="13"><div class="icon time"></div><span>{{ work_time.sun_start }}</span></div></li>
+                    <li class="text">{% trans "Workdays ends at:" %}</li>
+                    <li><div class="picker{% if work_time.sun_end == " " %} disabled{% endif %}" data-time_index="14"><div class="icon time"></div><span>{{ work_time.sun_end }}</span></div></li>
+                    <li><input type="checkbox" {% if work_time.sun_end == " "%}checked{% endif %}/>{% trans "Mark this day as not working day" %}</li>
+                    <li>
+                        <div class="small_button gray edit">{% trans "Edit" %}</div>
+                        <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                        <input type="submit" class="small_button green save hidden" value="Save">
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    {% endblock settings %}
+
+    {% block scripts %}
+<div class="select_date index time schedule" style="display: none;">
+    <div class="container" style="margin-left: 30.5%;">
+        <div id="date" style="position: relative; width: 100%; height: 100%">
+            <div class="time_container" style="width: 560px; height: 340px;">
+                <div class="header">{% trans "SELECT HOUR" %}<a href="javascript:;">+</a></div>
+                <ul class="col col_0">
+                    <li>8:00 AM</li>
+                    <li>8:30 AM</li>
+                    <li>9:00 AM</li>
+                    <li>9:30 AM</li>
+                    <li>10:00 AM</li>
+                </ul>
+                <ul class="col col_1">
+                    <li>10:30 AM</li>
+                    <li>11:00 AM</li>
+                    <li>11:30 AM</li>
+                    <li>12:00 PM</li>
+                    <li>12:30 PM</li>
+                </ul>
+                <ul class="col col_2">
+                    <li>1:30 PM</li>
+                    <li>1:00 PM</li>
+                    <li>2:00 PM</li>
+                    <li>2:30 PM</li>
+                    <li>3:00 PM</li>
+                </ul>
+                <ul class="col col_3">
+                    <li>3:30 PM</li>
+                    <li>4:00 PM</li>
+                    <li>4:30 PM</li>
+                    <li>5:00 PM</li>
+                    <li>5:30 PM</li>
+                </ul>
+                <ul class="col col_4">
+                    <li>6:00 PM</li>
+                    <li>6:30 PM</li>
+                    <li>7:00 PM</li>
+                    <li>7:30 PM</li>
+                    <li>8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+// Validation part
+
+// Validation part
+    var hours = ['8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM']
+
+    $('.picker').click(function(){
+        if($(this).hasClass("disabled")){
+            return false;
+        }
+
+        time_index = $(this).data('time_index');
+        $('.select_date').show().data('time_index', time_index);
+        lis = $('.select_date').find("li");
+
+        if (time_index%2){
+            text = $(this).parent().next().next().find("span").text();
+            lis = $('.select_date').find("li");
+            if(text != " "){
+                index = hours.indexOf(text);
+                lis.removeClass("disabled");
+
+                for (var i = hours.length; i >= index; i--) {
+                    lis.eq(i).addClass("disabled");
+                }
+            }
+            else{
+                lis.removeClass("disabled");
+            }
+        }
+        else{
+
+            text = $(this).parent().prev().prev().find("span").text();
+            if(text != " "){
+                index = hours.indexOf(text);
+                lis = $('.select_date').find("li");
+                lis.removeClass("disabled");
+                for (var i = 0; i <= index; i++) {
+                    lis.eq(i).addClass("disabled");
+                }
+            }
+            else{
+                lis.removeClass("disabled");
+            }
+        }
+    })
+
+    $(".col li").click(function(){
+        $('.col').children().removeClass("active");
+        if($(this).hasClass("disabled")){
+            return false;
+        }
+        $(this).addClass('active');
+        $(this).closest(".select_date").hide();
+        $('.picker[data-time_index="' + $(this).closest('.select_date').data('time_index') + '"] span').text($(this).text())
+    });
+
+    $('.select_date').click(function(e){
+        if($(e.target).hasClass('select_date')){
+            $(this).hide();
+            $('.col').children().removeClass("active");
+        }
+    });
+
+    $('.time_container .header a').click(function(e){
+        $('.select_date').hide();
+        $('.col').children().removeClass("active");
+    });
+
+
+    $(".work_time input:checkbox").click(function(){
+        if($(this).is(":checked")){
+            $(this).closest(".work_time").find(".picker").addClass("disabled").find("span").text(" ");
+        }
+        else{
+            $(this).closest(".work_time").find(".picker").removeClass("disabled").find("span").eq(0).text("8:00 AM").end().eq(1).text("8:00 PM");
+        }
+    })
+
+    $(".work_time .picker").addClass("disabled");
+    $(".work_time input:checkbox").attr("disabled", "disabled");
+
+
+    $("input.save").click(function(){
+        data = {}
+        counter = 1;
+        $("ul.schedule>li").each(function(){
+            if($(this).find("input:checkbox").is(":checked"))
+            {
+                data[String(counter)] = -1;
+                counter++;
+                data[String(counter)] = -1;
+                counter++;
+            }
+            else{
+                $(this).find(".work_time span").each(function(){
+                    data[String(counter)] = $(this).text();
+                    counter++;
+                });
+            }
+        })
+        data['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
+        $.ajax({
+            url: "/artists/management/schedule",
+            data: data,
+            type: "POST"
+        }).done(function(){
+            location.reload()
+        })
+    })
+
+
+    $(".small_button.edit").click(function(){
+        $(this).closest("ul").find(".small_button").removeClass("hidden");
+        $(this).addClass("hidden");
+        $(this).closest(".work_time").find(".picker").removeClass("disabled");
+        $(this).closest(".work_time").find("input:checkbox").removeAttr("disabled", "disabled");
+    });
+
+    $(".small_button.cancel").click(function(){location.reload();});
+
+    $(".message .close a").click(function(){
+        $("ul.message").remove();
+    });
+</script>
+    {% endblock scripts %}

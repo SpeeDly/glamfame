@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load thumbnail %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with receiver_name=receiver_name username=username artistname=artistname title=listing.title %}
+                <p>Good news {{ receiver_name }},</p>
+                <p>
+                    {{ username }} wants to book an appointment with {{ artistname }}!
+                </p>
+                <p>{{ title }}</p>
+                <p>
+                {% endblocktrans %}
+                {% thumbnail listing.get_picture "240x143" crop="center" as im %}
+                    <img src="https://glamfame.com{{ im.url }}">
+                {% endthumbnail %}</p>
+                {% blocktrans with receiver_name=receiver_name username=username artistname=artistname price=listing.price link=link %}
+                <p>{{ price }}</p>
+                <p>You can manage all booking requests from here:</p>
+                <p>{{ link }}</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>

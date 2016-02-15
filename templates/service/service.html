@@ -1,0 +1,789 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    {% url 'hair' as hairstyle %}
+    {% url 'nails' as nails %}
+    {% url 'make_up' as make_up %}
+    {% if request.path == hairstyle %}
+        <meta name="keywords" content="hairstyle, hair, beauty, famous, hairdressers, studio, hairdressing, salons, best, salon, haircut, places, stylist, reviews, bridal, hairstyles, makeup">
+        <meta name="description" content="Find specific hairstyles &amp; lookalike haircuts with hairdressers' and salons' reviews and ratings. Book instantly through the marketplace for beauty and style!">
+        <title>{% trans "Hairstyle &amp; Salon reviews. Bridal makeup and hair." %}</title>
+    {% elif request.path == nails %}
+        <meta name="description" content="nails designs, nail art designs, gel  nails, nail artist, manicure and pedicure, gel manicure, nail salon, professional nails, diamond nails">
+        <meta name="keywords" content="Professional nails designs of top rated nail artists and nail salons with reviews. Select your favorite listing and make your booking online with an ease!">
+        <title>{% trans "Nails designs &amp; Nail salon and artist reviews" %}</title>
+    {% elif request.path == make_up %}
+        <meta name="description" content="Fabulous make up arts, offered by top professionals, studios and famous makeup artists. Bridal makeup &amp; Celebrity lookalike listings. With ratings and reviews.">
+        <meta name="keywords" content="make up,  bridal makeup, makeup artist, make up tips, studio make up, make up art, make up professional, wedding make up, famous make up artist">
+        <title>{% trans "Make up listings by top artists and salons. Tips and tricks" %}</title>
+    {% else %}
+        <title>{% trans "Beauty Listings {{request.GET.q}} Results|Glamfame" %}</title>
+    {% endif %}
+{% endblock meta %}
+
+    {% block stylesheets %}
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+        <link rel="stylesheet" href="{{STATIC_URL}}css/slider.css"/>
+    {% endblock stylesheets %}
+
+    {% block content %}
+    {% url 'hair' as hairstyle %}
+    {% url 'nails' as nails %}
+    {% url 'make_up' as make_up %}
+<div id="content">
+    <h1 class="header">
+    {% if request.path == hairstyle %}Ready to find your most desired hairstyle?
+    {% elif request.path == nails %}Looking for trendy nails designs?
+    {% elif request.path == make_up %}Looking for unique makeup ideas?
+    {% else %}Beauty Listings results for {{request.GET.q}}{% endif %}
+    </h1>
+    <div class="column">
+        <ul class="menu">
+            <li class="filter">
+                <div class="tab">
+                    {% trans "Location" %}
+                </div>
+                <div class="container">
+                    <span class="address">
+
+                    </span>
+                    <input type="hidden" id="id_lat">
+                    <input type="hidden" id="id_lng">
+                    <br/>
+                    <span>
+                        {% trans "Not your location?" %}
+                    </span><br/>
+                    <a class="blue_button" href="javascript:void(0)">{% trans "Change location" %}</a>
+                </div>
+            </li>
+            <li class="date_range">
+                <div class="tab">
+                    {% trans "Date and Time" %}
+                    <a href="javascript:;" class="reset">{% trans "Reset" %}</a>
+                </div>
+                <div class="container">
+                    <div id="datepicker" class="datapicker_1" data-indexnumber="1">
+                        <input type="hidden" id="start_datepicker">
+                        <a href="javascript:;">
+                        <ul>
+                            <li class="datepicker"></li>
+                            <li class="date_preview"><span>{% trans "Please select date" %}</span></li>
+                        </ul>
+                        </a>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="datepicker" class="datapicker_2" data-indexnumber="2">
+                        <input type="hidden" id="end_datepicker">
+                        <a href="javascript:;">
+                        <ul>
+                            <li class="timepicker"></li>
+                            <li class="date_preview"><span>{% trans "Please select time" %}</span></li>
+                        </ul>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="gender">
+                <div class="tab">
+                    {% trans "Type" %}
+                <a href="javascript:;" class="reset">{% trans "Reset" %}</a>
+                </div>
+                <div class="container">
+                    <div id="slider-gender-wrapper">
+                        <div id="slider-gender"></div>
+                    </div>
+                    <div class="label">{% trans "Male" %}</div>
+                    <div class="label">{% trans "Female" %}</div>
+<!--                     <div class="gender_slider">
+                        <label for="male"></label>
+                        <label for="neutral"></label>
+                        <label for="female"></label>
+                    </div>
+                    <input type="radio" id="male" name="gender" class="hidden">
+                    <input type="radio" id="neutral" name="gender" class="hidden">
+                    <input type="radio" id="female" name="gender" class="hidden"> -->
+                </div>
+            </li>
+            <li class="budget">
+                <div class="tab">
+                    {% trans "Price" %}
+                    <a href="javascript:;" class="reset">{% trans "Reset" %}</a>
+                </div>
+                <div class="container">
+                    <p>
+                        <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+                    </p>
+                    <div id="slider-range"></div>
+                    <ul>
+                        <li class="price start_price"></li>
+                        <li class="separator"></li>
+                        <li class="price end_price"></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="ratings">
+                <div class="tab">
+                    {% trans "Rating" %}
+                    <a href="javascript:;" class="reset">{% trans "Reset" %}</a>
+                </div>
+                <div class="container">
+                    <ul>
+                        <li>
+                            <label for="radio_5"></label><input type="radio" id="radio_5" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="5" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="20"></div></li>
+                        <li>
+                            <label for="radio_4"></label><input type="radio" id="radio_4" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="4" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="20"></div>{% trans "& Up" %}</li>
+                        <li>
+                            <label for="radio_3"></label><input type="radio" id="radio_3" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="3" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="20"></div>{% trans "& Up" %}</li>
+                        <li>
+                            <label for="radio_2"></label><input type="radio" id="radio_2" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="2" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="20"></div>{% trans "& Up" %}</li>
+                        <li>
+                            <label for="radio_1"></label><input type="radio" id="radio_1" class="hidden" name='rating'>
+                            <div class="rateit bigstars" data-rateit-value="1" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="20"></div>{% trans "& Up" %}</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="select_color">
+                <div class="tab">
+                    {% trans "Tags" %}
+                </div>
+                <div class="container">
+                    <input type="text" id="tag" placeholder="{% trans 'Enter tag' %}">
+                    <div class="blue_button">{% trans "Add" %}</div>
+                    <div class="tags">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="search_option">
+            <span>{{ listings|length }} {% trans "results" %}</span>
+            <div class="c_show">
+                <div class="m_show clickable"><div class="icon"></div></div>
+                <div class="l_show clickable active"><div class="icon"></div></div>
+            </div>
+        </div>
+        <div id="map_view" class="hidden"></div>
+        <ul class="gallery">
+            {% for listing in listings %}
+            <li class="pic_view" data-lat="{{ listing.lat }}" data-lng="{{ listing.lng }}" data-listingid="{{ listing.id }}" data-artistid="{{ listing.artist_id }}" data-artistrating="{{ listing.artist_rating }}" data-artistname="{{ listing.artist_name }}" data-salonid="{{ listing.salon_id }}" data-salonrating="{{ listing.salon_rating }}" data-salonname="{{ listing.salon_name }}" data-salonavatar='{% thumbnail listing.salon_avatar "60x60" crop="center" as im %}{{ im.url }}{% empty %}<img src="{{ STATIC_URL }}img/default.png">{% endthumbnail %}'>
+                <ul>
+                    <li class="picture">
+                    <a href="{% url 'listing' listing.id listing.title %}">
+                        {% thumbnail listing.picture "240x143" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="{{ listing.title }}" width="240" height="143">
+                        {% empty %}
+                            <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{ listing.title }}" width="240" height="143">
+                        {% endthumbnail %}
+                        <div class="overlay"></div>
+                    </a>
+                    </li>
+                    <li class="text">
+                        <div class="title">{{ listing.title }}</div>
+                        <div class="info">
+                            <div class="heart">{{ listing.likes }}</div>
+                            <div class="price">{{ listing.currency }} {{ listing.price|floatformat:-3 }}</div>
+                            <div class="comments">{{ listing.comments }}</div>
+                        </div>
+                    </li>
+                    <li class="artist">
+                    <a href="{% url 'profile_artist' listing.artist_id listing.artist_name %}">
+                        {% thumbnail listing.avatar "60x60" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="{{ listing.artist_name }}" width="60" height="60">
+                        {% empty %}
+                            <img src="{{ STATIC_URL }}img/default.png" alt="{{ listing.artist_name }}" width="60" height="60">
+                        {% endthumbnail %}
+                    </a>
+                    </li>
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>
+<div class="select_date index date home" style="display: none;">
+    <div class="container">
+        <div id="date" style="position: relative; width: 100%; height: 100%">
+            <div class="datepicker_container">
+                <div id="datepicker_view"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="select_date index time home" style="display: none;">
+    <div class="container">
+        <div id="date" style="position: relative; width: 100%; height: 100%">
+            <div class="time_container">
+                <div class="header">{% trans "SELECT HOUR" %}<a href="javascript:;">+</a></div>
+                <ul class="col col_0">
+                    <li>8:00AM</li>
+                    <li>8:30AM</li>
+                    <li>9:00AM</li>
+                    <li>9:30AM</li>
+                    <li>10:00AM</li>
+                    <li>10:30AM</li>
+                </ul>
+                <ul class="col col_1">
+                    <li>11:00AM</li>
+                    <li>11:30AM</li>
+                    <li>12:00PM</li>
+                    <li>12:30PM</li>
+                    <li>1:00PM</li>
+                    <li>1:30PM</li>
+                </ul>
+                <ul class="col col_2">
+                    <li>2:00PM</li>
+                    <li>2:30PM</li>
+                    <li>3:00PM</li>
+                    <li>3:30PM</li>
+                    <li>4:00PM</li>
+                    <li>4:30PM</li>
+                </ul>
+                <ul class="col col_3">
+                    <li>5:00PM</li>
+                    <li>5:30PM</li>
+                    <li>6:00PM</li>
+                    <li>6:30PM</li>
+                    <li>7:00PM</li>
+                    <li>7:30PM</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock content %}
+
+    {% block scripts %}
+    <div class="check_map" style="display: none; z-index: 25;">
+        <div class="column">
+            <div class="wrapper">
+                <div id="location" class="gmap">
+                    <a href="javascript:;" class="close_white_window"></a>
+                    <span class="text">{% trans "Enter your location" %}</span>
+                    <div id="autocomplate_place">
+                        <input type="text" id="id_auto">
+                    </div>
+                    <div class="or_line">
+                        <div class="line"></div>
+                        <div class="or">{% trans "OR" %}</div>
+                    </div>
+                    <span class="text">{% trans "Drag and drop the pin around the map" %}</span>
+                    <div id='change_location'></div>
+                    <a class='custom_button save_location' href='javascript:void(0);'>{% trans "Save location" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://j.maxmind.com/app/geoip.js"></script>
+    <script src="{{ STATIC_URL }}js/ui.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script>
+
+    // First we will design how the page will looks like, and then everything else.
+    $(".c_show>div").click(function(){
+        $(this).parent().children().removeClass("active");
+        $(this).addClass("active");
+
+        if($(this).hasClass("m_show")){
+            $("#map_view").removeClass("hidden");
+            $(".gallery").addClass("hidden");
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(coords);
+        }
+        else{
+            $("#map_view").addClass("hidden");
+            $(".gallery").removeClass("hidden");
+        }
+    });
+
+    var map;
+    var coords;
+    var markers = [];
+    var artists = [];
+    var marker_2;
+    var infowindow = new google.maps.InfoWindow();
+
+    function create_pop_up_template(artist){
+        var string_buffer = new Array();
+        if (artist.is_salon()){
+            var all_artists = $(".pic_view[data-salonid=" + artist.salon_id + "]");
+            $.each(all_artists, function(){
+                var temp = $(this).data("artistrating") == "None" ? 0 : parseInt($(this).data("artistrating"));
+                artist["salon_rating"] += temp;
+            });
+            artist["salon_rating"] = artist["salon_rating"]/all_artists.length;
+
+            string_buffer = ['<div class="marker-info-win"><a href="/salons/profile/', artist["salon_id"], '"><img src="', artist["salon_avatar"], '"></a><div class="right"><h1 class="artist_name">', artist['salon_name'], '</h1><div id="rateit', artist["salon_id"], '" class="rateit bigstars" data-rateit-value="', artist["salon_rating"], '" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="20"></div></div></div>'].join('');
+        }
+        else{
+            string_buffer = ['<div class="marker-info-win"><a href="/artists/profile/', artist["id"], '"><img src="', artist["img"], '"></a><div class="right"><h1 class="artist_name">', artist['name'], '</h1><div id="rateit', artist["id"], '" class="rateit bigstars" data-rateit-value="', artist["rating"], '" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="20"></div></div></div>'].join('');
+        }
+        var contentString = $(string_buffer);
+
+        return contentString[0]
+    }
+
+    function draw_listings(){
+        $(".pic_view").each(function(){
+            var artist = {
+                id: $(this).data("artistid"),
+                name: $(this).data("artistname"),
+                rating: $(this).data("artistrating") == "None" ? "0": $(this).data("artistrating"),
+                img: $(this).find(".artist img").attr("src"),
+                lat: parseFloat($(this).data("lat")),
+                lng: parseFloat($(this).data("lng")),
+                salon_id: $(this).data("salonid"),
+                salon_name: $(this).data("salonname"),
+                salon_rating: 0,
+                salon_avatar: $(this).data("salonavatar"),
+                is_salon: function(){if(this.salon_id == "None"){return false}else{return true}}
+            }
+
+            artist["info"] = create_pop_up_template(artist);
+            artists.push(artist);
+        });
+
+        for(var i=0, artist_length=artists.length; i<artist_length; i++){
+            var artist = artists[i];
+
+            marker_2 = new google.maps.Marker({
+                position: new google.maps.LatLng(artist["lat"], artist["lng"]),
+                map: map,
+                title: artist["name"],
+            });
+
+            //add click event listener to marker which will open infoWindow
+            google.maps.event.addListener(marker_2, 'click', (function(marker_2, i) {
+                return function() {
+                    infowindow.setContent(artists[i]["info"]);
+                    infowindow.open(map,marker_2); // click on marker opens info window
+                    if(artists[i].is_salon()){
+                        $('#rateit' + artists[i]["salon_id"]).rateit();
+                    }
+                    else{
+                        $('#rateit' + artists[i]["id"]).rateit();
+                    }
+                }
+            })(marker_2, i));
+            markers.push(marker_2)
+        }
+    }
+
+    function draw_map_with_listings(lat,lng){
+        $("#id_lat").val(lat);
+        $("#id_lng").val(lng);
+        var map_canvas = document.createElement('div');
+        map_canvas.id = 'map';
+        map_canvas.style.height = '1120px';
+        map_canvas.style.width = '745px';
+
+        document.getElementById('map_view').appendChild(map_canvas);
+
+        coords = new google.maps.LatLng(lat, lng);
+
+        var options = {
+            zoom: 17,
+            center: coords,
+            mapTypeControl: false,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), options);
+
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title:"You are here!",
+            animation: google.maps.Animation.DROP,
+        });
+        draw_listings()
+    }
+
+    //ratings
+    $(".ratings input[type=radio]").change(function(){
+        $(this).closest(".ratings").find("label").removeClass("active");
+        $(this).parent().find("label").addClass("active");
+        apply_changes()
+    });
+
+    // start change address
+    var geo_lat, geo_lng;
+    var _lat = getUrlVars()["lat"];
+    var _lng = getUrlVars()["lng"];
+    if(!_lat){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, fail,{timeout:2000});
+        } else {
+            fail();
+        }
+        $('.filter a.blue_button').click(function(){
+
+        $('.check_map').show();
+        draw_map(geo_lat, geo_lng);
+    });
+    }
+    else{
+        get_address(_lat, _lng);
+        draw_map_with_listings(_lat, _lng);
+        $('.filter a.blue_button').click(function(){
+            $('.check_map').show();
+            draw_map(_lat, _lng);
+        });
+    }
+
+    function success(position) {
+
+        geo_lat = position.coords.latitude;
+        geo_lng = position.coords.longitude;
+        get_address(geo_lat,geo_lng);
+        draw_map_with_listings(geo_lat, geo_lng);
+
+    }
+
+    function fail(){
+
+        geo_lat = geoip_latitude();
+        geo_lng = geoip_longitude();
+        get_address(geo_lat,geo_lng);
+        draw_map_with_listings(geo_lat, geo_lng);
+    }
+
+    $('.close_white_window').click(function(){close_map()})
+
+    function close_map(){
+        $('.check_map').hide();
+    }
+
+    $('.check_map').click(function(e){
+        if($(e.target).hasClass('check_map'))
+            $(this).hide()
+    })
+
+    function draw_map(lat, lng){
+        var map_canvas = document.createElement('div');
+        map_canvas.id = 'map_canvas';
+        map_canvas.style.height = '100%';
+        map_canvas.style.width = '100%';
+
+        document.getElementById('change_location').appendChild(map_canvas);
+
+        var coords_1 = new google.maps.LatLng(lat, lng);
+
+        var options = {
+            zoom: 17,
+            center: coords,
+            mapTypeControl: false,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map_1 = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+        var marker = new google.maps.Marker({
+            position: coords_1,
+            map: map_1,
+            draggable:true,
+            title:"You are here!",
+            animation: google.maps.Animation.DROP,
+        });
+
+        google.maps.event.addListener(map_1, 'click', function(event) {
+            marker.setPosition(event.latLng);
+            var _lat = event.latLng.lat()
+            var _lng = event.latLng.lng()
+            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + _lat +
+             ',' + _lng + '&sensor=false',
+            function(data){
+                $('#id_auto').val(data.results['0']['formatted_address']);
+            });
+        });
+
+        var autocomplete = new google.maps.places.Autocomplete(
+        (document.getElementById('id_auto')),
+            { types: ['geocode'] });
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            set_marker_properly(autocomplete)
+        });
+
+        function set_marker_properly(autocomplete){
+            lat = autocomplete.getPlace().geometry.location.lat();
+            lng = autocomplete.getPlace().geometry.location.lng();
+            var latlng = new google.maps.LatLng(lat, lng);
+            marker.setPosition(latlng);
+            map_1.setCenter(latlng)
+        }
+
+        $('.save_location').click(function(){
+            geo_lat = marker.getPosition().lat();
+            geo_lng = marker.getPosition().lng();
+            get_address(geo_lat, geo_lng);
+            close_map();
+            $("#id_lat").val(geo_lat);
+            $("#id_lng").val(geo_lng);
+            apply_changes()
+        });
+    }
+
+
+    function get_address(lat,lng){
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat +
+         ',' + lng + '&sensor=false',
+        function(data){
+            $('.filter .address').text(data.results['0']['formatted_address']);
+        });
+    }
+
+//data picker
+    hours = ['8:00AM', '8:30AM', '9:00AM', '9:30AM', '10:00AM', '10:30AM', '11:00AM', '11:30AM', '12:00PM', '12:30PM', '1:00PM', '1:30PM', '2:00PM', '2:30PM', '3:00PM', '3:30PM', '4:00PM', '4:30PM', '5:00PM', '5:30PM', '6:00PM', '6:30PM', '7:00PM', '7:30PM']
+
+    $('#datepicker.datapicker_1 ul').click(function(){
+        $('.select_date.date').show();
+        draw_picker();
+    });
+
+
+    $('.select_date').click(function(e){
+        if($(e.target).hasClass('select_date'))
+            $(this).hide()
+    })
+
+    function get_ampm_time(date){
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hour >= 12 ? 'PM' : 'AM';
+        hour = hour % 12;
+        hour = hour ? hour : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hour + ':' + minutes + ' ' + ampm;
+        return strTime;
+    }
+    $('#datepicker.datapicker_2 ul').click(function(){
+        $('.select_date.time').show();
+    });
+
+    $(".col li").click(function(){
+        $('.col').children().removeClass("active");
+        $(this).addClass('active');
+        $(this).closest(".select_date").hide();
+        $('.datapicker_2 .date_preview').text($(this).text());
+        apply_changes()
+    });
+
+    function draw_picker(){
+        $datapicker = $("#datepicker_view")
+        $datapicker.datepicker(
+            {
+                minDate: 0,
+                maxDate: "+1M +10D",
+                dayNamesMin: [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+                dateFormat: "mm/dd/yy",
+                onSelect: function(dateText, inst){
+                    $(".datapicker_1 .date_preview").text($datapicker.val());
+                    $(this).closest(".select_date").hide();
+                    apply_changes()
+                }
+            });
+        $datapicker.datepicker('show');
+        }
+
+    //tag system
+    $('.select_color .blue_button').click(function(e){
+        $this=$('#tag')
+        if($this.val() != ""){
+            current_text = $this.val()
+            $this.parent().find('.tags')
+            .append('<li class="tag_me"><div>' + current_text + '</div><a class="tag-close" href="javascript:;"></a></li>');
+            $this.val("");
+            apply_changes();
+        }
+    });
+
+    $(".tags").on("click", ".tag-close" ,function(){
+        $(this).parent().remove();
+        apply_changes();
+    });
+
+    // autofill the forms with the parameters in the url
+
+    // tags
+    if (window.location.search.indexOf('tags') != -1 && getUrlVars()["tags"]){
+        tags = getUrlVars()["tags"].split(',')
+        for (var i = 0; i < tags.length; i++) {
+            $('.tags').append('<li class="tag_me"><div>' + tags[i] + '</div><a class="tag-close" href="javascript:;"></a></li>');
+        };
+    }
+    else{
+        values = [0,500]
+    }
+
+    //budget
+    $(function() {
+        if (window.location.search.indexOf('budget') != -1 && getUrlVars()["budget"]){
+            values = getUrlVars()["budget"].split('-')
+        }
+        else{
+            values = {{ price_list }}
+        }
+
+        $( "#slider-range" ).slider({
+            range: true,
+            min: {% if price_list.0 %} {{ price_list.0 }} > parseInt(values[0]) ? parseInt(values[0]) : {{ price_list.0 }} {% else %} parseInt(values[0]) {% endif %},
+            max: {% if price_list.1 %} {{ price_list.1 }} < parseInt(values[1]) ? parseInt(values[1]) : {{ price_list.1 }} {% else %} parseInt(values[1]) {% endif %},
+            values: [ parseInt(values[0]), parseInt(values[1]) ],
+            slide: function( event, ui ) {
+                $( "#amount" ).val( ui.values[ 0 ] + "-" + ui.values[ 1 ] );
+                $( "ul .start_price" ).text("$" + ui.values[ 0 ]);
+                $( "ul .end_price" ).text("$" + ui.values[ 1 ]);
+            },
+            change: function( event, ui ) {
+                $( "#amount" ).val( ui.values[ 0 ] + "-" + ui.values[ 1 ] );
+                $( "ul .start_price" ).text("$" + ui.values[ 0 ]);
+                $( "ul .end_price" ).text("$" + ui.values[ 1 ]);
+            },
+            stop: function( event, ui ) {
+                apply_changes()
+            }
+        });
+
+        $( "ul .start_price" ).text("$" + $( "#slider-range" ).slider( "values", 0 ));
+        $( "ul .end_price" ).text("$" + $( "#slider-range" ).slider( "values", 1 ));
+        $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + "-" + $( "#slider-range" ).slider( "values", 1 ) );
+    });
+
+    // gender
+    var gender_val = 1;
+
+    if (window.location.search.indexOf('gender') != -1 && getUrlVars()["gender"]){
+        gender_val = parseInt(getUrlVars()["gender"])
+    }
+
+    $( "#slider-gender" ).slider({
+        min: 0,
+        max: 2,
+        value: gender_val,
+        stop: function( event, ui ) {
+            apply_changes()
+        }
+    });
+
+    //date
+    if (window.location.search.indexOf('date') != -1 && getUrlVars()["date"] && getUrlVars()["date"] != "0" &&  getUrlVars()["date"] != "NaN"){
+        var d = parseInt(getUrlVars()["date"]);
+        var formated_date = moment(d*1000).format('MM/DD/YYYY')
+        $(".datapicker_1 .date_preview").text(formated_date);
+        $("#datepicker_view").val(formated_date);
+    }
+
+    //hour
+    if (window.location.search.indexOf('hour') != -1 && getUrlVars()["hour"] && getUrlVars()["hour"] != "-1"){
+        var h_index = parseInt(getUrlVars()["hour"]);
+        var h = hours[h_index]
+        $(".datapicker_2 .date_preview").text(h);
+    }
+
+    //rating
+    if (window.location.search.indexOf('rating') != -1 && getUrlVars()["rating"]){
+        var r = getUrlVars()["rating"];
+        $("#radio_"+r).closest(".ratings").find("label").removeClass("active");
+        $("#radio_"+r).parent().find("label").addClass("active");
+    }
+
+
+    // $('.sort .container li a').click(function(){
+    //     $(this).closest("ul").children().removeClass("active");
+    //     $(this).parent().addClass("active");
+    //     apply_changes();
+    // })
+
+    getUrlVars()["q"]
+
+    function apply_changes(){
+        data = {}
+        data["lat"] = $("#id_lat").val();
+        data["lng"] = $("#id_lng").val();
+        data["budget"] = $("#amount").val();
+        data["date"] = new Date($("#datepicker_view").val()).getTime()/1000;
+        data["hour"] = $(".datapicker_2 .date_preview span").text() ? "-1" : hours.indexOf($(".datapicker_2 .date_preview").text());
+        data["gender"] = $( "#slider-gender" ).slider("value");
+        data["rating"] = $("input[type=radio]:checked")[0] == undefined ? "" :$("input[type=radio]:checked").attr("id").split("_")[1];
+
+        all_tags = $('.tags .tag_me div');
+        tags = [];
+        for (var i = 0; i<all_tags.length; i++) {
+            tags.push(all_tags.eq(i).text());
+        };
+
+        data["tags"] = tags;
+        // data["sorted_by"] = $("li.sort").find("li.active").data("order");
+
+        pathname = window.location.pathname;
+
+        if(pathname != '/result/'){
+            data["q"] = pathname.split("/")[1].replace("_", " ");
+        }
+        else{
+            data["q"] = getUrlVars()["q"];
+        }
+
+        new_location = '/result/?q=' + data['q'];
+        new_location += '&lat=' + data['lat'];
+        new_location += '&lng=' + data['lng'];
+        new_location += '&budget=' + data['budget'];
+        new_location += '&gender=' + data['gender'];
+        new_location += '&date=' + data['date'];
+        new_location += '&hour=' + data['hour'];
+        new_location += '&rating=' + data['rating'];
+        new_location += '&tags=' + data['tags'].join();
+        // new_location += '&sorted_by=' + data['sorted_by']
+        window.location.href = new_location;
+    }
+
+// reset options
+
+    //date
+    $(".date_range .reset").click(function(){
+        $('.date_range .datapicker_1, .date_range .datapicker_2').find(".date_preview").html("<span>Please select date</span>");
+        $("#datepicker_view").val("");
+        apply_changes();
+    });
+
+    //gender
+    $(".gender .reset").click(function(){
+        $('#slider-gender').slider({value: 1});
+        apply_changes();
+    });
+
+    //range
+    $(".budget .reset").click(function(){
+        var $s = $('#slider-range')
+        $s.slider({values: [$s.slider("option", "min"), $s.slider("option", "max")]});
+        apply_changes();
+    });
+
+    //ratings
+    $(".ratings .reset").click(function(){
+        $(".ratings input[type='radio']").removeAttr('checked');
+        $(".ratings label").removeClass("active");
+        apply_changes();
+    });
+
+
+    </script>
+    {% endblock scripts %}
+    </body>
+</html>

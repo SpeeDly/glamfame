@@ -1,0 +1,65 @@
+{% extends "artists/management.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+    {% block settings %}
+        <form method="POST" action="{{ request.get_full_path }}" id="settings" enctype="multipart/form-data" class="widget_generator">
+            {% csrf_token %}
+            <div class="text">
+                {% blocktrans %}
+                You can add a widget to your website and start acceptiong bookings requests immediately. Your listings, schedule and calendar from Glamfame.com will be directly available on your website.<br> Just copy the code below and paste it on your website.
+                {% endblocktrans %}
+            </div>
+            <div class="wrapper">
+                <div class="widget_box">
+                    <div class="title">{% trans "Widget:" %}</div>
+                    <div id="widget">
+                        <iframe id="demo_widget" width="300px" height="600px" src="{% url 'generate_widget' token.token %}" target='_parent' frameborder="0"></iframe>
+                    </div>
+                </div>
+                <div class="code_box">
+                    <div class="title">{% trans "Code:" %}</div>
+                    <div class="text_box">&lt;iframe width="300px" height="600px" src="https://glamfame.com{% url 'generate_widget' token.token %}" target='_parent' frameborder="0">&lt;/iframe></div>
+                    <a class="yes_no green{% if token.have_image %} hidden{% endif %}" href="javascript:;">{% trans "Add Logo" %}</a>
+                    <a class="yes_no red{% if not token.have_image %} hidden{% endif %}" href="javascript:;">{% trans "Remove Logo" %}</a>
+                </div>
+            </div>
+        </form>
+    {% endblock settings %}
+
+    {% block scripts %}
+    <script>
+    $(document).ready(function(){
+        $(".yes_no").click(function(){
+            var $this = $(this);
+            $.ajax({
+                action: "GET",
+                url: "{% url 'salon_widgets_toggle' %}"
+            }).done(function(){
+                    var $demo_widget = $('#demo_widget');
+                    $demo_widget[0].contentWindow.location.reload();
+                    $("#widget").append("<div class='widget_loading'></div>")
+                    $(".yes_no").removeClass("hidden");
+                    $this.addClass("hidden");
+                });
+        });
+        $('#demo_widget').load(function(){
+            $(this).parent().find(".widget_loading").remove();
+        });
+    });
+    </script>
+    {% endblock scripts %}

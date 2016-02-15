@@ -1,0 +1,28 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with first_name=user.first_name artist_name=artist.first_name
+                username=profile.first_name %}
+                <p>Greetings {{ first_name }},</p>
+                <p>
+                    {{ username }} just posted a review of your services. It is added to profile.
+                </p>
+                <p>If you want to read your reviews, please click <a href="https://glamfame.com">here</a>.</p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>

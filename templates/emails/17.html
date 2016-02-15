@@ -1,0 +1,29 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+    
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with first_name=user.first_name artist_name=artist.first_name
+                username=profile.first_name %}
+                <p>Good news, {{ first_name }},</p>
+                <p>
+                    We have just transferred [amaunt] to your bank account.
+                </p>
+                <p>History of all transactions is available in your Wallet.</p>
+                <p>If you have any questions, please contact us at accounting@glamfame.com.</p>
+                <p>Thank you,</p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </body>
+
+</html>

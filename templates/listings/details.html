@@ -1,0 +1,617 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+{% load humanize %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Listing Details" %}</title>
+{% endblock meta %}
+
+    {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/rateit.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery.ad-gallery.css">
+    {% endblock stylesheets %}
+
+    {% block tweeter %}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:title" content="{{ listing.title }}">
+        <meta name="twitter:description" content="{{ listing.description }}">
+        <meta name="twitter:creator" content="">
+        <meta name="twitter:image:src" content="https://{{ request.get_host }}{{listing.picture}}">
+        <meta name="twitter:domain" content="glamfame.com">
+        <meta name="twitter:app:name:iphone" content="Vine">
+        <meta name="twitter:app:name:ipad" content="Vine">
+        <meta name="twitter:app:name:googleplay" content="Vine">
+        <meta name="twitter:app:url:iphone" content="vine://v/93582sxlkjf">
+        <meta name="twitter:app:url:ipad" content="vine://v/93582sxlkjf">
+        <meta name="twitter:app:url:googleplay" content="http://vine.co/v/93582sxlkjf">
+        <meta name="twitter:app:id:iphone" content="id81239204382">
+        <meta name="twitter:app:id:ipad" content="id432984038404">
+        <meta name="twitter:app:id:googleplay" content="com.foursquare.android">
+        <meta property="og:title" content="{{ listing.title }}"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:url" content="https://{{ request.get_host }}"/>
+        <meta property="og:image" content="http://www.glamfame.com{{listing.get_picture|cut:"/var/www/glamazer"}}"/>
+        <meta property="og:image:secure_url" content="https://www.glamfame.com{{listing.get_picture|cut:"/var/www/glamazer"}}">
+        <meta property="og:site_name" content="Glamfame"/>
+        <meta property="og:description"
+              content="{{ listing.description }}"/>
+        <link rel="image_src" href="{{listing.get_picture|cut:"/var/www/glamazer"}}"/>
+    {% endblock tweeter %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{{listing.title}}</span>
+    </div>
+    {% if messages %}
+    <div class="column">
+        {% for message in messages %}
+        <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                <li class="tag"></li>
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="column">
+        <div id="listing" data-listing="{{ listing.id }}">
+            <div class="listing">
+                <div class="title"><span>{{ listing.title }}</span><div class="rateit bigstars" data-rateit-value="{{ rate }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div></div>
+                <div class="image">
+                {% if listing.get_all_pictures|length == 0 %}
+                    {% if listing.get_picture|is_portrait %}
+                        {% thumbnail listing.get_picture "395" as im %}
+                            <img src="{{ im.url }}">
+                        {% endthumbnail %}
+                    {% else %}
+                        {% thumbnail listing.get_picture "720" as im %}
+                            <img src="{{ im.url }}">
+                        {% endthumbnail %}
+                    {% endif %}
+                </div>
+
+                {% else %}
+                 <div id="gallery" class="ad-gallery">
+                  <div class="ad-image-wrapper">
+                  </div>
+                  <div class="ad-controls">
+                  </div>
+                  <div class="ad-nav">
+                    <div class="ad-thumbs">
+                      <ul class="ad-thumb-list">
+                        <li>
+                            {% if listing.get_picture|is_portrait %}
+                                {% thumbnail listing.get_picture "395" as im %}
+                                    <a href="{{ im.url }}">
+                                {% endthumbnail %}
+                            {% else %}
+                                {% thumbnail listing.get_picture "720" as im %}
+                                    <a href="{{ im.url }}">
+                                {% endthumbnail %}
+                            {% endif %}
+
+                            {% thumbnail listing.get_picture "140x80" crop="center" as im %}
+                                <img border="0" src="{{ im.url }}"/>
+                            {% endthumbnail %}
+                            </a>
+                        </li>
+                            {% for picture in listing.get_all_pictures %}
+                            <li>
+                                {% if picture|is_portrait %}
+                                    {% thumbnail picture "395" as im %}
+                                        <a href="{{ im.url }}">
+                                    {% endthumbnail %}
+                                {% else %}
+                                    {% thumbnail picture "720" as im %}
+                                        <a href="{{ im.url }}">
+                                    {% endthumbnail %}
+                                {% endif %}
+                                {% thumbnail picture "140x80" crop="center" as im %}
+                                    <img border="0" src="{{ im.url }}"/>
+                                {% endthumbnail %}
+                                </a>
+                            </li>
+                            {% endfor %}
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                {% endif %}
+                    {% csrf_token %}
+                    <ul class="main_panel">
+                        <li class="nav_bar">
+                        <ul>
+                            <li class="clickable active"><a href="javascript:;"><span></span>{% trans "DESCRIPTION" %}</a></li>
+                            <li class="clickable"><a href="javascript:;"><span></span>{% trans "REVIEWS" %} ({{reviews|length}})</a></li>
+                            <li class="clickable"><a href="javascript:;"><span></span>{% trans "LOCATION" %}</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="description">
+                            <p>{{ listing.description }}</p>
+                            <p>{% trans "Tags" %}: {% for t in tags %}{{t}}, {% endfor %}</p>
+                        </li>
+                        <li class="reviews">
+                            {% if reviews|length %}
+                            {% for review in reviews %}
+                            <div class="review">
+                                <div class="left">
+                                    <a href="{% url 'profile_user' review.client_id review.client.user.first_name %}">
+                                    {% thumbnail review.client.get_avatar "60x60" crop="center" as im %}
+                                        <img class="clickable" src="{{ im.url }}" alt="{{ review.client.user.first_name }}" width="60" height="60">
+                                    {% empty %}
+                                        <img src="{{ STATIC_URL }}img/default.png" alt="{{ review.client.user.first_name }}" width="60" height="60">
+                                    {% endthumbnail %}
+                                    </a>
+                                </div>
+                                <div class="right">
+                                    <div class="text">{{ review.text }}</div>
+                                    <div class="info">
+                                        <span class="name">{{ review.client.user.first_name }}</span>
+                                        <span class="ago">{{ review.created|naturaltime }}</span>
+                                        <div class="rateit bigstars" data-rateit-value="{{ review.rating }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                                <div class="nothing">{% trans "Currently the listing doesn't have any reviews" %}</div>
+                            {% endif %}
+                        </li>
+                        <li id="location"></li>
+                    </ul>
+            </div>
+        </div>
+        <ul class="menu fright">
+            {% if not request.user.related_with == "artists" and not request.user.related_with == "salons" and listing.status == 1 %}
+            <li class="date_range">
+                <div class="tab">
+                    Date and Time
+                </div>
+                <div class="container">
+                        {% if booked %}
+                            <div>{% trans "You have already booked this listing for" %}: <span id="booked_time"></span></div>
+                        {% else %}
+                        <div id="datepicker">
+                            <a href="javascript:;">
+                            <ul>
+                                <li class="datepicker"></li>
+                                <li class="date_preview"><span>{% trans "Please select date" %}</span></li>
+                            </ul>
+                            </a>
+                        </div>
+                        {% endif %}
+                </div>
+            </li>
+            {% endif %}
+            <li class="price">
+                <div class="tab">
+                    {% trans "Price" %}
+                </div>
+                <div class="container">
+                    <span class="price">
+                        {{ listing.get_currency_display }} {{ listing.price|floatformat:-3 }}
+                    </span>
+                    <p>{% trans "Cancellation policy:" %}<br/>
+                        {% if policy.cancellation_policy_id == 1 %}
+                            {% trans "Full refund, except fees" %}
+                        {% elif policy.cancellation_policy_id == 2 %}
+                            {% trans "Flexible: 50% refund 12 hours prior the apoointment, except fees" %}
+                        {% elif policy.cancellation_policy_id == 3 %}
+                            {% trans "Moderate: 50% refund up until 2 days prior to appointment, except fees" %}
+                        {% elif policy.cancellation_policy_id == 4 %}
+                            {% trans "Strict: 50% refund up until 4 days prior to appointment, except fees" %}
+                        {% else %}
+                            {{ policy.cancellation_policy.cancellation_type }}: {{ policy.cancellation_policy.percent }}% {% trans "refund up until" %} {{ policy.cancellation_policy.days_before }} {% trans "days prior to appointment, except fees" %}
+                        {% endif %}
+                    </p>
+                    {% if not request.user.related_with == "artists" and not request.user.related_with == "salons" and listing.status == 1 and not booked %}
+                        <form id="book_now" action="{{ request.get_full_path }}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" id="date_hours" name="time">
+                            {% if not request.user.is_authenticated %}
+                                <label for="id_email">{% trans "Enter your email" %}:</label>
+                                <input id="id_email" type="email" name="email">
+                            {% endif %}
+                            <input type="submit" class="blue_button" value="{% trans 'Book now' %}">
+                        </form>
+                    {% endif %}
+                </div>
+            </li>
+            <li class="wishlist_tab">
+                <div class="tab">
+                    {% trans "Wishlist" %}
+                </div>
+                <div class="container">
+                    <p>{% blocktrans %}Added to {{ listing.likes }} wishlists{% endblocktrans %}</p>
+                    {% if request.user.related_with == "profiles" %}
+                    <a class="pink_button" href="{% url 'add_favorite' listing.id %}">
+                            {% if not favorite %}Add to wishlist{% else %} {% trans "Remove from wishlist" %}{% endif %}
+                    </a>
+                    {% endif %}
+                    <ul class="likes">
+                    {% csrf_token %}
+                        <li class="like"></li>
+                        <li class="tweet"></li>
+                        <li class="pin">
+                            <a href="https://www.pinterest.com/pin/create%2Fbutton/
+                            ?url=https://www.glamfame.com{{ request.get_full_path }}
+                            &media=https://www.glamfame.com{{listing.get_picture|cut:"/var/www/glamazer"}}
+                            &description={{ listing.description }}"
+                            data-pin-do="buttonPin"
+                            data-pin-config="beside"
+                            data-pin-color="white"><img class="hidden" src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_white_20.png" /></a>
+                        </li>
+                        <li class="google_plus"></li>
+                </ul>
+                </div>
+            </li>
+            <li class="artist">
+                <div class="tab">
+                    {% trans "Artist" %}
+                </div>
+                <div class="container">
+                    <a href="{% url 'profile_artist' artist.id artist.user.first_name %}">
+                    {% thumbnail artist.get_avatar "110x110" crop="center" as im %}
+                        <img class="clickable" src="{{ im.url }}" alt="{{artist.user.first_name}}" width="110" height="110">
+                    {% empty %}
+                        <img src="{{ STATIC_URL }}img/default.png" alt="{{artist.user.first_name}}" width="110" height="110">
+                    {% endthumbnail %}
+                    </a>
+                    <div>{{ artist.user.first_name }}</div>
+                    <div class="rateit bigstars" data-rateit-value="{{ artist_rate }}" data-rateit-ispreset="true" data-rateit-readonly="true" data-rateit-starwidth="22" data-rateit-starheight="21"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+            <div id="fb-root"></div>
+        <div class="select_date" style="display: none;">
+            <div class="container">
+                <div id="date" style="position: relative; width: 100%; height: 100%">
+                    <div class="datepicker_container">
+                        <div class="header">{% trans "STEP 1 - SELECT DATE" %}</div>
+                        <div id="datepicker_view"></div>
+                    </div>
+                    <div class="time_container">
+                        <div class="header">{% trans "STEP 2 - SELECT HOUR" %}</div>
+                        <ul class="col col_0">
+                            <li data-index='0'>8:00 AM</li>
+                            <li data-index='1'>8:30 AM</li>
+                            <li data-index='2'>9:00 AM</li>
+                            <li data-index='3'>9:30 AM</li>
+                            <li data-index='4'>10:00 AM</li>
+                            <li data-index='5'>10:30 AM</li>
+                        </ul>
+                        <ul class="col col_1">
+                            <li data-index='6'>11:00 AM</li>
+                            <li data-index='7'>11:30 AM</li>
+                            <li data-index='8'>12:00 PM</li>
+                            <li data-index='9'>12:30 PM</li>
+                            <li data-index='10'>1:00 PM</li>
+                            <li data-index='11'>1:30 PM</li>
+                        </ul>
+                        <ul class="col col_2">
+                            <li data-index='12'>2:00 PM</li>
+                            <li data-index='13'>2:30 PM</li>
+                            <li data-index='14'>3:00 PM</li>
+                            <li data-index='15'>3:30 PM</li>
+                            <li data-index='16'>4:00 PM</li>
+                            <li data-index='17'>4:30 PM</li>
+                        </ul>
+                        <ul class="col col_3">
+                            <li data-index='18'>5:00 PM</li>
+                            <li data-index='19'>5:30 PM</li>
+                            <li data-index='20'>6:00 PM</li>
+                            <li data-index='21'>6:30 PM</li>
+                            <li data-index='22'>7:00 PM</li>
+                            <li data-index='22'>7:30 PM</li>
+                        </ul>
+                    </div>
+                    <a href="javascript:;" class="blue_button">{% trans "Save and continue" %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="dialog_box" id="wtime" style="display:none;">
+            <div class="wrapper">
+                <div class="head">{% trans "WARNING!" %}<a href="javascript:;">X</a></div>
+                <div class="body">
+                    <div class="text">{% trans "Please, select date and time to process forward." %}</div>
+                    <ul>
+                        <li class="OK"><a href="javascript:;" class="new_button green nb_hover">{% trans "OK" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="dialog_box" id="wemail" style="display:none;">
+            <div class="wrapper">
+                <div class="head">{% trans "WARNING!" %}<a href="javascript:;">X</a></div>
+                <div class="body">
+                    <div class="text">
+                        {% blocktrans %}
+                            Please, enter your email address. That's how you will be able to manage your bookings via your mailbox and you will receive notifications when the artist confirms them.
+                        {% endblocktrans %}
+                        </div>
+                    <ul>
+                        <li class="OK"><a class="new_button green nb_hover" href="javascript:;">{% trans "OK" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endblock content %}
+
+    {% block scripts %}
+        <!-- social imports -->
+        <script src="{{STATIC_URL}}js/jquery.ad-gallery.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    var galleries = $('.ad-gallery').adGallery(
+        {
+            loader_image: '{{STATIC_URL}}img/loader.gif',
+            width: 700,
+            height: 400,
+            enable_keyboard_move: true,
+            cycle: true,
+            start_at_index: 0,
+            start_at_index: 0,
+        }
+    );
+
+    $('#switch-effect').change(
+      function() {
+        galleries[0].settings.effect = $(this).val();
+        return false;
+      }
+    );
+    $('#toggle-slideshow').click(
+      function() {
+        galleries[0].slideshow.toggle();
+        return false;
+      }
+    );
+  });
+  </script>
+        <script src="{{STATIC_URL}}js/jquery.rateit.min.js"></script>
+        <script src="{{STATIC_URL}}js/ui.js"></script>
+        <script src="https://connect.facebook.net/en_US/all.js"></script>
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <script async src="//assets.pinterest.com/js/pinit.js"></script>
+        <!-- /social imports -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script type="text/javascript">
+            //Google maps
+            var map_canvas = document.createElement('div');
+            map_canvas.id = 'map_canvas';
+            map_canvas.style.height = '360px';
+            map_canvas.style.width = '738px';
+
+            document.getElementById('location').appendChild(map_canvas);
+
+            var coords = new google.maps.LatLng({{ artist.lat }}, {{ artist.lng }});
+
+            var options = {
+                zoom: 17,
+                center: coords,
+                mapTypeControl: false,
+                navigationControlOptions: {
+                    style: google.maps.NavigationControlStyle.SMALL
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map,
+                title:"You are here!",
+                animation: google.maps.Animation.DROP,
+            });
+
+            // Nav bar
+            $('.description').show();
+            $('.reviews').hide();
+            $('#location').hide();
+            $ (".nav_bar li").click(function(){
+                $(this).parent().children().removeClass("active");
+                $(this).addClass("active")
+                if ($(this).index() == 0){
+                    $('.description').show();
+                    $('.reviews').hide();
+                    $('#location').hide();
+                }
+                else if($(this).index() == 1){
+                    $('.description').hide();
+                    $('.reviews').show();
+                    $('#location').hide();
+                }
+                else{
+                    $('.description').hide();
+                    $('.reviews').hide();
+                    $('#location').show();
+                    google.maps.event.trigger(map, "resize");
+                    map.setCenter(coords);
+                }
+            });
+
+            // start facebook share
+            $('.like').click(function(){openWin()})
+            function openWin() {
+                url = 'https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://www.glamfame.com{{ request.get_full_path }}&p[images][0]=https://www.glamfame.com{{listing.get_picture|cut:"/var/www/glamazer"}}&p[title]={{ listing.title }}&p[summary]={{ listing.description }}'
+                myWindow = window.open(url, '', 'width=800,height=500');
+                myWindow.focus();
+            }
+
+            // start tweeter
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+            $('.tweet').click(function(){
+                url = 'https://twitter.com/share?text=nafsfawf'
+                myWindow = window.open(url, '', 'width=800,height=400');
+                myWindow.focus();
+            });
+
+            // start google +
+            $('.google_plus').click(function(){
+                url = 'https://plus.google.com/share?url=https://www.glamfame.com{{ request.get_full_path }}'
+                myWindow = window.open(url, '', 'width=500,height=400');
+                myWindow.focus();
+            })
+            // end favorite section
+
+            hours = ['8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM']
+
+            $('#datepicker ul').click(function(){
+                $('.select_date').show();
+                draw_picker()
+            });
+
+            $('.select_date').click(function(e){
+                if($(e.target).hasClass('select_date'))
+                    $(this).hide()
+            })
+            function get_ampm_time(date){
+                var hour = date.getHours();
+                var minutes = date.getMinutes();
+                var ampm = hour >= 12 ? 'PM' : 'AM';
+                hour = hour % 12;
+                hour = hour ? hour : 12; // the hour '0' should be '12'
+                minutes = minutes < 10 ? '0'+minutes : minutes;
+                var strTime = hour + ':' + minutes + ' ' + ampm;
+                return strTime;
+            }
+
+            function draw_picker(){
+                $datapicker = $("#datepicker_view")
+                $datapicker.datepicker(
+                    {
+                        minDate: 0,
+                        maxDate: "+1M +10D",
+                        dayNamesMin: [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+                        dateFormat: "mm/dd/yy",
+                        onSelect: function (dateText, inst) {
+                            var data = {};
+                            var month = inst.selectedMonth;
+                            var year = inst.selectedYear;
+                            data["date"] = inst.selectedDay;
+                            data["month"] = month;
+                            data["year"] = year;
+
+                            date = new Date(year, month, inst.selectedDay)
+                            data["week_day"] = date.getDay();
+                            data["artist_id"] = {{ artist.id }};
+                            data["duration"] = {{ listing.duration }}/(60*30);
+                            dur = {{ listing.duration }}/(60*30);
+                            data['csrfmiddlewaretoken'] = $("input[name='csrfmiddlewaretoken']").val();
+
+                            $.ajax({
+                                url: "/listings/check_availability/",
+                                data: data,
+                                type: "POST"
+                            }).done(function(data){
+                                console.log(data)
+                                var busy_time = []
+                                for(var i = 0; i<data.booked.length; i++)
+                                {
+                                    duration = data.booked[i].duration /(1800)
+                                    for(var y = 0; y<duration; y++){
+                                        date = new Date((data.booked[i].start_time + (y*1800))*1000)
+                                        str_time = get_ampm_time(date)
+                                        busy_time.push(hours.indexOf(str_time))
+                                    }
+                                }
+                                all_busy_time = busy_time.concat(data.busy_time)
+                                console.log(all_busy_time)
+
+                                active_hours = []
+                                for(var i=0; i<23; i++){
+                                    if (all_busy_time.indexOf(i) == -1){
+                                        active_hours.push(i);
+                                    }
+                                }
+
+                                console.log(active_hours)
+                                for (var i = 0; i < active_hours.length; i++) {
+                                    for(var y = active_hours[i]; y < (active_hours[i]+dur); y++){
+                                        if (active_hours.indexOf(y) == -1){
+                                            all_busy_time.push(active_hours[i]);
+                                        }
+                                    }
+                                }
+
+                                $("ul.col li").removeClass("disabled").each(function(){
+                                    if (all_busy_time.indexOf($(this).data("index")) != -1){
+                                        $(this).addClass("disabled");
+                                    }
+                                });
+                            })
+                        }
+                    });
+                $datapicker.datepicker('show');
+                $(".ui-state-active").click();
+
+                $(".col li").click(function(){
+                    if($(this).hasClass("disabled")){
+                        return false;
+                    }
+                    else{
+                        $('.col').children().removeClass("active");
+                        $(this).addClass('active');
+                    }
+                });
+            }
+
+            $('.select_date .blue_button').click(function(){
+                var _hour = hours[$('.col').find('li.active').data('index')] === undefined ? " " : ',' + hours[$('.col').find('li.active').data('index')]
+                $('.date_preview').text($datapicker.val() + _hour)
+                var temp = new Date(_hour == " " ? "NaN" : $('.date_preview').text())
+                $('#date_hours').val(temp.getTime()/1000);
+                $('.select_date').hide();
+            });
+
+            $('.select_date .container').draggable();
+
+            $('#book_now').submit(function(e){
+                if (!$('#date_hours').val() || $('#date_hours').val() == "NaN"){
+                    $('#wtime').show();
+                    e.preventDefault();
+                    return false;
+                }
+                $email = $("input[type='email']")
+                if($email.length){
+                    if($email.val() == '' || !validateEmail($email.val())){
+                        $('#wemail').show();
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+
+            });
+            function validateEmail(email) {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+            $('.dialog_box .head a, .dialog_box .body .OK a').click(function(){
+                    $('.dialog_box').hide();
+            });
+
+            $('.dialog_box').click(function(e){
+                if($(e.target).hasClass('dialog_box'))
+                    $(this).hide();
+            });
+
+            if("{{booked}}" != "False")
+                $('#booked_time').text(moment({{booked}}*1000).format('h:mm a   MM/DD/YYYY'));
+
+
+        </script>
+    {% endblock scripts %}
+    </body>
+</html>

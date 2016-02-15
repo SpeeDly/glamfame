@@ -1,0 +1,31 @@
+{% load i18n %}
+<html>
+    <head>
+    </head>
+    <body>
+        <table>
+
+            <tbody>
+            <tr>
+            <td>
+                {% blocktrans with receiver_name=receiver_name %}
+                <p>Hello {{ receiver_name }},</p>
+                <p>Thank you for signing up!</p>
+                <p>You have made the right decision. Glamfame is the platform that will boost your appointments and help you manage your workflow easily.</p>
+                <p>What’s next? Only 4 easy steps:</p>
+                <p>1. Add your beauty artists – you can do it from <a href="https://glamfame.com/salons/settings/artists">here</a></p>
+                <p>2. Set up your cancellation policy – you can do it from <a href="https://glamfame.com/salons/settings/policy">here</a></p>
+                <p>3. Set up preferred payment method – you can do it from <a href="https://glamfame.com/salons/settings/payments">here</a></p>
+                <p>4. Upload your listings – you can do it from <a href="https://glamfame.com/salons/upload">here</a></p>
+                <p>That's it! Once you complete these steps, you will start receiving booking requests from our customers. </p>
+                <p>Thank you! </p>
+                <p>Glamfame Team</p>
+                {% endblocktrans %}
+            </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>

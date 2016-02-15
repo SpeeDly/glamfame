@@ -1,0 +1,113 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+    {% block meta %}
+        <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Bookings" %}</title>
+    {% endblock meta %}
+
+    {% block title %}
+        Appointments
+    {% endblock title %}
+
+    {% block content %}
+
+    <div id="bookings">
+        <ul>
+            {% for b in bookings %}
+                <li class="booking" data-id="{{ b.id }}"  data-starttime="{{ b.start_time }}">
+                    <div class="left">
+                        <div class="date">
+                            <div class="day"></div>
+                            <div class="month"></div>
+                        </div>
+                        <div class="hour"></div>
+                    </div>
+                    <div class="right">
+                        {% trans "Appointment with" %} <a href="{% url 'profile_user' b.client_id b.client.user.first_name %}">{{ b.client.user.first_name }}</a> for <a href="{% url 'listing' b.listing_id b.title %}">"{{b.title}}"</a>
+                        <div class="actions">
+                            {% if not b.status == 2 %}
+                                {% if b.status == 0 %}
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{b.id}}" name="sn_approve">
+                                    <input type="submit" class="mobile_button green" value="{% trans 'Accept' %}">
+                                </form>
+                                {% endif %}
+                                <form class="cancel" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{b.id}}" name="sn">
+                                    <input type="submit" class="mobile_button red" value="{% trans 'Decline' %}">
+                                </form>
+                            {% else %}
+                                <input type="button" class="mobile_button red" value="{% trans 'Declined' %}">
+                            {% endif %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+            {% if bookings|length == 0 %}
+            <li class="nothing">
+                {% trans "Currently you don't have any bookings." %}
+            </li>
+            {% elif bookings.has_previous or bookings.has_next %}
+            <li class="pagination">
+                <div class="step-links">
+                    {% if bookings.has_previous %}
+                        <a href="?page={{ bookings.previous_page_number }}">&lt;</a>
+                    {% endif %}
+
+                    <span class="current">
+                    {% for page in bookings.paginator.page_range %}
+                        <a href="?page={{page}}" class='page{% if page == 0 or page == bookings.number %} active{% endif %}'>{{ page }}</a>
+                    {% endfor %}
+                    </span>
+
+                    {% if bookings.has_next %}
+                        <a href="?page={{ bookings.next_page_number }}">></a>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+    <script type="text/javascript">
+        $('form.cancel').submit(function(e){
+            if ($(this).closest('tr').hasClass('dialog')){
+                $('.dialog_box').data('number', $(this).closest('tr').data('number')).show();
+                e.preventDefault();
+            }
+        });
+
+        $('.dialog_box .head a, .dialog_box .body li.No a').click(function(){
+            $('.dialog_box').hide();
+        });
+
+        $('.dialog_box .body li.Yes a').click(function(){
+            $('tr[data-number="' + $('.dialog_box').data('number') + '"]').removeClass('dialog').find('.cancel').filter('form').submit();
+        });
+        
+        $('.dialog_box').click(function(e){
+            if($(e.target).hasClass('dialog_box'))
+                $(this).hide()
+        });
+
+        var $bookings = $(".booking");
+        $bookings.each(function(){
+            $this = $(this);
+            var start_time = parseInt($this.data("starttime"))*1000;
+            console.log(start_time);
+            var date = moment(start_time);
+            var day = date.format('D');
+            var month = date.format('MMM');
+            var hours = date.format('h:mm a');
+            $this.find(".day").text(day).end().find(".month").text(month).end().find(".hour").text(hours).end();
+        });
+    </script>
+    {% endblock scripts %}
+</body>
+</html>

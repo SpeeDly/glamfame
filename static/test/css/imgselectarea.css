@@ -1,0 +1,34 @@
+/*
+ * imgAreaSelect default style
+ */
+
+.imgareaselect-border1, .imgareaselect-border2,
+.imgareaselect-border3, .imgareaselect-border4 {
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.imgareaselect-handle {
+    display: none;
+}
+
+.imgareaselect-outer {
+    opacity: 0.5;
+}
+
+.imgareaselect-selection {
+    border: 0.01px solid rgba(0,0,0,0);
+    border-radius: 999px;
+    box-shadow: 0 0 0 1000px rgba(0,0,0,0.5);
+    z-index: 10004;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: -1px;
+}
+
+/*#img_container.second + div .imgareaselect-selection {
+    border-radius: inherit !important;
+    z-index: 10004;
+    margin: -1px;
+}*/

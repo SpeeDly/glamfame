@@ -1,0 +1,37 @@
+.dd-selected-image{
+	border-radius: 999px;
+}
+
+.dd-selected{
+	padding: 0px;
+}
+
+.dd-select{
+	background: none !important;
+	border: none !important;
+	width: 90px !important;
+}
+
+.dd-container{
+	width: 90px !important;
+	display: inline-block;
+}
+
+ul.dd-options{
+	width: 90px !important;
+	box-shadow: none !important;
+	border: 1px solid #d6d6d6 !important;
+}
+
+a.dd-option{
+	background: none !important;
+	border: none !important;
+}
+
+.dd-option-image{
+	border-radius: 999px;
+}
+
+small{
+	display: none !important;
+}

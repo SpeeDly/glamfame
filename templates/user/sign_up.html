@@ -1,0 +1,93 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Sign Up" %}</title>
+{% endblock meta %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "SIGN UP" %}</span>
+    </div>
+
+    <div class="column">
+        <div class="forms">
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if not messages %}
+
+            <form id="form_1" class="sign_up accept_terms" method="post" action="." {% if artist_form.errors %}style="display:none"{% endif %}>
+                {% csrf_token %}
+                <ul>
+                    <li><label for="" class="main_label">
+                        {% if user_form.name.errors %}
+                            {{ user_form.name.errors }}
+                        {% endif %}
+                        {% trans "Name" %}</label></li>
+                    <li>
+                        {{ user_form.name }}
+                    </li>
+                    <li><label for="" class="main_label">
+                        {% if user_form.email.errors %}
+                            {{ user_form.email.errors }}
+                        {% endif %}
+                        {% trans "Email" %}</label></li>
+                    <li>
+                        {{ user_form.email }}
+                    </li>
+                    <li><label for="" class="main_label">
+                        {% if user_form.password.errors %}
+                            {{ user_form.password.errors }}
+                        {% endif %}
+                        {% trans "Password" %}</label></li>
+                    <li>
+                        {{ user_form.password }}
+                    </li>
+                    <li><label for="" class="main_label">
+                        {% if user_form.confirm_password.errors %}
+                            {{ user_form.confirm_password.errors }}
+                        {% endif %}
+                        {% trans "Confirm Password" %}</label></li>
+                    <li>
+                        {{ user_form.confirm_password }}
+                    </li>
+                    <li></li>
+                    <li class="terms"><input type="checkbox" id="accept_terms">{% trans "I accept" %} <a href="{% url 'terms' %}">{% trans "Terms and Conditions" %}</a> {% trans "and" %} <a href="{% url 'privacy' %}">{% trans "Privacy Policy" %}</a>.</li>
+                        <input type="submit" value="{% trans "Sign up" %}" name="reg_user">
+                    </li>
+                    <li class="or">
+                        <div></div>
+                        <div class="or">{% trans "OR" %}</div>
+                    </li>
+                    <li class="facebook">
+                        <div class="facebook_icon"></div>
+                        <input type="button" value="{% trans 'Sign up using Facebook' %}" onclick="register_me('user')">
+                        <div class="fb-login-button" data-perms="email" data-scope="email" data-max-rows="1" data-show-faces="false"></div>
+                        <div id="fb-root"></div>
+                    </li>
+                </ul>
+            </form>
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+    {% endblock content %}
+    {% block scripts %}
+        <script src="https://connect.facebook.net/en_US/all.js"></script>
+        <script src="{{STATIC_URL}}js/facebook.js"></script>
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <script src="{{STATIC_URL}}js/accept_terms.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

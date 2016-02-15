@@ -1,0 +1,212 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Bookings" %}</title>
+{% endblock meta %}
+
+    {% block content %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/moment.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/qtip.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+
+<div id="content">
+    <div class="header">
+        <span>{% trans "BOOKINGS" %}</span>
+    </div>
+
+    <div class="column">
+        <table id="bookings">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{% trans "ORDER ID" %}</th>
+                    <th>{% trans "DATE" %}</th>
+                    <th>{% trans "LISTING" %}</th>
+                    <th>{% trans "ORDERED BY" %}</th>
+                    <th>{% trans "AMOUNT" %}</th>
+                    <th>{% trans "STATUS" %}</th>
+                    <th>{% trans "ACTION" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in bookings %}
+                <tr data-number="{{ b.id }}" data-dialog="{{b.dialog}}" data-starttime="{{b.start_time}}" data-days="{{ b.days_before }}" data-percent="{{b.percent}}">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ b.id }}</td>
+                    <td class="start_time_{{ b.id }}">
+
+                    </td>
+                    <td class="listing_view listing_view_{{b.id}}">
+                        <a href="{% url 'listing' b.listing_id b.title %}">{{b.title}}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'profile_artist' b.artist_id b.artist.user.first_name %}">
+                                {% thumbnail b.artist_avatar "55x55" crop="center" as im %}
+                                    <img src="{{ im.url }}" alt="{{b.artist.user.first_name}}" width="55" height="55" style="border: 2px solid white; border-radius: 999px;">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" alt="{{b.artist.user.first_name}}" width="55" height="55" style="border: 2px solid white; border-radius: 999px">
+                                {% endthumbnail %}
+                        </a>
+                    </td>
+                    <td>
+                        {{ b.currency }} {{ b.price|floatformat:-3 }}
+                    </td>
+                    <td>
+                        {{b.status}}
+                        <script type="text/javascript">
+                            var b_id = {{b.id}}
+                            var start_time = {{ b.start_time }};
+                            var start_time = moment(start_time*1000).format('h:mm a   MM/DD/YYYY');
+                            $('.start_time_' + b_id).text(start_time);
+                            $('.listing_view_' + b_id + ' a').qtip({
+                              content: '{% thumbnail b.listing "200x112" crop="center" as im %}<img src="{{ im.url }}" style="width: 222px;" alt="listing">{% endthumbnail %}',
+                              style: { width: { min: 222 } }
+                            });
+                        </script>
+                    </td>
+                    <td>
+                        {% if b.status == "PENDING" or b.status == "APPROVED" %}
+                            <form class="cancel" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" value="{{b.id}}" name="sn">
+                                <input type="hidden" value="" name="cancellation_policy" class="cp">
+                                <input type="submit" class="new_button red nb_hover" value="{% trans 'Cancel' %}">
+                            </form>
+                        {% elif b.status == "PASSED" %}
+                            <form class="report" method="POST" action="{% url 'profiles_report_booking' %}">
+                                {% csrf_token %}
+                                <input type="hidden" value="{{b.id}}" name="sn">
+                                <textarea name="comment" id="" cols="30" rows="10" class="hidden"></textarea>
+                                <input type="submit" class="new_button red nb_hover" value="{% trans 'Report' %}">
+                            </form>
+                        {% else %}
+                                {% trans 'None' %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if bookings|length == 0 %}
+                <tr class="pagination">
+                    <td colspan='8'>
+                        <div class="step-links">
+                            {% trans "Currently you don't have any bookings." %}
+                        </div>
+                    </td>
+                </tr>
+                {% elif bookings.has_previous or bookings.has_next %}
+                <tr class="pagination">
+                    <td colspan='8'>
+                        <div class="step-links">
+                            {% if bookings.has_previous %}
+                                <a href="?page={{ bookings.previous_page_number }}">&lt;</a>
+                            {% endif %}
+
+                            <span class="current">
+                            {% for page in bookings.paginator.page_range %}
+                                <a href="?page={{page}}" class='page{% if page == 0 or page == bookings.number %} active{% endif %}'>{{ page }}</a>
+                            {% endfor %}
+                            </span>
+
+                            {% if bookings.has_next %}
+                                <a href="?page={{ bookings.next_page_number }}">></a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="dialog_box" style="display: none">
+    <div class="wrapper">
+        <div class="head">{% trans "WARNING!" %}<a href="javascript:;">X</a></div>
+        <div class="body">
+            <div class="text"></div>
+            <ul>
+                <li class="Yes"><a class="new_button green nb_hover" href="javascript:;">{% trans "Yes" %}</a></li>
+                <li class="No"><a class="new_button red nb_hover" href="javascript:;">{% trans "No" %}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="dialog_box report_problem" style="display: none">
+    <div class="wrapper">
+        <div class="head">{% trans "REPORT A PROBLEM!" %}<a href="javascript:;">X</a></div>
+        <div class="body">
+            <div class="text">{% trans "Oh, no! What went wrong?" %}</div>
+            <textarea id="id_comment_dummy" cols="30" rows="10" placeholder="{% trans 'Please describe your problem' %}"></textarea>
+            <ul>
+                <li class="send"><a class="new_button green nb_hover" href="javascript:;">{% trans "Send" %}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    {% endblock content %}
+
+    {% block scripts %}
+    <script type="text/javascript">
+        $('form.cancel').submit(function(e){
+            var $tr = $(this).closest('tr');
+            var start_time = parseInt($tr.data('starttime'));
+            var current_time = parseInt(new Date().getTime()/1000);
+            var is_dialog = $tr.data('dialog');
+            var days_before = parseInt($tr.data('days'))
+
+            if (is_dialog)
+            {
+                var days_left = (start_time - current_time)/86400;
+                if ( days_before > days_left )
+                {
+                    $('.dialog_box').data('number', $(this).closest('tr').data('number')).find(".text").html('They are less than ' + $tr.data("days") + ' days left to your reservation. In accordance to the artist <a href="">Cancelation policy</a>, if you cancel now, we will refund you with <b>' + $tr.data("percent") + '%</b> of the amount you paid.<br/><br/>Are you sure you want to cancel this appointment?').end().show();
+                    e.preventDefault();
+                }
+            }
+        });
+
+        $('.dialog_box .head a, .dialog_box .body li.No a').click(function(){
+            $('.dialog_box').hide();
+        });
+
+        $('.dialog_box .body li.Yes a').click(function(){
+            $('tr[data-number="' + $('.dialog_box').data('number') + '"]').data("dialog", 0).find('form.cancel').find(".cp").val("1").end().submit();
+        });
+
+        $('.dialog_box').click(function(e){
+            if($(e.target).hasClass('dialog_box'))
+                $(this).hide()
+        });
+        $('.dialog_box').click(function(e){
+            if($(e.target).hasClass('dialog_box')){
+                $(this).hide();
+                flag = 0;
+            }
+        });
+
+        $('.dialog_box .head a, .dialog_box .body li.No a').click(function(){
+            $('.dialog_box').hide();
+            flag = 0;
+        });
+
+        $('.dialog_box.report_problem .send').click(function(){
+            var closest_box = $(this).closest(".dialog_box");
+            var text = $(this).closest(".report_problem").find("textarea").val();
+            $('tr[data-number="' + closest_box.data('number') + '"]').find('form.report').find("textarea").val(text).end().submit();
+        });
+
+        var flag = 0
+        $('form.report').submit(function(e){
+            if(flag == 0){
+                $('.dialog_box.report_problem').data('number', $(this).closest('tr').data('number')).show();
+                flag = 1;
+                e.preventDefault();
+            }
+        });
+
+    </script>
+    {% endblock scripts %}
+</body>
+</html>

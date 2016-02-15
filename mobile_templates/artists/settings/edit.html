@@ -1,0 +1,144 @@
+{% extends "artists/settings.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block settings %}
+        <form method="POST" action="{{ request.get_full_path }}" id="settings" enctype="multipart/form-data">
+            {% csrf_token %}
+            <ul class="settings">
+                <li class="style">
+                    <label for="" class="main_label">
+                    Style
+                    </label><br/>
+                    {% if form.style.errors %}
+                        {{ form.style.errors }}
+                    {% endif %}
+                    {{ form.style }}
+                </li>
+                <li>
+                    <ul>
+                        <li class="avatar">
+                            {{ form.errors }}
+                            <div>
+                                {% thumbnail artist.get_avatar "165x165" crop="center" as im %}
+                                    <img src="{{ im.url }}" id="preview">
+                                {% empty %}
+                                    <img src="{{ STATIC_URL }}img/default.png" style="width: 165px; height: 165px;">
+                                {% endthumbnail %}
+                            </div>
+                        </li>
+                        <li class="button_container">
+                            <div class="blue_button">Change</div>
+                            {{ form.avatar }}
+                            {{ form.cropped_image }}
+                        </li>
+                    </ul>
+                </li>
+                <li class="name">
+                    <label for="" class="main_label">
+                        {% if form.name.errors %}
+                            {{ form.name.errors }}
+                        {% endif %}
+                        {% trans "Name" %}
+                    </label>
+                    {{ form.name }}
+                </li>
+                <li class="number">
+                    <label for="" class="main_label">
+                    {% if form.mobile_number.errors %}
+                        {{ form.mobile_number.errors }}
+                    {% endif %}
+                    {% trans "Phone" %}
+                    </label>
+                    {{ form.mobile_number }}
+                </li>
+
+                <li class="address">
+                    <label for="" class="main_label">
+                    {% if form.address.errors %}
+                        {{ form.address.errors }}
+                    {% endif %}
+                    {% trans "Address" %}
+                    </label>{{ form.lat }}{{ form.lng }}
+                    {{ form.address }}
+                </li>
+                <li class="description"><label for="" class="main_label">{% trans "Description" %}</label>
+                    {% if form.description.errors %}
+                        {{ form.description.errors }}
+                    {% endif %}
+                    {{ form.description }}
+                </li>
+                <li class="setting_buttons">
+                    <input type="submit" value="{% trans 'Save' %}" class="custom_button">
+                </li>
+            </ul>
+        </form>
+    {% endblock settings %}
+
+
+    {% block scripts %}
+    <script src="{{STATIC_URL}}js/error.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        autocomplete = new google.maps.places.Autocomplete(
+        (document.getElementById('id_address')),
+        {
+            types: ['geocode']
+        });
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            lat = autocomplete.getPlace().geometry.location.lat();
+            lng = autocomplete.getPlace().geometry.location.lng();
+            $("#id_lat").val(lat);
+            $("#id_lng").val(lng);
+        });
+
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + $("#id_lat").val() +
+         ',' + $("#id_lng").val() + '&sensor=false',
+        function(data){
+            console.log(data);
+            $('#id_address').val(data.results['0']['formatted_address']);
+        });
+
+
+        $("#id_avatar").change(function(){
+            read_url(this);
+        });
+
+
+        function read_url(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                $('.avatar div').children().remove().end().append("<canvas id='preview' width='165px' height='165px' style='margin-left:0px'></canvas>");
+                reader.onload=function(e){
+                    draw_image(e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#settings").submit(function(e){
+            if($('canvas')[0])
+                $('#id_cropped_image')[0].value = $('canvas')[0].toDataURL();
+        });
+
+        function draw_image(src){
+            canvas = document.getElementById("preview");
+            var canvas_img=new Image();
+            var ctx=canvas.getContext("2d");
+            canvas_img.onload=function(){
+
+                x1 = 0;
+                y1 = 0;
+                s_width = this.width;
+                s_height = this.height;
+                ctx.drawImage(canvas_img,x1,y1,s_width,s_height,0,0,165,165);
+            };
+            canvas_img.src = src;
+
+        }
+    });
+        </script>
+    {% endblock scripts %}

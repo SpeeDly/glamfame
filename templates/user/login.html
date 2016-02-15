@@ -1,0 +1,71 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Login" %}</title>
+{% endblock meta %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "LOGIN" %}</span>
+    </div>
+
+    <div class="column">
+        <div class="forms">
+            <form id="form_1" class="login" method="post" action=".">
+                {% csrf_token %}
+                    {% if user_form.errors %}
+                        <ul class="errorlist"><li><ul class="errorlist"><li>{% trans "Invalid login details" %}</li></ul></li></ul>
+                    {% endif %}
+                <ul>
+                    <li>
+                        {% if user_form.email.errors %}
+                            {{ user_form.email.errors }}
+                        {% endif %}
+                        <label for="" class="main_label">{% trans "Email" %}</label></li>
+                    <li>
+                        {{ user_form.email }}
+                    </li>
+                    <li>
+                        {% if user_form.password.errors %}
+                            {{ user_form.password.errors }}
+                        {% endif %}
+                        <label for="" class="main_label">{% trans "Password" %}</label></li>
+                    <li>
+                        {{ user_form.password }}
+                    </li>
+                    <li>
+
+                        <ul>
+                            <li>{{ user_form.remember_me }} <label for="id_remember_me" class="main_label">{% trans "Remember Me" %}</label></li>
+                            <li><a href="{% url 'forgotten_password' %}">{% trans "Forgot your password?" %}</a></li>
+                        </ul>
+
+                        <input type="submit" name="log_user" value="{% trans 'Log In' %}">
+                    </li>
+                    <li class="or">
+                        <div></div>
+                        <div class="or"> {% trans "OR" %} </div>
+                    </li>
+                    <li class="facebook">
+                        <div class="facebook_icon"></div>
+                        <input type="button" value="{% trans 'Log in with Facebook' %}" onclick="log_me()">
+                        <div class="fb-login-button" data-perms="email" data-scope="email" data-max-rows="1" data-show-faces="false"></div>
+                        <div id="fb-root"></div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+
+    {% endblock content %}
+
+    {% block scripts %}
+        <script src="https://connect.facebook.net/en_US/all.js"></script>
+        <script src="{{STATIC_URL}}js/facebook.js"></script>
+        <script src="{{STATIC_URL}}js/error.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

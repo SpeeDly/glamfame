@@ -1,0 +1,151 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Edit Listing" %}</title>
+{% endblock meta %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/select2.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+
+{% endblock stylesheets %}
+
+    {% block content %}
+<div id="content">
+    <div class="header">
+        <span>{% trans "EDIT LISTING" %}</span>
+    </div>
+
+    <div class="column">
+        <form  class="login listing_upload" method="POST" enctype="multipart/form-data" data-fee="{{ fee }}">
+            {% csrf_token %}
+            <div class="left_wrapper">
+                <div class="vertical_box photos">
+                    <div class="box_title">{% trans "1. Photos" %}</div>
+                    <div class="body">
+                        <div id="gallery_preview" class="multiple_listing">
+                            <ul>
+                                <li class="ready_photo old cover" data-path="{{listing.get_picture}}">
+                                    {% thumbnail listing.get_picture "190x125" crop="center" as im %}
+                                        <img src="{{ im.url }}" alt="picture" width="190" height="125"/>
+                                    {% empty %}
+                                        <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="picture" width="190" height="125">
+                                    {% endthumbnail %}
+                                    <ul class="action">
+                                        <li class="delete">{% trans "DELETE" %}</li>
+                                        <li class="cover_photo">{% trans "COVER PHOTO" %}</li>
+                                    </ul>
+                                </li>
+                                {% if listing.get_all_pictures %}
+                                    {% for l in listing.get_all_pictures %}
+                                    <li class="ready_photo old" data-path="{{ l }}">
+                                        {% thumbnail l "190x125" crop="center" as im %}
+                                            <img src="{{ im.url }}" alt="picture" width="190" height="125"/>
+                                        {% empty %}
+                                            <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="picture" width="190" height="125">
+                                        {% endthumbnail %}
+                                        <ul class="action">
+                                            <li class="delete">{% trans "DELETE" %}</li>
+                                            <li class="cover_photo">{% trans "COVER PHOTO" %}</li>
+                                        </ul>
+                                    </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="photos_upload">
+                            {% if form.cover.errors %}
+                                <div class="wrong_picture">{{ form.cover.errors }}</div>
+                            {% endif %}
+                            <div class="upload_button">{% trans "Click here to upload picture" %}</div>
+                            <input type="file" name="pictures" id="id_picture" class="custom_button active_input" multiple/>
+                            {{ form.cover }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vertical_box price">
+                    <div class="box_title">{% trans "2. Price" %}</div>
+                    <div class="body">
+                        <div class="price"><label for="" class="main_label">
+                            {% if form.price.errors %}
+                                {{ form.price.errors }}
+                            {% endif %}
+                            Price</label><br>
+                            <span class="currency">{{ request.user.artist.get_currency_display }}</span>
+                            {{ form.price }}
+                        </div>
+                        <div class="recalculate">
+                            {% blocktrans %}
+                            Price after fees: {{ request.user.artist.get_currency_display }}<span class="real_price">0</span><br><br>
+                            All fees will be paid by the customer.
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vertical_box description">
+                <div class="box_title">{% trans "3. Description" %}</div>
+                <div class="body">
+                    <ul>
+                        <li class="label_container"><label for="" class="main_label">
+                            {% if form.title.errors %}
+                                {{ form.title.errors }}
+                            {% endif %}
+                            {% trans "Title" %}</label></li>
+                        <li>
+                            {{ form.title }}
+                        </li>
+                        <li class="label_container"><label for="" class="main_label">
+                            {% if form.description.errors %}
+                                {{ form.description.errors }}
+                            {% endif %}
+                            {% trans "Description" %}</label></li>
+                        <li>
+                            {{ form.description }}
+                        </li>
+                        <li class="label_container duration_gender">
+                            <div class="duration">
+                                <label for="" class="main_label">
+                                {% if form.duration.errors %}
+                                    {{ form.duration.errors }}
+                                {% endif %}
+                                {% trans "Duration" %}</label>{{ form.duration }}
+                            </div>
+                            <div class="gender">
+                                <label for="" class="main_label">
+                                {% if form.gender.errors %}
+                                    {{ form.gender.errors }}
+                                {% endif %}{% trans "Type" %}</label>
+                                {{ form.gender }}
+                            </div>
+                        </li>
+                        <li class="clear"></li>
+                        <li class="label_container"><label for="" class="main_label">
+                            {% if form.tags.errors %}
+                                {{ form.tags.errors }}
+                            {% endif %}
+                            {% trans "Tags" %}</label></li>
+                        <li class="tags tags_initial" data-initial="{% for t in tags %}{% if forloop.last %}{{t}}{% else %}{{t}},{%endif%}{% endfor %}">
+                            {{ form.tags }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <input type="submit" class="custom_button" value="{% trans 'Save and continue' %}">
+        </form>
+    </div>
+</div>
+
+    {% endblock content %}
+    {% block scripts %}
+        <script src="{{STATIC_URL}}js/error.js"></script>
+        <!--<script src="{{STATIC_URL}}js/preview.js"></script>-->
+        <script type="text/javascript" src="{{STATIC_URL}}js/select2.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/upload_listing.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

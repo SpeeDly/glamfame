@@ -1,0 +1,213 @@
+{% load url from future %}
+{% load thumbnail %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        {% block meta %}
+            <title>{% trans "Glamazer" %}</title>
+        {% endblock meta %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width" id="mobile_viewport">
+        <meta name="robots" content="noindex">
+        <!--CSS block-->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/mobile_style.css">
+        <link href="https://plus.google.com/100409473038610519249" rel="publisher" />
+        <script src="https://glamfame.com:1332/socket.io/socket.io.js"></script>
+        {% block stylesheets %}
+
+        {% endblock stylesheets %}
+
+        {% block tweeter %}
+
+        {% endblock tweeter %}
+
+    </head>
+    <body>
+
+        <!-- Navigation bar -->
+        <div id="header">
+            {% csrf_token %}
+            <div class="back {% if request.path == "/" %}not_visible{% endif %}"><a class="icon back" href="javascript:history.back()"></a></div>
+            <div class="title">{% block title %}{% endblock title %}</div>
+            <div class="menu"><a class="icon menu" href="javascript:;"></a></div>
+        </div>
+
+        <!--Content block-->
+        <div id="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <!-- Footer -->
+<!--         <div id="footer">
+            {% if request.user.is_authenticated %}
+                {% if request.user.related_with == 'profiles' %}
+                <ul>
+                    <li><div class="middled"><a href="{% url 'home' %}" class="icon foot_nav home{% if '/' == request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'profiles_bookings' %}" class="icon foot_nav calendar{% if 'bookings' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'wishlist' %}" class="icon foot_nav liked{% if 'wishlist' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'user_notifications' %}" class="icon foot_nav notification{% if 'notifications' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'user_profile' %}" class="icon foot_nav profile{% if 'users/profile' == request.path %} active{% endif %}"></a></div></li>
+                </ul>
+                {% elif request.user.related_with == 'artists' %}
+                <ul>
+                    <li><div class="middled"><a href="{% url 'upload' %}" class="icon foot_nav upload{% if 'upload' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'artists_bookings' %}" class="icon foot_nav calendar{% if 'bookings' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'artists_wallet' %}" class="icon foot_nav money {% if 'wallet' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'artist_notifications' %}" class="icon foot_nav notification{% if 'notifications' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'artists_profile' %}" class="icon foot_nav profile{% if 'artists/profile' == request.path %} active{% endif %}"></a></div></li>
+                </ul>
+                {% elif request.user.related_with == 'salons' %}
+                <ul>
+                    <li><div class="middled"><a href="{% if request.user.salon.have_artist %}{% if request.user.salon.step == 0 %}{% url 'salons_upload' %}{% else %}/salons/sign_up?step={{request.user.salon.step}}{% endif %}{% else %}/salons/add_artist{% endif %}" class="icon foot_nav upload{% if 'upload' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'salons_bookings' %}" class="icon foot_nav calendar{% if 'bookings' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'salons_wallet' %}" class="icon foot_nav money {% if 'wallet' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'salon_notifications' %}" class="icon foot_nav notification{% if 'notifications' in request.path %} active{% endif %}"></a></div></li>
+                    <li><div class="middled"><a href="{% url 'salons_add_artist' %}" class="icon foot_nav profile{% if '/salons/add_artist/' == request.path %} active{% endif %}"></a></div></li>
+                </ul>
+                {% else %}
+                {% endif %}
+            {% else %}
+                <ul class="not_logged">
+                    <li><div class="middled log_in"><a href="{% url 'login' %}">Log In</a></div></li>
+                    <li><div class="middled sign_up"><a href="{% url 'signup' %}" >Sign Up</a></div></li>
+                </ul>
+            {% endif %}
+        </div> -->
+        <!-- menu -->
+<!--         <div id='menu'>
+
+        </div> -->
+    <!-- Script block -->
+    <div class="left_slider overlay hidden"></div>
+    <div id="left_slider" class="hidden">
+        <ul>
+            <li class="search_box">
+                <form action='{% url 'result' %}' method="GET">
+                <input type='text' name="q" placeholder="Search">
+                <input type='submit' value="">
+                <div class="search_icon"></div>
+                </form>
+            </li>
+        {% if request.user.related_with == "profiles" %}
+            <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+            <li><a href="{% url 'hair' %}">{% trans "Hair" %}</a></li>
+            <li><a href="{% url 'nails' %}">{% trans "Nails" %}</a></li>
+            <li><a href="{% url 'make_up' %}">{% trans "Make Up" %}</a></li>
+            <li><a href="{% url 'profiles_bookings' %}">{% trans "Bookings" %}</a></li>
+            <li><a href="{% url 'wishlist' %}">{% trans "Wishlist" %}</a></li>
+            <li><a href="{% url 'user_notifications' %}">{% trans "Notifications" %}</a> <div class="notification_count">0</div></li>
+            <li><a href="{% url 'user_profile' %}">{% trans "Profile" %}</a></li>
+            <li><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+        {% elif request.user.related_with == "artists" %}
+            <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+            <li><a href="{% url 'hair' %}">{% trans "Hair" %}</a></li>
+            <li><a href="{% url 'nails' %}">{% trans "Nails" %}</a></li>
+            <li><a href="{% url 'make_up' %}">{% trans "Make Up" %}</a></li>
+            <li><a href="{% url 'upload' %}">{% trans "Add Listing" %}</a></li>
+            <li><a href="{% url 'artists_bookings' %}">{% trans "Calendar" %}</a></li>
+            <li><a href="{% url 'artists_wallet' %}">{% trans "Wallet" %}</a></li>
+            <li><a href="{% url 'artist_notifications' %}">{% trans "Notifications" %}</a> <div class="notification_count">0</div></li>
+            <li><a href="{% url 'artists_profile' %}">{% trans "Profile" %}</a></li>
+            <li><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+        {% elif request.user.related_with == "salons" %}
+            <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+            <li><a href="{% url 'hair' %}">{% trans "Hair" %}</a></li>
+            <li><a href="{% url 'nails' %}">{% trans "Nails" %}</a></li>
+            <li><a href="{% url 'make_up' %}">{% trans "Make Up" %}</a></li>
+            <li><a href="{% if request.user.salon.have_artist %}{% if request.user.salon.step == 0 %}{% url 'salons_upload' %}{% else %}/salons/sign_up?step={{request.user.salon.step}}{% endif %}{% else %}{% url 'salons_add_artist' %}{% endif %}">{% trans "Add Listing" %}</a></li>
+            <li><a href="{% url 'salons_add_artist' %}">{% trans "Add Artist" %}</a></li>
+            <li><a href="{% url 'salons_bookings' %}">{% trans "Calendar" %}</a></li>
+            <li><a href="{% url 'salons_wallet' %}">{% trans "Wallet" %}</a></li>
+            <li><a href="{% url 'salon_notifications' %}">{% trans "Notifications" %}</a> <div class="notification_count">0</div></li>
+            <li><a href="{% url 'salons_profile' %}">{% trans "Profile" %}</a></li>
+            <li><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+        {% else %}
+            <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+            <li><a href="{% url 'hair' %}">{% trans "Hair" %}</a></li>
+            <li><a href="{% url 'nails' %}">{% trans "Nails" %}</a></li>
+            <li><a href="{% url 'make_up' %}">{% trans "Make Up" %}</a></li>
+            <li><a href="{% url 'signup' %}">{% trans "Sign Up" %}</a></li>
+            <li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
+        {% endif %}
+        </ul>
+    </div>
+
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <script type="text/javascript" async defer src="https://apis.google.com/js/platform.js?publisherid=100409473038610519249"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/moment.js"></script>
+    <script type="text/javascript">
+    $('.menu').click(function(){
+        if(!$(this).hasClass("active")){
+            $(this).addClass("active");
+            $(".left_slider.overlay").removeClass("hidden");
+            $('#left_slider').stop().removeClass("hidden").animate({
+                    width: '75%',
+                }, 500)
+        }
+        else{
+            $(this).removeClass("active");
+            $('#left_slider').stop().animate({
+                    width: '0px',
+                }, 500,function(){$(this).addClass("hidden")})
+        }
+    });
+    $('#left_slider').click(function(e){
+        e.stopPropagation();
+    })
+    $(".left_slider.overlay").click(function(e){
+        console.log($(e.target));
+        $(this).addClass("hidden");
+        $(".menu").removeClass("active");
+        $('#left_slider').stop().animate({
+                width: '0px',
+            }, 500,function(){$(this).addClass("hidden")})
+    });
+
+    $(".message .close a").click(function(){
+        $(this).closest(".message").remove();
+    });
+
+    {% if request.user.is_authenticated %}
+        try{
+            var socket = io.connect('glamfame.com:1332', { query: "user_id={{ request.user.id }}" });
+
+            socket.on('connect', function(){
+                console.log("connected");
+            });
+
+            socket.on('message', function(message) {
+                var count = parseInt($(".notification_count").text());
+                $('.notification_count').text(count+1);
+                $('.notification_count').show()
+                window.scrollBy(0, 0);
+                $('div.menu:not(.active)').click();
+            });
+        }
+        catch(err){
+            console.log("There is some issue with this website. Please contact administrator.");
+        }
+    {% endif %}
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+        function(m,key,value) {
+          vars[key] = value;
+        });
+        return vars;
+    }
+
+    </script>
+    {% block scripts %}
+    {% endblock scripts %}
+
+    </body>
+</html>

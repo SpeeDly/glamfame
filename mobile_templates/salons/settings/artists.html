@@ -1,0 +1,52 @@
+{% extends "salons/settings.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+    {% block settings %}
+
+    <div class="artists">
+        <ul>
+            {% for artist in artists %}
+            <li class="artist clickable">
+                <a href="{% url 'profile_artist' artist.id artist.user.first_name %}">
+                {% thumbnail artist.get_avatar "150x150" crop="center" as im %}
+                    <img src="{{ im.url }}" alt="{{artist.user.first_name}}" width="150" height="150" {% if not artist.is_activated %}class="deactivated"{% endif %}>
+                {% empty %}
+                    <img src="{{ STATIC_URL }}img/default.png" alt="{{artist.user.first_name}}" width="150" height="150">
+                {% endthumbnail %}
+                </a>
+                <div class="name">{{ artist.user.first_name }}</div>
+                <div class="type">{{ artist.get_style_display }} stylist</div>
+                {% if not artist.is_activated %}
+                    <a href="{% url 'salons_artists_activate' artist.id %}" class="new_button green nb_hover">{% trans "Activate" %}</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+            <li class="new_artist clickable">
+            <a href="/salons/add_artist">
+                <img src="{{ STATIC_URL }}img/default.png" alt="default" width="150" height="150">
+                <div>{% trans "Click here to add new artist" %}</div>
+            </a>
+            </li>
+        </ul>
+    </div>
+    {% endblock settings %}
+
+    {% block scripts %}
+
+    {% endblock scripts %}

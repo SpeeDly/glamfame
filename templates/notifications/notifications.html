@@ -1,0 +1,85 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - All Notifications" %}</title>
+{% endblock meta %}
+
+    {% block content %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/moment.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/qtip.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+
+<div id="content">
+    <div class="header">
+        <span>{% trans "NOTIFICATIONS" %}</span>
+    </div>
+
+    <div class="column">
+        <table id="notifications">
+            <tbody>
+                {% for n in notifications %}
+                <tr class="notification {% if not n.is_readed %}not_readed{% endif %}" data-time="{{ n.time }}">
+                    <td>
+                        {% if not n.avatar == '/static/img/logo.png' %}
+                            {% thumbnail n.avatar "55x55" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="avatar" width="55" height="55" style="border: 2px solid white; border-radius: 999px;">
+                            {% empty %}
+                                <img src="{{ STATIC_URL }}img/default.png" alt="avatar" width="55" height="55" style="border: 2px solid white; border-radius: 999px">
+                            {% endthumbnail %}
+                        {% else %}
+                            <img src="/static/img/logo.png" alt="logo" width="55" height="55" style="border: 2px solid white; border-radius: 999px;">
+                        {% endif %}
+                    </td>
+                    <td class="notification_{{forloop.counter0}} text">
+                        {{ n.text|safe }} <span></span>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if notifications|length == 0 %}
+                <tr class="pagination">
+                    <td colspan='2'>
+                        <div class="step-links">
+                            {% trans "Currently you don't have any notifications." %}
+                        </div>
+                    </td>
+                </tr>
+                {% elif notifications.has_previous or notifications.has_next %}
+                <tr class="pagination">
+                    <td colspan='2'>
+                        <div class="step-links">
+                            {% if notifications.has_previous %}
+                                <a href="?page={{ notifications.previous_page_number }}">&lt;</a>
+                            {% endif %}
+
+                            <span class="current">
+                            {% for page in notifications.paginator.page_range %}
+                                <a href="?page={{page}}" class='page{% if page == 0 or page == notifications.number %} active{% endif %}'>{{ page }}</a>
+                            {% endfor %}
+                            </span>
+
+                            {% if notifications.has_next %}
+                                <a href="?page={{ notifications.next_page_number }}">></a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    {% endblock content %}
+    {% block scripts %}
+    <script type="text/javascript">
+    $('.notification').each(function(){
+        var displayed_time = parseInt($(this).data("time"));
+        $(this).find(".text span").append(moment(displayed_time*1000).fromNow());
+    })
+    </script>
+    {% endblock scripts %}
+</body>
+</html>

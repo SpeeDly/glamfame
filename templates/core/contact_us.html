@@ -1,0 +1,75 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block meta %}
+    <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - About us" %}</title>
+{% endblock meta %}
+
+    {% block stylesheet %}
+    {% endblock stylesheet %}
+
+    {% block content %}
+<div id="content">
+    <div id="our_location">
+
+    </div>
+    <div class="our_location"><b style="font-weight: 600;">Office Address:</b> ulitsa "Liditse" 7-9, 1113 Sofia, Bulgaria</div>
+    <div class="column">
+        <form method="POST" action="{% url 'send_feedback' %}" class="box about_us">
+            {% csrf_token %}
+            <h2>{% trans 'WOULD YOU LIKE TO SAY "HI"?' %}</h2>
+            <ul>
+                <li>
+                    <label for="">{% trans "Name" %}</label>
+                    <input type="text" name="name">
+                </li>
+                <li>
+                    <label for="">{% trans "Email" %}</label>
+                    <input type="text" name="email">
+                </li>
+                <li>
+                    <label for="">{% trans "Reason" %}</label>
+                    <input type="text" name="reason">
+                </li>
+                <li>
+                    <label for="">{% trans "Message" %}</label>
+                    <textarea name="message"></textarea>
+                </li>
+            </ul>
+            <input type="submit" value="{% trans 'Send' %}" class="custom_button">
+        </form>
+    </div>
+</div>
+    {% endblock content %}
+    {% block scripts %}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script>
+        var map_canvas = document.createElement('div');
+        map_canvas.id = 'map_canvas';
+        map_canvas.style.height = '400px';
+        map_canvas.style.width = '100%';
+
+        document.getElementById('our_location').appendChild(map_canvas);
+
+        var coords = new google.maps.LatLng(42.6769829, 23.3609809);
+
+        var options = {
+            zoom: 17,
+            center: coords,
+            mapTypeControl: false,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title:"We are here!",
+        });
+    </script>
+    {% endblock scripts %}
+    </body>
+</html>

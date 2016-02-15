@@ -1,0 +1,75 @@
+{% extends "artists/settings.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+    {% block msg %}
+        {% if messages %}
+        <div class="column">
+            {% for message in messages %}
+            <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                    <li class="tag"></li>
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="close"><a href="javascript:;">x</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endblock msg %}
+
+    {% block settings %}
+        <form method="POST" action="{{ request.get_full_path }}" id="settings" enctype="multipart/form-data" class="cancellation_policy payments">
+            {% csrf_token %}
+            <ul class="settings">
+                <li>
+                    <input type="radio" value="1" name="cancel_id" {% if ra.method == 1 %}checked{% endif %}/>{% trans "PayPal" %} 
+                    <span class="hidden">
+                    {% blocktrans %}
+                        All payments should be transfered to the following PayPal account:
+                    {% endblocktrans %}
+                    </span>
+                    <input type="text" disabled readonly class="hidden" name="paypal_email" value="{{ ra.paypal_email }}">
+                    <div class="small_button gray edit hidden">{% trans "Edit" %}</div>
+                    <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                    <input type="submit" class="small_button green save hidden" value="Save">
+                </li>
+                <li><input type="radio" value="2" name="cancel_id" {% if ra.method == 0 %}checked{% endif %}/> {% trans "Bank Transfer" %} <span class="hidden">
+                    {% blocktrans %}
+                    All payments should be transfered to the following bank account:
+                    {% endblocktrans %}
+                </span></li>
+                <li class="bank_trans">
+                    <ul>
+                        <li>
+                            <label for="" class="main_label">{% trans "Bank name*" %}</label>
+                            <input type="text" name="bank_name" disabled readonly value="{{ ra.bank_name|default_if_none:"" }}">
+                        </li>
+                        <li>
+                            <label for="">{% trans "Branch location" %}</label>
+                            <input type="text" name="branch" disabled readonly value="{{ ra.branch|default_if_none:"" }}">
+                        </li>
+                        <li>
+                            <label for="">{% trans "Payee*" %}</label><br>
+                            <input type="text" name="payee" disabled readonly value="{{ ra.payee|default_if_none:"" }}">
+                        </li>
+                        <li>
+                            <label for="">{% trans "IBAN*" %}</label><br>
+                            <input type="text" name="IBAN" disabled readonly value="{{ ra.iban|default_if_none:"" }}">
+                        </li>
+                        <li>
+                            <label for="">{% trans "SWIFT BIC*" %}</label><br>
+                            <input type="text" name="swift" disabled readonly value="{{ ra.swift|default_if_none:"" }}">
+                        </li>
+                        <li>
+                            <div class="small_button gray edit">{% trans "Edit" %}</div>
+                            <div class="small_button gray cancel hidden">{% trans "Cancel" %}</div>
+                            <input type="submit" class="small_button green save hidden" value="{% trans 'Save' %}">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </form>
+    {% endblock settings %}
+
+    {% block scripts %}
+    <script src="{{STATIC_URL}}js/payments_settings.js"></script>
+    {% endblock scripts %}

@@ -1,0 +1,260 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block meta %}
+    <meta name="keywords" content="beauty salon review, beauty parlour, beauty salon, local beauty salons, salon services, best beauty salon, beauty salon offers, beauty spot, beauty salon pictures, hair and makeup artist">
+    <meta name="description" content="Find local beauty salon reviews, as well as hair and makeup artists’ ratings with the best offers and listings. Select your appearance and book online.">
+    <meta name="p:domain_verify" content="dd3c87dd4b500e40f50597f8adcb882e"/>
+    <meta name="alexaVerifyID" content="yRDVVyCdF0smOdFr9JKECU05BYQ"/>
+    <meta name="google-site-verification" content="NcP6g-1vbf8YTwq7KuoQE9glxkThDeQIH_5wJG5H2SM" />
+    <meta name="google-site-verification" content="aNPKemu18CaWD6MTSM-KSnWTSFg5HjVvmTzPmXg5lvw" />
+    <title>{% trans "Booking platform for top beauty salons and artists|Glamfame" %}</title>
+{% endblock meta %}
+
+    {% block stylesheet %}
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}/css/jquery-ui.css">
+    {% endblock stylesheet %}
+
+    {% block content %}
+<div id="content">
+    <div class="home">
+        <div class="column clear">
+            <h1 class="text big">{% trans "DO YOU WANT TO GLAM YOURSELF?" %}</h1>
+            <h2 class="text">{% trans "BROWSE MULTIPLE LISTINGS, OFFERED BY TOP HAIR, NAILS AND MAKEUP ARTISTS" %}</h2>
+            <div class="container">
+                <form method="GET" action="/result">
+                    <div class="picker"><div class="icon calendar"></div><span>{% trans "Date" %}</span></div>
+                    <div class="picker"><div class="icon time"></div><span>{% trans "Time" %}</span></div>
+                    <div class="picker"><div class="icon service"></div><span>{% trans "Service" %}</span></div>
+                    <div class="location"><div class="icon i_location"></div><input type="text"></div>
+                    <input type="hidden" id="id_date" name="date" value="0">
+                    <input type="hidden" id="id_time" name="hour" value="-1">
+                    <input type="hidden" id="id_service" name="q" value="hair nails make up">
+                    <input type="hidden" id="id_lat" name="lat">
+                    <input type="hidden" id="id_lng" name="lng">
+                    <input type="submit" class="custom_button" value="GO">
+                </form>
+            </div>
+            <div class="trendy"><span class="arrow_down"></span><span class="arrow_down"></span>{% trans "OR CHECK WHAT IS TRENDY RIGHT NOW" %}<span class="arrow_down"></span><span class="arrow_down"></span></div>
+        </div>
+    </div>
+    <div class="column">
+        <ul class="gallery col_4">
+            {% for listing in listings %}
+                <li class="pic_view">
+                    <ul>
+                        <li class="picture">
+                        <a href="{% url 'listing' listing.id listing.title %}">
+                            {% thumbnail listing.get_picture "240x143" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="{{ listing.title }}" width="240" height="143">
+                            {% empty %}
+                                <img src="{{ STATIC_URL }}/img/listing_placeholder.png" alt="{{ listing.title }}" width="240" height="143">
+                            {% endthumbnail %}
+                            <div class="overlay"></div>
+                        </a>
+                        </li>
+                        <li class="text">
+                            <div class="title">{{ listing.title }}</div>
+                            <div class="info">
+                                <div class="heart">{{ listing.likes }}</div>
+                                <div class="price">{{ listing.get_currency_display }} {{ listing.price|floatformat:-3 }}</div>
+                                <div class="comments">{{ listing.comments }}</div>
+                            </div>
+                        </li>
+                        <li class="artist">
+                        <a href="{% url 'profile_artist' listing.artist_id listing.artist.user.first_name %}">
+                            {% thumbnail listing.artist.get_avatar "60x60" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="{{ listing.artist.user.first_name }}" width="60" height="60">
+                            {% empty %}
+                                <img src="{{ STATIC_URL }}img/default.png" alt="{{ listing.artist.user.first_name }}" width="60" height="60">
+                            {% endthumbnail %}
+                        </a>
+                        </li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="select_date index date home" style="display: none;">
+    <div class="container">
+        <div class="class_date" style="position: relative; width: 100%; height: 100%">
+            <div class="datepicker_container">
+                <div id="datepicker_view"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="select_date index time home" style="display: none;">
+    <div class="container">
+        <div class="class_date" style="position: relative; width: 100%; height: 100%">
+            <div class="time_container">
+                <div class="header">{% trans "SELECT HOUR" %}<a href="javascript:;">+</a></div>
+                <ul class="col col_0">
+                    <li>8:00AM</li>
+                    <li>8:30AM</li>
+                    <li>9:00AM</li>
+                    <li>9:30AM</li>
+                    <li>10:00AM</li>
+                    <li>10:30AM</li>
+                </ul>
+                <ul class="col col_1">
+                    <li>11:00AM</li>
+                    <li>11:30AM</li>
+                    <li>12:00PM</li>
+                    <li>12:30PM</li>
+                    <li>1:00PM</li>
+                    <li>1:30PM</li>
+                </ul>
+                <ul class="col col_2">
+                    <li>2:00PM</li>
+                    <li>2:30PM</li>
+                    <li>3:00PM</li>
+                    <li>3:30PM</li>
+                    <li>4:00PM</li>
+                    <li>4:30PM</li>
+                </ul>
+                <ul class="col col_3">
+                    <li>5:00PM</li>
+                    <li>5:30PM</li>
+                    <li>6:00PM</li>
+                    <li>6:30PM</li>
+                    <li>7:00PM</li>
+                    <li>7:30PM</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="select_date index service" style="display: none;">
+    <div class="container">
+        <div id="date" style="position: relative; width: 100%; height: 100%">
+            <div class="time_container">
+                <div class="header">{% trans "SELECT SERVICE" %}<a href="javascript:;">+</a></div>
+                <ul>
+                    <li>{% trans "Hair" %}</li>
+                    <li>{% trans "Nails" %}</li>
+                    <li>{% trans "Make Up" %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock content %}
+    {% block scripts %}
+    <script src="https://j.maxmind.com/app/geoip.js"></script>
+    <script src="{{STATIC_URL}}js/ui.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+    <script type="text/javascript">
+        var geo_lat, geo_lng;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, fail,{timeout:2000});
+        } else {
+            fail();
+        }
+
+        function success(position) {
+            geo_lat = position.coords.latitude;
+            geo_lng = position.coords.longitude;
+            get_address(geo_lat,geo_lng);
+        }
+
+        function fail(){
+            geo_lat = geoip_latitude();
+            geo_lng = geoip_longitude();
+            get_address(geo_lat,geo_lng);
+        }
+
+        function get_address(lat,lng){
+            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat +
+             ',' + lng + '&sensor=false',
+            function(data){
+                $('.location input').val(data.results['0']['formatted_address']);
+                $('#id_lat').val(lat);
+                $('#id_lng').val(lng);
+            });
+        }
+
+        autocomplete = new google.maps.places.Autocomplete(
+            ($('.location input')[0]),
+            {
+                types: ['geocode']
+            });
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                lat = autocomplete.getPlace().geometry.location.lat();
+                lng = autocomplete.getPlace().geometry.location.lng();
+                $('#id_lat').val(lat);
+                $('#id_lng').val(lng);
+            });
+
+        $('.picker').click(function(){
+            if($(this).index() == 0)
+            {
+                $('.select_date.date').show();
+            }
+            else if ($(this).index() == 1)
+                $('.select_date.time').show();
+            else
+                $('.select_date.service').show();
+        });
+
+        $(".col li").click(function(){
+            $('.col').children().removeClass("active");
+            $(this).addClass('active');
+            $(this).closest(".select_date").hide();
+            $('.picker:eq(1) span').text($(this).text());
+            $("#id_time").val($(".col li").index(this))
+        });
+
+        $('.select_date').click(function(e){
+            if($(e.target).hasClass('select_date'))
+                $(this).hide();
+        });
+
+        $('.select_date.time .header a').click(function(e){
+            $('.select_date.time').hide();
+        });
+        $('.select_date.service .header a').click(function(e){
+            $('.select_date.service').hide();
+        });
+
+        $('.select_date.service li').click(function(e){
+            $('.select_date.service li').removeClass('active');
+            $(this).addClass('active');
+            $(this).closest(".select_date").hide();
+            $('.picker:eq(2) span').text($(this).text());
+            $("#id_service").val($(this).text().toLowerCase())
+        });
+
+        function draw_picker(){
+            $datapicker = $("#datepicker_view")
+            $datapicker.datepicker(
+                {
+                    minDate: 0,
+                    maxDate: "+1M +10D",
+                    dayNamesMin: [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+                    dateFormat: "mm/dd/yy",
+                    onSelect: function(dateText, inst){
+                        $(".picker:eq(0) span").text($datapicker.val());
+                        $(this).closest(".select_date").hide();
+                        var temp = new Date(dateText)
+                        $("#id_date").val(temp.getTime()/1000);
+                    }
+                });
+            $datapicker.datepicker('show');
+        }
+
+        draw_picker()
+        $('a.ui-state-default').click(function(){
+
+            $(".select_date.date").hide()
+        });
+    </script>
+    {% endblock scripts %}
+    </body>
+</html>

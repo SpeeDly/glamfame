@@ -1,0 +1,92 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+    {% block meta %}
+        <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Bookings" %}</title>
+    {% endblock meta %}
+
+    {% block content %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/moment.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/qtip.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+
+<div id="content">
+    <div class="header">
+        <span>{% trans "WALLET" %}</span>
+    </div>
+
+    <div class="column">
+        {% block msg %}
+            {% if messages %}
+                {% for message in messages %}
+                <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                        <li class="tag"></li>
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        <li class="close"><a href="javascript:;">x</a></li>
+                </ul>
+                {% endfor %}
+            {% endif %}
+        {% endblock msg %}
+        <div class="whead">
+            <ul>
+                <li>{% trans "All EARNINGS" %}: {{ currency }} {{ all_earnings|floatformat:-3 }}</li>
+                <li>{% trans "All WIDTHRAWS" %}: {{ currency }} {{ all_widthraws|floatformat:-3 }}</li>
+                <li>{% trans "AVAIBLE FUNDS" %}: {{ currency }} {{ avaible_funds|floatformat:-3 }}</li>
+                <li><a href="{% url 'salons_withdraw' %}" class="small_button green">{% trans "WITHDRAW MONEY" %}</a></li>
+            </ul>
+        </div>
+        <table id="bookings">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "DATE" %}</th>
+                    <th>{% trans "LISTING" %}</th>
+                    <th>{% trans "AMOUNT" %}</th>
+                    <th>{% trans "PAID TO" %}</th>
+                    <th>{% trans "STATUS" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transactions %}
+                <tr data-number="{{ t.id }}" class="{% cycle 'dark' 'light' %}">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ t.id }}</td>
+                    <td>{{ t.created }}</td>
+                    <td class="listing_view listing_view_{{t.id}}">
+                        <a href="{% url 'listing' t.listing_id t.title %}">{{t.title}}</a>
+                    </td>
+                    <td>{{ t.money|floatformat:-3 }} {{ currency }}</td>
+                    <td>
+                        {{ t.get_method }}
+                    </td>
+                    <td>
+                        {{ t.get_status }}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr class="pagination">
+                    <td colspan='7'>
+                        <div class="step-links">
+                            {% trans "We haven't registrited any activities!" %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+    {% endblock content %}
+
+    {% block scripts %}
+    <script>
+        $(".close").click(function(){
+            $(this).closest("ul").remove();
+        });
+    </script>
+    {% endblock scripts %}
+</body>
+</html>

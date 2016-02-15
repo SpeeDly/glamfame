@@ -1,0 +1,4586 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#. extracted from ./BG.csv
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-05 18:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: glamazer/settings.py:18
+msgid "English"
+msgstr ""
+
+#: glamazer/settings.py:19
+msgid "Bulgarian"
+msgstr ""
+
+#: glamazer/settings.py:20
+msgid "Russian"
+msgstr ""
+
+#: glamazer/settings.py:37
+#, python-brace-format
+msgid "{name} sent you a booking request "
+msgstr "{name} Ви изпрати заявка за резервация"
+
+#: glamazer/settings.py:38
+#, python-brace-format
+msgid "{name} accepted your booking request. "
+msgstr "{name} прие Вашата резервация."
+
+#: glamazer/settings.py:39
+#, python-brace-format
+msgid "{name} declined your booking request. "
+msgstr "{name} отказа заявката Ви за резервация."
+
+#: glamazer/settings.py:40
+#, python-brace-format
+msgid "{name} cancelled your appointment. "
+msgstr "{name} отмени уговорения Ви час."
+
+#: glamazer/settings.py:41
+#, python-brace-format
+msgid "{name} cancelled an appointment. "
+msgstr "{name} отмени уговорен час."
+
+#: glamazer/settings.py:42 glamazer/settings.py:85
+#, python-brace-format
+msgid "We just transferred $ {amount} to your bank account. "
+msgstr "Току що прехвърлихме $ {amount} в банковата Ви сметка."
+
+#: glamazer/settings.py:43
+#, python-brace-format
+msgid "{name} started following you. "
+msgstr "{name} стана Ваш последовател."
+
+#: glamazer/settings.py:44
+#, python-brace-format
+msgid "{name} added a listing of yours in wishlist. "
+msgstr "{name} добави офертата Ви към списъка си с желания"
+
+#: glamazer/settings.py:45
+#, python-brace-format
+msgid "{name} reviewed your listing. "
+msgstr "{name} прегледа Вашата оферта."
+
+#: glamazer/settings.py:46
+#, python-brace-format
+msgid "{name} uploaded new listing."
+msgstr "{name} качи нова оферта."
+
+#: glamazer/settings.py:47
+msgid "Congrats! Your listing was approved."
+msgstr "Поздравления! Офертата Ви е одобрена."
+
+#: glamazer/settings.py:48
+msgid "Your listing was rejected. Try again."
+msgstr "Офертата Ви не бе одобрена.Опитайте отново."
+
+#: glamazer/settings.py:49 glamazer/settings.py:70
+#, python-brace-format
+msgid "{name} wants to join your team."
+msgstr "{name} иска да се присъедини към екипа Ви."
+
+#: glamazer/settings.py:50 glamazer/settings.py:71
+#, python-brace-format
+msgid "{name} wants to suspend his membership."
+msgstr "{name} желае да прекрати членството си."
+
+#: glamazer/settings.py:51 glamazer/settings.py:72
+#, python-brace-format
+msgid "{name} approved your membership."
+msgstr "{name} одобри молбата Ви за членство."
+
+#: glamazer/settings.py:52 glamazer/settings.py:73
+#, python-brace-format
+msgid "{name} declined your membership."
+msgstr "{name} отказа молбата Ви за членство."
+
+#: glamazer/settings.py:53 glamazer/settings.py:74
+msgid "Your suspension request has been approved."
+msgstr "Молбата Ви за прекратяване на членство е одобрена."
+
+#: glamazer/settings.py:54 glamazer/settings.py:75
+msgid "Your suspension request has been declined."
+msgstr "Молбата Ви за прекратяване на членство е отказана."
+
+#: glamazer/settings.py:58
+#, python-brace-format
+msgid ""
+"<a href=\"/users/profile/{id}\">{name}</a> sent you a booking request for <a "
+"href=\"/listings/{listing_id}\">{title}</a>. Manage your booking requests "
+"from <a href=\"/artists/bookings\">here</a> "
+msgstr ""
+"<a href=”/users/profile/{id}”>{name}</a> Ви изпрати заявка за резервация <a "
+"href=”/listings/{listing_id}”>{title}</a>. Управлявайте заявките за "
+"резервации от <a href=”/artists/bookings”>тук</a>"
+
+#: glamazer/settings.py:59
+#, python-brace-format
+msgid ""
+"<a href=\"/artists/profile/{id}\">{name}</a> accepted your booking request "
+"for <a href=\"/listings/{listing_id}\">{title}</a>. View all your "
+"appointments <a href=\"/users/bookings\">here</a>. "
+msgstr ""
+"<a href=”/artists/profile/{id}”>{name}</a> прие заявката Ви за резервация за "
+"<a href=”/listings/{listing_id}”>{title}</a>. Вижте всичките си уговорени "
+"часове<a href=\"/users/bookings\"\">тук</a>.\""
+
+#: glamazer/settings.py:60
+#, python-brace-format
+msgid ""
+"<a href=\"/artists/profile/{id}\">{name}</a> declined your booking request "
+"for <a href=\"/listings/{listing_id}\">{title}</a>. Click <a href=\"/"
+"listings/{listing_id}\">here</a> to schedule appointment for a different "
+"hour. "
+msgstr ""
+"<a href=”/artists/profile/{id}”>{name}</a> отхвърли заявката Ви за "
+"резервация за <a href=”/listings/{listing_id}”>{title}</a>. Кликнете тук <a "
+"href=”/listings/{listing_id}”>here</a> за да заявите различен час."
+
+#: glamazer/settings.py:61
+#, python-format, python-brace-format
+msgid ""
+"Bad news! <a href=\"/artists/profile/{id}\">{name}</a> cancelled your "
+"appointment for <a href=\"/listings/{listing_id}\">{title}</a>. Your money "
+"will be refunded in 24 hours. As a little compensation from our side, your "
+"next booking will be with 5 discount from the regular price."
+msgstr ""
+"Лоши новини! <a href=\"/artists/profile/{id}\">{name}</a> отмени уговорения "
+"Ви час за <a href=\"/listings/{listing_id}\">{title}</a>. Ще получите "
+"обратно платената от Вас сума в рамките на следващите 24 часа."
+
+#: glamazer/settings.py:62
+#, python-brace-format
+msgid ""
+"We are sorry to inform you that <a href=\"/users/profile/{id}\">{name}</a> "
+"cancelled the appointment for <a href=\"/listings/{listing_id}\">{title}</"
+"a>. Please search again for alternative listings."
+msgstr ""
+"За съжаление трябва да Ви уведомим,че <a "
+"href=”/users/profile/{id}”>{name}</a> отмени уговорения Ви час за<a "
+"href=”/listings/{listing_id}”>{title}</a>. Моля, потърсете алтернативни "
+"оферти на сайта."
+
+#: glamazer/settings.py:63
+#, python-brace-format
+msgid ""
+"Hey, <a href=\"/artists/profile/{id}\">{name}</a>! Good news! We just "
+"transferred $ {amount} to your bank account. View your wallet here. "
+msgstr ""
+"Привет, <a href=\"/artists/profile/{id}\"\">{name}</a>! Добри новини! Току-"
+"що прехвърлихме $ {amount} в банковата Ви сметка. Проверете състоянието на "
+"портфейла си тук.\""
+
+#: glamazer/settings.py:64
+#, python-brace-format
+msgid ""
+"<a href=\"/{type}/profile/{id}\">{name}</a> started following you. View all "
+"your followers <a href=\"/artists/profile\">here</a>. "
+msgstr ""
+"<a href=”/{type}/profile/{id}”>{name}</a> стана Ваш последовател. "
+"Прегледайте всичките си последователи  <a href=\"/artists/profile\"\""
+">тук</a>.\""
+
+#: glamazer/settings.py:65
+#, python-brace-format
+msgid ""
+"<a href=\"/{type}/profile/{id}\">{name}</a> added a listing of yours in "
+"wishlist â <a href=\"/listings/{listing_id}\">{title}</a>. "
+msgstr ""
+
+#: glamazer/settings.py:66
+#, python-brace-format
+msgid ""
+"<a href=\"/users/profile/{id}\">{name}</a> reviewed your listing â <a href="
+"\"/listings/{listing_id}\">{title}</a>. "
+msgstr ""
+
+#: glamazer/settings.py:67
+#, python-brace-format
+msgid ""
+"<a href=\"/artists/profile/{id}\">{name}</a> uploaded new listing â <a href="
+"\"/listings/{listing_id}\">{title}</a>. Click <a href=\"/listings/"
+"{listing_id}\">here</a> to check the listing. "
+msgstr ""
+
+#: glamazer/settings.py:68
+#, python-brace-format
+msgid ""
+"Congrats! Your <a href=\"/listings/{listing_id}\">listing</a> was approved. "
+"You can edit it from the <a href=\"/{type}/listings\">\"Listings\"</a> "
+"section of your profile. Observe the bookings for each listing, accept, or "
+"cancel them from the <a href=\"/{type}/bookings\">\"Bookings\"</a> section "
+"of your profile."
+msgstr ""
+"Поздравления! Вашата <a href=”/listings/{listing_id}”>оферта</a> беше "
+"одобрена.Можете да я променяте от <a href=”/{type}/listings”>”Оферти”</a> "
+"секцията в профила Ви. Следете резервациите за всяка оферта,приемайте ги, "
+"или ги отхвърляйте от<a href=\"/{type}/bookings\"\">\"\"Резервации\"\"</a> "
+"секцията в профила ви.\""
+
+#: glamazer/settings.py:69
+#, python-brace-format
+msgid ""
+"We are sorry. Your <a href=\"/listings/{listing_id}\">listing</a> has been "
+"rejected. The reason for that may be: duplicate content, irrelevant "
+"description of the listing; or wrong price, title and tag. Review the "
+"listing, correct your data and try again."
+msgstr ""
+"Съжаляваме. Вашата <a href=”/listings/{listing_id}”>оферта</a> е отхвърлена. "
+"Причината може да бъде: дублирано съдържание, неподходящо описание на "
+"офертата; или грешна цена, заглавие и етикет. Прегледайте офертата, "
+"коригирайте данните и опитайте отново."
+
+#: glamazer/settings.py:80
+#, python-brace-format
+msgid ""
+"{name} sent you a booking request, check your bookings page. Confirm or "
+"reject it."
+msgstr "{name} Ви изпрати заявка за резервация. Приемете я, или я отхвърлете."
+
+#: glamazer/settings.py:81
+#, python-brace-format
+msgid ""
+"{name} accepted your booking request. Review your bookings: http://www."
+"glamfame.com/users/bookings"
+msgstr ""
+"{name} прие заявката Ви за резервация. Прегледайте заявките си тук: "
+"http://www.Glamfame.com/users/bookings"
+
+#: glamazer/settings.py:82
+#, python-brace-format
+msgid ""
+"{name} declined your booking request. Look up for alternative listings: "
+"http://www.glamfame.com/"
+msgstr ""
+"{name} отказа заявката Ви за резервация. Потърсете алтернативни оферти: "
+"http://www.Glamfame.com/"
+
+#: glamazer/settings.py:83
+#, python-format, python-brace-format
+msgid "{name} cancelled your appointment. You will receive 100 refund."
+msgstr ""
+"{name} отмени уговорения Ви час. Ще получите обратно 100 от внесената сума."
+
+#: glamazer/settings.py:84
+#, python-brace-format
+msgid ""
+"{name} cancelled an appointment.You will receive compensation according to "
+"your cancellation policy "
+msgstr ""
+"{name} отмени уговорен час.Ще бъдете компенсирани според политиката Ви за "
+"отменяне на час."
+
+#: glamazer/settings.py:86
+#, python-brace-format
+msgid "We just transferred $ {amount} as refund to your bank account"
+msgstr ""
+"Току-що Ви преведохме дължимата възстановителна сума от  $ {amount} на "
+"банковата Ви сметка."
+
+#: glamazer/settings.py:91
+msgid "Welcome to Glamfame!"
+msgstr "Добре дошли в Glamfame!"
+
+#: glamazer/settings.py:92
+msgid "Forgotten Password!"
+msgstr "Забравена парола!"
+
+#: glamazer/settings.py:93
+#, python-brace-format
+msgid "Hey. {username}, we miss you!"
+msgstr "Хей. {username}, липсвате ни!"
+
+#: glamazer/settings.py:94
+#, python-brace-format
+msgid "Hey. {username}, we miss you even more!"
+msgstr "Хей. {username}, много ни липсвате!"
+
+#: glamazer/settings.py:95
+msgid "Donât forget us!"
+msgstr "Не ни забравяйте!"
+
+#: glamazer/settings.py:96 glamazer/settings.py:99
+#, python-brace-format
+msgid "{username} started following you!"
+msgstr "{username} стана ваш последовател!"
+
+#: glamazer/settings.py:97
+#, python-brace-format
+msgid "{username} started following {artistname}!"
+msgstr "{username} стана последовател на{artistname}!"
+
+#: glamazer/settings.py:98
+#, python-brace-format
+msgid "Booking request for {title}"
+msgstr "Заявка за резервация за {title}"
+
+#: glamazer/settings.py:100
+msgid "Your booking request has been approved!"
+msgstr "Заявката Ви за резервация е потвърдена!"
+
+#: glamazer/settings.py:101
+msgid "Your booking request has been declined!"
+msgstr "Заявката Ви за резервация е отхвърлена!"
+
+#: glamazer/settings.py:102
+#, python-brace-format
+msgid "Appointment for {when} has been cancelled!"
+msgstr "Уговорен час за {when} е отмене!"
+
+#: glamazer/settings.py:103
+msgid "We hope your appointment went well "
+msgstr "Надяваме се часа Ви да бил приятен и успешен"
+
+#: glamazer/settings.py:104
+#, python-brace-format
+msgid "{username} posted a review of {title}"
+msgstr "{username} публикува отзив за {title}"
+
+#: glamazer/settings.py:105
+#, python-brace-format
+msgid "{amaunt} was transferred to your bank account "
+msgstr "{amaunt} беше прехвърлена на банковата Ви сметка"
+
+#: glamazer/settings.py:106
+#, python-brace-format
+msgid "Welcome to Glamfame! {salon_name} added you as a member of its team."
+msgstr "Добре дошли в Glamfame! {salon_name} Ви добави като член на екипа си."
+
+#: glamazer/settings.py:347 glamazer/settings.py:364 glamazer/settings.py:365
+msgid "User welcome message"
+msgstr ""
+
+#: glamazer/settings.py:348
+msgid "Artist welcome message"
+msgstr ""
+
+#: glamazer/settings.py:349
+msgid "Salon welcome message"
+msgstr ""
+
+#: glamazer/settings.py:350
+msgid "Facebook welcome message"
+msgstr ""
+
+#: glamazer/settings.py:351
+msgid "Forgotten password message"
+msgstr ""
+
+#: glamazer/settings.py:352
+msgid "If not logged in after 3 days"
+msgstr ""
+
+#: glamazer/settings.py:353
+msgid "If not logged in after 7 days"
+msgstr ""
+
+#: glamazer/settings.py:354
+msgid "If not logged in after 14 days"
+msgstr ""
+
+#: glamazer/settings.py:355
+msgid "Email to artist, in case of new follower"
+msgstr ""
+
+#: glamazer/settings.py:356
+msgid ""
+"Email to artist, in case of new follower, in case he is assigned to salon"
+msgstr ""
+
+#: glamazer/settings.py:357
+msgid "Email artist when he have new booking request"
+msgstr ""
+
+#: glamazer/settings.py:358
+msgid "10, if he is assigned to salon"
+msgstr ""
+
+#: glamazer/settings.py:359
+msgid "Email to the user, if the booking is approved"
+msgstr ""
+
+#: glamazer/settings.py:360
+msgid "If booking request is rejected by artist"
+msgstr ""
+
+#: glamazer/settings.py:361
+msgid "If booking request is declined by user, no charge"
+msgstr ""
+
+#: glamazer/settings.py:362
+msgid "If booking request is declined by user, with charge"
+msgstr ""
+
+#: glamazer/settings.py:363
+msgid "If booking request is cancelled by the artist, after was approved"
+msgstr ""
+
+#: glamazer/artists/forms.py:40 glamazer/salons/forms.py:42
+#: glamazer/users/forms.py:41
+msgid "A user associated with this email address already exists"
+msgstr "Потребител, регистриран с този e-мейл вече съществува."
+
+#: glamazer/artists/forms.py:50 glamazer/salons/forms.py:52
+#: glamazer/users/forms.py:51 glamazer/users/forms.py:120
+msgid "Password mismatch"
+msgstr "Несъответствие в паролите."
+
+#: glamazer/artists/forms.py:53 glamazer/salons/forms.py:55
+#: glamazer/users/forms.py:54
+msgid "Password is too short (6 symbols)"
+msgstr "Паролата е твърде кратка (6 символа минимум)"
+
+#: glamazer/artists/forms.py:56 glamazer/salons/forms.py:58
+#: glamazer/users/forms.py:57
+msgid ""
+"Password should contain at least one alphabetic and one non-alphabetic "
+"character"
+msgstr "Паролата трябва да съдържа поне една буква и един не-буквен символ"
+
+#: glamazer/artists/forms.py:78 glamazer/salons/forms.py:77
+msgid "Enter street address"
+msgstr "Въведете улица и номер"
+
+#: glamazer/artists/forms.py:104 glamazer/salons/forms.py:321
+#: glamazer/users/forms.py:146
+msgid "Please enter your phone in order to receive sms."
+msgstr "Моля, въведете телефонен номер за sms известяване"
+
+#: glamazer/artists/forms.py:160 glamazer/salons/forms.py:203
+msgid "Enter description here."
+msgstr "Въведете описание тук."
+
+#: glamazer/artists/forms.py:164 templates/service/service.html:98
+msgid "Male"
+msgstr "Мъж"
+
+#: glamazer/artists/forms.py:164 templates/service/service.html:99
+msgid "Female"
+msgstr "Жена"
+
+#: glamazer/artists/forms.py:178 glamazer/listings/forms.py:36
+#: glamazer/salons/forms.py:236
+msgid "Please enter a valid price."
+msgstr "Моля, въведете валидна цена."
+
+#: glamazer/artists/forms.py:187
+msgid "Please upload a valid image."
+msgstr "Моля, качете валидно изображение."
+
+#: glamazer/artists/views.py:188
+msgid "Your profile is updated."
+msgstr "Профилът Ви е ъпдейтнат."
+
+#: glamazer/artists/views.py:215
+#, python-format
+msgid ""
+"Your listing %s has been successfully created and submitted for review. Your "
+"listing will go live within the next couple of hours."
+msgstr ""
+"Офертата Ви %s беше успешно създадена. След като бъде прегледана, ще бъде "
+"публикувана в рамките на следващите няколко часа."
+
+#: glamazer/artists/views.py:349 glamazer/artists/views.py:359
+#: glamazer/salons/views.py:601
+msgid "Your cancellation policy have been changed."
+msgstr "Политиката Ви за отмяна на часове е променена"
+
+#: glamazer/artists/views.py:354
+msgid ""
+"Your request have been submited. We'll review your new policy and will get "
+"back to you in the next 2 hours."
+msgstr ""
+"Заявлението ви е записано и пуснато за одобрение. До 2 часа ще получите "
+"отговор от наша страна."
+
+#: glamazer/artists/views.py:384 glamazer/salons/views.py:626
+msgid "Your paypal email account have been changed successfully."
+msgstr "E-мейл адреса, удостоверяващ Pay Pal акаунта Ви е променен успешно."
+
+#: glamazer/artists/views.py:387 glamazer/salons/views.py:629
+msgid "Please enter a valid email address !"
+msgstr "Моля, въведете валиден e-мейл адрес!"
+
+#: glamazer/artists/views.py:406 glamazer/salons/views.py:648
+msgid "The bank account settings are changed."
+msgstr "Настройките на банковата Ви сметка бяха променени успешно."
+
+#: glamazer/artists/views.py:412 glamazer/salons/views.py:654
+msgid "Please feel the boxes !"
+msgstr "Моля, попълнете полетата!"
+
+#: glamazer/artists/views.py:450 glamazer/salons/views.py:767
+msgid "Please enter a valid amount."
+msgstr "Моля, въведете валидна сума."
+
+#: glamazer/artists/views.py:468 glamazer/salons/views.py:783
+msgid "You need to earn at least $30 to proceed with the withdrawal request."
+msgstr "Трябва да направите поне 30 долара за да продължите тегленето."
+
+#: glamazer/artists/views.py:546
+msgid "Your membership request has been sent to the salon."
+msgstr "Заявлението Ви за членство е изпратено към салона."
+
+#: glamazer/artists/views.py:556
+msgid "Your request for suspend from the salon was sent."
+msgstr "Зявлението Ви за прекратяване на членство беше изпратено към салона."
+
+#: glamazer/core/helpers.py:313
+msgid "Not a valid IBAN account No."
+msgstr "Невалиден IBAN."
+
+#: glamazer/core/helpers.py:317
+msgid "Wrong IBAN code length!"
+msgstr "Невалиден IBAN."
+
+#: glamazer/core/helpers.py:319
+msgid "Wrong IBAN country code!"
+msgstr "Невалиден IBAN."
+
+#: glamazer/listings/views.py:60
+msgid ""
+"This email is already used by a beauty artist or salon. Please submit "
+"different email address in order to continue."
+msgstr ""
+"Този e-мейл адрес се ползва от друг стилист или салон. За да продължите, "
+"въведете различен e-мейл адрес."
+
+#: glamazer/salons/forms.py:228
+msgid "Please upload a valid images."
+msgstr "Моля, качете валидно изображение."
+
+#: glamazer/salons/forms.py:245
+msgid "Please select artist."
+msgstr "Моля, изберете артист."
+
+#: glamazer/salons/views.py:115
+msgid "Not registered"
+msgstr "Не сте регистриран."
+
+#: glamazer/salons/views.py:234
+#, python-format
+msgid ""
+"Your listing %s has been successfully created and submitted for review. Your "
+"listing will go live within the nextÂ couple of hours."
+msgstr ""
+
+#: glamazer/salons/views.py:464
+#, python-brace-format
+msgid "{0} is removed successfully from your salon."
+msgstr "{0} e премахнат от вашият салон."
+
+#: glamazer/salons/views.py:524
+msgid "You cannot view the calendar, without have any artists."
+msgstr ""
+"Нямате достъп до календара си, защото нямате създадени профили на стилисти."
+
+#: glamazer/salons/views.py:574
+msgid ""
+"Please create an artist first and then you will be able to change your "
+"cancellation policy"
+msgstr ""
+"Моля, първо въведете профил на стилист и тогава ще можете да променяте "
+"политиката си за отмяна на часове."
+
+#: glamazer/salons/views.py:595
+msgid ""
+"Your request have been submited. We'll review your custom policy and will "
+"approve or disapprove it in the next 2 hours."
+msgstr ""
+"Вашата заявка е пусната.Ще прегледаме създадената от Вас политика за отмяна "
+"на часове и щя я одобрим, или отхвърлим в рамките на 2 часа."
+
+#: glamazer/salons/views.py:666
+msgid ""
+"Currently you don't have any stats recorded. Please create an artist first."
+msgstr "За момента няма  статистика. Моля, първо създайте профил на стилист. "
+
+#: glamazer/salons/views.py:796
+#, python-brace-format
+msgid "You accepted {0} membership request"
+msgstr "Приехте заявката за членство на {0}"
+
+#: glamazer/salons/views.py:809
+#, python-brace-format
+msgid "You declined {0} membership request."
+msgstr "Отхвърлихте заявката за членство на {0}"
+
+#: glamazer/salons/views.py:819
+#, python-brace-format
+msgid "You declined {0}'s suspension request"
+msgstr "Отхвърлихте молбата за прекратяване на членство на {0}"
+
+#: glamazer/users/views.py:339 glamazer/users/views.py:348
+msgid "Your email has been changed."
+msgstr "Е-мейла Ви е променен."
+
+#: glamazer/users/views.py:344
+msgid "This email is already taken."
+msgstr "Този е-мейл е зает."
+
+#: glamazer/users/views.py:350
+msgid "Opss... Something went wrong."
+msgstr "Ухх... Нещо се обърка."
+
+#: glamazer/users/views.py:369
+msgid "Please enter valid password"
+msgstr "Моля, вкарайте валидна парола."
+
+#: glamazer/users/views.py:373
+msgid "Your password has been changed."
+msgstr "Вашата парола беше променена."
+
+#: glamazer/users/views.py:375
+msgid "The password should be the same."
+msgstr "Паролата трябва да е същата."
+
+#: glamazer/users/views.py:377
+msgid "Please enter correct password."
+msgstr "Моля, въведете правилната парола."
+
+#: glamazer/users/views.py:425
+msgid "Thank you for your feedback. Your opinion is important for us !"
+msgstr "Благодарим за обратната връзка. Мнението Ви е важно за нас!"
+
+#: mobile_templates/404.html:5 mobile_templates/payments/error.html:5
+#: mobile_templates/payments/success.html:5 templates/payments/success.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Success "
+"Payment"
+msgstr ""
+
+#: mobile_templates/404.html:9
+msgid "OH, NO !"
+msgstr "О,НЕ !"
+
+#: mobile_templates/404.html:17
+msgid "ERROR 404"
+msgstr "ГРЕШКА 404"
+
+#: mobile_templates/404.html:23
+msgid "Something went wrong !"
+msgstr "Нещо се обърка."
+
+#: mobile_templates/master.html:14 templates/master.html:16
+#: templates/widget/widget.html:14
+msgid "Glamazer"
+msgstr "Glamazer"
+
+#: mobile_templates/master.html:100 mobile_templates/master.html.py:110
+#: mobile_templates/master.html:121 mobile_templates/master.html.py:133
+msgid "Home"
+msgstr "Начало"
+
+#: mobile_templates/master.html:101 mobile_templates/master.html.py:111
+#: mobile_templates/master.html:122 mobile_templates/master.html.py:134
+#: mobile_templates/core/home.html:19 templates/master.html:43
+#: templates/core/home.html:138
+msgid "Hair"
+msgstr "Коса"
+
+#: mobile_templates/master.html:102 mobile_templates/master.html.py:112
+#: mobile_templates/master.html:123 mobile_templates/master.html.py:135
+#: mobile_templates/core/home.html:21 templates/master.html:44
+#: templates/core/home.html:139
+msgid "Nails"
+msgstr "Нокти"
+
+#: mobile_templates/master.html:103 mobile_templates/master.html.py:113
+#: mobile_templates/master.html:124 mobile_templates/master.html.py:136
+#: mobile_templates/core/home.html:20 templates/master.html:45
+#: templates/core/home.html:140
+msgid "Make Up"
+msgstr "Грим"
+
+#: mobile_templates/master.html:104 templates/master.html:86
+#: templates/master.html.py:136 templates/master.html:185
+#: templates/artists/management/stats.html:37
+#: templates/salons/management/stats.html:39
+msgid "Bookings"
+msgstr "Резервации"
+
+#: mobile_templates/master.html:105 mobile_templates/user/whishlist.html:10
+#: templates/master.html:87 templates/listings/details.html:230
+#: templates/user/profile.html:43
+msgid "Wishlist"
+msgstr "Списък с желания"
+
+#: mobile_templates/master.html:106 mobile_templates/master.html.py:117
+#: mobile_templates/master.html:129 templates/artists/settings/edit.html:91
+#: templates/salons/artist_settings/edit_artist.html:85
+#: templates/user/settings.html:72
+msgid "Notifications"
+msgstr "Известия"
+
+#: mobile_templates/master.html:107 mobile_templates/master.html.py:118
+#: mobile_templates/master.html:130 mobile_templates/user/profile.html:15
+#: templates/master.html:85 templates/master.html.py:134
+#: templates/master.html:183 templates/artists/profile.html:17
+#: templates/salons/profile.html:18 templates/user/profile.html:17
+msgid "Profile"
+msgstr "Профил"
+
+#: mobile_templates/master.html:108 mobile_templates/master.html.py:119
+#: mobile_templates/master.html:131 templates/master.html:90
+#: templates/master.html.py:139 templates/master.html:188
+#: templates/master.html.py:192
+msgid "Log out"
+msgstr "Изход"
+
+#: mobile_templates/master.html:114 mobile_templates/master.html.py:125
+msgid "Add Listing"
+msgstr "Добавяне на оферта"
+
+#: mobile_templates/master.html:115 mobile_templates/master.html.py:127
+msgid "Calendar"
+msgstr "Календар"
+
+#: mobile_templates/master.html:116 mobile_templates/master.html.py:128
+#: mobile_templates/artists/wallet.html:10 templates/master.html:137
+#: templates/master.html.py:186 templates/salons/withdraw.html:17
+msgid "Wallet"
+msgstr "Портфейл"
+
+#: mobile_templates/master.html:126
+msgid "Add Artist"
+msgstr "Добави стилист"
+
+#: mobile_templates/master.html:137 templates/master.html:202
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: mobile_templates/master.html:138 mobile_templates/user/login.html:9
+msgid "Login"
+msgstr "Вход"
+
+#: mobile_templates/sign_up.html:5 mobile_templates/artists/sign_up.html:6
+#: mobile_templates/salons/sign_up.html:6 mobile_templates/user/sign_up.html:5
+#: templates/sign_up.html:5 templates/artists/sign_up.html:6
+#: templates/salons/sign_up.html:6 templates/user/sign_up.html:5
+msgid "Glamfame â Booking platform for top salons and beauty artists - Sign Up"
+msgstr ""
+
+#: mobile_templates/sign_up.html:9
+msgid "Select profile"
+msgstr "Избери профил"
+
+#: mobile_templates/sign_up.html:19 mobile_templates/user/profile.html:30
+#: templates/sign_up.html:20 templates/user/profile.html:36
+msgid "Beauty Seeker"
+msgstr "Търсещ оферти"
+
+#: mobile_templates/sign_up.html:21
+msgid ""
+"                        You will be able to find top beauty artists and "
+"directly book the styles they offer. You may also follow the artists you "
+"like and get the latest feed with their work.\n"
+"                        "
+msgstr ""
+"Ще можете да намерите оферти на топ стилисти и да резервирате мигновено. "
+"Последвайте любимите си стилисти, за да получавате известия за най-новите им "
+"оферти."
+
+#: mobile_templates/sign_up.html:30 templates/sign_up.html:29
+#: templates/core/faq.html:19
+msgid "Beauty Artist"
+msgstr "Стилист"
+
+#: mobile_templates/sign_up.html:32
+msgid ""
+"                        You may upload your work and attract new custommers. "
+"In addition, you will get a website, booking management tool appointment "
+"calendar and statistics. And yes, it`s FREE.\n"
+"                        "
+msgstr ""
+"Можете да качите Вашите актуални оферти и да привлечете нови клиенти. Освен "
+"това получавате: виртуално портфолио и личен акаунт, играещ роля на Ваш "
+"уебсайт, инструменти за салонен мениджмънт, онлайн календар и диаграма на "
+"продажбите Ви. БЕЗПЛАТНО е."
+
+#: mobile_templates/sign_up.html:41 templates/sign_up.html:38
+#: templates/core/faq.html:20
+msgid "Beauty Salon"
+msgstr "Салон за красота"
+
+#: mobile_templates/sign_up.html:43
+msgid ""
+"You may add multiple artists, manage their "
+"schedules, upload their listings and review statistics of their purformance. "
+"Of course. you will get a website for your salon. FREE Forever."
+msgstr ""
+"Качете описание на салона си, добавете Вашите стилисти и управлявайте "
+"техните графици, резервации и оферти в единна система за мениджмънт и "
+"резервации, играеща роля на Ваш собствен уебсайт. Набирайте нови клиенти и "
+"си създайте нов имидж!Без ТАКСИ."
+
+#: mobile_templates/artists/bookings.html:6
+#: mobile_templates/artists/wallet.html:6
+#: mobile_templates/salons/bookings.html:6
+#: mobile_templates/salons/wallet.html:6 mobile_templates/user/bookings.html:6
+#: templates/artists/bookings.html:6 templates/artists/wallet.html:6
+#: templates/artists/withdraw.html:6 templates/salons/bookings.html:6
+#: templates/salons/wallet.html:6 templates/salons/withdraw.html:6
+#: templates/user/bookings.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Bookings"
+msgstr ""
+
+#: mobile_templates/artists/bookings.html:27
+#: mobile_templates/salons/bookings.html:27
+#: mobile_templates/user/bookings.html:27
+msgid "Appointment with"
+msgstr "Уговорен час с"
+
+#: mobile_templates/artists/bookings.html:34
+#: mobile_templates/salons/bookings.html:35
+#: templates/salons/management/artists.html:37
+#: templates/salons/management/artists.html:41
+msgid "Accept"
+msgstr "Приеми"
+
+#: mobile_templates/artists/bookings.html:40
+#: mobile_templates/salons/bookings.html:41
+msgid "Decline"
+msgstr "Откажи"
+
+#: mobile_templates/artists/bookings.html:43
+#: mobile_templates/salons/bookings.html:44
+msgid "Declined"
+msgstr "Отказан"
+
+#: mobile_templates/artists/bookings.html:51
+#: mobile_templates/user/bookings.html:44 templates/salons/bookings.html:117
+#: templates/user/bookings.html:95
+msgctxt "mobile_templates/artists/bookings.html:51 mobile_templates/user/bookings.html:44 templates/salons/bookings.html:117 templates/user/bookings.html:95"
+msgid "Currently you don't have any bookings."
+msgstr "За момента нямате никакви резервации."
+
+#: mobile_templates/artists/listings.html:6
+#: mobile_templates/salons/listings.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - All Listings"
+msgstr ""
+
+#: mobile_templates/artists/listings.html:30
+#: mobile_templates/artists/profile.html:89
+#: mobile_templates/listings/listings.html:29
+#: mobile_templates/salons/listings.html:30
+#: mobile_templates/salons/profile.html:62
+#: mobile_templates/service/service.html:50
+#: mobile_templates/user/profile.html:63
+msgid "comments"
+msgstr "коментари"
+
+#: mobile_templates/artists/listings.html:31
+#: mobile_templates/artists/profile.html:90
+#: mobile_templates/listings/listings.html:30
+#: mobile_templates/salons/listings.html:31
+#: mobile_templates/salons/profile.html:63
+#: mobile_templates/service/service.html:51
+#: mobile_templates/user/profile.html:64
+msgid "likes"
+msgstr "харесвания"
+
+#: mobile_templates/artists/listings.html:37
+#: mobile_templates/salons/listings.html:37
+#: templates/artists/management/listings.html:44
+#: templates/salons/management/listings.html:44
+msgid "Deactivate"
+msgstr "Деактивирай"
+
+#: mobile_templates/artists/listings.html:39
+#: mobile_templates/salons/listings.html:39
+#: mobile_templates/salons/settings/artists.html:36
+#: templates/artists/management/listings.html:46
+#: templates/salons/management/listings.html:46
+msgid "Activate"
+msgstr "Aктивирай"
+
+#: mobile_templates/artists/listings.html:41
+#: mobile_templates/salons/listings.html:41
+#: templates/salons/management/listings.html:48
+msgid "Pending<br/>(Currently we are reviewing your listing)"
+msgstr "Чакащ<br/>(В момента преглеждаме офертата Ви)"
+
+#: mobile_templates/artists/listings.html:43
+#: mobile_templates/salons/listings.html:43
+#: templates/salons/management/listings.html:50
+msgid "Forbidden<br/>(The content is not appropriate for this website)"
+msgstr "Забранено<br/>(Съдържанието е неподходящо)"
+
+#: mobile_templates/artists/profile.html:8 templates/artists/profile.html:7
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Artist "
+"Profile"
+msgstr ""
+
+#: mobile_templates/artists/profile.html:16
+msgid "Artist Profile"
+msgstr "Профил на стилист"
+
+#: mobile_templates/artists/profile.html:31
+#: mobile_templates/listings/details.html:153
+#: templates/artists/profile.html:35
+msgid "artist"
+msgstr "Стилист"
+
+#: mobile_templates/artists/profile.html:40
+#: mobile_templates/artists/profile.html:42
+#: mobile_templates/artists/settings.html:6
+#: mobile_templates/salons/settings.html:10
+#: mobile_templates/user/profile.html:33
+#: mobile_templates/user/settings.html:10 templates/master.html:89
+#: templates/master.html.py:138 templates/master.html:187
+#: templates/artists/profile.html:40 templates/artists/profile.html.py:42
+msgid "Settings"
+msgstr "Настройки"
+
+#: mobile_templates/artists/profile.html:45 templates/artists/profile.html:45
+msgid "Unfollow"
+msgstr "Спри да следваш"
+
+#: mobile_templates/artists/profile.html:47 templates/artists/profile.html:47
+#: templates/artists/profile.html.py:51
+msgid "Follow"
+msgstr "Следвай"
+
+#: mobile_templates/artists/profile.html:53
+msgid "WORKTIME"
+msgstr "РАБОТНО ВРЕМЕ"
+
+#: mobile_templates/artists/profile.html:54
+#: mobile_templates/salons/profile.html:37
+#: mobile_templates/user/profile.html:38 templates/artists/management.html:28
+#: templates/salons/management.html:29 templates/salons/profile.html:56
+msgid "LISTINGS"
+msgstr "Oферти"
+
+#: mobile_templates/artists/profile.html:55
+#: mobile_templates/salons/profile.html:39
+#: mobile_templates/user/profile.html:39 templates/listings/details.html:131
+#: templates/salons/profile.html:57
+msgid "REVIEWS"
+msgstr "ОТЗИВИ"
+
+#: mobile_templates/artists/profile.html:63 templates/artists/profile.html:73
+#: templates/artists/management/schedule.html:99
+#: templates/salons/artist_settings/schedule.html:105
+#: templates/salons/management/schedule.html:115
+msgid "Sunday"
+msgstr "Неделя"
+
+#: mobile_templates/artists/profile.html:64 templates/artists/profile.html:74
+msgid "Monday"
+msgstr "Понеделник"
+
+#: mobile_templates/artists/profile.html:65 templates/artists/profile.html:75
+#: templates/artists/management/schedule.html:24
+#: templates/salons/artist_settings/schedule.html:30
+#: templates/salons/management/schedule.html:40
+msgid "Tuesday"
+msgstr "Вторник"
+
+#: mobile_templates/artists/profile.html:66 templates/artists/profile.html:76
+#: templates/artists/management/schedule.html:39
+#: templates/salons/artist_settings/schedule.html:45
+#: templates/salons/management/schedule.html:55
+msgid "Wednesday"
+msgstr "Сряда"
+
+#: mobile_templates/artists/profile.html:67 templates/artists/profile.html:77
+#: templates/artists/management/schedule.html:54
+#: templates/salons/artist_settings/schedule.html:60
+#: templates/salons/management/schedule.html:70
+msgid "Thursday"
+msgstr "Четвъртък"
+
+#: mobile_templates/artists/profile.html:68 templates/artists/profile.html:78
+#: templates/artists/management/schedule.html:69
+#: templates/salons/artist_settings/schedule.html:75
+#: templates/salons/management/schedule.html:85
+msgid "Friday"
+msgstr "Петък"
+
+#: mobile_templates/artists/profile.html:69 templates/artists/profile.html:79
+#: templates/artists/management/schedule.html:84
+#: templates/salons/artist_settings/schedule.html:90
+#: templates/salons/management/schedule.html:100
+msgid "Saturday"
+msgstr "Събота"
+
+#: mobile_templates/artists/profile.html:100
+#: mobile_templates/salons/profile.html:73
+#: mobile_templates/user/profile.html:74
+msgid "Currently the artist doesn't have any listings"
+msgstr "За момента стилистът няма качени оферти"
+
+#: mobile_templates/artists/profile.html:127
+#: mobile_templates/salons/profile.html:122
+#: mobile_templates/user/profile.html:101 templates/artists/profile.html:118
+#: templates/user/profile.html:73
+msgid "Currently the artist doesn't have any reviews"
+msgstr "За момента за стилиста няма никакви отзиви."
+
+#: mobile_templates/artists/sign_up.html:15
+#: mobile_templates/salons/sign_up.html:15
+#: mobile_templates/user/sign_up.html:9 templates/salons/sign_up.html:63
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: mobile_templates/artists/sign_up.html:28
+#: mobile_templates/artists/settings/edit.html:42
+#: mobile_templates/listings/confirm.html:89
+#: mobile_templates/salons/add_artist.html:24
+#: mobile_templates/salons/sign_up.html:29
+#: mobile_templates/salons/artist_settings/edit_artist.html:49
+#: mobile_templates/salons/settings/edit.html:50
+#: mobile_templates/user/settings.html:44
+#: mobile_templates/user/sign_up.html:21 templates/artists/sign_up.html:30
+#: templates/artists/settings/edit.html:50 templates/core/about_us.html:59
+#: templates/core/contact_us.html:23 templates/listings/confirm.html:99
+#: templates/salons/add_artist.html:37 templates/salons/sign_up.html:30
+#: templates/salons/artist_settings/edit_artist.html:53
+#: templates/salons/settings/edit.html:50 templates/user/settings.html:55
+#: templates/user/sign_up.html:34
+msgid "Name"
+msgstr "Име"
+
+#: mobile_templates/artists/sign_up.html:36
+#: mobile_templates/listings/details.html:122
+#: mobile_templates/salons/sign_up.html:37 mobile_templates/user/login.html:28
+#: mobile_templates/user/sign_up.html:29 templates/artists/sign_up.html:38
+#: templates/artists/settings/account.html:23 templates/core/about_us.html:63
+#: templates/core/contact_us.html:27 templates/salons/add_artist.html:29
+#: templates/salons/sign_up.html:38 templates/salons/settings/account.html:23
+#: templates/user/login.html:26 templates/user/sign_up.html:42
+msgid "Email"
+msgstr "E-мейл"
+
+#: mobile_templates/artists/sign_up.html:44
+#: mobile_templates/salons/sign_up.html:45 mobile_templates/user/login.html:36
+#: mobile_templates/user/sign_up.html:37 templates/artists/sign_up.html:46
+#: templates/artists/settings/account.html:33 templates/salons/sign_up.html:46
+#: templates/salons/settings/account.html:33 templates/user/login.html:34
+#: templates/user/sign_up.html:50
+msgid "Password"
+msgstr "Парола"
+
+#: mobile_templates/artists/sign_up.html:52
+#: mobile_templates/salons/sign_up.html:53 templates/artists/sign_up.html:54
+#: templates/salons/sign_up.html:54 templates/user/sign_up.html:58
+msgid "Confirm Password"
+msgstr "Потвърди паролата"
+
+#: mobile_templates/artists/sign_up.html:61
+#: mobile_templates/user/login.html:45 mobile_templates/user/sign_up.html:54
+#: templates/artists/sign_up.html:67 templates/service/service.html:275
+#: templates/user/login.html:49
+msgid "OR"
+msgstr "ИЛИ"
+
+#: mobile_templates/artists/sign_up.html:65
+#: mobile_templates/salons/sign_up.html:66
+#: mobile_templates/user/sign_up.html:58
+msgid "Register using Facebook"
+msgstr "Регистрирай се с Facebook"
+
+#: mobile_templates/artists/sign_up.html:78 templates/artists/sign_up.html:88
+msgid "What is your business?"
+msgstr "Какъв е бизнесът Ви?"
+
+#: mobile_templates/artists/sign_up.html:86
+#: mobile_templates/salons/sign_up.html:80 templates/artists/sign_up.html:96
+msgid "Submit your location"
+msgstr "Въведете локация"
+
+#: mobile_templates/artists/sign_up.html:95
+#: mobile_templates/artists/upload.html:86
+#: mobile_templates/salons/add_artist.html:55
+#: mobile_templates/salons/sign_up.html:58
+#: mobile_templates/salons/sign_up.html:91
+#: mobile_templates/salons/upload.html:94 templates/artists/sign_up.html:106
+#: templates/listings/details.html:318 templates/listings/edit.html:138
+#: templates/salons/add_artist.html:68 templates/salons/sign_up.html:99
+msgid "Save and continue"
+msgstr "Запази и продължи"
+
+#: mobile_templates/artists/upload.html:6
+#: mobile_templates/salons/upload.html:6 templates/artists/upload.html:5
+#: templates/salons/upload.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Upload "
+"Listing"
+msgstr ""
+
+#: mobile_templates/artists/upload.html:15
+#: mobile_templates/salons/upload.html:15
+msgid "Upload"
+msgstr "Качи"
+
+#: mobile_templates/artists/upload.html:32
+#: mobile_templates/salons/add_artist.html:43
+#: mobile_templates/salons/upload.html:32 templates/artists/upload.html:36
+#: templates/listings/edit.html:62 templates/salons/add_artist.html:56
+#: templates/salons/upload.html:35
+msgid "Click here to upload picture"
+msgstr "Кликнете тук, за да качите снимка."
+
+#: mobile_templates/artists/upload.html:40
+#: mobile_templates/salons/upload.html:48 templates/artists/upload.html:71
+#: templates/listings/edit.html:97 templates/salons/upload.html:78
+msgid "Title"
+msgstr "Заглавие"
+
+#: mobile_templates/artists/upload.html:48
+#: mobile_templates/artists/settings/edit.html:65
+#: mobile_templates/listings/details.html:92
+#: mobile_templates/salons/upload.html:56
+#: mobile_templates/salons/artist_settings/edit_artist.html:62
+#: mobile_templates/salons/settings/edit.html:72
+#: templates/artists/upload.html:79 templates/artists/settings/edit.html:84
+#: templates/listings/edit.html:105 templates/salons/upload.html:86
+#: templates/salons/artist_settings/edit_artist.html:78
+#: templates/salons/settings/edit.html:72
+msgid "Description"
+msgstr "Описание"
+
+#: mobile_templates/artists/upload.html:57
+#: mobile_templates/artists/wallet.html:25
+#: mobile_templates/listings/details.html:113
+#: mobile_templates/salons/upload.html:65
+#: mobile_templates/salons/wallet.html:25 templates/artists/upload.html:50
+#: templates/listings/details.html:196 templates/salons/upload.html:49
+#: templates/service/service.html:112
+msgid "Price"
+msgstr "Цена"
+
+#: mobile_templates/artists/upload.html:65
+#: mobile_templates/listings/details.html:93
+#: mobile_templates/salons/upload.html:73 templates/artists/upload.html:89
+#: templates/listings/edit.html:115 templates/salons/upload.html:96
+msgid "Duration"
+msgstr "Продължителност"
+
+#: mobile_templates/artists/upload.html:71
+#: mobile_templates/salons/upload.html:79 templates/artists/upload.html:95
+#: templates/listings/edit.html:121 templates/salons/upload.html:102
+#: templates/service/service.html:91
+msgid "Type"
+msgstr "Тип"
+
+#: mobile_templates/artists/upload.html:80
+#: mobile_templates/listings/details.html:94
+#: mobile_templates/salons/upload.html:88
+#: mobile_templates/service/service.html:128 templates/artists/upload.html:104
+#: templates/listings/details.html:139 templates/listings/edit.html:130
+#: templates/salons/upload.html:111 templates/service/service.html:154
+msgid "Tags"
+msgstr "Етикети"
+
+#: mobile_templates/artists/wallet.html:17
+#: mobile_templates/salons/wallet.html:17 templates/artists/wallet.html:34
+#: templates/salons/wallet.html:34
+msgid "All EARNINGS"
+msgstr "ВСИЧКИ ПЕЧАЛБИ"
+
+#: mobile_templates/artists/wallet.html:18
+#: mobile_templates/salons/wallet.html:18 templates/artists/wallet.html:35
+msgid "All WITHDRAWS"
+msgstr "ВСИЧКИ ТЕГЛЕНИЯ"
+
+#: mobile_templates/artists/wallet.html:19
+#: mobile_templates/salons/wallet.html:19 templates/artists/wallet.html:36
+#: templates/artists/withdraw.html:34 templates/salons/withdraw.html:34
+msgid "AVAILABLE FUNDS"
+msgstr "НАЛИЧНИ СРЕДСТВА"
+
+#: mobile_templates/artists/wallet.html:24
+#: mobile_templates/salons/wallet.html:24
+msgid "Date and time"
+msgstr "Дата и час"
+
+#: mobile_templates/artists/wallet.html:26
+#: mobile_templates/salons/wallet.html:26
+msgid "Paid to"
+msgstr "Платено чрез"
+
+#: mobile_templates/artists/wallet.html:27
+#: mobile_templates/salons/wallet.html:27
+msgid "Status"
+msgstr "Статус"
+
+#: mobile_templates/artists/wallet.html:30
+#: mobile_templates/salons/wallet.html:30
+msgid "There is no activity yet."
+msgstr "Все още няма активност."
+
+#: mobile_templates/artists/settings/edit.html:51
+#: mobile_templates/salons/settings/edit.html:59
+#: templates/artists/settings/edit.html:62
+#: templates/salons/artist_settings/edit_artist.html:65
+#: templates/salons/settings/edit.html:59 templates/user/settings.html:67
+msgid "Phone"
+msgstr "Телефон"
+
+#: mobile_templates/artists/settings/edit.html:61
+#: mobile_templates/salons/settings/edit.html:68
+#: templates/artists/settings/edit.html:80
+#: templates/salons/settings/edit.html:68
+msgid "Address"
+msgstr "Адрес"
+
+#: mobile_templates/artists/settings/edit.html:72
+#: mobile_templates/salons/artist_settings/edit_artist.html:69
+#: mobile_templates/salons/settings/edit.html:79
+#: mobile_templates/user/settings.html:49 templates/artists/upload.html:112
+#: templates/artists/settings/account.html:29
+#: templates/artists/settings/account.html:46
+#: templates/artists/settings/cancellation_policy.html:62
+#: templates/artists/settings/payments.html:65
+#: templates/salons/upload.html:119
+#: templates/salons/artist_settings/edit_artist.html:100
+#: templates/salons/artist_settings/schedule.html:24
+#: templates/salons/artist_settings/schedule.html:39
+#: templates/salons/artist_settings/schedule.html:54
+#: templates/salons/artist_settings/schedule.html:69
+#: templates/salons/artist_settings/schedule.html:84
+#: templates/salons/artist_settings/schedule.html:99
+#: templates/salons/artist_settings/schedule.html:114
+#: templates/salons/management/schedule.html:34
+#: templates/salons/management/schedule.html:49
+#: templates/salons/management/schedule.html:64
+#: templates/salons/management/schedule.html:79
+#: templates/salons/management/schedule.html:94
+#: templates/salons/management/schedule.html:109
+#: templates/salons/management/schedule.html:124
+#: templates/salons/settings/account.html:29
+#: templates/salons/settings/account.html:46
+#: templates/salons/settings/cancellation_policy.html:59
+#: templates/salons/settings/edit.html:81
+#: templates/salons/settings/payments.html:61 templates/user/settings.html:87
+msgid "Save"
+msgstr "Запази"
+
+#: mobile_templates/core/home.html:6
+msgid "Glamfame â Booking platform for top salons and beauty artists - Home"
+msgstr ""
+
+#: mobile_templates/listings/confirm.html:6 templates/listings/confirm.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Confirm "
+"Listing"
+msgstr ""
+
+#: mobile_templates/listings/confirm.html:10
+msgid "Confirm booking"
+msgstr "Потвърди резервацията"
+
+#: mobile_templates/listings/confirm.html:26
+#: templates/listings/confirm.html:33
+msgid "Beauty artist:"
+msgstr "Стилист:"
+
+#: mobile_templates/listings/confirm.html:32
+#: templates/listings/confirm.html:39
+#: templates/salons/management/calendar.html:36
+#: templates/salons/management/calendar.html:56
+#: templates/salons/management/calendar.html:72
+msgid "Start time:"
+msgstr "Начален час:"
+
+#: mobile_templates/listings/confirm.html:37
+#: templates/listings/confirm.html:44
+#: templates/salons/management/calendar.html:39
+#: templates/salons/management/calendar.html:59
+#: templates/salons/management/calendar.html:75
+msgid "End time:"
+msgstr "Краен час:"
+
+#: mobile_templates/listings/confirm.html:42
+#: templates/listings/confirm.html:49
+msgid "Cost:"
+msgstr "Цена:"
+
+#: mobile_templates/listings/confirm.html:48
+#: templates/listings/confirm.html:55
+msgid "Address:"
+msgstr "Aдрес:"
+
+#: mobile_templates/listings/confirm.html:53
+#: mobile_templates/listings/details.html:130
+#: templates/listings/confirm.html:60 templates/listings/details.html:202
+msgid "Cancellation policy:"
+msgstr "Политика за отмяна на часове:"
+
+#: mobile_templates/listings/confirm.html:56
+#: templates/listings/confirm.html:63
+msgid "Free: Full refund, except fees"
+msgstr "Свободна: пълно възстановяване на сумата, без таксата на Glamfame"
+
+#: mobile_templates/listings/confirm.html:58
+#: mobile_templates/listings/details.html:134
+#: templates/listings/confirm.html:65 templates/listings/details.html:206
+#, python-format
+msgid "Flexible: 50%% refund 12 hours prior the apoointment, except fees"
+msgstr ""
+"Гъвкава: 50%% възстановяване на сумата до 12 ч. преди уговорен час, без "
+"таксата на Glamfame"
+
+#: mobile_templates/listings/confirm.html:60
+#: mobile_templates/listings/details.html:136
+#: templates/listings/confirm.html:67 templates/listings/details.html:208
+#, python-format
+msgid "Moderate: 50%% refund up until 2 days prior to appointment, except fees"
+msgstr ""
+"Умерена: 50%% възстановяване на сумата до 2 дни преди уговорения час, без "
+"таксата на Glamfame"
+
+#: mobile_templates/listings/confirm.html:62
+#: mobile_templates/listings/details.html:138
+#: templates/listings/confirm.html:69 templates/listings/details.html:210
+#, python-format
+msgid "Strict: 50%% refund up until 4 days prior to appointment, except fees"
+msgstr ""
+"Строга: 50%% възстановяване на сумата до 4 дни преди уговорения час, без "
+"таксата на Glamfame"
+
+#: mobile_templates/listings/confirm.html:64
+#: templates/listings/confirm.html:71
+#, python-format
+msgid ""
+"{{ booking.cancellation_policy.cancellation_type }}: {{ booking."
+"cancellation_policy.percent }}%% refund up until {{ days_before }} days "
+"prior to appointment, except fees"
+msgstr ""
+
+#: mobile_templates/listings/confirm.html:74
+#: templates/listings/confirm.html:81
+msgid "Pay with Credit Card"
+msgstr "Плати с кредитна карта"
+
+#: mobile_templates/listings/confirm.html:75
+#: templates/listings/confirm.html:82
+msgid "Pay with PayPal"
+msgstr "Плати си PayPal"
+
+#: mobile_templates/listings/confirm.html:92
+#: templates/listings/confirm.html:102
+msgid "Card number"
+msgstr "Номер на карта"
+
+#: mobile_templates/listings/confirm.html:96
+msgid "Expiration date (MM/YYYY)"
+msgstr "Валидна до (месец/год.)"
+
+#: mobile_templates/listings/confirm.html:100
+msgid "CVC"
+msgstr "CVC"
+
+#: mobile_templates/listings/confirm.html:106
+#: mobile_templates/listings/confirm.html:121
+#: templates/listings/confirm.html:133 templates/listings/confirm.html:150
+msgid "Send a message to the beauty artist (optional)"
+msgstr "Изпрати съобщение до стилиста (опционално)"
+
+#: mobile_templates/listings/confirm.html:109
+#: mobile_templates/listings/confirm.html:124
+#: templates/listings/confirm.html:136 templates/listings/confirm.html:153
+msgid "I agree with"
+msgstr "Съгласен съм с"
+
+#: mobile_templates/listings/confirm.html:109
+#: mobile_templates/listings/confirm.html:118
+#: mobile_templates/listings/confirm.html:124 templates/master.html:241
+#: templates/artists/sign_up.html:59 templates/listings/confirm.html:136
+#: templates/listings/confirm.html:153 templates/salons/sign_up.html:59
+#: templates/user/sign_up.html:63
+msgid "Terms and Conditions"
+msgstr "Условия за ползване"
+
+#: mobile_templates/listings/confirm.html:109
+#: mobile_templates/listings/confirm.html:118
+#: mobile_templates/listings/confirm.html:124 templates/master.html:242
+#: templates/artists/sign_up.html:59 templates/listings/confirm.html:136
+#: templates/listings/confirm.html:153 templates/salons/sign_up.html:59
+#: templates/user/sign_up.html:63
+msgid "Privacy Policy"
+msgstr "Декларация за поверителност"
+
+#: mobile_templates/listings/confirm.html:118
+msgid "Please, click in the box below to acknowledge agreement to our"
+msgstr "Моля, кликнете в квадратчето отдолу, за да се съгласите със нашата"
+
+#: mobile_templates/listings/confirm.html:118
+#: templates/artists/sign_up.html:59 templates/salons/sign_up.html:59
+#: templates/salons/settings/cancellation_policy.html:56
+#: templates/user/sign_up.html:63
+msgid "and"
+msgstr "и"
+
+#: mobile_templates/listings/confirm.html:118
+msgid "Cancellation Policy"
+msgstr "Политика за отмяна на часове"
+
+#: mobile_templates/listings/confirm.html:118
+#, python-format
+msgid ""
+"Click on \"Book now\" to proceed to the payment page. We accept Pay Pal and "
+"Credit Card payments. After you click \"Book now\" you will turn to the "
+"payment page. Choose the payment method and fill in the data. Once you "
+"complete this step, you will see a text message, confirming the payment has "
+"been made.Within the next 48 hours you should receive a notification for "
+"booking confirmation from the beauty artist provider. If the payer fails to "
+"receive confirmation, he/she receives a full refund (100%%) of the amount "
+"paid. If a beauty seeker has paid for a beauty service, which has been "
+"confirmed, and he/she misses the appointment with the beauty service "
+"provider, the refund will be determined by the cancellation policy set by "
+"the beauty service provider."
+msgstr ""
+"След като въведете данните си за плащане, ще бъде извършена преавторизация "
+"на кредитната Ви карта/PayPal акаунта Ви.В рамките на 48 ч. Трябва да  "
+"получите уведомление в акаунта Ви за потвърждение на резервацията. Ако ли "
+"не, блокираната сума ще бъде освободена. Ако пропуснете или отмените час, ще "
+"получите плащане според политиката за отмяна на часове, определена от "
+"стилиста. Плащането ще бъде извършено в деня на уговорения час."
+
+#: mobile_templates/listings/details.html:7 templates/listings/details.html:7
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Listing "
+"Details"
+msgstr ""
+
+#: mobile_templates/listings/details.html:39 templates/widget/widget.html:102
+msgid "Listing"
+msgstr "Оферта"
+
+#: mobile_templates/listings/details.html:93
+msgid "min"
+msgstr "min"
+
+#: mobile_templates/listings/details.html:115 templates/core/home.html:27
+#: templates/widget/widget.html:54
+msgid "Date"
+msgstr "Дата"
+
+#: mobile_templates/listings/details.html:116 templates/core/home.html:28
+msgid "Time"
+msgstr "Час"
+
+#: mobile_templates/listings/details.html:125
+#: templates/listings/confirm.html:137 templates/listings/confirm.html:157
+#: templates/listings/details.html:223 templates/widget/widget.html:147
+msgid "Book now"
+msgstr "Резервирай сега"
+
+#: mobile_templates/listings/details.html:140
+#: templates/listings/details.html:212
+msgid "refund up until"
+msgstr "връщане до"
+
+#: mobile_templates/listings/details.html:140
+#: templates/listings/details.html:212
+msgid "days prior to appointment, except fees"
+msgstr ""
+
+#: mobile_templates/listings/details.html:181
+#: templates/listings/details.html:165
+msgid "Currently the listing doesn't have any reviews"
+msgstr "Към момента за офертата няма отзиви"
+
+#: mobile_templates/listings/details.html:192
+#: mobile_templates/listings/details.html:203
+#: templates/listings/details.html:324 templates/listings/details.html:335
+#: templates/salons/bookings.html:148 templates/user/bookings.html:126
+msgid "WARNING!"
+msgstr "ПРЕДУПРЕЖДЕНИЕ!"
+
+#: mobile_templates/listings/details.html:194
+msgid "Please select booking date before procees foward."
+msgstr "Моля, изберете дата за резервацията преди да продължите"
+
+#: mobile_templates/listings/details.html:196
+#: mobile_templates/listings/details.html:207
+#: templates/listings/details.html:328 templates/listings/details.html:343
+msgid "OK"
+msgstr "OK"
+
+#: mobile_templates/listings/details.html:205
+msgid ""
+"Please enter your real email. In that way you will be able to manage your "
+"bookings via your mailbox. Also we will be able to let you when your booking "
+"is accepted from the artist."
+msgstr ""
+"Моля, въведете е-мейл адреса си. Така ще можете да управлявате резервациите "
+"си през пощата си и ще получавате уведомления когато стилиста ги потвърди"
+
+#: mobile_templates/listings/listings.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Listings"
+msgstr ""
+
+#: mobile_templates/notifications/notifications.html:6
+#: templates/notifications/notifications.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - All "
+"Notifications"
+msgstr ""
+
+#: mobile_templates/payments/error.html:9 templates/payments/error.html:11
+msgid "OH NO!"
+msgstr "О, НЕ!"
+
+#: mobile_templates/payments/error.html:18
+msgid "Your payment was unsuccessfully. Reason: Unknow."
+msgstr "Плащането Ви беше неуспешно. Неизвестна причина."
+
+#: mobile_templates/payments/error.html:21
+msgid ""
+"Please try again later with different credit/debit card or PayPal account."
+msgstr ""
+"Моля, опитайте отново с различна кредитна/дебита карта, или PayPal aкаунт"
+
+#: mobile_templates/payments/success.html:9
+msgid "Great"
+msgstr "Чудесно"
+
+#: mobile_templates/payments/success.html:17
+msgid "Your payment has been succesfully proccessed."
+msgstr "Плащането Ви беше успешно."
+
+#: mobile_templates/payments/success.html:20
+msgid "You can view all your appointments"
+msgstr "Можете да видите всичките си часове"
+
+#: mobile_templates/payments/success.html:20
+#: templates/payments/success.html:26
+msgid "here"
+msgstr "тук"
+
+#: mobile_templates/salons/add_artist.html:5
+#: templates/salons/add_artist.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Add Artist"
+msgstr ""
+
+#: mobile_templates/salons/add_artist.html:17
+msgid ""
+"Please create your employees first. After that you will be able to assign "
+"listings to them."
+msgstr ""
+"Моля, първо създайте профил на артист. След това ще можете да качвате оферти."
+
+#: mobile_templates/salons/add_artist.html:32
+#: templates/salons/add_artist.html:45
+msgid "Occupation"
+msgstr "Професия"
+
+#: mobile_templates/salons/add_artist.html:41
+msgid "Profile picture"
+msgstr "Профилна снимка"
+
+#: mobile_templates/salons/add_artist.html:50
+#: templates/salons/add_artist.html:63
+msgid "Introduction"
+msgstr "Представяне"
+
+#: mobile_templates/salons/artist_settings.html:6
+#: templates/artists/settings.html:6 templates/salons/artist_settings.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Artist "
+"Settings"
+msgstr ""
+
+#: mobile_templates/salons/artist_settings.html:10
+msgid "Edit Artist"
+msgstr "Редактирай стилист"
+
+#: mobile_templates/salons/bookings.html:10
+#: mobile_templates/user/bookings.html:10
+msgid "Appointments"
+msgstr "Уговорени часове"
+
+#: mobile_templates/salons/bookings.html:27
+#: mobile_templates/user/bookings.html:27
+msgid "for"
+msgstr "за"
+
+#: mobile_templates/salons/bookings.html:27
+#: mobile_templates/salons/upload.html:40 templates/listings/details.html:258
+#: templates/salons/upload.html:70 templates/widget/widget.html:71
+msgid "Artist"
+msgstr "Стилист"
+
+#: mobile_templates/salons/listings.html:11 templates/artists/profile.html:87
+msgid "Listings"
+msgstr "Oферти"
+
+#: mobile_templates/salons/profile.html:8 templates/salons/profile.html:8
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Salon Profile"
+msgstr ""
+
+#: mobile_templates/salons/profile.html:38
+#: mobile_templates/salons/settings.html:22
+#: templates/salons/management.html:28
+msgid "ARTISTS"
+msgstr "СТИЛИСТИ"
+
+#: mobile_templates/salons/settings.html:6 templates/salons/settings.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Salon "
+"Settings"
+msgstr ""
+
+#: mobile_templates/salons/settings.html:19 templates/artists/settings.html:27
+#: templates/salons/artist_settings.html:23 templates/salons/settings.html:28
+#: templates/user/settings.html:23
+msgid "PROFILE"
+msgstr "Профил"
+
+#: mobile_templates/salons/artist_settings/edit_artist.html:36
+#: mobile_templates/salons/settings/edit.html:37
+#: mobile_templates/user/settings.html:31
+#: templates/artists/settings/edit.html:37
+#: templates/salons/artist_settings/edit_artist.html:40
+#: templates/salons/settings/edit.html:37 templates/user/settings.html:42
+msgid "Change"
+msgstr "Промени"
+
+#: mobile_templates/salons/artist_settings/edit_artist.html:55
+#: templates/artists/management/calendar.html:35
+#: templates/artists/settings/edit.html:68
+#: templates/salons/artist_settings/edit_artist.html:71
+msgid "Style"
+msgstr "Стил"
+
+#: mobile_templates/salons/settings/artists.html:43
+#: templates/salons/management/artists.html:53
+msgid "Click here to add new artist"
+msgstr "Кликнете тук за да добавите нов стилист"
+
+#: mobile_templates/service/service.html:7
+msgid "Glamfame â Booking platform for top salons and beauty artists - "
+msgstr ""
+
+#: mobile_templates/service/service.html:21
+msgid "Search"
+msgstr "Търси"
+
+#: mobile_templates/service/service.html:27
+#: mobile_templates/service/service.html:67
+msgid "Filters"
+msgstr "Филтри"
+
+#: mobile_templates/service/service.html:70 templates/service/service.html:64
+msgid "Date and Time"
+msgstr "Дата и час"
+
+#: mobile_templates/service/service.html:76
+#: mobile_templates/service/service.html:502
+#: templates/listings/details.html:186 templates/service/service.html:73
+msgid "Please select date"
+msgstr "Моля, изберете дата"
+
+#: mobile_templates/service/service.html:85 templates/service/service.html:83
+msgid "Please select time"
+msgstr "Моля, изберете час"
+
+#: mobile_templates/service/service.html:92
+msgid "Price Range"
+msgstr "Ценови диапазон"
+
+#: mobile_templates/service/service.html:106
+#: templates/service/service.html:129
+msgid "Rating"
+msgstr "Оценка"
+
+#: mobile_templates/service/service.html:114
+#: mobile_templates/service/service.html:117
+#: mobile_templates/service/service.html:120
+#: mobile_templates/service/service.html:123
+msgid "Up"
+msgstr "Нагоре"
+
+#: mobile_templates/service/service.html:130
+#: templates/service/service.html:157
+msgid "Enter tag"
+msgstr "Въведете тагове"
+
+#: mobile_templates/service/service.html:131
+#: templates/service/service.html:158
+msgid "Add"
+msgstr "Добави"
+
+#: mobile_templates/service/service.html:137
+msgid "Apply"
+msgstr "Приложи"
+
+#: mobile_templates/service/service.html:138
+#: mobile_templates/user/bookings.html:34 templates/artists/bookings.html:89
+#: templates/artists/management/schedule.html:17
+#: templates/artists/management/schedule.html:32
+#: templates/artists/management/schedule.html:47
+#: templates/artists/management/schedule.html:62
+#: templates/artists/management/schedule.html:77
+#: templates/artists/management/schedule.html:92
+#: templates/artists/management/schedule.html:107
+#: templates/artists/settings/account.html:28
+#: templates/artists/settings/account.html:45
+#: templates/artists/settings/cancellation_policy.html:60
+#: templates/artists/settings/edit.html:111
+#: templates/artists/settings/payments.html:32
+#: templates/artists/settings/payments.html:64
+#: templates/salons/bookings.html:98 templates/salons/delete_artist.html:96
+#: templates/salons/artist_settings/edit_artist.html:99
+#: templates/salons/artist_settings/schedule.html:23
+#: templates/salons/artist_settings/schedule.html:38
+#: templates/salons/artist_settings/schedule.html:53
+#: templates/salons/artist_settings/schedule.html:68
+#: templates/salons/artist_settings/schedule.html:83
+#: templates/salons/artist_settings/schedule.html:98
+#: templates/salons/management/schedule.html:33
+#: templates/salons/management/schedule.html:48
+#: templates/salons/management/schedule.html:63
+#: templates/salons/management/schedule.html:78
+#: templates/salons/management/schedule.html:93
+#: templates/salons/management/schedule.html:108
+#: templates/salons/management/schedule.html:123
+#: templates/salons/settings/account.html:28
+#: templates/salons/settings/account.html:45
+#: templates/salons/settings/cancellation_policy.html:57
+#: templates/salons/settings/edit.html:80
+#: templates/salons/settings/payments.html:60 templates/user/bookings.html:76
+#: templates/user/settings.html:86
+msgid "Cancel"
+msgstr "Отмени"
+
+#: mobile_templates/user/bookings.html:37
+msgid "Cancelled"
+msgstr "Отменен"
+
+#: mobile_templates/user/change_password.html:5
+#: templates/user/change_password.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Change "
+"Password"
+msgstr ""
+
+#: mobile_templates/user/change_password.html:11
+#: templates/user/change_password.html:11
+msgid "CHANGE PASSWORD"
+msgstr "СМЕНИ ПАРОЛА"
+
+#: mobile_templates/user/change_password.html:24
+#: templates/user/change_password.html:24
+msgid "New Password"
+msgstr "Нова парола"
+
+#: mobile_templates/user/change_password.html:32
+#: templates/user/change_password.html:32
+msgid "Confrim New Password"
+msgstr "Потвърди нова парола"
+
+#: mobile_templates/user/change_password.html:38
+#: templates/user/change_password.html:38
+msgid "Change Password"
+msgstr "СМЕНИ ПАРОЛА"
+
+#: mobile_templates/user/followed.html:6 templates/user/followed.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Followed"
+msgstr ""
+
+#: mobile_templates/user/followed.html:12 templates/user/followed.html:12
+msgid "FOLLOWED ARTISTS"
+msgstr "ПОСЛЕДВАНИ СТИЛИСТИ"
+
+#: mobile_templates/user/forgotten_password.html:5
+#: templates/user/forgotten_password.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Forgotten "
+"Password"
+msgstr ""
+
+#: mobile_templates/user/forgotten_password.html:11
+#: templates/user/forgotten_password.html:11
+msgid "FORGOTTEN PASSWORD"
+msgstr "ЗАБРАВЕНА ПАРОЛА"
+
+#: mobile_templates/user/forgotten_password.html:17
+msgid ""
+"Please enter your email. You will receive a email with furder instruction"
+msgstr "Моля, въведете е-мейл адреса си. Ще получите е-мейл с инструкции."
+
+#: mobile_templates/user/login.html:5 templates/user/login.html:5
+msgid "Glamfame â Booking platform for top salons and beauty artists - Login"
+msgstr ""
+
+#: mobile_templates/user/login.html:17
+msgid "Please enter your login details."
+msgstr "Моля, въведете данните си за вход"
+
+#: mobile_templates/user/login.html:21 templates/user/login.html:19
+msgid "Invalid login details"
+msgstr "Невалидни логин данни"
+
+#: mobile_templates/user/login.html:41 templates/master.html:202
+#: templates/user/login.html:45
+msgid "Log In"
+msgstr "Вход"
+
+#: mobile_templates/user/login.html:49 templates/user/login.html:53
+msgid "Log in with Facebook"
+msgstr "Вход чрез Facebook"
+
+#: mobile_templates/user/profile.html:7 templates/user/profile.html:7
+msgid "Glamfame â Booking platform for top salons and beauty artists - Profile"
+msgstr ""
+
+#: mobile_templates/user/profile.html:40
+msgid "FOLLOWERS"
+msgstr "ПОСЛЕДОВАТЕЛИ"
+
+#: mobile_templates/user/profile.html:125 templates/user/profile.html:132
+msgid "Currently the user doesn't followed any artist"
+msgstr "За момента този потребител не следва нито един стилист"
+
+#: mobile_templates/user/settings.html:6 templates/user/settings.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Settings"
+msgstr ""
+
+#: mobile_templates/user/sign_up.html:50
+msgid "Register"
+msgstr "Регистрирай се"
+
+#: mobile_templates/user/whishlist.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - wishlist"
+msgstr ""
+
+#: templates/master.html:64 templates/master.html.py:113
+#: templates/master.html:162 templates/notifications/notifications.html:17
+msgid "NOTIFICATIONS"
+msgstr "Известия"
+
+#: templates/master.html:65 templates/master.html.py:114
+#: templates/master.html:163
+msgid "View all"
+msgstr "Виж всички"
+
+#: templates/master.html:88
+msgid "Followed Artists"
+msgstr "ПОСЛЕДВАНИ СТИЛИСТИ"
+
+#: templates/master.html:95 templates/master.html.py:144
+msgid "ADD LISTING"
+msgstr "Добавяне на оферта"
+
+#: templates/master.html:135 templates/master.html.py:184
+msgid "Management"
+msgstr "Управление"
+
+#: templates/master.html:227
+msgid "About Us"
+msgstr "За нас"
+
+#: templates/master.html:228
+msgid "Blog"
+msgstr "Блог"
+
+#: templates/master.html:229
+msgid "Contact Us"
+msgstr "Свържете се с нас"
+
+#: templates/master.html:230
+msgid "Imprint"
+msgstr "Imprint"
+
+#: templates/master.html:233 templates/core/faq.html:15
+msgid "FAQ"
+msgstr "FAQ"
+
+#: templates/master.html:236
+msgid "How It Works - Beauty Seekers"
+msgstr "Как работи сайта – Търсещи оферти"
+
+#: templates/master.html:237
+msgid "How It Works - Beauty Artists"
+msgstr "Как работи сайта - Стилисти"
+
+#: templates/master.html:238
+msgid "How It Works - Beauty Salons"
+msgstr "Как работи сайта - Салони"
+
+#: templates/master.html:243
+msgid "Sitemap"
+msgstr "Карта на сайта"
+
+#: templates/sign_up.html:11 templates/artists/sign_up.html:17
+#: templates/salons/sign_up.html:17 templates/user/sign_up.html:11
+msgid "SIGN UP"
+msgstr "Регистрация"
+
+#: templates/sign_up.html:16
+msgid "SELECT YOUR PROFILE"
+msgstr "ИЗБЕРЕТЕ ТИП ПРОФИЛ"
+
+#: templates/sign_up.html:22
+msgid ""
+"You will be able to find top beauty artists and salons and book directly "
+"their listings. You can also follow your favorite artists and receive their "
+"latest work feeds."
+msgstr ""
+"Ще можете да намерите оферти на топ стилисти и да резервирате мигновено. "
+"Последвайте любимите си стилисти, за да получавате известия за най-новите им "
+"оферти."
+
+#: templates/sign_up.html:31
+msgid ""
+"You can upload your latest works and attract new customers. In addition, you "
+"receive: virtual portfolio, acting as your own website, booking management "
+"tools, on-line calendar and statistics diagram. No fees, it's for FREE."
+msgstr ""
+"Можете да качите Вашите актуални оферти и да привлечете нови клиенти. Освен "
+"това получавате: виртуално портфолио и личен акаунт, играещ роля на Ваш "
+"уебсайт, инструменти за салонен мениджмънт, онлайн календар и диаграма на "
+"продажбите Ви. БЕЗПЛАТНО е."
+
+#: templates/sign_up.html:40
+msgid ""
+"Add description of your salon, add beauty artists, manage their schedules, "
+"bookings and listings in one booking management platform, that acts as your "
+"own website. Boost your sales, create new image! It's FREE of charge."
+msgstr ""
+"Качете описание на салона си, добавете Вашите стилисти и управлявайте "
+"техните графици, резервации и оферти в единна система за мениджмънт и "
+"резервации, играеща роля на Ваш собствен уебсайт. Набирайте нови клиенти и "
+"си създайте нов имидж!Без ТАКСИ."
+
+#: templates/artists/bookings.html:17
+#: templates/artists/management/stats.html:46
+#: templates/salons/bookings.html:17 templates/salons/delete_artist.html:21
+#: templates/salons/management/stats.html:48 templates/user/bookings.html:17
+msgid "BOOKINGS"
+msgstr "Резервации"
+
+#: templates/artists/bookings.html:25 templates/salons/bookings.html:25
+#: templates/salons/delete_artist.html:29 templates/user/bookings.html:25
+msgid "ORDER ID"
+msgstr "НОМЕР ПОРЪЧКА"
+
+#: templates/artists/bookings.html:26 templates/artists/wallet.html:45
+#: templates/artists/management/stats.html:43
+#: templates/salons/bookings.html:26 templates/salons/delete_artist.html:30
+#: templates/salons/wallet.html:45 templates/salons/management/stats.html:45
+#: templates/user/bookings.html:26
+msgid "DATE"
+msgstr "Дата"
+
+#: templates/artists/bookings.html:27 templates/salons/bookings.html:27
+#: templates/salons/delete_artist.html:31 templates/salons/wallet.html:46
+#: templates/user/bookings.html:27
+msgid "LISTING"
+msgstr "Оферта"
+
+#: templates/artists/bookings.html:28 templates/salons/bookings.html:29
+#: templates/salons/delete_artist.html:32 templates/user/bookings.html:28
+msgid "ORDERED BY"
+msgstr "ПОДЕРЕДЕН ПО"
+
+#: templates/artists/bookings.html:29 templates/artists/wallet.html:46
+#: templates/salons/bookings.html:30 templates/salons/delete_artist.html:33
+#: templates/salons/wallet.html:47 templates/user/bookings.html:29
+msgid "AMOUNT"
+msgstr "СУМА"
+
+#: templates/artists/bookings.html:30 templates/artists/wallet.html:48
+#: templates/salons/bookings.html:31 templates/salons/wallet.html:49
+#: templates/user/bookings.html:30
+msgid "STATUS"
+msgstr "Статус"
+
+#: templates/artists/bookings.html:31 templates/salons/bookings.html:32
+#: templates/salons/delete_artist.html:35 templates/user/bookings.html:31
+msgid "ACTION"
+msgstr "ДЕЙСТВИЕ"
+
+#: templates/artists/bookings.html:83 templates/salons/bookings.html:92
+msgid "Approve"
+msgstr "Одобри"
+
+#: templates/artists/bookings.html:96 templates/salons/bookings.html:105
+#: templates/user/bookings.html:83
+msgid "Report"
+msgstr "Докладвай"
+
+#: templates/artists/bookings.html:108
+msgctxt "templates/artists/bookings.html:108"
+msgid ""
+"Currently you don't have any bookings."
+msgstr "За момента нямате никакви резервации."
+
+#: templates/artists/bookings.html:141
+msgid "WARNING"
+msgstr "ПРЕДУПРЕЖДЕНИЕ"
+
+#: templates/artists/bookings.html:144 templates/salons/bookings.html:151
+msgid ""
+"Cancelling an appointmnt will increase your cancellation "
+"rate and we will remove 10 points from your monthly score.<br/><br/>Are you "
+"sure you want to cancel this appointment?"
+msgstr ""
+"Отмяната на оговорен час ще увеличи  оценката Ви за отмяна на часове "
+".<br/><br/>Сигурни ли сте, че искате да отмените този час?"
+
+#: templates/artists/bookings.html:149 templates/salons/bookings.html:156
+#: templates/user/bookings.html:130
+msgid "Yes"
+msgstr "Да"
+
+#: templates/artists/bookings.html:150 templates/salons/bookings.html:157
+#: templates/user/bookings.html:131
+msgid "No"
+msgstr "Не"
+
+#: templates/artists/bookings.html:158 templates/salons/bookings.html:165
+#: templates/user/bookings.html:138
+msgid "REPORT A PROBLEM!"
+msgstr "ДОКЛАДВАЙТЕ ПРОБЛЕМ!"
+
+#: templates/artists/bookings.html:160 templates/salons/bookings.html:167
+#: templates/user/bookings.html:140
+msgid "Oh, no! What went wrong?"
+msgstr "О,не! Какво се обърка?"
+
+#: templates/artists/bookings.html:161 templates/salons/bookings.html:168
+#: templates/user/bookings.html:141
+msgid "Please describe your problem"
+msgstr "Моля, опишете проблема си"
+
+#: templates/artists/bookings.html:163 templates/core/about_us.html:75
+#: templates/core/contact_us.html:39 templates/salons/bookings.html:170
+#: templates/user/bookings.html:143
+msgid "Send"
+msgstr "Изпрати"
+
+#: templates/artists/management.html:6 templates/salons/management.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Salon "
+"Management"
+msgstr ""
+
+#: templates/artists/management.html:18
+msgid "MANAGEMENT"
+msgstr "Управление"
+
+#: templates/artists/management.html:29
+#: templates/salons/artist_settings.html:24
+#: templates/salons/management.html:30
+msgid "SCHEDULE"
+msgstr "ГРАФИК"
+
+#: templates/artists/management.html:30 templates/salons/management.html:31
+msgid "CALENDAR"
+msgstr "Календар"
+
+#: templates/artists/management.html:31 templates/salons/management.html:32
+msgid "STATISTICS"
+msgstr "СТАТИСТИКА"
+
+#: templates/artists/management.html:32 templates/salons/management.html:33
+msgid "WIDGETS"
+msgstr "УИДЖЕТ"
+
+#: templates/artists/profile.html:47
+msgid "You must be registred, to use this feature."
+msgstr "Трябва да сте регистрирани, за да ползвате тази функционалност."
+
+#: templates/artists/profile.html:57
+msgid "Works for:"
+msgstr "Работи за:"
+
+#: templates/artists/profile.html:59
+msgid "Independent artist"
+msgstr "Независим стилист"
+
+#: templates/artists/profile.html:68 templates/artists/profile.html.py:69
+#: templates/artists/profile.html:70
+msgid "Work time"
+msgstr "Работно време"
+
+#: templates/artists/profile.html:88 templates/user/profile.html:44
+msgid "Reviews"
+msgstr "ОТЗИВИ"
+
+#: templates/artists/profile.html:89
+msgid "Followers"
+msgstr "ПОСЛЕДОВАТЕЛИ"
+
+#: templates/artists/profile.html:90 templates/service/service.html:47
+msgid "Location"
+msgstr "Локация"
+
+#: templates/artists/profile.html:152
+msgid "Currently the artist doesn't have any"
+msgstr "В момента артиста няма никакви"
+
+#: templates/artists/profile.html:153 templates/artists/profile.html.py:154
+msgid "listings."
+msgstr "оферти."
+
+#: templates/artists/profile.html:181
+msgid "Currently the artist doesn't have any followers"
+msgstr "В момента стилиста няма последователи"
+
+#: templates/artists/profile.html:187 templates/artists/profile.html.py:189
+#: templates/salons/profile.html:66 templates/service/service.html:59
+msgid "Change location"
+msgstr "Смени локацията"
+
+#: templates/artists/settings.html:28 templates/salons/settings.html:29
+msgid "ACCOUNT"
+msgstr "АКАУНТ"
+
+#: templates/artists/settings.html:29 templates/salons/settings.html:30
+msgid "POLICY"
+msgstr "ПОЛИТИКА "
+
+#: templates/artists/settings.html:30 templates/salons/settings.html:31
+msgid "PAYMENTS"
+msgstr "ПЛАЩАНИЯ"
+
+#: templates/artists/sign_up.html:59 templates/salons/sign_up.html:59
+#: templates/user/sign_up.html:63
+msgid "I accept"
+msgstr "Приемам"
+
+#: templates/artists/sign_up.html:71 templates/salons/sign_up.html:71
+#: templates/user/sign_up.html:72
+msgid "Sign up using Facebook"
+msgstr "Регистрирация с Facebook"
+
+#: templates/artists/upload.html:17
+msgid "ADD NEW LISTING"
+msgstr "ДОБАВИ НОВА ОФЕРТА"
+
+#: templates/artists/upload.html:25 templates/listings/edit.html:26
+#: templates/salons/upload.html:24
+msgid "1. Photos"
+msgstr "1. Снимки"
+
+#: templates/artists/upload.html:44 templates/listings/edit.html:70
+#: templates/salons/upload.html:43
+msgid "2. Price"
+msgstr "2. Цена"
+
+#: templates/artists/upload.html:55
+msgid "Price after fees"
+msgstr "Цена с такса"
+
+#: templates/artists/upload.html:56
+msgid ""
+"All fees will be paid by the customer.\n"
+msgstr "Всички такси ще бъдат платени от потребителят.\n"
+
+#: templates/artists/upload.html:64 templates/listings/edit.html:90
+#: templates/salons/upload.html:63
+msgid "3. Description"
+msgstr "3. Описание"
+
+#: templates/artists/wallet.html:17 templates/salons/wallet.html:17
+msgid "WALLET"
+msgstr "Портфейл"
+
+#: templates/artists/wallet.html:37 templates/salons/wallet.html:37
+msgid "WITHDRAW MONEY"
+msgstr "Теглене на пари"
+
+#: templates/artists/wallet.html:44 templates/salons/wallet.html:44
+msgid "ID"
+msgstr "ID"
+
+#: templates/artists/wallet.html:47 templates/salons/wallet.html:48
+msgid "PAID TO"
+msgstr "Платено чрез"
+
+#: templates/artists/wallet.html:69 templates/salons/wallet.html:73
+msgid "We haven't registrited any activities!"
+msgstr "Няма регистрирани активности!"
+
+#: templates/artists/withdraw.html:35 templates/salons/withdraw.html:35
+msgid "WITHDRAW"
+msgstr "ТЕГЛЕНЕ"
+
+#: templates/artists/withdraw.html:36 templates/salons/withdraw.html:36
+msgid "AMOUNT LEFT"
+msgstr "ОСТАВАЩА СУМА"
+
+#: templates/artists/withdraw.html:37 templates/salons/withdraw.html:37
+msgid "WITHDRAW THE MONEY"
+msgstr "ИЗТЕГЛИ ПАРИТЕ"
+
+#: templates/artists/management/calendar.html:6
+#: templates/salons/management/calendar.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Calendars"
+msgstr ""
+
+#: templates/artists/management/calendar.html:23 templates/core/faq.html:18
+msgid "Customer"
+msgstr "Клиент"
+
+#: templates/artists/management/calendar.html:26
+#: templates/artists/management/calendar.html:46
+#: templates/artists/management/calendar.html:62
+msgid "Start time"
+msgstr "Начален час"
+
+#: templates/artists/management/calendar.html:29
+#: templates/artists/management/calendar.html:49
+#: templates/artists/management/calendar.html:65
+msgid "End time"
+msgstr "Краен час"
+
+#: templates/artists/management/calendar.html:32
+msgid "Revenue"
+msgstr "ПРИХОД"
+
+#: templates/artists/management/calendar.html:39
+#: templates/salons/management/calendar.html:49
+msgid "Cancel this appointment"
+msgstr "Отмени този час"
+
+#: templates/artists/management/calendar.html:52
+#: templates/artists/management/calendar.html:68
+msgid "Comment"
+msgstr "Коментар"
+
+#: templates/artists/management/calendar.html:70
+#: templates/salons/management/calendar.html:80
+msgid "Make avaible"
+msgstr "Освободи"
+
+#: templates/artists/management/calendar.html:126
+#: templates/artists/management/calendar.html:140
+#: templates/salons/management/calendar.html:150
+msgid "Busy"
+msgstr "Зает"
+
+#: templates/artists/management/calendar.html:137
+#: templates/salons/management/calendar.html:147
+msgid "Booked"
+msgstr "Запазен"
+
+#: templates/artists/management/calendar.html:181
+#: templates/artists/management/calendar.html:206
+#: templates/artists/management/calendar.html:231
+#: templates/salons/management/calendar.html:191
+#: templates/salons/management/calendar.html:216
+#: templates/salons/management/calendar.html:241
+msgid "Time management"
+msgstr "Мениджър"
+
+#: templates/artists/management/listings.html:43
+#: templates/artists/management/schedule.html:16
+#: templates/artists/management/schedule.html:31
+#: templates/artists/management/schedule.html:46
+#: templates/artists/management/schedule.html:61
+#: templates/artists/management/schedule.html:76
+#: templates/artists/management/schedule.html:91
+#: templates/artists/management/schedule.html:106
+#: templates/artists/settings/account.html:27
+#: templates/artists/settings/account.html:35
+#: templates/artists/settings/edit.html:110
+#: templates/artists/settings/payments.html:31
+#: templates/artists/settings/payments.html:63
+#: templates/salons/profile.html:42
+#: templates/salons/artist_settings/edit_artist.html:98
+#: templates/salons/artist_settings/schedule.html:22
+#: templates/salons/artist_settings/schedule.html:37
+#: templates/salons/artist_settings/schedule.html:52
+#: templates/salons/artist_settings/schedule.html:67
+#: templates/salons/artist_settings/schedule.html:82
+#: templates/salons/artist_settings/schedule.html:97
+#: templates/salons/management/artists.html:45
+#: templates/salons/management/listings.html:43
+#: templates/salons/management/schedule.html:32
+#: templates/salons/management/schedule.html:47
+#: templates/salons/management/schedule.html:62
+#: templates/salons/management/schedule.html:77
+#: templates/salons/management/schedule.html:92
+#: templates/salons/management/schedule.html:107
+#: templates/salons/management/schedule.html:122
+#: templates/salons/settings/account.html:27
+#: templates/salons/settings/account.html:35
+#: templates/salons/settings/edit.html:79
+#: templates/salons/settings/payments.html:59 templates/user/settings.html:85
+msgid "Edit"
+msgstr "Редактирай"
+
+#: templates/artists/management/listings.html:49
+msgid ""
+"                        Pending<br/>(Currently we are reviewing your "
+"listing)\n"
+"                    "
+msgstr "Чакащ<br/>(В момента преглеждаме офертата Ви)"
+
+#: templates/artists/management/listings.html:55
+msgid ""
+"                        Forbidden<br/>(The content is not appropriate for "
+"this website)\n"
+"                    "
+msgstr "Забранено<br/>(Съдържанието е неподходящо)"
+
+#: templates/artists/management/listings.html:71
+#: templates/salons/management/listings.html:63
+msgid "Upload new listing"
+msgstr "Качи нова оферта"
+
+#: templates/artists/management/schedule.html:9
+#: templates/salons/artist_settings/schedule.html:15
+#: templates/salons/management/schedule.html:25
+msgid "Ðonday"
+msgstr "Понеделник"
+
+#: templates/artists/management/schedule.html:10
+#: templates/artists/management/schedule.html:25
+#: templates/artists/management/schedule.html:40
+#: templates/artists/management/schedule.html:55
+#: templates/artists/management/schedule.html:70
+#: templates/artists/management/schedule.html:85
+#: templates/artists/management/schedule.html:100
+#: templates/salons/artist_settings/schedule.html:16
+#: templates/salons/artist_settings/schedule.html:31
+#: templates/salons/artist_settings/schedule.html:46
+#: templates/salons/artist_settings/schedule.html:61
+#: templates/salons/artist_settings/schedule.html:91
+#: templates/salons/artist_settings/schedule.html:106
+#: templates/salons/management/schedule.html:26
+#: templates/salons/management/schedule.html:41
+#: templates/salons/management/schedule.html:56
+#: templates/salons/management/schedule.html:71
+#: templates/salons/management/schedule.html:86
+#: templates/salons/management/schedule.html:101
+#: templates/salons/management/schedule.html:116
+msgid "Workdays starts at:"
+msgstr "Работните дни започват в:"
+
+#: templates/artists/management/schedule.html:12
+#: templates/artists/management/schedule.html:27
+#: templates/artists/management/schedule.html:42
+#: templates/artists/management/schedule.html:57
+#: templates/artists/management/schedule.html:72
+#: templates/artists/management/schedule.html:87
+#: templates/artists/management/schedule.html:102
+#: templates/salons/artist_settings/schedule.html:18
+#: templates/salons/artist_settings/schedule.html:33
+#: templates/salons/artist_settings/schedule.html:48
+#: templates/salons/artist_settings/schedule.html:63
+#: templates/salons/artist_settings/schedule.html:78
+#: templates/salons/artist_settings/schedule.html:93
+#: templates/salons/artist_settings/schedule.html:108
+#: templates/salons/management/schedule.html:28
+#: templates/salons/management/schedule.html:43
+#: templates/salons/management/schedule.html:58
+#: templates/salons/management/schedule.html:73
+#: templates/salons/management/schedule.html:88
+#: templates/salons/management/schedule.html:103
+#: templates/salons/management/schedule.html:118
+msgid "Workdays ends at:"
+msgstr "Работните дни приключват в:"
+
+#: templates/artists/management/schedule.html:14
+#: templates/artists/management/schedule.html:29
+#: templates/artists/management/schedule.html:44
+#: templates/artists/management/schedule.html:59
+#: templates/artists/management/schedule.html:74
+#: templates/artists/management/schedule.html:89
+#: templates/artists/management/schedule.html:104
+#: templates/salons/artist_settings/schedule.html:20
+#: templates/salons/artist_settings/schedule.html:35
+#: templates/salons/artist_settings/schedule.html:50
+#: templates/salons/artist_settings/schedule.html:65
+#: templates/salons/artist_settings/schedule.html:80
+#: templates/salons/artist_settings/schedule.html:95
+#: templates/salons/artist_settings/schedule.html:110
+#: templates/salons/management/schedule.html:30
+#: templates/salons/management/schedule.html:45
+#: templates/salons/management/schedule.html:60
+#: templates/salons/management/schedule.html:75
+#: templates/salons/management/schedule.html:90
+#: templates/salons/management/schedule.html:105
+#: templates/salons/management/schedule.html:120
+msgid "Mark this day as not working day"
+msgstr "Отбележи деня като неработен"
+
+#: templates/artists/management/schedule.html:120 templates/core/home.html:95
+#: templates/salons/artist_settings/schedule.html:126
+#: templates/salons/management/schedule.html:136
+#: templates/service/service.html:224
+msgid "SELECT HOUR"
+msgstr "ИЗБЕРЕТЕ ЧАС"
+
+#: templates/artists/management/stats.html:21
+msgid "Go"
+msgstr "Покажи"
+
+#: templates/artists/management/stats.html:35
+#: templates/salons/management/stats.html:37
+msgid "Listing views"
+msgstr "Преглеждания на офертата"
+
+#: templates/artists/management/stats.html:36
+#: templates/salons/management/stats.html:38
+msgid "Inquiries"
+msgstr "Запитвания"
+
+#: templates/artists/management/stats.html:44
+#: templates/salons/management/stats.html:46
+msgid "LISTING VIEW"
+msgstr "ПРЕГЛЕЖДАНИЯ НА ОФЕРТАТА"
+
+#: templates/artists/management/stats.html:45
+#: templates/salons/management/stats.html:47
+msgid "INQUIRIES"
+msgstr "Запитвания"
+
+#: templates/artists/management/stats.html:47
+#: templates/salons/management/stats.html:49
+msgid "REVENUE"
+msgstr "ПРИХОД"
+
+#: templates/artists/management/stats.html:51
+#: templates/salons/management/stats.html:53
+msgid "This is not avaible yet."
+msgstr "Не е на разположение за момента."
+
+#: templates/artists/management/widgets.html:23
+msgid ""
+"You can add a widget to your website and start acceptiong "
+"bookings requests immediately. Your listings, schedule and calendar from "
+"Glamfame.com will be directly available on your website.<br> Just copy the "
+"code below and paste it on your website.\n"
+msgstr ""
+"Можете да добавите уиджета ни на сайта си и да приемате резервации "
+"мигновено.Вашите оферти, график и календар от Glamfame.com ще бъдат достъпни "
+"на сайта Ви.<br> Копирайте кода на удижета и го добавете в HTML кода на "
+"сайта.\n"
+
+#: templates/artists/management/widgets.html:29
+#: templates/salons/management/widgets.html:29
+msgid "Widget:"
+msgstr "Уиджет:"
+
+#: templates/artists/management/widgets.html:35
+#: templates/salons/management/widgets.html:35
+msgid "Code:"
+msgstr "Код:"
+
+#: templates/artists/management/widgets.html:37
+#: templates/salons/management/widgets.html:37
+msgid "Add Logo"
+msgstr "Добави Лого"
+
+#: templates/artists/management/widgets.html:38
+#: templates/salons/management/widgets.html:38
+msgid "Remove Logo"
+msgstr "Премахни Лого"
+
+#: templates/artists/settings/account.html:38
+msgid "Current password"
+msgstr "Настояща парола"
+
+#: templates/artists/settings/account.html:40
+msgid "New password"
+msgstr "Нова парола"
+
+#: templates/artists/settings/account.html:42
+msgid "Repeat new password"
+msgstr "Потвърдете новата парола"
+
+#: templates/artists/settings/cancellation_policy.html:24
+#: templates/salons/settings/cancellation_policy.html:24
+msgid ""
+"                        No Cancellation Policy: The client won't be charged "
+"if the appointment is cancelled.\n"
+"                    "
+msgstr ""
+"Без политика за отмяна на часове: Клиентът не плаща неустойки, ако отмени "
+"час."
+
+#: templates/artists/settings/cancellation_policy.html:29
+#: templates/salons/settings/cancellation_policy.html:29
+#, python-format
+msgid ""
+"                        Flexible Cancellation Policy: 50%% refund up until "
+"12 hours prior the apoointment, except Glamfame fees\n"
+"                    "
+msgstr ""
+"Гъвкава политика за отмяна на час: 50%% възстановяване на сумата до 12 ч. "
+"преди уговорен час, без таксата на Glamfame."
+
+#: templates/artists/settings/cancellation_policy.html:34
+#: templates/salons/settings/cancellation_policy.html:34
+#, python-format
+msgid ""
+"                        Moderate Cancellation Policy: 50%% refund up until 2 "
+"days prior to appointment, except Glamfame fees\n"
+"                    "
+msgstr ""
+"Умерена политика за отмяна на час: 50%% възстановяване на сумата до 2 дни "
+"преди уговорения час, без таксата на Glamfame"
+
+#: templates/artists/settings/cancellation_policy.html:39
+#: templates/salons/settings/cancellation_policy.html:39
+#, python-format
+msgid ""
+"                        Strict: 50%% refund up until 4 days prior to "
+"appointment, except Glamfame fees\n"
+"                    "
+msgstr ""
+"Строга политика за отмяна на час: 50%% възстановяване на сумата до 4 дни "
+"преди уговорения час, без таксата на Glamfame"
+
+#: templates/artists/settings/cancellation_policy.html:45
+#: templates/salons/settings/cancellation_policy.html:45
+#, python-format
+msgid ""
+"                        Custom: %(x.percent)s%% refund up until "
+"%(x.days_before)s days prior to appointment, except fees\n"
+"                    "
+msgstr ""
+"Индивидуална: %(x.percent)s%% възстановяване на сумата до %(x.days_before)s "
+"дни преди уговорения час, без таксата на Glamfame"
+
+#: templates/artists/settings/cancellation_policy.html:51
+#: templates/salons/settings/cancellation_policy.html:51
+#, python-format
+msgid ""
+"                        Custom Cancellation Policy: Not happy with ours? "
+"Create one on your own! Simply submit the %% refund and the numbers of "
+"days:\n"
+"                    "
+msgstr ""
+"Индивидуална политика за отмяна: Имате други предпочитания? Тогава създайте "
+"своя политика! Задайте %% възстановяване и брой дни."
+
+#: templates/artists/settings/cancellation_policy.html:57
+#, python-format
+msgid ""
+"                        %% and <input type=\"text\" name=\"days\"> days\n"
+"                    "
+msgstr ""
+"                        %% и <input type=\"text\" name=\"days\"> дни\n"
+"                    "
+
+#: templates/artists/settings/edit.html:96
+msgid ""
+"                                        Receive notifications for booking "
+"request and other activities via email</label>\n"
+"                                    "
+msgstr ""
+"           Получи известие за запазване на час или друга активност чрез "
+"емайл</label>\n"
+"                                    "
+
+#: templates/artists/settings/edit.html:103
+msgid ""
+"                                        Receive notifications for booking "
+"request and other activities via text messages</label>\n"
+"                                    "
+msgstr ""
+"                                        Получи известие за запазване на час "
+"или друга активност чрез текстово съобщение</label>\n"
+"                                    "
+
+#: templates/artists/settings/payments.html:24
+msgid "PayPal"
+msgstr "PayPal"
+
+#: templates/artists/settings/payments.html:26
+msgid ""
+"                        All payments should be transfered to the following "
+"PayPal account:\n"
+"                    "
+msgstr "Всички плащания да се прехвърлят на следния PayPal акаунт:"
+
+#: templates/artists/settings/payments.html:35
+#: templates/salons/settings/payments.html:31
+msgid "Bank Transfer"
+msgstr "Банков превод"
+
+#: templates/artists/settings/payments.html:36
+#: templates/salons/settings/payments.html:32
+msgid ""
+"                    All payments should be transfered to the following bank "
+"account:\n"
+"                    "
+msgstr "Всички плащания  да бъдат превеждани на тази банкова сметка:"
+
+#: templates/artists/settings/payments.html:43
+#: templates/salons/settings/payments.html:39
+msgid "Bank name*"
+msgstr "Име на банката*"
+
+#: templates/artists/settings/payments.html:47
+#: templates/salons/settings/payments.html:43
+msgid "Branch location"
+msgstr "Адрес на клона"
+
+#: templates/artists/settings/payments.html:51
+#: templates/salons/settings/payments.html:47
+msgid "Payee*"
+msgstr "Получател*"
+
+#: templates/artists/settings/payments.html:55
+#: templates/salons/settings/payments.html:51
+msgid "IBAN*"
+msgstr "IBAN*"
+
+#: templates/artists/settings/payments.html:59
+#: templates/salons/settings/payments.html:55
+msgid "SWIFT BIC*"
+msgstr "SWIFT BIC*"
+
+#: templates/core/about_us.html:5 templates/core/contact_us.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - About us"
+msgstr ""
+
+#: templates/core/about_us.html:32
+msgid "Pixel ninja"
+msgstr "Pixel ninja"
+
+#: templates/core/about_us.html:33
+msgid "Responsible for product and design."
+msgstr "Project Manager and UI/UX Designer"
+
+#: templates/core/about_us.html:38
+msgid "Plan executer"
+msgstr "Plan executer"
+
+#: templates/core/about_us.html:39
+msgid "Responsible for technical operations management."
+msgstr ""
+"Responsible for technical operations management and server administration."
+
+#: templates/core/about_us.html:44
+msgid "Code warrior"
+msgstr "Code warrior"
+
+#: templates/core/about_us.html:45
+msgid "Responsible for software development."
+msgstr "Responsible for software development."
+
+#: templates/core/about_us.html:50
+msgid "Sales master"
+msgstr "Sales master"
+
+#: templates/core/about_us.html:51
+msgid "Responsible for business development and social media."
+msgstr "Responsible for marketing and business development ."
+
+#: templates/core/about_us.html:56 templates/core/contact_us.html:20
+msgid "WOULD YOU LIKE TO SAY \"HI\"?"
+msgstr "Искате да се свържете с нас?"
+
+#: templates/core/about_us.html:67 templates/core/contact_us.html:31
+msgid "Reason"
+msgstr "Причина"
+
+#: templates/core/about_us.html:71 templates/core/contact_us.html:35
+msgid "Message"
+msgstr "Съобщение"
+
+#: templates/core/faq.html:6
+msgid "Glamfame â Booking platform for top salons and beauty artists - FAQ"
+msgstr ""
+
+#: templates/core/faq.html:26 templates/core/faq.html.py:210
+#: templates/core/faq.html:468
+msgid ""
+"                    1. How do I register on the website?\n"
+"                    "
+msgstr "1. Как да се регистрирам?"
+
+#: templates/core/faq.html:31 templates/core/faq.html.py:215
+#: templates/core/faq.html:473
+msgid ""
+"                    You can either enter your name, email and password, or "
+"register directly with your Facebook account\n"
+"                    "
+msgstr ""
+"Можете или да въведете име, е-мейл и парола, или да се регистрирате с "
+"Facebook профила Ви."
+
+#: templates/core/faq.html:38
+msgid ""
+"                    2. What is the difference between registered and "
+"unregistered users?\n"
+"                    "
+msgstr "2. Каква е разликата между регистриран и нерегистриран потребител?"
+
+#: templates/core/faq.html:43
+msgid ""
+"                    Unregistered users have no  access to notifications, "
+"they cannot make booking cancellations and wish lists.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:50
+msgid ""
+"                    3. How do I add a listing to my wish list?\n"
+"                    "
+msgstr "3. Как се добавя оферта към списък с желания?"
+
+#: templates/core/faq.html:55
+msgid ""
+"Click on a particular listing and click on the purple "
+"button \"Add to wish list\""
+msgstr ""
+"Кликнете на определена оферта и кликнете на лилавия бутон \"\"\"\"\"\n"
+"templates/core/faq.html:62,                    4. How do I make a booking?"
+
+#: templates/core/faq.html:62
+msgid ""
+"4. How do I make a booking?"
+msgstr ""
+
+#: templates/core/faq.html:67
+msgid ""
+"Click on your desired listing and select time and date "
+"from the right panel, then click the blue button \"Book now\""
+msgstr ""
+"Кликнете на избраната оферта,изберете час и дата от панела в дясно и "
+"кликнете синия бутон \"Резервирай сега\"\"\""
+
+#: templates/core/faq.html:74
+msgid ""
+"                    5. How do I change the location where I want to find "
+"beauty services?"
+"                    "
+msgstr "5. Как да сменя локацията, където искам да намеря услуги за красота?"
+
+#: templates/core/faq.html:79
+msgid ""
+"                    Select the type of beauty services and click \"Change "
+"location\" button in the upper left box\n"
+"                    "
+msgstr ""
+"Изберете типа услуга за красота и кликнете бутон\"Смени локацията\"\" горе в "
+"ляво\""
+
+#: templates/core/faq.html:86
+msgid ""
+"                    6. What are the payment methods, provided by Glamfame?\n"
+"                    "
+msgstr "6. Какви са начините за плащане през Glamfame?"
+
+#: templates/core/faq.html:91
+msgid ""
+"                    Glamfame supports two payment methods â with credit card "
+"and via Pay Pal\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:98
+msgid ""
+"                    7. Is my credit card information secure?\n"
+"                    "
+msgstr "7. Информацията за дебитната/кредитната ми карта защитена ли е ?"
+
+#: templates/core/faq.html:103 templates/core/faq.html.py:445
+msgid ""
+"                    Glamfame does not store usersâ bank account information "
+"and does not disclose such information to third parties. Credit card "
+"information is sent viaSSLto our payment providerPaymill. See our Privacy "
+"Policy as well\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:110
+msgid ""
+"                    8. When do I get charged for a booking?\n"
+"                    "
+msgstr "8. Кога ще бъда таксуван за резервация?"
+
+#: templates/core/faq.html:115
+msgid ""
+"                    The payment will be processed automatically when the "
+"beauty artist confirms your booking. In case the beauty artist refuses to "
+"confirm the booking, no billing will occur\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:122
+msgid ""
+"                    9. What is the booking confirmation period?\n"
+"                    "
+msgstr "9. Какъв е периода на потвърждение за резервация?"
+
+#: templates/core/faq.html:127 templates/core/faq.html.py:457
+#: templates/core/faq.html:725
+msgid ""
+"                    48 hours from the booking hour\n"
+"                    "
+msgstr "48 часа от часа на резервация"
+
+#: templates/core/faq.html:134
+msgid ""
+"                    10. When am I able to write reviews for the salons?\n"
+"                    "
+msgstr "10. Кога мога да напиша ревю за салон/стилист?"
+
+#: templates/core/faq.html:139
+msgid ""
+"                    After the appointment with the beauty artist/salon.\n"
+"                    "
+msgstr "След като мине часа Ви в салона/при стилиста."
+
+#: templates/core/faq.html:146
+msgid ""
+"                    11. How do I search for salons in a certain location?\n"
+"                    "
+msgstr "11. Как да намеря салони в определена локация?"
+
+#: templates/core/faq.html:151
+msgid ""
+"                    Enter an address and Glamfame will display all the "
+"salons with their corresponding listings and artists in the area.\n"
+"                    "
+msgstr ""
+"Въведете адрес и Glamfame ще Ви покаже всички салони с прилежащите им оферти "
+"и стилисти в тази област."
+
+#: templates/core/faq.html:158
+msgid ""
+"                    12. Is there an option to disable the access to my "
+"location?\n"
+"                    "
+msgstr "12. Има ли начин да забраня достъпа до местонахождението ми?"
+
+#: templates/core/faq.html:163
+msgid ""
+"                    Yes. When your browser loads glamfame.com for the first "
+"time, you will be asked if you want to share your location. Simply select "
+"âNot nowâ.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:170
+msgid ""
+"                    13. Am I going to pay additional charges for a booking?\n"
+"                    "
+msgstr "13. Ще плащам ли допълнителни такси за резервация през сайта?"
+
+#: templates/core/faq.html:175
+msgid ""
+"                    No. Glamfameâs service fee is included in the final "
+"price of each listing with VAT.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:182
+msgid ""
+"                    14. How do I cancel my account on Glamfame?\n"
+"                    "
+msgstr "14. Как да закрия профила си  Glamfame?"
+
+#: templates/core/faq.html:187
+#, python-format
+msgid ""
+"                    By sending an email to <a href=\"mailto:admin@glamfame."
+"com?Subject=Hi%%20team\" target=\"_top\">admin@glamfame.com</a>\n"
+"                    "
+msgstr ""
+"Като изпратите е-мейл на <a "
+"href=”mailto:admin@Glamfame.com?Subject=Hi%%20team” "
+"target=”_top”>admin@Glamfame.com</a>"
+
+#: templates/core/faq.html:194
+msgid ""
+"                    15. Can Glamfame deactivate my account ?\n"
+"                    "
+msgstr "15. Може ли Glamfame  да деактивира профила ми?"
+
+#: templates/core/faq.html:199
+msgid ""
+"                    Yes, if you violate our Terms and Conditions. Please, "
+"read them carefully.\n"
+"                    "
+msgstr ""
+"Да, ако нарушите нашите Условия за ползване на сайта.Прочетете ги внимателно."
+
+#: templates/core/faq.html:222
+msgid ""
+"                    2. Can unregistered beauty artists upload listings and "
+"create profiles on Glamfame?\n"
+"                    "
+msgstr ""
+"2. Могат ли нерегистрирани стилисти да качват оферти и да си създадат "
+"профили на Glamfame?"
+
+#: templates/core/faq.html:227
+msgid ""
+"                    No. Only registered artists can do so.\n"
+"                    "
+msgstr "Не. Само регистрирани стилисти могат."
+
+#: templates/core/faq.html:234 templates/core/faq.html.py:492
+msgid ""
+"                    3. What are the next steps after I register on the "
+"website?\n"
+"                    "
+msgstr "3. Кои са следващите стъпки след регистрацията на сайта?"
+
+#: templates/core/faq.html:239
+msgid ""
+"                    You have to select your type of business (Hair, Nails, "
+"Makeup), enter your location (address) and follow the instructions within "
+"our tips.\n"
+"                    "
+msgstr ""
+"Трябва да изберете тип услуга (Коса, Нокти, Грим), да въведете локация и да "
+"следвате инструкцийте на сайта."
+
+#: templates/core/faq.html:246 templates/core/faq.html.py:504
+msgid ""
+"                    4. How do I set up my profile and add description of my "
+"work?\n"
+"                    "
+msgstr "4. Как да конфигурирам профила си и да добавя описание на работата си?"
+
+#: templates/core/faq.html:251
+msgid ""
+"                    Follow the instructions within our tips after log in. "
+"Then, click the circular \"i\" icon in the right upper corner, next to the "
+"search box. \n"
+"                    "
+msgstr ""
+" За да видите инструкциите, влезете в профила си и кликнете на кръглата \"i\""
+"\" иконка горе в дясно"
+
+#: templates/core/faq.html:258
+msgid ""
+"                    5. How do I add a listing?\n"
+"                    "
+msgstr "5. Как да добавя оферта?"
+
+#: templates/core/faq.html:263
+msgid ""
+"                    Once you enter description of your work and enter your "
+"work hours in the \"Schedule\" section, click on the green \"Add listing\" "
+"button in the left upper corner next to the search box. Add photos, price, "
+"title, description, select type and determine the duration.\n"
+"                    "
+msgstr ""
+"След като въведете описание на работата си и определите работното си време в "
+"секция \"График\"\""
+
+#: templates/core/faq.html:270
+msgid ""
+"                    6. Am I able to deactivate and edit listings?\n"
+"                    "
+msgstr "6. Мога ли да декативирам и да променям оферти?"
+
+#: templates/core/faq.html:275 templates/core/faq.html.py:545
+msgid ""
+"Yes. Move the cursor to your profile badge and select "
+"\"Listings\". Then, click on \"Deactivate\", or \"Edit\""
+msgstr ""
+"Да.Поместете курсора над профилната си значка, изберете \"Мениджмънт\"\" от "
+"падащото меню. После изберете листинг и кликнете \"\"Деактивирай\"\""
+
+#: templates/core/faq.html:282
+msgid ""
+"                    7. Where can I see my bookings?"
+"                    "
+msgstr "7. Къде мога да видя резервациите си?"
+
+#: templates/core/faq.html:287 templates/core/faq.html.py:557
+msgid ""
+"Move the cursor to your profile badge and select "
+"\"Bookings\""
+msgstr ""
+"Поместете курсора над профилната си значка и изберете \"Резервации\"\"\""
+
+#: templates/core/faq.html:295
+msgid ""
+"                    8. Can I refuse a booking request?\n"
+"                    "
+msgstr "8. Мога ли да откажа заявка за резервация?"
+
+#: templates/core/faq.html:300
+msgid ""
+"                    Yes, you can.\n"
+"                    "
+msgstr "Да, можете."
+
+#: templates/core/faq.html:307
+msgid ""
+"                    9. What will be the consequences of booking "
+"cancellations?\n"
+"                    "
+msgstr "9. Какви биха били последствията от отмяна на вече потвърден час?"
+
+#: templates/core/faq.html:312
+msgid ""
+"                    Your cancellation rate will augment and this may result "
+"in negative image and decrease your sales.\n"
+"                    "
+msgstr ""
+"Оценката Ви „Отмяна на часове” ще се повиши, а това води до негативен имидж "
+"и по-ниски продажби."
+
+#: templates/core/faq.html:319
+msgid ""
+"                    10. Where can I find an organizer of my bookings?\n"
+"                    "
+msgstr "10. Къде мога да намеря органайзер за резервации ?"
+
+#: templates/core/faq.html:324
+msgctxt "templates/core/faq.html:324"
+msgid ""
+"Move the cursor to your profile badge and select "
+"\"Calendar\""
+msgstr ""
+"Поместете курсора над профилната си значка, изберете \"Мениджмънт\"\" от "
+"падащото меню. После изберете \"\"Календар\"\"\""
+
+#: templates/core/faq.html:332
+msgid ""
+"                    11. Can I find statistics for my listings and revenue?\n"
+"                    "
+msgstr "11. Мога ли да видя статистика за офертите и приходите си?"
+
+#: templates/core/faq.html:337
+msgid ""
+"                    Yes, in the \"Statistics\" section of your profile. You "
+"will find diagram showing the ratio between your bookings, revenue, "
+"listingsâ view and inquiries.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:344
+msgid ""
+"                    12. Am I able to receive notifications for the bookings "
+"of my listings, cancellations and admin messages on Glamfame?\n"
+"                    "
+msgstr ""
+"12. Възможно ли е да получавам известия за резервациите ми, за отменени "
+"часове и за съобщения от администратор?"
+
+#: templates/core/faq.html:349
+msgid ""
+"                        Yes, in the \"Notifications\" section of your "
+"profile menu.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:356
+msgid ""
+"                    13. How do I withdraw money from Glamfame?\n"
+"                    "
+msgstr "13. Как мога да изтегля пари от Glamfame?"
+
+#: templates/core/faq.html:361 templates/core/faq.html.py:629
+msgid ""
+"                    Go to \"My wallet\" section of your profile and click on "
+"\"Withdraw money\".\n"
+"                    "
+msgstr ""
+"Отидете в \"Портфейл\"\" секцията ба профила си и кликнете на \"\"Изтегли "
+"пари\"\".\""
+
+#: templates/core/faq.html:368
+msgid ""
+"                    14. When do I receive a transfer to my virtual Wallet?\n"
+"                    "
+msgstr "14. Кога получавам трансфери във виртуалния си портфейл?"
+
+#: templates/core/faq.html:373 templates/core/faq.html.py:641
+msgid ""
+"                    2 hours after an appointment for beauty services is "
+"completed\n"
+"                    "
+msgstr "2 часа след като е минал уговорен час с клиент, резервиран през сайта"
+
+#: templates/core/faq.html:380
+msgid ""
+"                    15. What are the steps for the transfer of my earnings "
+"from my virtual Wallet to my bank account?\n"
+"                    "
+msgstr ""
+"15.Какви са стъпките за прехвърляне на спечеленото от моят виртуален "
+"портфейл в банковата ми сметка?"
+
+#: templates/core/faq.html:385 templates/core/faq.html.py:653
+msgid ""
+"                    You have to submit a withdrawal request via your virtual "
+"Wallet. Then it must be approved by our admin. Note: It may be cancelled "
+"only if the request for withdraw exceeds the available funds.  Once it gets "
+"an approval, the beauty artist receives his/her payout within 7-8 business "
+"days. For more information, read our Terms of service.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:392
+msgid ""
+"                    16. Do I have to pay fees to Glamfame for the "
+"publication of listings?\n"
+"                    "
+msgstr "16. Дължа ли такса на Glamfame за качването на оферти?"
+
+#: templates/core/faq.html:397 templates/core/faq.html.py:409
+#: templates/core/faq.html:665 templates/core/faq.html.py:677
+msgid ""
+"                    No.\n"
+"                    "
+msgstr "Не."
+
+#: templates/core/faq.html:404
+msgid ""
+"                    17. Do I owe fees to Glamfame for each booking I receive "
+"through Glamfame?\n"
+"                    "
+msgstr "17. Дължа ли такса на Glamfame за всяка резервация, която получавам?"
+
+#: templates/core/faq.html:416
+msgid ""
+"                    18. Is there a limit for the number of listings, "
+"submitted on the website?\n"
+"                    "
+msgstr "18.Има ли лимит за броя на офертите, които мога да кача?"
+
+#: templates/core/faq.html:421 templates/core/faq.html.py:689
+msgid ""
+"                    No. You can list as many, as you wish.\n"
+"                    "
+msgstr "Не. Качете колкото искате"
+
+#: templates/core/faq.html:428
+msgid ""
+"                    19. Do I need to add VAT, or other applicable taxes to "
+"my listings?\n"
+"                    "
+msgstr ""
+"19. Нужно ли е в цената на офертите да включа ДДС, или други приложими такси?"
+
+#: templates/core/faq.html:433 templates/core/faq.html.py:701
+msgid ""
+"                    Yes, you are. You are responsible for complying with the "
+"applicable local laws. Please, read section \"Listings on Glamfame\" in our "
+"Terms of Service.\n"
+"                    "
+msgstr ""
+"Да. Отговорни сте за това да спазвате законите на страната, в която е "
+"регистриран бизнеса Ви.Прочетете и \"Оферти в Glamfame\"\" в Условията ни за "
+"ползване.\""
+
+#: templates/core/faq.html:440
+msgid ""
+"                    20. Is my credit card information secure?\n"
+"                    "
+msgstr "20. Защитена ли е информацията за кредитната/дебитната ми карта?"
+
+#: templates/core/faq.html:452
+msgid ""
+"                    21. What is the period in which I have to confirm/cancel "
+"a booking?\n"
+"                    "
+msgstr "21. В какъв срок мога да потвърдя/откажа резервация?"
+
+#: templates/core/faq.html:480
+msgid ""
+"                    2. Can unregistered beauty salons, add beauty artists "
+"and upload listings on Glamfame?\n"
+"                    "
+msgstr ""
+"2. Могат ли нерегистрирани салони и стилисти да качват оферти на Glamfame?"
+
+#: templates/core/faq.html:485
+msgid ""
+"                    No. Only registered salons can do so.\n"
+"                    "
+msgstr "Не, само регистрираните могат."
+
+#: templates/core/faq.html:497
+msgid ""
+"                    You have to enter your location (address) and follow the "
+"instructions within our tips.\n"
+"                    "
+msgstr ""
+"Трябва да въведете местонахождението си(адреса си) и да следвате "
+"инструкциите на сайта"
+
+#: templates/core/faq.html:509
+msgid ""
+"                    Follow the instructions within our tips after log in. "
+"Then, if you need to see them again, click the circular \"i\" icon in the "
+"right upper corner, next to the search box. \n"
+"                    "
+msgstr ""
+"За да видите инструкциите, влезете в профила си и кликнете на кръглата \"i\""
+"\" иконка горе в дясно"
+
+#: templates/core/faq.html:516
+msgid ""
+"                    5. Why am I unable to create a listing?\n"
+"                    "
+msgstr "5. Защо не мога да създам оферта?"
+
+#: templates/core/faq.html:521
+msgid ""
+"                    You have to create the artistâs profile first.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:528
+msgid ""
+"                    6.  How do I add a listing?\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:533
+msgid ""
+"                    Once you have entered description of your salon, beauty "
+"artists and you have set their work hours in the \"Schedule\" section, click "
+"on the green \"Add listing\" button in the left upper corner next to the "
+"search box. Add photos, price, title, description, select type and determine "
+"the duration.\n"
+"                    "
+msgstr ""
+"След като въведете описание на салона си и определите работно време в секция "
+"\"График\"\" "
+
+#: templates/core/faq.html:540
+msgid ""
+"                    7.  Am I able to deactivate and edit listings?\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:552
+msgid ""
+"                    8. Where can I see my bookings?\n"
+"                    "
+msgstr "8. Къде мога да видя резервациите си?"
+
+#: templates/core/faq.html:564
+msgid ""
+"                    8. Can beauty artists refuse a booking request?\n"
+"                    "
+msgstr "8. Могат ли стилистите да отказват заявки за резервация?"
+
+#: templates/core/faq.html:569
+msgid ""
+"                    Yes, they can.\n"
+"                    "
+msgstr "Да, могат."
+
+#: templates/core/faq.html:576
+msgid ""
+"                    10. What will be the consequences of booking "
+"cancellations?\n"
+"                    "
+msgstr "10. Какви биха били последствията от отмяна на вече потвърден час?"
+
+#: templates/core/faq.html:581
+msgid ""
+"                    Your artistsâ cancellation rate will augment and this "
+"may result in negative image and decrease your sales.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:588
+msgid ""
+"                    11. Where can I find an organizer for the bookings of my "
+"beauty artists?\n"
+"                    "
+msgstr "11. Къде мога да намеря органайзер за резервациите на стилистите ми?"
+
+#: templates/core/faq.html:593
+msgctxt "templates/core/faq.html:593"
+msgid ""
+"Move the cursor to your profile badge and select \"Calendar\""
+msgstr ""
+"Поместете курсора над профилната си значка, изберете \"Мениджмънт\"\" от "
+"падащото меню. После изберете \"\"Календар\"\"\""
+
+#: templates/core/faq.html:600
+msgid ""
+"                    12. Can I find statistics for the listings and revenue "
+"for each of my beauty artists?\n"
+"                    "
+msgstr ""
+"12. Мога ли да видя статистика за офертите и приходите за всеки от "
+"стилистите ми?"
+
+#: templates/core/faq.html:605
+msgid ""
+"                    Yes, in the \"Statistics\" section of your profile. "
+"Select an artist. Then, you will find diagram showing the ratio between your "
+"bookings, revenue, listingsâ view and inquiries.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:612
+msgid ""
+"                    13. Am I able to receive notifications for the bookings "
+"of my listings, cancellations and admin messages   on Glamfame?\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:617
+msgid ""
+"                    Yes, click on the flag icon in the upper right corner of "
+"the header, next to the search box.\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:624
+msgid ""
+"                    14. How do I withdraw money from Glamfame?\n"
+"                    "
+msgstr "14. Как мога да изтегля пари от Glamfame?"
+
+#: templates/core/faq.html:636
+msgid ""
+"                    15. When do I receive a transfer to my virtual Wallet?\n"
+"                    "
+msgstr "15. Кога получавам трансфери във виртуалния си портфейл?"
+
+#: templates/core/faq.html:648
+msgid ""
+"                    16. What are the steps for the transfer of my earnings "
+"from my virtual Wallet to my bank account? <\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:660
+msgid ""
+"                    17. Do I have to pay fees to Glamfame for the "
+"publication of listings?\n"
+"                    "
+msgstr "17. Дължа ли такса на Glamfame за качването на оферти?"
+
+#: templates/core/faq.html:672
+msgid ""
+"                    18. Do I owe fees to Glamfame for each booking I receive "
+"through Glamfame?\n"
+"                    "
+msgstr "18. Дължа ли такса на Glamfame за всяка резервация, която получавам?"
+
+#: templates/core/faq.html:684
+msgid ""
+"                    19. Is there a limit for the number of listings and "
+"beauty artists, submitted on the website?\n"
+"                    "
+msgstr "19. Има ли лимит за броя на офертите, които мога да кача?"
+
+#: templates/core/faq.html:696
+msgid ""
+"                    20. Do I need to add VAT, or other applicable taxes to "
+"my listings?\n"
+"                    "
+msgstr ""
+"20. Нужно ли е в цената на офертите да включа ДДС, или други приложими такси?"
+
+#: templates/core/faq.html:708
+msgid ""
+"                    21. Is my credit card information secure?\n"
+"                    "
+msgstr "21. Защитена ли е информацията за кредитната/дебитната ми карта?"
+
+#: templates/core/faq.html:713
+msgid ""
+"                    Yes, it is. Glamfame does not store usersâ bank account "
+"information and does not disclose such information to third parties. Credit "
+"card information is sent viaSSLto our payment providerPaymill. See our "
+"Privacy Policy as well\n"
+"                    "
+msgstr ""
+
+#: templates/core/faq.html:720
+msgid ""
+"                    22. What is the period in which my beauty artists have "
+"to confirm/cancel a booking?\n"
+"                    "
+msgstr "22. В какъв срок стилистите ми могат да потвърдят/откажат резервация?"
+
+#: templates/core/home.html:12
+msgid "Booking platform for top beauty salons and artists|Glamfame"
+msgstr "Платформа за резервации на оферти на топ стилисти и салони|Glamfame"
+
+#: templates/core/home.html:23
+msgid "DO YOU WANT TO GLAM YOURSELF?"
+msgstr "ИСКАТЕ ЛИ ДА ЗАСИЯЕТЕ?"
+
+#: templates/core/home.html:24
+msgid "BROWSE MULTIPLE LISTINGS, OFFERED BY TOP HAIR, NAILS AND MAKEUP ARTISTS"
+msgstr "РАЗГЛЕДАЙ МНОЖЕСТВО ОФЕРТИ, ПРЕДОСТАВЕНИ ОТ ТОП СТИЛИСТИ"
+
+#: templates/core/home.html:29
+msgid "Service"
+msgstr "Услуга"
+
+#: templates/core/home.html:39
+msgid "OR CHECK WHAT IS TRENDY RIGHT NOW"
+msgstr "ИЛИ ВИЖТЕ КОЕ Е МОДЕРНО В МОМЕНТА"
+
+#: templates/core/home.html:136
+msgid "SELECT SERVICE"
+msgstr "ИЗБЕРЕТЕ УСЛУГА"
+
+#: templates/core/how_it_works_artists.html:5
+#: templates/core/how_it_works_salons.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - How it works "
+"for artists"
+msgstr ""
+
+#: templates/core/how_it_works_artists.html:16
+msgid "Hello, beauty professionals."
+msgstr "Здравейте, професионалисти от сферата на красотата."
+
+#: templates/core/how_it_works_artists.html:17
+msgid "Are you ready to make money and become famous?"
+msgstr "Готови ли сте да печелите пари и популярност?"
+
+#: templates/core/how_it_works_artists.html:18
+#: templates/core/how_it_works_salons.html:18
+msgid "Glamfame is the platform that will:"
+msgstr "Glamfame е платформата, която:"
+
+#: templates/core/how_it_works_artists.html:19
+#: templates/core/how_it_works_salons.html:19
+msgid "Boost your sales"
+msgstr "Увеличава продажбите Ви"
+
+#: templates/core/how_it_works_artists.html:20
+msgid "Ease your work"
+msgstr "Улеснява работата Ви"
+
+#: templates/core/how_it_works_artists.html:24
+#: templates/core/how_it_works_artists.html:146
+#: templates/core/how_it_works_salons.html:24
+#: templates/core/how_it_works_salons.html:146
+#: templates/core/how_it_works_users.html:24
+#: templates/core/how_it_works_users.html:137
+msgid "SIGN UP NOW"
+msgstr "РЕГИСТРИРАЙ СЕ СЕГА"
+
+#: templates/core/how_it_works_artists.html:29
+#: templates/core/how_it_works_salons.html:29
+#: templates/core/how_it_works_users.html:29
+msgid "NOT CONVINCED? CHECK SOME OF OUR BENEFITS BELOW"
+msgstr "НЕ СТЕ СИГУРНИ? ВИЖТЕ ЧАСТ ОТ ПРЕДИМСТВАТА, КОИТО ПОЛУЧАВАТЕ"
+
+#: templates/core/how_it_works_artists.html:39
+#: templates/core/how_it_works_salons.html:44
+msgid "MANAGE YOUR LISTINGS"
+msgstr "УПРАВЛЯВАТЕ ОФЕРТИТЕ СИ"
+
+#: templates/core/how_it_works_artists.html:44
+msgid "MANAGE YOUR AVAILABILITY"
+msgstr "УПРАВЛЯВАТЕ АНГАЖИМЕНТИТЕ СИ"
+
+#: templates/core/how_it_works_artists.html:49
+msgid "ATTRACT FOLLOWERS"
+msgstr "ПРИВЛИЧАТЕ ПОСЛЕДОВАТЕЛИ"
+
+#: templates/core/how_it_works_artists.html:54
+#: templates/core/how_it_works_salons.html:54
+msgid "ACCEPT BOOKING REQUESTS"
+msgstr "ПРИЕМАТЕ ОНЛАЙН РЕЗЕРВАЦИИ"
+
+#: templates/core/how_it_works_artists.html:59
+#: templates/core/how_it_works_salons.html:59
+msgid "ANALYZE BOOKING DATA"
+msgstr "АНАЛИЗ НА РЕЗЕРВАЦИИТЕ"
+
+#: templates/core/how_it_works_artists.html:68
+#: templates/core/how_it_works_salons.html:68
+#: templates/core/how_it_works_users.html:68
+msgid "Sign up."
+msgstr "Регистрирайте се."
+
+#: templates/core/how_it_works_artists.html:69
+#: templates/core/how_it_works_salons.html:69
+#: templates/core/how_it_works_users.html:69
+msgid "It takes less than a minute. And it's FREE."
+msgstr "Отнема по-малко от минута и е БЕЗПЛАТНО."
+
+#: templates/core/how_it_works_artists.html:76
+#: templates/core/how_it_works_salons.html:76
+msgid "Set up your profile."
+msgstr "Попълнете профила си."
+
+#: templates/core/how_it_works_artists.html:77
+#: templates/core/how_it_works_salons.html:77
+msgid "It's fast and easy. And beautiful."
+msgstr "Лесно, бързо, красиво!"
+
+#: templates/core/how_it_works_artists.html:86
+msgid "Upload your listings"
+msgstr "Качете офертите си"
+
+#: templates/core/how_it_works_artists.html:87
+#: templates/core/how_it_works_salons.html:105
+msgid ""
+"Create as many listings as you want. You can always change the images, "
+"description and the price of each one of them."
+msgstr ""
+"Създавайте неограничен брой оферти. Винаги можете да променяте снимката, "
+"описанието и цената на всяка оферта."
+
+#: templates/core/how_it_works_artists.html:94
+#: templates/core/how_it_works_salons.html:94
+msgid "Manage your schedule."
+msgstr "Управлявайте графика си."
+
+#: templates/core/how_it_works_artists.html:95
+msgid ""
+"Make your workday easy. Plan your appointments and improve your productivity."
+msgstr ""
+"Улесенете работния си процес. Планирайте ангажиментите си и подобрете "
+"продуктивността си."
+
+#: templates/core/how_it_works_artists.html:104
+msgid "Attract followers"
+msgstr "ПРИВЛИЧАТЕ ПОСЛЕДОВАТЕЛИ"
+
+#: templates/core/how_it_works_artists.html:105
+msgid ""
+"Share your work with the world. Show off your skills and get likes and "
+"followers."
+msgstr ""
+"Покажете портфолиото и уменията си пред клиенти от цял свят! Набирайте  "
+"харесвания и последователи."
+
+#: templates/core/how_it_works_artists.html:112
+#: templates/core/how_it_works_salons.html:112
+msgid "Accept booking requests."
+msgstr "Приемайте заявки за резервации."
+
+#: templates/core/how_it_works_artists.html:113
+#: templates/core/how_it_works_salons.html:113
+msgid "Attract new customers. Increase your revenue."
+msgstr "Привличайте нови клиенти."
+
+#: templates/core/how_it_works_artists.html:122
+#: templates/core/how_it_works_salons.html:122
+msgid "Analyze booking data."
+msgstr "Следете анализа на продажбите Ви."
+
+#: templates/core/how_it_works_artists.html:123
+msgid ""
+"Understand what your customers want. Get valuable insights when and what "
+"they book."
+msgstr ""
+"Разберете нуждите на клиентите. Намерете ценни данни за това кога и как "
+"резервират."
+
+#: templates/core/how_it_works_artists.html:128
+#: templates/core/how_it_works_salons.html:128
+#: templates/core/how_it_works_users.html:119
+msgid "ONE PLATFORM TO RULE THEM ALL"
+msgstr "ЕДНА ПЛАТФОРМА ФУНКЦИОНИРАЩА НА ВСЯКО УСТРОЙСТВО"
+
+#: templates/core/how_it_works_salons.html:16
+msgid "Hello, beauty salons."
+msgstr "Здравейте, салони за красота."
+
+#: templates/core/how_it_works_salons.html:17
+msgid "It's time to grow your business?"
+msgstr "Време е да разширите бизнеса си?"
+
+#: templates/core/how_it_works_salons.html:20
+msgid "Allow you to manage your revenue"
+msgstr ""
+
+#: templates/core/how_it_works_salons.html:21
+msgid "Allow you to easily manage your employees"
+msgstr ""
+
+#: templates/core/how_it_works_salons.html:39
+msgid "MANAGE YOUR EMPLOYEES"
+msgstr "УПРАВЛЯВАЙТЕ СЛУЖИТЕЛИТЕ СИ"
+
+#: templates/core/how_it_works_salons.html:49
+msgid "ATTRACT YOUR AVAILABILITY"
+msgstr "УПРАВЛЯВАТЕ АНГАЖИМЕНТИТЕ СИ"
+
+#: templates/core/how_it_works_salons.html:86
+msgid "Manage your employees."
+msgstr "Управлявайте служителите си."
+
+#: templates/core/how_it_works_salons.html:87
+msgid ""
+"Create as many employees as you want. Manage their appointments and accept "
+"booking requests from their behalf."
+msgstr ""
+"Създавайте акаунти на неограничен брой служители.Управлявайте ангажиментите "
+"им и приемайте заявки за резервации вместо тях."
+
+#: templates/core/how_it_works_salons.html:95
+msgid "See how busy your employees are and when."
+msgstr "Следете ангажираността на служителите си по ден и час."
+
+#: templates/core/how_it_works_salons.html:104
+msgid "Manage your listings."
+msgstr "Управлявайте офертите си."
+
+#: templates/core/how_it_works_salons.html:123
+msgid ""
+"Review the performance of your salon. Get valuable insights what your "
+"customers want and who are your best performing employees."
+msgstr ""
+"Следете продуктивността на салона . Намерете ценни данни за това от какво се "
+"нуждаят клиентите Ви и кои са най-успешните Ви служители."
+
+#: templates/core/how_it_works_users.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - How it works "
+"for users"
+msgstr ""
+
+#: templates/core/how_it_works_users.html:16
+msgid ""
+"Want to be glamorous? Get the Appearance of Your Dreams! Glam yourself today!"
+msgstr ""
+"Искате да бъдете обаятелни? Подарете си външния вид, за който отдавна "
+"мечтаете! Засияйте с наша помощ!"
+
+#: templates/core/how_it_works_users.html:17
+msgid ""
+"Glamfame is the beauty platform, where you can find particular hairstyles, "
+"nail-art styles, or celebrity lookalike makeup. You will be able to see the "
+"ratings of beauty salons and beauty artists and their reviews. In addition, "
+"you can:"
+msgstr ""
+"Glamfame е платформа за красота, където можете да намерите оферти за "
+"специфични прически, дизайн за маникюр и грим, както и преобразяване в стила "
+"на известни личности. Можете да намерите рейтинг за салоните и стилистите и "
+"мнения за тях от предишни посетители. Освен това можете да:"
+
+#: templates/core/how_it_works_users.html:18
+msgid "List your reviews and feedback"
+msgstr "Оставите свои коментари и оценки"
+
+#: templates/core/how_it_works_users.html:19
+msgid "Get exactly what you are paying for"
+msgstr "Получите точно това, за което плащате"
+
+#: templates/core/how_it_works_users.html:20
+msgid "Save time and money"
+msgstr "Спестите време и пари"
+
+#: templates/core/how_it_works_users.html:21
+msgid "Forget about trial hairstyles and makeup before special events"
+msgstr ""
+"Забравите за пробни прически и пробен грим при подготовка за специални "
+"събития"
+
+#: templates/core/how_it_works_users.html:39
+msgid "FIND THE BEST LOOK FOR YOU"
+msgstr "НАМЕРЕТЕ НАЙ-ПОДХОДЯЩАТА ВИЗИЯ ЗА СЕБЕ СИ"
+
+#: templates/core/how_it_works_users.html:44
+msgid "MAKE APPOINTMENTS"
+msgstr "ЗАПАЗЕТЕ ЧАСОВЕ ОНЛАЙН"
+
+#: templates/core/how_it_works_users.html:49
+msgid "FOLLOW YOUR FAVORITE ARTISTS"
+msgstr "СЛЕДВАЙТЕ ЛЮБИМИТЕ СИ СТИЛИСТИ"
+
+#: templates/core/how_it_works_users.html:54
+msgid "CREATE YOUR wishlist"
+msgstr "СЪЗДАВАЙТЕ СВОИ собствени списъци с желания"
+
+#: templates/core/how_it_works_users.html:59
+msgid "MANAGE YOUR APPOINTMENTS"
+msgstr "УПРАВЛЯВАЙТЕ УГОВОРЕНИТЕ ЧАСОВЕ"
+
+#: templates/core/how_it_works_users.html:76
+msgid "Find the best look for you."
+msgstr "Намерете най-подходящата визия за себе си."
+
+#: templates/core/how_it_works_users.html:77
+msgid ""
+"Enter your address, browse through thousands of listings and select the "
+"style you want."
+msgstr ""
+"Въведете локация и разгледайте хилядите оферти. Изберете стила, който "
+"пожелаете."
+
+#: templates/core/how_it_works_users.html:86
+msgid "Make appointments."
+msgstr "Запазвайте часове за разкрасителни процедури."
+
+#: templates/core/how_it_works_users.html:87
+msgid ""
+"When you are ready with your choice, simply click on Book now button and "
+"submit your payment details.<br>The moeny will be withdraw from your account "
+"after the end of your appointment."
+msgstr ""
+"Щом изберете оферта, кликнете на „Резервирай сега” и въведете данни за "
+"плащане.<br> Дължимата сума за услугата ще бъде изтеглена от банковата Ви "
+"сметка, след като мине часа при стилиста."
+
+#: templates/core/how_it_works_users.html:94
+msgid "Follow your favorite beauty artists"
+msgstr "Следвайте любимите си стилисти"
+
+#: templates/core/how_it_works_users.html:95
+msgid ""
+"It you really like the portfolio of a beauty professional, just click on the "
+"Follow button. That way you will never miss an offer from that artist!"
+msgstr ""
+"Ако се захласнете по уменията на стилист, можете да кликнете бутона „Следвай”"
+" и да получавате известия за най-новите му/й оферти!"
+
+#: templates/core/how_it_works_users.html:104
+msgid "Create your wishlist"
+msgstr "СЪЗДАВАЙТЕ СВОИ собствени списъци с желания"
+
+#: templates/core/how_it_works_users.html:105
+msgid "You can add offers to your wishlist and book them later."
+msgstr "Добавяйте оферти към списъка с желанията си и резервирайте по-късно."
+
+#: templates/core/how_it_works_users.html:112
+msgid "Manage your appointments."
+msgstr "Управлявайте ангажиментите си."
+
+#: templates/core/how_it_works_users.html:113
+msgid ""
+"Be on top of all your appointments. Receive email and web reminders when the "
+"appoitment dates are near."
+msgstr "Получавайте е-мейли и известия преди датата на уговорения час."
+
+#: templates/emails/1.html:11
+#, python-format
+msgid ""
+"                <p>Hi %(receiver_name)s,</p>\n"
+"                <p>We are happy to have on you on board! There are so many "
+"salons and beauty artists waiting for you to book them! </p>\n"
+"<!--                 <p>Please complete one small step only â click on the "
+"link below to verify your account.</p>\n"
+"                <p>%(link)s</p> -->\n"
+"                <p>Thank you!</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/10.html:12
+#, python-format
+msgid ""
+"                <p>Good news %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    Your appointment with %(artistname)s has been approved! "
+"Hereâs an overview:\n"
+"                </p>\n"
+"                <p>%(title)s</p>\n"
+"                <p>%(when)s</p>\n"
+"                <p>\n"
+msgstr ""
+
+#: templates/emails/10.html:25
+#, python-format
+msgid ""
+"                <p>%(price)s</p>\n"
+"                <p>We wish you a glamorous experience!</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/11.html:11
+#, python-format
+msgid ""
+"                <p>We are so sorry %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    Your appointment with %(artistname)s has been declined. "
+"Probably the artist is busy right now with other customers. Hereâs what you "
+"can do:\n"
+"                    <ul>\n"
+"                        <li>Click <a href=\"https://glamfame.com/hair/"
+"\">here</a> to schedule another appointment for different date and time</"
+"li>\n"
+"                        <li>Search for similar listings in your area</li>\n"
+"                        <li>Search for similar beauty artists in your area</"
+"li>\n"
+"                    </ul>\n"
+"                </p>\n"
+"                <p>We are sure your next appointment is just one click away!"
+"</p>\n"
+"                <p>Thank you,</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/12.html:11
+#, python-format
+msgid ""
+"                <p>We are so sorry %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    Your appointment for %(when)s has been cancelled by "
+"%(username)s. We are really sad when that happens. \n"
+"                </p>\n"
+"                <p>The cancellation occurred %(day_before)s days prior the "
+"appointment. According to our cancellation policy, the customer should pay "
+"charges only when the cancellation occurs less than 2 days prior the "
+"appointment. </p>\n"
+"                <p>Once again, we are sorry for the inconvenience.</p>\n"
+"                <p>Thank you,</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/13.html:11
+#, python-format
+msgid ""
+"                <p>We are so sorry %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    Your appointment for %(when)s has been cancelled by "
+"%(username)s. We are really sad when that happens. \n"
+"                </p>\n"
+"                <p>\n"
+"                    The cancellation occurred %(day_before)s days prior the "
+"appointment. According to our cancellation policy, the customer should pay "
+"charges to you. In this case, the amount of [AMOUNT] will be transferred to "
+"your account.\n"
+"                </p>\n"
+"                <p>Thank you,</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/14.html:11
+#, python-format
+msgid ""
+"                <p>We are so sorry %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    Your appointment for %(when)s has been cancelled by "
+"%(artistname)s. We are really sad when that happens.\n"
+"                </p>\n"
+"                <p>Hereâs what you can do:</p>\n"
+"                <p>\n"
+"                    <ul>\n"
+"                        <li>Click <a href=\"https://glamfame.com/listing/"
+"%(id)s\">here</a> to schedule another appointment for different date and "
+"time</li>\n"
+"                        <li>Search for similar listings in your area</li>\n"
+"                        <li>Search for similar beauty artists in your area</"
+"li>\n"
+"                    </ul>\n"
+"                </p>\n"
+"                <p>Thank you,</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/15.html:11
+#, python-format
+msgid ""
+"                <p>Greetings %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    Did you enjoy your appointment with %(artistname)s?\n"
+"                </p>\n"
+"                <p>Please click on the button below and share your "
+"experience with us. Your feedback is important!</p>\n"
+"                <p><a href=\"%(link)s\">Feedback Link</a></p>\n"
+"                <p>Thank you,</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/19.html:11
+#, python-format
+msgid ""
+"                <p>Hi %(receiver_name)s,</p>\n"
+"                <p>Thank you for using Glamfame services!</p>\n"
+"                <p>We hope that you will like our platform! There are so "
+"many salons and beauty artists waiting for you to discover them! Donât keep "
+"them waiting, browse their listings now and book your next you!</p>\n"
+"                <p>If you want, you can use your email and the password "
+"below and log in from our login form:</p>             \n"
+"                <p> %(password)s </p>\n"
+"                <p>Thank you!</p> \n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/2.html:11
+#, python-format
+msgid ""
+"                <p>Hi %(first_name)s,</p>\n"
+"                <p>We want to see you again! Our beauty artists want to see "
+"you again! So come over and find your next haircut, nails or make up style!</"
+"p>\n"
+"                <p>Hope to see you soon!</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/3.html:11
+#, python-format
+msgid ""
+"                <p>Hi %(first_name)s,</p>\n"
+"                <p>Long time no see! Let us remind you that hundreds of "
+"salons and beauty artists waiting for you to book them!</p>\n"
+"                <p>We are waiting for you too!</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/4.html:11
+#, python-format
+msgid ""
+"                <p>Hi %(first_name)s,</p>\n"
+"                <p>\n"
+"                    Hereâs what is happening on Glamfame since your last "
+"login:\n"
+"                    <ul>\n"
+"                        <li>[number] new listings</li>\n"
+"                        <li>[number] new salons</li>\n"
+"                        <li>[number] new beauty artists</li>\n"
+"                    </ul>\n"
+"                </p>\n"
+"                <p>Why donât you come over and check them?</p>\n"
+"                <p>We will be happy to see you again!</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/5.html:11
+#, python-format
+msgid ""
+"                <p>Greetings %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    You have one new follower â %(username)s! The total "
+"number of your followers is %(count)s! You can view them all here:\n"
+"                </p>\n"
+"                <p>%(link)s</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/6.html:11
+#, python-format
+msgid ""
+"                <p>Greetings %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    %(artistname)s has one new follower â %(username)s! The "
+"total number of his followers is %(count)s! You can view them all here:\n"
+"                </p>\n"
+"                <p>%(link)s</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/7.html:12
+#, python-format
+msgid ""
+"                <p>Good news %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    %(username)s wants to book an appointment!\n"
+"                </p>\n"
+"                <p><a href=\"https://glamfame.com/listings/%(id)s\">"
+"%(title)s</a></p>\n"
+"                <p>\n"
+msgstr ""
+
+#: templates/emails/7.html:24 templates/emails/8.html:23
+#: templates/emails/9.html:22
+#, python-format
+msgid ""
+"                <p>%(price)s</p>\n"
+"                <p>You can manage all booking requests from here:</p>\n"
+"                <p>%(link)s</p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/8.html:12
+#, python-format
+msgid ""
+"                <p>Good news %(receiver_name)s,</p>\n"
+"                <p>\n"
+"                    %(username)s wants to book an appointment with "
+"%(artistname)s!\n"
+"                </p>\n"
+"                <p>%(title)s</p>\n"
+"                <p>\n"
+msgstr ""
+
+#: templates/emails/9.html:11
+#, python-format
+msgid ""
+"                <p>Good news %(first_name)s,</p>\n"
+"                <p>\n"
+"                    %(username)s wants to book an appointment with %()s}!\n"
+"                </p>\n"
+"                <p>%(listing_name)s</p>\n"
+"                <p>\n"
+msgstr ""
+
+#: templates/emails/artist_welcome.html:11
+#, python-format
+msgid ""
+"                <p>Hello %(receiver_name)s,</p>\n"
+"                <p>Thank you for signing up!</p>\n"
+"                <p>You have made the right decision. Glamfame is the "
+"platform that will boost your appointments and help you manage your workflow "
+"easily.</p>\n"
+"                <p>Whatâs next? Only 3 easy steps:</p>\n"
+"                <p>1. Set up your cancellation policy â you can do it from "
+"here</p>\n"
+"                <p>2. Set up preferred payment method â you can do it from "
+"here</p>\n"
+"                <p>3. Upload your listings â you can do it from <a href="
+"\"https://glamfame.com/artists/upload\">here</a></p>\n"
+"                <p>That's it! Once you complete these steps, you will start "
+"receiving booking requests from our customers. </p>\n"
+"                <p>Thank you! </p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/artist_welcome_from_salon.html:11
+#, python-format
+msgid ""
+"                <p>Dear %(name)s,</p>\n"
+"                <p>We are glad to inform you that %(salon_name)s added you "
+"as a member of its team. The password for your account is %(password)s.</p>\n"
+"                <p>Log in to review your profile settings. Manage your "
+"bookings, earnings and working schedule. See your followers and ratings and "
+"gain popularity!</p>\n"
+"                <p>You can use the password below to log in you account.</"
+"p>\n"
+"                <p><a href=\"https://glamfame.com//users/login/\">GLAMFAME</"
+"a></p>\n"
+"                <p>Regards,</p>\n"
+"                <p>The team of Glamfame</p>\n"
+msgstr ""
+
+#: templates/emails/facebook_welcome.html:11
+#, python-format
+msgid ""
+"                <p>Hi %(receiver_name)s,</p>\n"
+"                <p>Thank you for signing up!</p>\n"
+"                <p>We are happy to have on you on board! There are so many "
+"salons and beauty artists waiting for you to discover them! Donât keep them "
+"waiting, browse their listings now and book your next you!</p>\n"
+"                <p>Now you can log in your account with your facebook "
+"profile, or you can use your email and the password below and log in from "
+"our login form:</p>\n"
+"                \n"
+"                <p> %(password)s </p>\n"
+"                <p>Thank you!</p> \n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/emails/salon_welcome.html:11
+#, python-format
+msgid ""
+"                <p>Hello %(receiver_name)s,</p>\n"
+"                <p>Thank you for signing up!</p>\n"
+"                <p>You have made the right decision. Glamfame is the "
+"platform that will boost your appointments and help you manage your workflow "
+"easily.</p>\n"
+"                <p>Whatâs next? Only 4 easy steps:</p>\n"
+"                <p>1. Add your beauty artists â you can do it from <a href="
+"\"https://glamfame.com/salons/settings/artists\">here</a></p>\n"
+"                <p>2. Set up your cancellation policy â you can do it from "
+"<a href=\"https://glamfame.com/salons/settings/policy\">here</a></p>\n"
+"                <p>3. Set up preferred payment method â you can do it from "
+"<a href=\"https://glamfame.com/salons/settings/payments\">here</a></p>\n"
+"                <p>4. Upload your listings â you can do it from <a href="
+"\"https://glamfame.com/salons/upload\">here</a></p>\n"
+"                <p>That's it! Once you complete these steps, you will start "
+"receiving booking requests from our customers. </p>\n"
+"                <p>Thank you! </p>\n"
+"                <p>Glamfame Team</p>\n"
+msgstr ""
+
+#: templates/listings/confirm.html:17
+msgid "CHECKOUT"
+msgstr "КОШНИЦА"
+
+#: templates/listings/confirm.html:93 templates/listings/confirm.html:146
+msgid "Your card will be charged at the appointment date."
+msgstr "Сума от картата ще Ви бъде начислена в деня на уговорения час."
+
+#: templates/listings/confirm.html:94 templates/listings/confirm.html:147
+msgid ""
+"Once you submit your payment information, your credit card/PayPal account "
+"will be pre-authorized. Within the next 48 hours you should receive a "
+"notification for booking confirmation from the beauty service provider "
+"within your account. If not, the money for pre-approval will be released. In "
+"case you miss or cancel an appointment, you will be refunded in accordance "
+"with the cancellation policy set by the beauty service provider. The payment "
+"will be processed on the appointment date."
+msgstr ""
+"След като въведете данните си за плащане, ще бъде извършена преавторизация "
+"на кредитната Ви карта/PayPal акаунта Ви.В рамките на 48 ч. трябвада  "
+"получите уведомление в акаунта Ви за потвърждение на резервацията. Ако ли "
+"не, блокираната сума ще бъде освободена. Ако пропуснете или отмените час, ще "
+"получите плащане според политиката за отмяна на часове, определена от "
+"стилиста. Плащането ще бъде извършено в деня на уговорения час."
+
+#: templates/listings/confirm.html:120
+msgid "Expiration date"
+msgstr "Валидна до"
+
+#: templates/listings/confirm.html:226
+msgid "Please accept the terms and conditions."
+msgstr ""
+
+#: templates/listings/confirm.html:265
+msgid "Unexpected error, please contact administrator."
+msgstr ""
+
+#: templates/listings/details.html:130
+msgid "DESCRIPTION"
+msgstr "Описание"
+
+#: templates/listings/details.html:132 templates/salons/profile.html:59
+msgid "LOCATION"
+msgstr "Локация"
+
+#: templates/listings/details.html:180
+msgid "You have already booked this listing for"
+msgstr "Вече сте резервирали тази оферта за"
+
+#: templates/listings/details.html:220 templates/widget/widget.html:144
+msgid "Enter your email"
+msgstr "Въведете е-мейл адреса си"
+
+#: templates/listings/details.html:233
+msgid "Added to {{ listing.likes }} wishlists"
+msgstr ""
+
+#: templates/listings/details.html:236
+msgid "Remove from wishlist"
+msgstr "Премахни от списък желания"
+
+#: templates/listings/details.html:280
+msgid "STEP 1 - SELECT DATE"
+msgstr "СТЪПКА 1- ИЗБЕРЕТЕ ДАТА"
+
+#: templates/listings/details.html:284
+msgid "STEP 2 - SELECT HOUR"
+msgstr "СТЪПКА 2- ИЗБЕРЕТЕ ЧАС"
+
+#: templates/listings/details.html:326
+msgid "Please, select date and time to process forward."
+msgstr "Моля, изберете дата и час, за да продължите."
+
+#: templates/listings/details.html:338
+msgid ""
+"Please, enter your email address. That's how you "
+"will be able to manage your bookings via your mailbox and you will receive "
+"notifications when the artist confirms them.\n"
+msgstr ""
+"Моля, въведете мейл адреса си. Така ще можете да управлявате резервациите си "
+"през пощата си и ще получавате уведомления когато стилиста ги потвърди.\n"
+
+#: templates/listings/edit.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Edit Listing"
+msgstr ""
+
+#: templates/listings/edit.html:18
+msgid "EDIT LISTING"
+msgstr "РЕДАКТИРАЙ ОФЕРТА"
+
+#: templates/listings/edit.html:37 templates/listings/edit.html.py:50
+msgid "DELETE"
+msgstr "ИЗТРИИ"
+
+#: templates/listings/edit.html:38 templates/listings/edit.html.py:51
+msgid "COVER PHOTO"
+msgstr "СНИМКА ЗА КОРИЦА  "
+
+#: templates/listings/edit.html:81
+#, python-format
+msgid ""
+"                            Price after fees: "
+"%(request.user.artist.get_currency_display)s<span class=\"real_price\">0</"
+"span><br><br>\n"
+"                            All fees will be paid by the customer.\n"
+"                            "
+msgstr ""
+
+#: templates/listings/listings.html:6 templates/user/wishlist.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Wishlist"
+msgstr ""
+
+#: templates/notifications/notifications.html:45
+msgid "Currently you don't have any notifications."
+msgstr "В момента нямате известия."
+
+#: templates/payments/error.html:5
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Cancelled "
+"Payment"
+msgstr ""
+
+#: templates/payments/error.html:18
+msgid ""
+"Your payment was unsuccessful. Reason: Unknown.\n"
+msgstr "Вашето плащане беше неуспешно. Причина: неясна.\n"
+
+#: templates/payments/error.html:23
+msgid ""
+"Please try again later with different credit/debit card or "
+"PayPal account.\n"
+msgstr ""
+"Моля, опитайте отново с различна кредитна/дебита карта, или PayPal aкаунт\n"
+
+#: templates/payments/success.html:11
+msgid "GREAT"
+msgstr "Чудесно"
+
+#: templates/payments/success.html:18
+msgid ""
+"Your payment has been succesfully proccessed.\n"
+msgstr "Плащането Ви беше успешно.\n"
+
+#: templates/payments/success.html:23
+msgid ""
+"                You can view all your appointments\n"
+msgstr "Можете да видите всичките си часове\n"
+
+#: templates/review/receive.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Give your "
+"feedback"
+msgstr ""
+
+#: templates/review/receive.html:16
+msgid "WRITE A REVIEW"
+msgstr "НАПИШИ РЕВЮ"
+
+#: templates/review/receive.html:33
+msgid "Please rate"
+msgstr ""
+
+#: templates/review/receive.html:38
+msgid "Submit a review"
+msgstr "Пусни ревю"
+
+#: templates/salons/add_artist.html:16
+msgid "ADD ARTIST"
+msgstr "Добави стилист"
+
+#: templates/salons/add_artist.html:54
+msgid "Upload profile picture"
+msgstr "Качи профилна снимка"
+
+#: templates/salons/bookings.html:28
+msgid "ASSIGNED TO"
+msgstr "ИЗПЪЛНЕНА ОТ"
+
+#: templates/salons/delete_artist.html:6
+msgid ""
+"Glamfame â Booking platform for top salons and beauty artists - Delete Artist"
+msgstr ""
+
+#: templates/salons/delete_artist.html:34
+msgid "AVAILABLE ARTIST"
+msgstr "НАЛИЧНИ СТИЛИСТИ"
+
+#: templates/salons/delete_artist.html:93
+msgid "Assign to XXX"
+msgstr "Прехвърли на XXX  "
+
+#: templates/salons/delete_artist.html:95
+msgid "Accept anyway"
+msgstr "Приеми въпреки това "
+
+#: templates/salons/delete_artist.html:105
+msgid "Delete this artist"
+msgstr "Изтрии този стилист"
+
+#: templates/salons/profile.html:45
+msgid "Request submitted"
+msgstr "Заявката е пусната"
+
+#: templates/salons/profile.html:47
+#: templates/salons/management/artists.html:46
+msgid "Suspend"
+msgstr "Прекрати членство"
+
+#: templates/salons/profile.html:50
+msgid "I am working here"
+msgstr "Аз работя тук"
+
+#: templates/salons/profile.html:58
+msgid "GALLERY"
+msgstr "ГАЛЕРИЯ"
+
+#: templates/salons/profile.html:72
+msgid "Add new photo"
+msgstr "Добави нова снимка"
+
+#: templates/salons/profile.html:79
+msgid "Delete"
+msgstr "ИЗТРИИ"
+
+#: templates/salons/profile.html:89
+msgid "Currently the salon doesn't have any"
+msgstr "В момента няма снимки на салона."
+
+#: templates/salons/profile.html:91 templates/salons/profile.html.py:93
+msgid "photos"
+msgstr "Снимки"
+
+#: templates/salons/profile.html:137
+msgid ""
+"                    Currently the salon doesn't have any\n"
+msgstr "В момента няма снимки на салона.\n"
+
+#: templates/salons/profile.html:140
+msgid "listings"
+msgstr "Oферти"
+
+#: templates/salons/profile.html:169
+msgid "Currently the salon doesn't have any reviews"
+msgstr "В момента за салона няма ревюта"
+
+#: templates/salons/profile.html:176
+msgid "Artists"
+msgstr "СТИЛИСТИ"
+
+#: templates/salons/profile.html:190
+#: templates/salons/management/artists.html:34
+msgid "stylist"
+msgstr "стилист"
+
+#: templates/salons/profile.html:195
+msgid "No artists yet"
+msgstr "Все още няма стилисти"
+
+#: templates/salons/profile.html:197
+msgid "Add new"
+msgstr "Добави нов"
+
+#: templates/salons/settings.html:18 templates/user/settings.html:17
+msgid "SETTINGS"
+msgstr "Настройки"
+
+#: templates/salons/upload.html:17
+msgid "ADD NEW STYLE"
+msgstr "Добави нов стил "
+
+#: templates/salons/upload.html:54
+#, python-format
+msgid ""
+"                            Price after fees: "
+"%(request.user.salon.get_currency_display)s<span class=\"real_price\">0</"
+"span><br><br>\n"
+"                            All fees will be paid by the customer.\n"
+"                            "
+msgstr ""
+
+#: templates/salons/wallet.html:35
+msgid "All WIDTHRAWS"
+msgstr "ВСИЧКИ ТЕГЛЕНИЯ"
+
+#: templates/salons/wallet.html:36
+msgid "AVAIBLE FUNDS"
+msgstr "НАЛИЧНИ СРЕДСТВА"
+
+#: templates/salons/artist_settings/edit_artist.html:89
+#: templates/user/settings.html:76
+msgid ""
+"Receive notifications for booking request and other activities via email"
+msgstr "Получавайте известия за резервации и други активности по е-мейл."
+
+#: templates/salons/artist_settings/edit_artist.html:93
+#: templates/user/settings.html:80
+msgid ""
+"Receive notifications for booking request and other activities via text "
+"messages"
+msgstr "Получавайте известия за резервации и други активности чрез sms"
+
+#: templates/salons/artist_settings/schedule.html:76
+msgid " class="
+msgstr ""
+
+#: templates/salons/artist_settings/schedule.html:112
+msgid "small_button"
+msgstr ""
+
+#: templates/salons/artist_settings/schedule.html:113
+msgid "cancel"
+msgstr "Отмени"
+
+#: templates/salons/management/artists.html:36
+msgid "marked that is working for your salon. Is this correct?"
+msgstr "заяви, че работи за Вашия салон. Вярно ли е?"
+
+#: templates/salons/management/artists.html:38
+#: templates/salons/management/artists.html:42
+msgid "Reject"
+msgstr "Отхвърли"
+
+#: templates/salons/management/artists.html:40
+msgid "marked that want to suspend your salon. What you think?"
+msgstr "заяви прекратяване на членството си към Вашия екип."
+
+#: templates/salons/management/artists.html:44
+msgid "Schedule"
+msgstr "ГРАФИК"
+
+#: templates/salons/management/calendar.html:33
+msgid "Customer:"
+msgstr "Клиент:"
+
+#: templates/salons/management/calendar.html:42
+msgid "Revenue:"
+msgstr "Приходи:"
+
+#: templates/salons/management/calendar.html:45
+msgid "Style:"
+msgstr "Стил:"
+
+#: templates/salons/management/calendar.html:62
+#: templates/salons/management/calendar.html:78
+msgid "Comment:"
+msgstr "Коментар:"
+
+#: templates/salons/management/calendar.html:196
+msgid "Mark as busy"
+msgstr "Покажи ме зает"
+
+#: templates/salons/management/widgets.html:23
+msgid ""
+"                    You can add a widget to your website and start "
+"acceptiong bookings requests immediately. Your listings, schedule and "
+"calendar from Glamfame.com will be directly available on your website.<br> "
+"Just copy the code below and paste it on your website.\n"
+msgstr ""
+"Можете да добавите уиджета ни на сайта си и да приемате резервации "
+"мигновено.Вашите оферти, график и календар от Glamfame.com ще бъдат достъпни "
+"на сайта Ви.<br> Копирайте кода на удижета и го добавете в HTML кода на "
+"сайта.\n"
+
+#: templates/salons/settings/account.html:38
+msgid "Current"
+msgstr "Текущ"
+
+#: templates/salons/settings/account.html:40
+msgid "New"
+msgstr "Нов"
+
+#: templates/salons/settings/account.html:42
+msgid "Repeat"
+msgstr "Повтори"
+
+#: templates/salons/settings/cancellation_policy.html:56
+msgid "days"
+msgstr "дни"
+
+#: templates/salons/settings/gallery.html:17
+msgid "Upload new photo"
+msgstr "Качи нова снимка"
+
+#: templates/service/service.html:12
+msgid "Hairstyle &amp; Salon reviews. Bridal makeup and hair."
+msgstr "Прически &amp; Ревюта на салони. Сватбен грим, сватбени прически"
+
+#: templates/service/service.html:16
+msgid "Nails designs &amp; Nail salon and artist reviews"
+msgstr "Дизайн на маникюр &amp; Ревюта на салони за ноктоплатика и маникюристи"
+
+#: templates/service/service.html:20
+msgid "Make up listings by top artists and salons. Tips and tricks"
+msgstr "Оферти за грим от топ салони и стилисти. Съвети и трикове за красота."
+
+#: templates/service/service.html:22
+msgid "Beauty Listings {{request.GET.q}} Results|Glamfame"
+msgstr ""
+
+#: templates/service/service.html:57
+msgid "Not your location?"
+msgstr "Не е Вашата локация?"
+
+#: templates/service/service.html:65 templates/service/service.html.py:92
+#: templates/service/service.html:113 templates/service/service.html.py:130
+msgid "Reset"
+msgstr "Изчисти"
+
+#: templates/service/service.html:139 templates/service/service.html.py:142
+#: templates/service/service.html:145 templates/service/service.html.py:148
+msgid "& Up"
+msgstr "& нагоре"
+
+#: templates/service/service.html:165
+msgid "results"
+msgstr "резултати"
+
+#: templates/service/service.html:269
+msgid "Enter your location"
+msgstr "Въведете локацията си"
+
+#: templates/service/service.html:277
+msgid "Drag and drop the pin around the map"
+msgstr "Хванете карфицата и я местете по картата"
+
+#: templates/service/service.html:279
+msgid "Save location"
+msgstr "Запази локацията"
+
+#: templates/user/bookings.html:86
+msgid "None"
+msgstr "Никой"
+
+#: templates/user/forgotten_password.html:17
+msgid ""
+"Please submit your email address. You will receive an email with further "
+"instructions how to create new password for your account."
+msgstr ""
+"Моля, въведете е-мейл адреса си. Ще получите инструкции по е-мейл за това "
+"как да създадете нова парола за акаунта си."
+
+#: templates/user/login.html:11
+msgid "LOGIN"
+msgstr "Вход"
+
+#: templates/user/login.html:41
+msgid "Remember Me"
+msgstr "Запомни"
+
+#: templates/user/login.html:42
+msgid "Forgot your password?"
+msgstr "Забравена парола?"
+
+#: templates/user/profile.html:45
+msgid "Following"
+msgstr "Следващ"
+
+#: templates/user/profile.html:63
+msgid "Review of"
+msgstr "Отзиви за"
+
+#: templates/user/profile.html:106
+msgid "Currently the user doesn't have any listings in wishlist"
+msgstr "В момента потребителят няма оферти в списъка си с желания."
+
+#: templates/user/wishlist.html:12
+msgid "WISHLIST"
+msgstr "Списък с желания"
+
+#: templates/widget/widget.html:58
+msgid "Select date"
+msgstr "избери дата"
+
+#: templates/widget/widget.html:62
+msgid "Hour"
+msgstr "Час"
+
+#: templates/widget/widget.html:66
+msgid "Select time"
+msgstr "избери време"

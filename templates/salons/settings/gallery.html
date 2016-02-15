@@ -1,0 +1,78 @@
+{% extends "salons/settings.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+    {% block settings %}
+    <div id="photos">
+        <ul>
+            {% for name, picture in pictures.items %}
+            <li class="{% cycle 'left' 'right' %}" data-name="{{ name }}">
+                {% thumbnail picture "460x258" crop="center" as im %}
+                    <img src="{{ im.url }}" alt="salon picture" width="460" height="258">
+                {% endthumbnail %}
+                <div class="cancel_button"></div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="upload_button">{% trans "Upload new photo" %}</div>
+        <input type="file" class="custom_button" multiple>
+        {% csrf_token %}
+    </div>
+    {% endblock settings %}
+
+    {% block scripts %}
+    <script type="text/javascript">
+
+    $('input[type="file"].custom_button').change(function(){
+        var files = $(this)[0].files;
+        var file_length = files.length;
+
+        $('.uploading').css({
+            "height": $(document).height(),
+            "width": $(document).width()
+        });
+
+        var data, xhr;
+        data = new FormData();
+
+        data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val());
+
+        xhr = new XMLHttpRequest();
+
+        xhr.open( 'POST', '/salons/gallery/', true );
+
+        for (var i = 0; i < file_length; i++)
+        {
+            data.append('file', files[i]);
+        }
+
+        xhr.onreadystatechange = function ( response ) { window.location.reload() };
+
+        xhr.send( data );
+
+    });
+
+    $('.cancel_button').click(function(){
+        var li = $(this).closest("li");
+        name = li.data("name");
+
+        $.ajax({
+            beforeSend: function(){
+                li.addClass("waiting")},
+            url: "/salons/settings/delete_image",
+            data: {"name": name,
+                    'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val()
+            },
+            type: "POST"
+        })
+            .done(function() {
+                li.hide(1500,function(){
+                 li.remove()
+                });
+                })
+            .fail(function() {
+            alert( "ops" ); // maybe this should be change
+            })
+    });
+    </script>
+    {% endblock scripts %}

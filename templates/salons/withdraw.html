@@ -1,0 +1,57 @@
+{% extends "master.html" %}
+{% load thumbnail %}
+{% load i18n %}
+
+    {% block meta %}
+        <title>{% trans "Glamfame – Booking platform for top salons and beauty artists - Bookings" %}</title>
+    {% endblock meta %}
+
+    {% block content %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/moment.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/qtip.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+
+<div id="content">
+    <div class="header">
+        <span>{% trans "Wallet" %}</span>
+    </div>
+
+    <div class="column">
+        {% block msg %}
+            {% if messages %}
+                {% for message in messages %}
+                <ul class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                        <li class="tag"></li>
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        <li class="close"><a href="javascript:;">x</a></li>
+                </ul>
+                {% endfor %}
+            {% endif %}
+        {% endblock msg %}
+        <form id="withdraw" action="." method="POST">
+            <ul>
+                <li>{% trans "AVAILABLE FUNDS" %}: $<span class="all">{{ money }}</span></li>
+                <li>{% trans "WITHDRAW" %}: <input type="number" name="amount"></li>
+                <li>{% trans "AMOUNT LEFT" %}: <span class="money_left"></span></li>
+                <li>{% csrf_token %}<input type="submit" class="small_button green save" value="{% trans 'WITHDRAW THE MONEY' %}"></li>
+            </ul>
+        </form>
+    </div>
+</div>
+    {% endblock content %}
+
+    {% block scripts %}
+    <script>
+        $(".close").click(function(){
+            $(this).closest("ul").remove();
+        });
+        $("input[type='number']").keyup(function(){
+            console.log()
+            var money = parseInt($('.all').text()) - parseInt($(this).val());
+            $(".money_left").text('$' + money);
+        });
+    </script>
+    {% endblock scripts %}
+</body>
+</html>
